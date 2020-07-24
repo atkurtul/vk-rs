@@ -5,7 +5,8 @@ authors = ["LoST_ <atilkurtulmus@gmail.com>"]
 edition = "2018"
 build = "src/build.rs"
 description = "vulkan wrapper"
-
+license = "MIT"
+repository = "https://github.com/atkurtul/vk-rs"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
