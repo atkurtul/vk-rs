@@ -2,27 +2,40 @@
 
 extern crate vk_rs;
 use vk_rs::*;
-extern crate x11;
 mod util;
 use util::*;
-mod window;
-use window::*;
+
+#[cfg(feature="win32")]
+mod win32_window;
+#[cfg(feature="win32")]
+use win32_window::*;
+
+
+#[cfg(feature="xlib")]
+mod xlib_window;
+#[cfg(feature="xlib")]
+use xlib_window::*;
+
 
 fn main()
 {
     unsafe {
+        #[cfg(feature="win32")]
+        init_vulkan("VK_KHR_win32_surface");
+        #[cfg(feature="xlib")]
         init_vulkan("VK_KHR_xlib_surface");
+
         let win = Window::new(800, 600);
-        let swapchain = create_swapchain(win.extent, win.surface);
+        let swapchain = create_swapchain(win.extent(), win.surface);
         let renderpass = make_renderpass(1);
         let pipeline = create_pipeline(renderpass);
         let (cmd_pool, cmd_buffer, fence, acquire_semaphore, present_semaphore, views, framebuffer) = 
                 create_resources(swapchain, renderpass, 800, 600);
 
         let vert : Vec<f32> = vec![
-            -1., 1., 1., 0., 0.,
-             0.,-1., 0., 1., 0.,
-             1., 1., 0., 0., 1.,
+            -1., 1.,    1., 0., 0.,
+             0.,-1.,    0., 1., 0.,
+             1., 1.,    0., 0., 1.,
         ];
 
         let buffer = create_buffer(&vert);

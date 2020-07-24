@@ -1,4 +1,5 @@
 
+extern crate x11;
 extern crate vk_rs;
 use vk_rs::*;
 
@@ -7,7 +8,7 @@ pub struct Window {
     pub display : u64,
     pub window : u64,
     pub surface : vk::SurfaceKHR,
-    pub extent : vk::Extent2D,
+    pub size : vk::Extent2D,
 }
 
 impl Window {
@@ -34,7 +35,7 @@ impl Window {
         let mut supported = 0;
         vk::GetPhysicalDeviceSurfaceSupportKHR(0, surface, &mut supported);
 
-        Window { display : display as _, window, surface, extent : vk::Extent2D {width, height} }
+        Window { display : display as _, window, surface, size : vk::Extent2D {width, height} }
     }
 
     pub unsafe fn poll(&self) -> bool {
@@ -55,4 +56,8 @@ impl Window {
         }
         true
     } 
+
+    pub fn extent(&self) -> vk::Extent2D {
+        self.size
+    }
 }
