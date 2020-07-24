@@ -3,7 +3,7 @@ name = "vk-rs"
 version = "0.1.0"
 authors = ["LoST_ <atilkurtulmus@gmail.com>"]
 edition = "2018"
-
+build = "src/build.rs"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
@@ -11,4 +11,7 @@ winapi = { version = "0.3.9", features = ["windef", "winuser", "libloaderapi"] }
 
 [[bin]]
 name = "vk-rs"
-path = "main.rs"
+path = "src/main.rs"
+
+[build-dependencies]
+cc = { version = "1.0", features = ["parallel"] }

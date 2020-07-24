@@ -13523,8 +13523,6 @@ impl ::std::default::Default for SurfaceFullScreenExclusiveWin32InfoEXT {
     }
 }
 
-#[link(name = "vk", kind = "static")]
-
 extern {
 	pub fn InitVulkan();
 	
