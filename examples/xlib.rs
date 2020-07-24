@@ -17,8 +17,15 @@ fn main()
         let (cmd_pool, cmd_buffer, fence, acquire_semaphore, present_semaphore, views, framebuffer) = 
                 create_resources(swapchain.handle, renderpass, 800, 600);
 
-        const IDX : [u32;3] = [0, 1, 2];
-        let mut frame = -1i32 as usize;
+        let vert : Vec<f32> = vec![
+            -1., 1., 1., 0., 0.,
+             0.,-1., 0., 1., 0.,
+             1., 1., 0., 0., 1.,
+        ];
+
+        let buffer = create_buffer(&vert);
+
+        let mut frame = 0;
         let mut counter = -1i32;
         while(win.poll()) {
             let mut idx = 0;
@@ -33,7 +40,7 @@ fn main()
             vk::BeginCommandBuffer(cmd_buffer[frame], &cmd_begin_info);
 
 
-            let clear_values = [vk::ClearValue::color(0.4, 0.1, 0.5, 1.), vk::ClearValue::depth(1., 0.) ];
+            let clear_values = [vk::ClearValue::color(0.4, 0.4, 0.5, 1.), vk::ClearValue::depth(1., 0.) ];
             let mut pass_info =  vk::RenderPassBeginInfo::default();
             pass_info.renderPass = renderpass;
             pass_info.framebuffer = framebuffer[frame];
@@ -42,7 +49,10 @@ fn main()
             pass_info.pClearValues = &clear_values as _;
             vk::CmdBeginRenderPass(cmd_buffer[frame], &pass_info, vk::SUBPASS_CONTENTS_INLINE);
 
-
+            vk::CmdBindPipeline(cmd_buffer[frame], vk::PIPELINE_BIND_POINT_GRAPHICS, pipeline);
+            let offset = 0;
+            vk::CmdBindVertexBuffers(cmd_buffer[frame], 0, 1, &buffer.0, &offset);
+            vk::CmdDraw(cmd_buffer[frame], 6, 1, 0, 0);
             vk::CmdEndRenderPass(cmd_buffer[frame]);
             vk::EndCommandBuffer(cmd_buffer[frame]);
 
@@ -62,7 +72,7 @@ fn main()
             present_info.pWaitSemaphores = &present_semaphore[frame];
             present_info.swapchainCount = 1;
             present_info.pSwapchains = &swapchain.handle;
-            present_info.pImageIndices = &IDX[frame];
+            present_info.pImageIndices = &counter;
             vk::QueuePresentKHR(&present_info);
         }
 

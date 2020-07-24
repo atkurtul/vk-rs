@@ -4700,7 +4700,7 @@ pub struct PresentInfoKHR {
 	pub pWaitSemaphores : *const Semaphore,
 	pub swapchainCount : u32,
 	pub pSwapchains : *const SwapchainKHR,
-	pub pImageIndices : *const u32,
+	pub pImageIndices : *const i32,
 	pub pResults : *mut VkResult,
 }
 
@@ -13631,7 +13631,7 @@ extern "C" {
 		offset : DeviceSize,
 		size : DeviceSize,
 		flags : MemoryMapFlags,
-		ppData : u64) -> VkResult;
+		ppData : &mut*mut f32) -> VkResult;
 	
 	pub fn UnmapMemory(
 		memory : DeviceMemory);

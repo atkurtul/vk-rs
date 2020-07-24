@@ -401,3 +401,38 @@ fn create_framebuffer(pass : vk::RenderPass, attachments : Vec<vk::ImageView>, w
     unsafe { vk::CreateFramebuffer(&info, &mut framebuffer); }
     framebuffer
 }
+
+fn alloc_buffer_memory(buffer : vk::Buffer) -> (vk::DeviceMemory, *mut f32) {
+    unsafe {
+        let mut req = vk::MemoryRequirements::default();
+        vk::GetBufferMemoryRequirements(buffer, &mut req);
+        let mut info = vk::MemoryAllocateInfo::default();
+        info.allocationSize = req.size;
+        info.memoryTypeIndex = find_memory_type_index(req, vk::MEMORY_PROPERTY_HOST_VISIBLE_BIT |
+                 vk::MEMORY_PROPERTY_HOST_COHERENT_BIT);
+        let mut memory = 0;
+        vk::AllocateMemory(&info, &mut memory);
+        vk::BindBufferMemory(buffer, memory, 0);
+        let mut map : *mut f32 = std::ptr::null_mut();
+        vk::MapMemory(memory,  0, req.size, 0, &mut map);
+        (memory, map as _)
+    }
+}
+
+pub fn create_buffer(vert : &Vec<f32>) -> (vk::Buffer, vk::DeviceMemory, *mut f32) {
+    unsafe {
+        let mut info = vk::BufferCreateInfo::default();
+        info.usage = vk::BUFFER_USAGE_VERTEX_BUFFER_BIT;
+        info.sharingMode = vk::SHARING_MODE_EXCLUSIVE;
+        info.size = (vert.len() * 4usize) as _;
+        let mut buffer = 0;
+        vk::CreateBuffer(&info, &mut buffer); 
+        let memory = alloc_buffer_memory(buffer);
+        std::ptr::copy_nonoverlapping(vert.as_ptr(), memory.1, info.size as _);
+        (buffer, memory.0, memory.1)
+    }
+}
+
+fn main() {
+
+}
