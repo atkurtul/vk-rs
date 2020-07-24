@@ -1,7 +1,7 @@
 [package]
 name = "vk-rs"
 version = "0.1.2"
-authors = ["LoST_ <atilkurtulmus@gmail.com>"]
+authors = ["atkurtul <atilkurtulmus@gmail.com>"]
 edition = "2018"
 build = "src/build.rs"
 description = "vulkan wrapper"
