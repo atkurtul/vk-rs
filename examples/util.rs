@@ -72,6 +72,27 @@ pub unsafe fn init_vulkan(surface_extension : &str) {
     println!("Device created {}", res);
 }
 
+pub unsafe fn create_swapchain(extent : vk::Extent2D, surface : vk::SurfaceKHR) -> vk::SwapchainKHR {
+    use vk::*;
+    let mut info = SwapchainCreateInfoKHR::default();
+    info.surface = surface;
+    info.minImageCount = 3;
+    info.imageFormat = FORMAT_B8G8R8A8_UNORM;
+    info.imageColorSpace = COLOR_SPACE_SRGB_NONLINEAR_KHR;
+    info.imageExtent = extent;
+    info.imageArrayLayers = 1;
+    info.imageUsage = IMAGE_USAGE_COLOR_ATTACHMENT_BIT as _;
+    info.imageSharingMode = SHARING_MODE_EXCLUSIVE;
+    info.preTransform = SURFACE_TRANSFORM_IDENTITY_BIT_KHR;
+    info.compositeAlpha = COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
+    info.presentMode = PRESENT_MODE_FIFO_KHR;
+    info.clipped = 1;
+    let mut swapchain = 0;
+    let result = CreateSwapchainKHR(&info, &mut swapchain);
+    println!("Swapchain created {}", result);
+    swapchain
+}
+
 fn make_attachment(
     format : vk::Format, 
     ms : i32, 
