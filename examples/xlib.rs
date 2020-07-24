@@ -1,4 +1,4 @@
-//#![cfg(feature="xlib")]
+#![cfg(feature="xlib")]
 
 use std::ffi::CString;
 extern crate vk_rs;

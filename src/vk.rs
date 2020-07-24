@@ -54,9 +54,9 @@ pub type DescriptorSet = u64;
 pub type Framebuffer = u64;
 pub type CommandPool = u64;
 
-pub fn make_version(major : u32, minor : u32, patch : u32) -> u32
+pub const fn make_version(major : u32, minor : u32, patch : u32) -> u32
 {
-	((major) << 22) | ((minor) << 12) | (patch)
+	(major << 22) | (minor << 12) | patch //>>
 }
 
 pub type PipelineCacheHeaderVersion = i32;
@@ -15256,7 +15256,7 @@ extern "C" {
 		pData : *mut u64);	
 	}
 	
-	extern {
+extern "C" {
 	pub fn CreateWin32SurfaceKHR(
 		pCreateInfo : *const Win32SurfaceCreateInfoKHR,
 		pSurface : *mut SurfaceKHR) -> VkResult;
@@ -15305,4 +15305,151 @@ extern "C" {
 	pub fn GetDeviceGroupSurfacePresentModes2EXT(
 		pSurfaceInfo : *const PhysicalDeviceSurfaceInfo2KHR,
 		pModes : *mut DeviceGroupPresentModeFlagsKHR) -> VkResult;
+}
+
+pub type XlibSurfaceCreateFlagsKHR = u32;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct XlibSurfaceCreateInfoKHR {
+        pub sType : StructureType,
+        pub pNext : *const void,
+        pub flags : XlibSurfaceCreateFlagsKHR,
+        pub dpy : u64,
+        pub window : u64,
+}
+
+extern "C" {
+	pub fn CreateXlibSurfaceKHR(
+		pCreateInfo : *const XlibSurfaceCreateInfoKHR,
+		pSurface : *mut SurfaceKHR) -> VkResult;
+		
+	pub fn GetPhysicalDeviceXlibPresentationSupportKHR(
+		queueFamilyIndex : u32,
+		dpy : u64,
+		visualID : u64) -> Bool32;
+}
+
+pub type XcbSurfaceCreateFlagsKHR = u32;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct XcbSurfaceCreateInfoKHR {
+        pub sType : StructureType,
+        pub pNext : *const void,
+        pub flags : XcbSurfaceCreateFlagsKHR,
+        pub connection : u64,
+        pub window : u64,
+}
+
+extern "C" {
+	pub fn CreateXcbSurfaceKHR(
+		pCreateInfo : *const XcbSurfaceCreateInfoKHR,
+		pSurface : *mut SurfaceKHR) -> VkResult;
+	
+	pub fn GetPhysicalDeviceXcbPresentationSupportKHR(
+		queueFamilyIndex : u32,
+		connection : u64,
+		visual_id : u32) -> Bool32;
+}
+
+pub type WaylandSurfaceCreateFlagsKHR = u32;
+
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WaylandSurfaceCreateInfoKHR {
+        pub sType : StructureType,
+        pub pNext : *const void,
+        pub flags : WaylandSurfaceCreateFlagsKHR,
+        pub display : u64,
+        pub surface : u64,
+}
+
+extern "C" {
+	pub fn CreateWaylandSurfaceKHR(
+		pCreateInfo : *const WaylandSurfaceCreateInfoKHR,
+		pSurface : *const SurfaceKHR) -> VkResult;
+	
+	pub fn GetPhysicalDeviceWaylandPresentationSupportKHR(
+		queueFamilyIndex : u32,
+		display : u64) -> Bool32;
+}
+
+pub type AndroidSurfaceCreateFlagsKHR = u32;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct AndroidSurfaceCreateInfoKHR {
+        pub sType : StructureType,
+        pub pNext : *const void,
+        pub flags : AndroidSurfaceCreateFlagsKHR,
+        pub window : u64,
+}
+
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct AndroidHardwareBufferUsageANDROID {
+        pub sType : StructureType,
+        pub pNext : *mut void,
+        pub androidHardwareBufferUsage : u64,
+}
+
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct AndroidHardwareBufferPropertiesANDROID {
+        pub sType : StructureType,
+        pub pNext : *mut void,
+        pub allocationSize : DeviceSize,
+        pub memoryTypeBits : u32,
+}
+
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct AndroidHardwareBufferFormatPropertiesANDROID {
+        pub sType : StructureType,
+        pub pNext : *mut void,
+        pub format : Format,
+        pub externalFormat : u64,
+        pub formatFeatures : FormatFeatureFlags,
+        pub samplerYcbcrConversionComponents : ComponentMapping,
+        pub suggestedYcbcrModel : SamplerYcbcrModelConversion,
+        pub suggestedYcbcrRange : SamplerYcbcrRange,
+        pub suggestedXChromaOffset : ChromaLocation,
+        pub suggestedYChromaOffset : ChromaLocation,
+}
+
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct ImportAndroidHardwareBufferInfoANDROID {
+        pub sType : StructureType,
+        pub pNext : *const void,
+        pub buffer : u64,
+}
+
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct MemoryGetAndroidHardwareBufferInfoANDROID {
+        pub sType : StructureType,
+        pub pNext : *const void,
+        pub memory : DeviceMemory,
+}
+
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct ExternalFormatANDROID {
+        pub sType : StructureType,
+        pub pNext : *mut void,
+        pub externalFormat : u64,
+}
+
+
+extern "C" {
+	pub fn CreateAndroidSurfaceKHR(
+		pCreateInfo : *const AndroidSurfaceCreateInfoKHR,
+		pSurface : *mut SurfaceKHR) -> VkResult;
+	
+	pub fn GetAndroidHardwareBufferPropertiesANDROID(
+		buffer : u64,
+		pProperties : *mut AndroidHardwareBufferPropertiesANDROID) -> VkResult;
+	
+	pub fn GetMemoryAndroidHardwareBufferANDROID(
+		pInfo : *const MemoryGetAndroidHardwareBufferInfoANDROID,
+		pBuffer : u64) -> VkResult;
 }
