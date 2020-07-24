@@ -9,7 +9,12 @@ license = "MIT"
 repository = "https://github.com/atkurtul/vk-rs"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[dependencies]
+[features]
+win32 = ["winapi"]
+xlib = []
+xcb = []
+wayland = []
+android = []
 
 [lib]
 name = "vk_rs"
@@ -19,8 +24,12 @@ path = "src/lib.rs"
 name = "win32"
 path = "examples/win32.rs"
 
-[dev-dependencies]
-winapi = { version = "0.3.9", features = ["windef", "winuser", "libloaderapi"] }
+[[example]]
+name = "xlib"
+path = "examples/xlib.rs"
+
+[dependencies]
+winapi = { version = "0.3.9", features = ["windef", "winuser", "libloaderapi"], optional = true}
 
 [build-dependencies]
 cc = { version = "1.0", features = ["parallel"] }

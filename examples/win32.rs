@@ -1,6 +1,7 @@
 #![allow(dead_code)]
 #![allow(unused_variables)]
 #![allow(unused_imports)]
+#![cfg(feature="win32")]
 
 extern crate winapi;
 extern crate vk_rs;

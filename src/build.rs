@@ -1,17 +1,27 @@
 extern crate cc;
 
 fn main() {   
-    #[cfg(target_os = "linux")]
-    let target_impl = "loader/impl_xlib.c";
-
-    #[cfg(target_os = "windows")]
-    let target_impl = "loader/impl_win32.c";
-
-    let files = [
+    let mut files = vec![
         "loader/loader.c",
         "loader/impl.c",
-        target_impl   
     ];
+
+    #[cfg(feature = "xlib")]
+    files.push("loader/impl_xlib.c");
+
+    #[cfg(feature = "xcb")]
+    files.push("loader/impl_xcb.c");
+
+    #[cfg(feature = "wayland")]
+    files.push("loader/impl_wayland.c");
+
+    #[cfg(feature = "android")]
+    files.push("loader/impl_android.c");
+
+    #[cfg(feature = "win32")]
+    files.push("loader/impl_win32.c");
+
+
 
     cc::Build::new()
         .files(files.iter())

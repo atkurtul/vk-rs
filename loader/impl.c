@@ -2489,18 +2489,21 @@ void GetPrivateDataEXT(
 
 void InitVulkanSimple(const char* surface_extension)
 {
+    printf("Surface extension is %s\n", surface_extension);
 	load_fn();
 
     const char* extensions[] = { "VK_KHR_surface", surface_extension };
     const char* layers[] = { "VK_LAYER_KHRONOS_validation" };
     const char* device_ext[] = { "VK_KHR_swapchain" };
 
-	VkApplicationInfo appinfo = { VK_STRUCTURE_TYPE_APPLICATION_INFO };
+	VkApplicationInfo appinfo = { 0 };
+    appinfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
 	appinfo.engineVersion = VK_MAKE_VERSION(1, 2, 0);
 	appinfo.applicationVersion = VK_MAKE_VERSION(1, 2, 0);
 	appinfo.apiVersion = VK_MAKE_VERSION(1, 2, 0);
 
-	VkInstanceCreateInfo info = { VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO };
+	VkInstanceCreateInfo info = { 0 };
+    info.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
 	info.pApplicationInfo = &appinfo;
 	info.pNext = 0;
 	info.enabledLayerCount = sizeof(layers) / sizeof(char*);
@@ -2508,8 +2511,8 @@ void InitVulkanSimple(const char* surface_extension)
 	info.enabledExtensionCount = sizeof(extensions) / sizeof(char*);
 	info.ppEnabledExtensionNames = extensions;
 
-	vkCreateInstance(&info, 0, &instance);
-	
+	VkResult res = vkCreateInstance(&info, 0, &instance);
+	printf("Instance created %d\n", res);
 	load_instance_fn(instance);
 
 	VkPhysicalDevice devices[16];
@@ -2529,7 +2532,8 @@ void InitVulkanSimple(const char* surface_extension)
 	}
 
 	float prio = 1;
-	VkDeviceQueueCreateInfo qinfo = { VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO };
+	VkDeviceQueueCreateInfo qinfo = { 0 };
+    qinfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
 	qinfo.queueCount = 1;
 	qinfo.pQueuePriorities = &prio;
 
@@ -2539,11 +2543,13 @@ void InitVulkanSimple(const char* surface_extension)
 	features.vertexPipelineStoresAndAtomics = 1;
 	features.samplerAnisotropy = 1;
 
-	VkPhysicalDeviceDescriptorIndexingFeatures extFeatures = { VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES };
+	VkPhysicalDeviceDescriptorIndexingFeatures extFeatures = { 0 };
+    extFeatures.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES;
 	extFeatures.descriptorBindingPartiallyBound = 1;
 	extFeatures.descriptorBindingVariableDescriptorCount = 1;
 
-	VkDeviceCreateInfo deviceInfo = { VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO };
+	VkDeviceCreateInfo deviceInfo = { 0 };
+    deviceInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
 	deviceInfo.queueCreateInfoCount = 1;
 	deviceInfo.pNext = &extFeatures;
 	deviceInfo.pQueueCreateInfos = &qinfo;
@@ -2554,21 +2560,24 @@ void InitVulkanSimple(const char* surface_extension)
 	deviceInfo.ppEnabledLayerNames = layers;
 
 
-	vkCreateDevice(physicalDevice, &deviceInfo, 0, &device);
+	res = vkCreateDevice(physicalDevice, &deviceInfo, 0, &device);
+    printf("Device created %d\n", res);
 	load_device_fn(device);
 	vkGetDeviceQueue(device, 0, 0, &queue);
 	VkPhysicalDeviceMemoryProperties props;
     vkGetPhysicalDeviceMemoryProperties(physicalDevice, &props);
-	memory_idx[0] = -1;
-	memory_idx[1] = -1;
+	memory_idx[0] = 0xffffffff;
+	memory_idx[1] = 0xffffffff;
+    
 	for (uint i = 0; i < props.memoryTypeCount; ++i)
 	{
 		VkMemoryPropertyFlags flag = props.memoryTypes[i].propertyFlags;
-		if (memory_idx[0] == -1 && (flag & VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT)) memory_idx[0] = i;
-		if (memory_idx[1] == -1 && (flag & (VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT))) memory_idx[1] = i;
+		if (memory_idx[0] == 0xffffffff && (flag & VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT)) memory_idx[0] = i;
+		if (memory_idx[1] == 0xffffffff && (flag & (VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT))) memory_idx[1] = i;
 	}
 
-	VkCommandPoolCreateInfo poolInfo = { VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO };
+	VkCommandPoolCreateInfo poolInfo = { 0 };
+    poolInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
 	poolInfo.flags = VK_COMMAND_POOL_CREATE_TRANSIENT_BIT | VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
     vkCreateCommandPool(device, &poolInfo, 0, &transient_pool);
 }

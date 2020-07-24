@@ -1,7 +1,7 @@
 #pragma once
 #define VK_NO_PROTOTYPES
 #include "vulkan/vulkan_core.h"
-#define Vulkan_Function(fn) PFN_##fn fn;
+#define Vulkan_Function(fn) extern PFN_##fn fn;
 typedef unsigned uint;
 
 Vulkan_Function(vkAllocationFunction);
@@ -381,36 +381,36 @@ Vulkan_Function(vkSetPrivateDataEXT);
 Vulkan_Function(vkGetPrivateDataEXT);
 
 //windows
-void* vkCreateWin32SurfaceKHR;
-void* vkGetPhysicalDeviceWin32PresentationSupportKHR;
-void* vkGetMemoryWin32HandleKHR;
-void* vkGetMemoryWin32HandlePropertiesKHR;
-void* vkImportSemaphoreWin32HandleKHR;
-void* vkGetSemaphoreWin32HandleKHR;
-void* vkImportFenceWin32HandleKHR;
-void* vkGetFenceWin32HandleKHR;
-void* vkGetMemoryWin32HandleNV;
-void* vkGetPhysicalDeviceSurfacePresentModes2EXT;
-void* vkAcquireFullScreenExclusiveModeEXT;
-void* vkReleaseFullScreenExclusiveModeEXT;
-void* vkGetDeviceGroupSurfacePresentModes2EXT;
+extern void* vkCreateWin32SurfaceKHR;
+extern void* vkGetPhysicalDeviceWin32PresentationSupportKHR;
+extern void* vkGetMemoryWin32HandleKHR;
+extern void* vkGetMemoryWin32HandlePropertiesKHR;
+extern void* vkImportSemaphoreWin32HandleKHR;
+extern void* vkGetSemaphoreWin32HandleKHR;
+extern void* vkImportFenceWin32HandleKHR;
+extern void* vkGetFenceWin32HandleKHR;
+extern void* vkGetMemoryWin32HandleNV;
+extern void* vkGetPhysicalDeviceSurfacePresentModes2EXT;
+extern void* vkAcquireFullScreenExclusiveModeEXT;
+extern void* vkReleaseFullScreenExclusiveModeEXT;
+extern void* vkGetDeviceGroupSurfacePresentModes2EXT;
 
 //x11
-void* vkCreateXlibSurfaceKHR;
-void* vkGetPhysicalDeviceXlibPresentationSupportKHR;
+extern void* vkCreateXlibSurfaceKHR;
+extern void* vkGetPhysicalDeviceXlibPresentationSupportKHR;
 
 //xcb
-void* vkCreateXcbSurfaceKHR;
-void* vkGetPhysicalDeviceXcbPresentationSupportKHR;
+extern void* vkCreateXcbSurfaceKHR;
+extern void* vkGetPhysicalDeviceXcbPresentationSupportKHR;
 
 //wayland
-void* vkCreateWaylandSurfaceKHR;
-void* vkGetPhysicalDeviceWaylandPresentationSupportKHR;
+extern void* vkCreateWaylandSurfaceKHR;
+extern void* vkGetPhysicalDeviceWaylandPresentationSupportKHR;
 
 //android
-void* vkCreateAndroidSurfaceKHR;
-void* vkGetAndroidHardwareBufferPropertiesANDROID;
-void* vkGetMemoryAndroidHardwareBufferANDROID;
+extern void* vkCreateAndroidSurfaceKHR;
+extern void* vkGetAndroidHardwareBufferPropertiesANDROID;
+extern void* vkGetMemoryAndroidHardwareBufferANDROID;
 
 
 int load_fn();
