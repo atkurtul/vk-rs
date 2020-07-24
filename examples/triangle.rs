@@ -87,7 +87,7 @@ fn main()
             present_info.pImageIndices = &counter;
             vk::QueuePresentKHR(&present_info);
         }
-
+        
         println!("Success!");
     }
 }

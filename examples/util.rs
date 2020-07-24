@@ -85,7 +85,7 @@ pub unsafe fn create_swapchain(extent : vk::Extent2D, surface : vk::SurfaceKHR) 
     info.imageSharingMode = SHARING_MODE_EXCLUSIVE;
     info.preTransform = SURFACE_TRANSFORM_IDENTITY_BIT_KHR;
     info.compositeAlpha = COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
-    info.presentMode = PRESENT_MODE_FIFO_KHR;
+    info.presentMode = PRESENT_MODE_IMMEDIATE_KHR;
     info.clipped = 1;
     let mut swapchain = 0;
     let result = CreateSwapchainKHR(&info, &mut swapchain);
