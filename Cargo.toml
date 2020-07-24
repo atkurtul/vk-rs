@@ -28,7 +28,7 @@ path = "examples/win32.rs"
 name = "xlib"
 path = "examples/xlib.rs"
 
-[dependencies]
+[dependencies.win32]
 winapi = { version = "0.3.9", features = ["windef", "winuser", "libloaderapi"], optional = true}
 
 [build-dependencies]
