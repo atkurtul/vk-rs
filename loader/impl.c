@@ -20,6 +20,12 @@ void SetPhysicalDevice(VkPhysicalDevice pdev) {
     physicalDevice = pdev;
 }
 
+void SetDeviceQueue(    
+    uint32_t                                    queueFamilyIndex,
+    uint32_t                                    queueIndex) {
+    GetDeviceQueue(queueFamilyIndex, queueIndex, &queue);
+}
+
 VkResult CreateDevice(
     const VkDeviceCreateInfo*                   pCreateInfo) {
         VkResult result =  vkCreateDevice(physicalDevice, pCreateInfo, 0, &device);
@@ -122,7 +128,6 @@ void GetDeviceQueue(
 }
 
 VkResult QueueSubmit(
-    VkQueue                                     queue,
     uint32_t                                    submitCount,
     const VkSubmitInfo*                         pSubmits,
     VkFence                                     fence) {
@@ -1278,7 +1283,6 @@ VkResult AcquireNextImageKHR(
 }
 
 VkResult QueuePresentKHR(
-    VkQueue                                     queue,
     const VkPresentInfoKHR*                     pPresentInfo) {
         return vkQueuePresentKHR(queue, pPresentInfo);
 }

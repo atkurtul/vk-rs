@@ -9,13 +9,63 @@ use util::*;
 fn main()
 {
     unsafe {
-        init_vulkan();
-        let win = Window::new();
+        init_vulkan("VK_KHR_xlib_surface");
+        let win = Window::new(800, 600);
         let swapchain = Swapchain::new_xlib(win);
         let renderpass = make_renderpass(1);
-        println!("{:?}", stage_info());
+        let pipeline = create_pipeline(renderpass);
+        let (cmd_pool, cmd_buffer, fence, acquire_semaphore, present_semaphore, views, framebuffer) = 
+                create_resources(swapchain.handle, renderpass, 800, 600);
+
+        const IDX : [u32;3] = [0, 1, 2];
+        let mut frame = -1i32 as usize;
+        let mut counter = -1i32;
         while(win.poll()) {
+            let mut idx = 0;
+            counter = (counter + 1) % 3;
+            frame = counter as _;
+            vk::AcquireNextImageKHR(swapchain.handle, u64::MAX, acquire_semaphore[frame], 0, &mut idx);
+            vk::WaitForFences(1, &fence[frame], 1, u64::MAX);
+            vk::ResetFences(1, &fence[frame]);
+            vk::ResetCommandBuffer(cmd_buffer[frame], vk::COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT);
+            let mut cmd_begin_info = vk::CommandBufferBeginInfo::default();
+            cmd_begin_info.flags = vk::COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
+            vk::BeginCommandBuffer(cmd_buffer[frame], &cmd_begin_info);
+
+
+            let clear_values = [vk::ClearValue::color(0.4, 0.1, 0.5, 1.), vk::ClearValue::depth(1., 0.) ];
+            let mut pass_info =  vk::RenderPassBeginInfo::default();
+            pass_info.renderPass = renderpass;
+            pass_info.framebuffer = framebuffer[frame];
+            pass_info.renderArea.extent = vk::Extent2D{width:800, height:600 }; 
+            pass_info.clearValueCount = 2;
+            pass_info.pClearValues = &clear_values as _;
+            vk::CmdBeginRenderPass(cmd_buffer[frame], &pass_info, vk::SUBPASS_CONTENTS_INLINE);
+
+
+            vk::CmdEndRenderPass(cmd_buffer[frame]);
+            vk::EndCommandBuffer(cmd_buffer[frame]);
+
+            let mut submit_info = vk::SubmitInfo::default();
+            submit_info.waitSemaphoreCount = 1;
+            submit_info.signalSemaphoreCount = 1;
+            submit_info.commandBufferCount = 1;
+            submit_info.pCommandBuffers = &cmd_buffer[frame];
+            submit_info.pWaitDstStageMask = &vk::PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+            submit_info.pWaitSemaphores = &acquire_semaphore[frame];
+            submit_info.pSignalSemaphores = &present_semaphore[frame];
+
+            vk::QueueSubmit(1, &submit_info, fence[frame]);
+
+            let mut present_info = vk::PresentInfoKHR::default();
+            present_info.waitSemaphoreCount = 1;
+            present_info.pWaitSemaphores = &present_semaphore[frame];
+            present_info.swapchainCount = 1;
+            present_info.pSwapchains = &swapchain.handle;
+            present_info.pImageIndices = &IDX[frame];
+            vk::QueuePresentKHR(&present_info);
         }
+
         println!("Success!");
     }
 }
@@ -49,7 +99,7 @@ impl Swapchain {
         info.imageSharingMode = SHARING_MODE_EXCLUSIVE;
         info.preTransform = SURFACE_TRANSFORM_IDENTITY_BIT_KHR;
         info.compositeAlpha = COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
-        info.presentMode = PRESENT_MODE_IMMEDIATE_KHR;
+        info.presentMode = PRESENT_MODE_FIFO_KHR;
         info.clipped = 1;
         let result = CreateSwapchainKHR(&info, &mut handle);
         println!("Swapchain created {}", result);
@@ -68,7 +118,7 @@ struct Window {
 }
 
 impl Window {
-    unsafe fn new() -> Window {
+    unsafe fn new(width : u32, height : u32) -> Window {
         use x11::*;
         let display = xlib::XOpenDisplay(std::ptr::null());
         let screen = xlib::XDefaultScreen(display);
@@ -76,13 +126,13 @@ impl Window {
         let mut attributes: xlib::XSetWindowAttributes = std::mem::uninitialized();
         attributes.background_pixel = xlib::XWhitePixel(display, screen);
         let window = xlib::XCreateWindow(display, root,
-            0, 0, 800, 600,
+            0, 0, width, height,
             0, 0,
             xlib::InputOutput as _, std::ptr::null_mut(),
             xlib::CWBackPixel, &mut attributes);
         xlib::XSelectInput(display, window, xlib::ExposureMask | xlib::KeyPressMask);
         xlib::XMapWindow(display, window);
-        Window { display : display as _, window, extent : vk::Extent2D {width : 800, height: 600} }
+        Window { display : display as _, window, extent : vk::Extent2D {width, height} }
     }
 
     unsafe fn poll(&self) -> bool {
