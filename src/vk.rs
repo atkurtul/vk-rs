@@ -15318,6 +15318,18 @@ pub struct XlibSurfaceCreateInfoKHR {
         pub window : u64,
 }
 
+impl ::std::default::Default for XlibSurfaceCreateInfoKHR {
+    fn default() -> XlibSurfaceCreateInfoKHR {
+        XlibSurfaceCreateInfoKHR {
+            sType : STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR,
+            pNext : 0 as _,
+            flags : Default::default(),
+			dpy : 0 as _,
+			window : 0 as _,
+        }
+    }
+}
+
 extern "C" {
 	pub fn CreateXlibSurfaceKHR(
 		pCreateInfo : *const XlibSurfaceCreateInfoKHR,
@@ -15338,6 +15350,18 @@ pub struct XcbSurfaceCreateInfoKHR {
         pub flags : XcbSurfaceCreateFlagsKHR,
         pub connection : u64,
         pub window : u64,
+}
+
+impl ::std::default::Default for XcbSurfaceCreateInfoKHR {
+    fn default() -> XcbSurfaceCreateInfoKHR {
+        XcbSurfaceCreateInfoKHR {
+            sType : STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR,
+            pNext : 0 as _,
+            flags : Default::default(),
+			connection : 0 as _,
+			window : 0 as _,
+        }
+    }
 }
 
 extern "C" {
@@ -15361,6 +15385,18 @@ pub struct WaylandSurfaceCreateInfoKHR {
         pub flags : WaylandSurfaceCreateFlagsKHR,
         pub display : u64,
         pub surface : u64,
+}
+
+impl ::std::default::Default for WaylandSurfaceCreateInfoKHR {
+    fn default() -> WaylandSurfaceCreateInfoKHR {
+        WaylandSurfaceCreateInfoKHR {
+            sType : STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR,
+            pNext : 0 as _,
+            flags : Default::default(),
+			display : 0 as _,
+			surface : 0 as _,
+        }
+    }
 }
 
 extern "C" {

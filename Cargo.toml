@@ -10,7 +10,7 @@ repository = "https://github.com/atkurtul/vk-rs"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [features]
-win32 = ["winapi"]
+win32 = []
 xlib = []
 xcb = []
 wayland = []
@@ -28,8 +28,12 @@ path = "examples/win32.rs"
 name = "xlib"
 path = "examples/xlib.rs"
 
-[dependencies.win32]
-winapi = { version = "0.3.9", features = ["windef", "winuser", "libloaderapi"], optional = true}
+[target.'cfg(feature="win32")'.dev-dependencies]
+winapi = { version = "0.3.9", features = ["windef", "winuser", "libloaderapi"]}
+
+
+[dev-dependencies]
+x11 = { version = "2.18.2", features = ["xlib"]}
 
 [build-dependencies]
 cc = { version = "1.0", features = ["parallel"] }

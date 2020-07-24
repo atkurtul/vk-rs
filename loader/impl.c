@@ -2487,6 +2487,7 @@ void GetPrivateDataEXT(
         return vkGetPrivateDataEXT(device, objectType, objectHandle, privateDataSlot, pData);
 }
 
+#include "stdio.h"
 void InitVulkanSimple(const char* surface_extension)
 {
     printf("Surface extension is %s\n", surface_extension);
