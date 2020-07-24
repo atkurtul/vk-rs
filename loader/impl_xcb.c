@@ -1,6 +1,6 @@
 #include "loader.h"
 #include <xcb/xcb.h>
-#include "vulkan_xcb.h"
+#include "vulkan/vulkan_xcb.h"
 
 extern VkInstance			instance;
 extern VkPhysicalDevice	    physicalDevice;

@@ -1,4 +1,5 @@
 #include "loader.h"
+#include "vulkan/vulkan_core.h"
 
 VkInstance			instance;
 VkDevice			device;
@@ -6,6 +7,25 @@ VkPhysicalDevice	physicalDevice;
 uint				memory_idx[2];
 VkQueue				queue;
 VkCommandPool       transient_pool;
+
+VkResult CreateInstance(
+    const VkInstanceCreateInfo*                 pCreateInfo) {
+        load_fn();
+        VkResult result = vkCreateInstance(pCreateInfo, 0, &instance);
+        load_instance_fn(instance);
+        return result;
+}
+
+void SetPhysicalDevice(VkPhysicalDevice pdev) {
+    physicalDevice = pdev;
+}
+
+VkResult CreateDevice(
+    const VkDeviceCreateInfo*                   pCreateInfo) {
+        VkResult result =  vkCreateDevice(physicalDevice, pCreateInfo, 0, &device);
+        load_device_fn(device);
+        return result;
+}
 
 void DestroyInstance() {
         return vkDestroyInstance(instance, 0);
@@ -2467,11 +2487,11 @@ void GetPrivateDataEXT(
         return vkGetPrivateDataEXT(device, objectType, objectHandle, privateDataSlot, pData);
 }
 
-void InitVulkan()
+void InitVulkanSimple(const char* surface_extension)
 {
 	load_fn();
 
-    const char* extensions[] = { "VK_KHR_surface",  "VK_KHR_win32_surface" };
+    const char* extensions[] = { "VK_KHR_surface", surface_extension };
     const char* layers[] = { "VK_LAYER_KHRONOS_validation" };
     const char* device_ext[] = { "VK_KHR_swapchain" };
 
@@ -2487,7 +2507,6 @@ void InitVulkan()
 	info.ppEnabledLayerNames = layers;
 	info.enabledExtensionCount = sizeof(extensions) / sizeof(char*);
 	info.ppEnabledExtensionNames = extensions;
-
 
 	vkCreateInstance(&info, 0, &instance);
 	
@@ -2553,12 +2572,3 @@ void InitVulkan()
 	poolInfo.flags = VK_COMMAND_POOL_CREATE_TRANSIENT_BIT | VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
     vkCreateCommandPool(device, &poolInfo, 0, &transient_pool);
 }
-
-// #include "stdio.h"
-
-// int main()
-// {
-//     InitVulkan();
-//     printf("%ull\n%ull\n%ull\n", instance, pdev, device);
-//     system("pause");    
-// }

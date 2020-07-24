@@ -17,7 +17,8 @@ fn main()
 {
     unsafe {
         let win = Window::new(800, 600);
-        vk::InitVulkan();
+        let surface_extension = CString::new("VK_KHR_win32_surface").unwrap();
+        vk::InitVulkanSimple(surface_extension.as_ptr());
         let swapchain = Swapchain::new_win32(&win);
         let renderpass = make_renderpass(1);
         while Window::poll() {

@@ -16,8 +16,8 @@ name = "vk_rs"
 path = "src/lib.rs"
 
 [[example]]
-name = "example"
-path = "examples/main.rs"
+name = "win32"
+path = "examples/win32.rs"
 
 [dev-dependencies]
 winapi = { version = "0.3.9", features = ["windef", "winuser", "libloaderapi"] }

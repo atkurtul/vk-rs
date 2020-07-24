@@ -2,7 +2,7 @@
 #![allow(non_snake_case)]
 #![allow(non_camel_case_types)]
 #![allow(improper_ctypes)]
-
+#![allow(dead_code)]
 type void = std::ffi::c_void;
 pub const LOD_CLAMP_NONE : f32 = 1000.;					
 pub const REMAINING_MIP_LEVELS : u32 = !0;				
@@ -13523,9 +13523,15 @@ impl ::std::default::Default for SurfaceFullScreenExclusiveWin32InfoEXT {
     }
 }
 
-extern {
-	pub fn InitVulkan();
-	
+extern "C" {
+	pub fn InitVulkanSimple(surface_extension : *const i8);
+
+	pub fn CreateInstance(pCreateInfo :*const InstanceCreateInfo) -> VkResult;
+
+	pub fn SetPhysicalDevice(physicalDevice : PhysicalDevice);
+
+	pub fn CreateDevice(pCreateInfo : *const DeviceCreateInfo) -> VkResult;
+
 	pub fn DestroyInstance();
 	
 	pub fn DestroyDevice();
@@ -13562,18 +13568,18 @@ extern {
 		pMemoryProperties : *mut PhysicalDeviceMemoryProperties);
 	
 	pub fn GetInstanceProcAddr(
-		pName : *const char) -> u64;
+		pName : *const i8) -> u64;
 	
 	pub fn GetDeviceProcAddr(
-		pName : *const char) -> u64;
+		pName : *const i8) -> u64;
 	
 	pub fn EnumerateInstanceExtensionProperties(
-		pLayerName : *const char,
+		pLayerName : *const i8,
 		pPropertyCount : *mut u32,
 		pProperties : *mut ExtensionProperties) -> VkResult;
 	
 	pub fn EnumerateDeviceExtensionProperties(
-		pLayerName : *const char,
+		pLayerName : *const i8,
 		pPropertyCount : *mut u32,
 		pProperties : *mut ExtensionProperties) -> VkResult;
 	
@@ -14735,8 +14741,8 @@ extern {
 		object : u64,
 		location : usize,
 		messageCode : i32,
-		pLayerPrefix : *const char,
-		pMessage : *const char);
+		pLayerPrefix : *const i8,
+		pMessage : *const i8);
 	
 	pub fn DebugMarkerSetObjectTagEXT(
 		pTagInfo : *const DebugMarkerObjectTagInfoEXT) -> VkResult;
@@ -15247,8 +15253,7 @@ extern {
 		objectType : ObjectType,
 		objectHandle : u64,
 		privateDataSlot : PrivateDataSlotEXT,
-		pData : *mut u64);
-	
+		pData : *mut u64);	
 	}
 	
 	extern {
