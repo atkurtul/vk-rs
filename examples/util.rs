@@ -147,3 +147,18 @@ pub fn make_renderpass(ms : i32) -> vk::RenderPass{
     unsafe { println!("RenderPass created {:?}", vk::CreateRenderPass(&info, &mut pass)) };
     pass
 }
+
+pub fn create_pipeline() -> vk::Pipeline {
+    unsafe {
+        let mut pipe : vk::Pipeline = 0;
+        let mut info = vk::GraphicsPipelineCreateInfo::default();
+        
+        vk::CreateGraphicsPipelines(0, 1, &info, &mut pipe);
+        pipe
+    }
+}
+
+pub fn stage_info() -> [vk::PipelineShaderStageCreateInfo; 2]  {
+    let mut info : [vk::PipelineShaderStageCreateInfo; 2] = Default::default();
+    info
+}

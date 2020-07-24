@@ -1,7 +1,5 @@
 //#![cfg(feature="xlib")]
 
-
-
 extern crate vk_rs;
 use vk_rs::*;
 extern crate x11;
@@ -15,6 +13,7 @@ fn main()
         let win = Window::new();
         let swapchain = Swapchain::new_xlib(win);
         let renderpass = make_renderpass(1);
+        println!("{:?}", stage_info());
         while(win.poll()) {
         }
         println!("Success!");
