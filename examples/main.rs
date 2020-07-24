@@ -3,7 +3,8 @@
 #![allow(unused_imports)]
 
 extern crate winapi;
-mod vk;
+extern crate vk_rs;
+use vk_rs::*;
 use std::ptr::*;
 use std::ffi::CString;
 

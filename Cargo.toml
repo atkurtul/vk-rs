@@ -12,9 +12,17 @@ repository = "https://github.com/atkurtul/vk-rs"
 [dependencies]
 winapi = { version = "0.3.9", features = ["windef", "winuser", "libloaderapi"] }
 
+[lib]
+name = "vk_rs"
+path = "src/lib.rs"
+
+[[example]]
+name = "vk-rs"
+path = "examples/main.rs"
+
 [[bin]]
 name = "vk-rs"
-path = "src/main.rs"
+path = "examples/main.rs"
 
 [build-dependencies]
 cc = { version = "1.0", features = ["parallel"] }
