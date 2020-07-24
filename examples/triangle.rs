@@ -1,16 +1,11 @@
-//#![cfg(feature="xlib")]
-
 extern crate vk_rs;
 use vk_rs::*;
 mod util;
 use util::*;
 
-// #[cfg(feature="win32")]
-// mod win32_window;
-// #[cfg(feature="win32")]
-// use win32_window::*;
-
+#[cfg(feature="win32")]
 mod win32_window;
+#[cfg(feature="win32")]
 use win32_window::*;
 
 #[cfg(feature="xlib")]
