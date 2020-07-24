@@ -5,11 +5,13 @@ use vk_rs::*;
 mod util;
 use util::*;
 
-#[cfg(feature="win32")]
-mod win32_window;
-#[cfg(feature="win32")]
-use win32_window::*;
+// #[cfg(feature="win32")]
+// mod win32_window;
+// #[cfg(feature="win32")]
+// use win32_window::*;
 
+mod win32_window;
+use win32_window::*;
 
 #[cfg(feature="xlib")]
 mod xlib_window;
@@ -30,7 +32,7 @@ fn main()
         let renderpass = make_renderpass(1);
         let pipeline = create_pipeline(renderpass);
         let (cmd_pool, cmd_buffer, fence, acquire_semaphore, present_semaphore, views, framebuffer) = 
-                create_resources(swapchain, renderpass, 800, 600);
+                create_resources(swapchain, renderpass, win.extent().width, win.extent().height);
 
         let vert : Vec<f32> = vec![
             -1., 1.,    1., 0., 0.,
@@ -59,7 +61,7 @@ fn main()
             let mut pass_info =  vk::RenderPassBeginInfo::default();
             pass_info.renderPass = renderpass;
             pass_info.framebuffer = framebuffer[frame];
-            pass_info.renderArea.extent = vk::Extent2D{width:800, height:600 }; 
+            pass_info.renderArea.extent = win.extent(); 
             pass_info.clearValueCount = 2;
             pass_info.pClearValues = &clear_values as _;
             vk::CmdBeginRenderPass(cmd_buffer[frame], &pass_info, vk::SUBPASS_CONTENTS_INLINE);

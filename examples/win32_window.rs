@@ -1,8 +1,12 @@
-#![allow(dead_code)]
-#![allow(unused_variables)]
-#![allow(unused_imports)]
 #![cfg(feature="win32")]
 
+extern crate winapi;
+extern crate vk_rs;
+use vk_rs::*;
+
+fn main() {
+
+}
 
 struct InputState {
     pos     : [f32;2],
@@ -10,7 +14,7 @@ struct InputState {
     time    : f64,
 }
 
-struct IO {
+pub struct IO {
     input : [InputState; 259],
     size  : [f32;2],
     mpos  : [f32;2],
@@ -48,11 +52,11 @@ impl IO {
     }
 }
 
-struct Window {
-    hwnd        : u64,
-    hinstance   : u64,
-    surface     : vk::SurfaceKHR,
-    io          : Box::<IO>,
+pub struct Window {
+    pub hwnd        : u64,
+    pub hinstance   : u64,
+    pub surface     : vk::SurfaceKHR,
+    pub io          : Box::<IO>,
 }
 
 impl Window
@@ -87,8 +91,8 @@ impl Window
         DefWindowProcA(hwnd, msg, wparam, lparam)
     }  
 
-    unsafe 
-    fn new(x : i32, y : i32) -> Window
+    pub unsafe 
+    fn new(x : u32, y : u32) -> Window
     {
         use std::ptr::*;
         use std::ffi::*;
@@ -112,24 +116,24 @@ impl Window
         RegisterClassA(&wc);
         let hwnd = CreateWindowExA(WS_EX_ACCEPTFILES, name.as_ptr(), name.as_ptr(),
             WS_VISIBLE | WS_SIZEBOX | WS_SYSMENU,
-            0, 0, x, y,
+            0, 0, x as _, y as _,
             null_mut(), null_mut(), hinstance, io_ptr as _);     
         ShowWindow(hwnd, SW_SHOW);
         UpdateWindow(hwnd);  
 
         let mut surface = 0;
-        let mut surface_info = Win32SurfaceCreateInfoKHR::default();
-        surface_info.hwnd = win.hwnd;
-        surface_info.hinstance = win.hinstance;
-        CreateWin32SurfaceKHR(&surface_info,  &mut surface);
+        let mut surface_info = vk::Win32SurfaceCreateInfoKHR::default();
+        surface_info.hwnd = hwnd as _;
+        surface_info.hinstance = hinstance as _;
+        vk::CreateWin32SurfaceKHR(&surface_info,  &mut surface);
         let mut supported = 0;
-        GetPhysicalDeviceSurfaceSupportKHR(0, surface, &mut supported);
+        vk::GetPhysicalDeviceSurfaceSupportKHR(0, surface, &mut supported);
 
         Window { hwnd : hwnd as u64, hinstance : hinstance as u64, surface, io : io }
     }
 
-    unsafe
-    fn poll() -> bool
+    pub unsafe
+    fn poll(&self) -> bool
     {
         use std::ptr::*;
         use winapi::um::winuser::*;
@@ -145,7 +149,7 @@ impl Window
         return true;
     }
 
-    fn extent(&self) -> vk::Extent2D {
+    pub fn extent(&self) -> vk::Extent2D {
         self.io.extent()
     }
 

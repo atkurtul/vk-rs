@@ -419,7 +419,9 @@ fn create_framebuffer(pass : vk::RenderPass, attachments : Vec<vk::ImageView>, w
 	info.height = height;
     info.layers = 1;
     let mut framebuffer = 0;
-    unsafe { vk::CreateFramebuffer(&info, &mut framebuffer); }
+    let mut res;
+    unsafe { res = vk::CreateFramebuffer(&info, &mut framebuffer); }
+    if res != 0 { panic!("Framebuffer"); }
     framebuffer
 }
 

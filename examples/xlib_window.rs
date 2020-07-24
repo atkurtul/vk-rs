@@ -1,3 +1,4 @@
+#![cfg(feature="xlib")]
 
 extern crate x11;
 extern crate vk_rs;
