@@ -401,12 +401,10 @@ fn create_image_view(img : vk::Image, format : vk::Format, aspect : vk::ImageAsp
 
 fn create_image_and_view(format : vk::Format, usage : vk::ImageUsageFlags, width : u32, height : u32, aspect : vk::ImageAspectFlags) -> (vk::Image, vk::DeviceMemory, vk::ImageView)
 {
-    unsafe {
-        let img = create_image(format, usage, width, height);
-        let memory = alloc_image_memory(img);
-        let view = create_image_view(img, format, aspect);
-        (img, memory, view)
-    }
+    let img = create_image(format, usage, width, height);
+    let memory = alloc_image_memory(img);
+    let view = create_image_view(img, format, aspect);
+    (img, memory, view)
 }
 
 fn create_framebuffer(pass : vk::RenderPass, attachments : Vec<vk::ImageView>, width : u32, height : u32) -> vk::Framebuffer
@@ -419,9 +417,7 @@ fn create_framebuffer(pass : vk::RenderPass, attachments : Vec<vk::ImageView>, w
 	info.height = height;
     info.layers = 1;
     let mut framebuffer = 0;
-    let mut res;
-    unsafe { res = vk::CreateFramebuffer(&info, &mut framebuffer); }
-    if res != 0 { panic!("Framebuffer"); }
+    unsafe { vk::CreateFramebuffer(&info, &mut framebuffer); }
     framebuffer
 }
 
@@ -454,8 +450,4 @@ pub fn create_buffer(vert : &Vec<f32>) -> (vk::Buffer, vk::DeviceMemory, *mut f3
         std::ptr::copy_nonoverlapping(vert.as_ptr(), memory.1, info.size as _);
         (buffer, memory.0, memory.1)
     }
-}
-
-fn main() {
-
 }

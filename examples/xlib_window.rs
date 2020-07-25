@@ -1,5 +1,5 @@
 #![cfg(feature="xlib")]
-
+#![allow(non_upper_case_globals)]
 extern crate x11;
 extern crate vk_rs;
 use vk_rs::*;
