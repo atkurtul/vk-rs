@@ -52,7 +52,7 @@ fn main()
             vk::BeginCommandBuffer(cmd_buffer[frame], &cmd_begin_info);
 
 
-            let clear_values = [vk::ClearValue::color(0.4, 0.4, 0.5, 1.), vk::ClearValue::depth(1., 0.) ];
+            let clear_values = [vk::ClearValue::new().color([0.4, 0.4, 0.5, 1.]), vk::ClearValue::depth(1., 0.) ];
             let mut pass_info =  vk::RenderPassBeginInfo::default();
             pass_info.renderPass = renderpass;
             pass_info.framebuffer = framebuffer[frame];

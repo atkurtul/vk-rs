@@ -2939,11 +2939,6 @@ pub struct ClearValue {
 }
 
 impl ClearValue {
-	pub fn color(r : f32, g : f32, b : f32, a : f32) -> ClearValue {
-		ClearValue {
-			color : [r, g, b, a]
-		}
-	}
 	pub fn depth(depth : f32, stencil : f32) -> ClearValue {
 		ClearValue {
 			color : [depth, stencil, 0., 0.]
@@ -15491,6 +15486,85 @@ pub struct ExternalFormatANDROID {
 }
 
 
+impl ::std::default::Default for AndroidSurfaceCreateInfoKHR {
+    fn default() -> AndroidSurfaceCreateInfoKHR {
+        AndroidSurfaceCreateInfoKHR {
+            sType : STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR,
+            pNext : 0 as _,
+            flags : 0 as _,
+            window : 0 as _,
+        }
+    }
+}
+
+impl ::std::default::Default for AndroidHardwareBufferUsageANDROID {
+    fn default() -> AndroidHardwareBufferUsageANDROID {
+        AndroidHardwareBufferUsageANDROID {
+            sType : STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_USAGE_ANDROID,
+            pNext : 0 as _,
+            androidHardwareBufferUsage : 0 as _,
+        }
+    }
+}
+
+impl ::std::default::Default for AndroidHardwareBufferPropertiesANDROID {
+    fn default() -> AndroidHardwareBufferPropertiesANDROID {
+        AndroidHardwareBufferPropertiesANDROID {
+            sType : STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_PROPERTIES_ANDROID,
+            pNext : 0 as _,
+            allocationSize : 0 as _,
+            memoryTypeBits : 0 as _,
+        }
+    }
+}
+
+impl ::std::default::Default for AndroidHardwareBufferFormatPropertiesANDROID {
+    fn default() -> AndroidHardwareBufferFormatPropertiesANDROID {
+        AndroidHardwareBufferFormatPropertiesANDROID {
+            sType : STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID,
+            pNext : 0 as _,
+            format : 0 as _,
+            externalFormat : 0 as _,
+            formatFeatures : 0 as _,
+            samplerYcbcrConversionComponents : Default::default(),
+            suggestedYcbcrModel : 0 as _,
+            suggestedYcbcrRange : 0 as _,
+            suggestedXChromaOffset : 0 as _,
+            suggestedYChromaOffset : 0 as _,
+        }
+    }
+}
+
+impl ::std::default::Default for ImportAndroidHardwareBufferInfoANDROID {
+    fn default() -> ImportAndroidHardwareBufferInfoANDROID {
+        ImportAndroidHardwareBufferInfoANDROID {
+            sType : STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID,
+            pNext : 0 as _,
+            buffer : 0 as _,
+        }
+    }
+}
+
+impl ::std::default::Default for MemoryGetAndroidHardwareBufferInfoANDROID {
+    fn default() -> MemoryGetAndroidHardwareBufferInfoANDROID {
+        MemoryGetAndroidHardwareBufferInfoANDROID {
+            sType : STRUCTURE_TYPE_MEMORY_GET_ANDROID_HARDWARE_BUFFER_INFO_ANDROID,
+            pNext : 0 as _,
+            memory : 0 as _,
+        }
+    }
+}
+
+impl ::std::default::Default for ExternalFormatANDROID {
+    fn default() -> ExternalFormatANDROID {
+        ExternalFormatANDROID {
+            sType : STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID,
+            pNext : 0 as _,
+            externalFormat : 0 as _,
+        }
+    }
+}
+
 extern "C" {
 	pub fn CreateAndroidSurfaceKHR(
 		pCreateInfo : *const AndroidSurfaceCreateInfoKHR,
@@ -15504,3 +15578,17604 @@ extern "C" {
 		pInfo : *const MemoryGetAndroidHardwareBufferInfoANDROID,
 		pBuffer : u64) -> VkResult;
 }
+
+impl ApplicationInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn pApplicationName(mut self, pApplicationName : *const i8) -> Self {
+		self.pApplicationName = pApplicationName;
+		self
+	}
+
+	pub fn applicationVersion(mut self, applicationVersion : u32) -> Self {
+		self.applicationVersion = applicationVersion;
+		self
+	}
+
+	pub fn pEngineName(mut self, pEngineName : *const i8) -> Self {
+		self.pEngineName = pEngineName;
+		self
+	}
+
+	pub fn engineVersion(mut self, engineVersion : u32) -> Self {
+		self.engineVersion = engineVersion;
+		self
+	}
+
+	pub fn apiVersion(mut self, apiVersion : u32) -> Self {
+		self.apiVersion = apiVersion;
+		self
+	}
+
+}
+
+impl InstanceCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : i32) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn pApplicationInfo(mut self, pApplicationInfo : *const ApplicationInfo) -> Self {
+		self.pApplicationInfo = pApplicationInfo;
+		self
+	}
+
+	pub fn enabledLayerCount(mut self, enabledLayerCount : u32) -> Self {
+		self.enabledLayerCount = enabledLayerCount;
+		self
+	}
+
+	pub fn ppEnabledLayerNames(mut self, ppEnabledLayerNames : *const *const i8) -> Self {
+		self.ppEnabledLayerNames = ppEnabledLayerNames;
+		self
+	}
+
+	pub fn enabledExtensionCount(mut self, enabledExtensionCount : u32) -> Self {
+		self.enabledExtensionCount = enabledExtensionCount;
+		self
+	}
+
+	pub fn ppEnabledExtensionNames(mut self, ppEnabledExtensionNames : *const *const i8) -> Self {
+		self.ppEnabledExtensionNames = ppEnabledExtensionNames;
+		self
+	}
+
+}
+
+impl AllocationCallbacks {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn pUserData(mut self, pUserData : *mut void) -> Self {
+		self.pUserData = pUserData;
+		self
+	}
+
+	pub fn pfnAllocation(mut self, pfnAllocation : u64) -> Self {
+		self.pfnAllocation = pfnAllocation;
+		self
+	}
+
+	pub fn pfnReallocation(mut self, pfnReallocation : u64) -> Self {
+		self.pfnReallocation = pfnReallocation;
+		self
+	}
+
+	pub fn pfnFree(mut self, pfnFree : u64) -> Self {
+		self.pfnFree = pfnFree;
+		self
+	}
+
+	pub fn pfnInternalAllocation(mut self, pfnInternalAllocation : u64) -> Self {
+		self.pfnInternalAllocation = pfnInternalAllocation;
+		self
+	}
+
+	pub fn pfnInternalFree(mut self, pfnInternalFree : u64) -> Self {
+		self.pfnInternalFree = pfnInternalFree;
+		self
+	}
+
+}
+
+impl PhysicalDeviceFeatures {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn robustBufferAccess(mut self, robustBufferAccess : Bool32) -> Self {
+		self.robustBufferAccess = robustBufferAccess;
+		self
+	}
+
+	pub fn fullDrawIndexUint32(mut self, fullDrawIndexUint32 : Bool32) -> Self {
+		self.fullDrawIndexUint32 = fullDrawIndexUint32;
+		self
+	}
+
+	pub fn imageCubeArray(mut self, imageCubeArray : Bool32) -> Self {
+		self.imageCubeArray = imageCubeArray;
+		self
+	}
+
+	pub fn independentBlend(mut self, independentBlend : Bool32) -> Self {
+		self.independentBlend = independentBlend;
+		self
+	}
+
+	pub fn geometryShader(mut self, geometryShader : Bool32) -> Self {
+		self.geometryShader = geometryShader;
+		self
+	}
+
+	pub fn tessellationShader(mut self, tessellationShader : Bool32) -> Self {
+		self.tessellationShader = tessellationShader;
+		self
+	}
+
+	pub fn sampleRateShading(mut self, sampleRateShading : Bool32) -> Self {
+		self.sampleRateShading = sampleRateShading;
+		self
+	}
+
+	pub fn dualSrcBlend(mut self, dualSrcBlend : Bool32) -> Self {
+		self.dualSrcBlend = dualSrcBlend;
+		self
+	}
+
+	pub fn logicOp(mut self, logicOp : Bool32) -> Self {
+		self.logicOp = logicOp;
+		self
+	}
+
+	pub fn multiDrawIndirect(mut self, multiDrawIndirect : Bool32) -> Self {
+		self.multiDrawIndirect = multiDrawIndirect;
+		self
+	}
+
+	pub fn drawIndirectFirstInstance(mut self, drawIndirectFirstInstance : Bool32) -> Self {
+		self.drawIndirectFirstInstance = drawIndirectFirstInstance;
+		self
+	}
+
+	pub fn depthClamp(mut self, depthClamp : Bool32) -> Self {
+		self.depthClamp = depthClamp;
+		self
+	}
+
+	pub fn depthBiasClamp(mut self, depthBiasClamp : Bool32) -> Self {
+		self.depthBiasClamp = depthBiasClamp;
+		self
+	}
+
+	pub fn fillModeNonSolid(mut self, fillModeNonSolid : Bool32) -> Self {
+		self.fillModeNonSolid = fillModeNonSolid;
+		self
+	}
+
+	pub fn depthBounds(mut self, depthBounds : Bool32) -> Self {
+		self.depthBounds = depthBounds;
+		self
+	}
+
+	pub fn wideLines(mut self, wideLines : Bool32) -> Self {
+		self.wideLines = wideLines;
+		self
+	}
+
+	pub fn largePoints(mut self, largePoints : Bool32) -> Self {
+		self.largePoints = largePoints;
+		self
+	}
+
+	pub fn alphaToOne(mut self, alphaToOne : Bool32) -> Self {
+		self.alphaToOne = alphaToOne;
+		self
+	}
+
+	pub fn multiViewport(mut self, multiViewport : Bool32) -> Self {
+		self.multiViewport = multiViewport;
+		self
+	}
+
+	pub fn samplerAnisotropy(mut self, samplerAnisotropy : Bool32) -> Self {
+		self.samplerAnisotropy = samplerAnisotropy;
+		self
+	}
+
+	pub fn textureCompressionETC2(mut self, textureCompressionETC2 : Bool32) -> Self {
+		self.textureCompressionETC2 = textureCompressionETC2;
+		self
+	}
+
+	pub fn textureCompressionASTC_LDR(mut self, textureCompressionASTC_LDR : Bool32) -> Self {
+		self.textureCompressionASTC_LDR = textureCompressionASTC_LDR;
+		self
+	}
+
+	pub fn textureCompressionBC(mut self, textureCompressionBC : Bool32) -> Self {
+		self.textureCompressionBC = textureCompressionBC;
+		self
+	}
+
+	pub fn occlusionQueryPrecise(mut self, occlusionQueryPrecise : Bool32) -> Self {
+		self.occlusionQueryPrecise = occlusionQueryPrecise;
+		self
+	}
+
+	pub fn pipelineStatisticsQuery(mut self, pipelineStatisticsQuery : Bool32) -> Self {
+		self.pipelineStatisticsQuery = pipelineStatisticsQuery;
+		self
+	}
+
+	pub fn vertexPipelineStoresAndAtomics(mut self, vertexPipelineStoresAndAtomics : Bool32) -> Self {
+		self.vertexPipelineStoresAndAtomics = vertexPipelineStoresAndAtomics;
+		self
+	}
+
+	pub fn fragmentStoresAndAtomics(mut self, fragmentStoresAndAtomics : Bool32) -> Self {
+		self.fragmentStoresAndAtomics = fragmentStoresAndAtomics;
+		self
+	}
+
+	pub fn shaderTessellationAndGeometryPointSize(mut self, shaderTessellationAndGeometryPointSize : Bool32) -> Self {
+		self.shaderTessellationAndGeometryPointSize = shaderTessellationAndGeometryPointSize;
+		self
+	}
+
+	pub fn shaderImageGatherExtended(mut self, shaderImageGatherExtended : Bool32) -> Self {
+		self.shaderImageGatherExtended = shaderImageGatherExtended;
+		self
+	}
+
+	pub fn shaderStorageImageExtendedFormats(mut self, shaderStorageImageExtendedFormats : Bool32) -> Self {
+		self.shaderStorageImageExtendedFormats = shaderStorageImageExtendedFormats;
+		self
+	}
+
+	pub fn shaderStorageImageMultisample(mut self, shaderStorageImageMultisample : Bool32) -> Self {
+		self.shaderStorageImageMultisample = shaderStorageImageMultisample;
+		self
+	}
+
+	pub fn shaderStorageImageReadWithoutFormat(mut self, shaderStorageImageReadWithoutFormat : Bool32) -> Self {
+		self.shaderStorageImageReadWithoutFormat = shaderStorageImageReadWithoutFormat;
+		self
+	}
+
+	pub fn shaderStorageImageWriteWithoutFormat(mut self, shaderStorageImageWriteWithoutFormat : Bool32) -> Self {
+		self.shaderStorageImageWriteWithoutFormat = shaderStorageImageWriteWithoutFormat;
+		self
+	}
+
+	pub fn shaderUniformBufferArrayDynamicIndexing(mut self, shaderUniformBufferArrayDynamicIndexing : Bool32) -> Self {
+		self.shaderUniformBufferArrayDynamicIndexing = shaderUniformBufferArrayDynamicIndexing;
+		self
+	}
+
+	pub fn shaderSampledImageArrayDynamicIndexing(mut self, shaderSampledImageArrayDynamicIndexing : Bool32) -> Self {
+		self.shaderSampledImageArrayDynamicIndexing = shaderSampledImageArrayDynamicIndexing;
+		self
+	}
+
+	pub fn shaderStorageBufferArrayDynamicIndexing(mut self, shaderStorageBufferArrayDynamicIndexing : Bool32) -> Self {
+		self.shaderStorageBufferArrayDynamicIndexing = shaderStorageBufferArrayDynamicIndexing;
+		self
+	}
+
+	pub fn shaderStorageImageArrayDynamicIndexing(mut self, shaderStorageImageArrayDynamicIndexing : Bool32) -> Self {
+		self.shaderStorageImageArrayDynamicIndexing = shaderStorageImageArrayDynamicIndexing;
+		self
+	}
+
+	pub fn shaderClipDistance(mut self, shaderClipDistance : Bool32) -> Self {
+		self.shaderClipDistance = shaderClipDistance;
+		self
+	}
+
+	pub fn shaderCullDistance(mut self, shaderCullDistance : Bool32) -> Self {
+		self.shaderCullDistance = shaderCullDistance;
+		self
+	}
+
+	pub fn shaderFloat64(mut self, shaderFloat64 : Bool32) -> Self {
+		self.shaderFloat64 = shaderFloat64;
+		self
+	}
+
+	pub fn shaderInt64(mut self, shaderInt64 : Bool32) -> Self {
+		self.shaderInt64 = shaderInt64;
+		self
+	}
+
+	pub fn shaderInt16(mut self, shaderInt16 : Bool32) -> Self {
+		self.shaderInt16 = shaderInt16;
+		self
+	}
+
+	pub fn shaderResourceResidency(mut self, shaderResourceResidency : Bool32) -> Self {
+		self.shaderResourceResidency = shaderResourceResidency;
+		self
+	}
+
+	pub fn shaderResourceMinLod(mut self, shaderResourceMinLod : Bool32) -> Self {
+		self.shaderResourceMinLod = shaderResourceMinLod;
+		self
+	}
+
+	pub fn sparseBinding(mut self, sparseBinding : Bool32) -> Self {
+		self.sparseBinding = sparseBinding;
+		self
+	}
+
+	pub fn sparseResidencyBuffer(mut self, sparseResidencyBuffer : Bool32) -> Self {
+		self.sparseResidencyBuffer = sparseResidencyBuffer;
+		self
+	}
+
+	pub fn sparseResidencyImage2D(mut self, sparseResidencyImage2D : Bool32) -> Self {
+		self.sparseResidencyImage2D = sparseResidencyImage2D;
+		self
+	}
+
+	pub fn sparseResidencyImage3D(mut self, sparseResidencyImage3D : Bool32) -> Self {
+		self.sparseResidencyImage3D = sparseResidencyImage3D;
+		self
+	}
+
+	pub fn sparseResidency2Samples(mut self, sparseResidency2Samples : Bool32) -> Self {
+		self.sparseResidency2Samples = sparseResidency2Samples;
+		self
+	}
+
+	pub fn sparseResidency4Samples(mut self, sparseResidency4Samples : Bool32) -> Self {
+		self.sparseResidency4Samples = sparseResidency4Samples;
+		self
+	}
+
+	pub fn sparseResidency8Samples(mut self, sparseResidency8Samples : Bool32) -> Self {
+		self.sparseResidency8Samples = sparseResidency8Samples;
+		self
+	}
+
+	pub fn sparseResidency16Samples(mut self, sparseResidency16Samples : Bool32) -> Self {
+		self.sparseResidency16Samples = sparseResidency16Samples;
+		self
+	}
+
+	pub fn sparseResidencyAliased(mut self, sparseResidencyAliased : Bool32) -> Self {
+		self.sparseResidencyAliased = sparseResidencyAliased;
+		self
+	}
+
+	pub fn variableMultisampleRate(mut self, variableMultisampleRate : Bool32) -> Self {
+		self.variableMultisampleRate = variableMultisampleRate;
+		self
+	}
+
+	pub fn inheritedQueries(mut self, inheritedQueries : Bool32) -> Self {
+		self.inheritedQueries = inheritedQueries;
+		self
+	}
+
+}
+
+impl FormatProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn linearTilingFeatures(mut self, linearTilingFeatures : FormatFeatureFlags) -> Self {
+		self.linearTilingFeatures = linearTilingFeatures;
+		self
+	}
+
+	pub fn optimalTilingFeatures(mut self, optimalTilingFeatures : FormatFeatureFlags) -> Self {
+		self.optimalTilingFeatures = optimalTilingFeatures;
+		self
+	}
+
+	pub fn bufferFeatures(mut self, bufferFeatures : FormatFeatureFlags) -> Self {
+		self.bufferFeatures = bufferFeatures;
+		self
+	}
+
+}
+
+impl Extent3D {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn width(mut self, width : u32) -> Self {
+		self.width = width;
+		self
+	}
+
+	pub fn height(mut self, height : u32) -> Self {
+		self.height = height;
+		self
+	}
+
+	pub fn depth(mut self, depth : u32) -> Self {
+		self.depth = depth;
+		self
+	}
+
+}
+
+impl ImageFormatProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn maxExtent(mut self, maxExtent : Extent3D) -> Self {
+		self.maxExtent = maxExtent;
+		self
+	}
+
+	pub fn maxMipLevels(mut self, maxMipLevels : u32) -> Self {
+		self.maxMipLevels = maxMipLevels;
+		self
+	}
+
+	pub fn maxArrayLayers(mut self, maxArrayLayers : u32) -> Self {
+		self.maxArrayLayers = maxArrayLayers;
+		self
+	}
+
+	pub fn sampleCounts(mut self, sampleCounts : SampleCountFlags) -> Self {
+		self.sampleCounts = sampleCounts;
+		self
+	}
+
+	pub fn maxResourceSize(mut self, maxResourceSize : DeviceSize) -> Self {
+		self.maxResourceSize = maxResourceSize;
+		self
+	}
+
+}
+
+impl PhysicalDeviceLimits {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn maxImageDimension1D(mut self, maxImageDimension1D : u32) -> Self {
+		self.maxImageDimension1D = maxImageDimension1D;
+		self
+	}
+
+	pub fn maxImageDimension2D(mut self, maxImageDimension2D : u32) -> Self {
+		self.maxImageDimension2D = maxImageDimension2D;
+		self
+	}
+
+	pub fn maxImageDimension3D(mut self, maxImageDimension3D : u32) -> Self {
+		self.maxImageDimension3D = maxImageDimension3D;
+		self
+	}
+
+	pub fn maxImageDimensionCube(mut self, maxImageDimensionCube : u32) -> Self {
+		self.maxImageDimensionCube = maxImageDimensionCube;
+		self
+	}
+
+	pub fn maxImageArrayLayers(mut self, maxImageArrayLayers : u32) -> Self {
+		self.maxImageArrayLayers = maxImageArrayLayers;
+		self
+	}
+
+	pub fn maxTexelBufferElements(mut self, maxTexelBufferElements : u32) -> Self {
+		self.maxTexelBufferElements = maxTexelBufferElements;
+		self
+	}
+
+	pub fn maxUniformBufferRange(mut self, maxUniformBufferRange : u32) -> Self {
+		self.maxUniformBufferRange = maxUniformBufferRange;
+		self
+	}
+
+	pub fn maxStorageBufferRange(mut self, maxStorageBufferRange : u32) -> Self {
+		self.maxStorageBufferRange = maxStorageBufferRange;
+		self
+	}
+
+	pub fn maxPushConstantsSize(mut self, maxPushConstantsSize : u32) -> Self {
+		self.maxPushConstantsSize = maxPushConstantsSize;
+		self
+	}
+
+	pub fn maxMemoryAllocationCount(mut self, maxMemoryAllocationCount : u32) -> Self {
+		self.maxMemoryAllocationCount = maxMemoryAllocationCount;
+		self
+	}
+
+	pub fn maxSamplerAllocationCount(mut self, maxSamplerAllocationCount : u32) -> Self {
+		self.maxSamplerAllocationCount = maxSamplerAllocationCount;
+		self
+	}
+
+	pub fn bufferImageGranularity(mut self, bufferImageGranularity : DeviceSize) -> Self {
+		self.bufferImageGranularity = bufferImageGranularity;
+		self
+	}
+
+	pub fn sparseAddressSpaceSize(mut self, sparseAddressSpaceSize : DeviceSize) -> Self {
+		self.sparseAddressSpaceSize = sparseAddressSpaceSize;
+		self
+	}
+
+	pub fn maxBoundDescriptorSets(mut self, maxBoundDescriptorSets : u32) -> Self {
+		self.maxBoundDescriptorSets = maxBoundDescriptorSets;
+		self
+	}
+
+	pub fn maxPerStageDescriptorSamplers(mut self, maxPerStageDescriptorSamplers : u32) -> Self {
+		self.maxPerStageDescriptorSamplers = maxPerStageDescriptorSamplers;
+		self
+	}
+
+	pub fn maxPerStageDescriptorUniformBuffers(mut self, maxPerStageDescriptorUniformBuffers : u32) -> Self {
+		self.maxPerStageDescriptorUniformBuffers = maxPerStageDescriptorUniformBuffers;
+		self
+	}
+
+	pub fn maxPerStageDescriptorStorageBuffers(mut self, maxPerStageDescriptorStorageBuffers : u32) -> Self {
+		self.maxPerStageDescriptorStorageBuffers = maxPerStageDescriptorStorageBuffers;
+		self
+	}
+
+	pub fn maxPerStageDescriptorSampledImages(mut self, maxPerStageDescriptorSampledImages : u32) -> Self {
+		self.maxPerStageDescriptorSampledImages = maxPerStageDescriptorSampledImages;
+		self
+	}
+
+	pub fn maxPerStageDescriptorStorageImages(mut self, maxPerStageDescriptorStorageImages : u32) -> Self {
+		self.maxPerStageDescriptorStorageImages = maxPerStageDescriptorStorageImages;
+		self
+	}
+
+	pub fn maxPerStageDescriptorInputAttachments(mut self, maxPerStageDescriptorInputAttachments : u32) -> Self {
+		self.maxPerStageDescriptorInputAttachments = maxPerStageDescriptorInputAttachments;
+		self
+	}
+
+	pub fn maxPerStageResources(mut self, maxPerStageResources : u32) -> Self {
+		self.maxPerStageResources = maxPerStageResources;
+		self
+	}
+
+	pub fn maxDescriptorSetSamplers(mut self, maxDescriptorSetSamplers : u32) -> Self {
+		self.maxDescriptorSetSamplers = maxDescriptorSetSamplers;
+		self
+	}
+
+	pub fn maxDescriptorSetUniformBuffers(mut self, maxDescriptorSetUniformBuffers : u32) -> Self {
+		self.maxDescriptorSetUniformBuffers = maxDescriptorSetUniformBuffers;
+		self
+	}
+
+	pub fn maxDescriptorSetUniformBuffersDynamic(mut self, maxDescriptorSetUniformBuffersDynamic : u32) -> Self {
+		self.maxDescriptorSetUniformBuffersDynamic = maxDescriptorSetUniformBuffersDynamic;
+		self
+	}
+
+	pub fn maxDescriptorSetStorageBuffers(mut self, maxDescriptorSetStorageBuffers : u32) -> Self {
+		self.maxDescriptorSetStorageBuffers = maxDescriptorSetStorageBuffers;
+		self
+	}
+
+	pub fn maxDescriptorSetStorageBuffersDynamic(mut self, maxDescriptorSetStorageBuffersDynamic : u32) -> Self {
+		self.maxDescriptorSetStorageBuffersDynamic = maxDescriptorSetStorageBuffersDynamic;
+		self
+	}
+
+	pub fn maxDescriptorSetSampledImages(mut self, maxDescriptorSetSampledImages : u32) -> Self {
+		self.maxDescriptorSetSampledImages = maxDescriptorSetSampledImages;
+		self
+	}
+
+	pub fn maxDescriptorSetStorageImages(mut self, maxDescriptorSetStorageImages : u32) -> Self {
+		self.maxDescriptorSetStorageImages = maxDescriptorSetStorageImages;
+		self
+	}
+
+	pub fn maxDescriptorSetInputAttachments(mut self, maxDescriptorSetInputAttachments : u32) -> Self {
+		self.maxDescriptorSetInputAttachments = maxDescriptorSetInputAttachments;
+		self
+	}
+
+	pub fn maxVertexInputAttributes(mut self, maxVertexInputAttributes : u32) -> Self {
+		self.maxVertexInputAttributes = maxVertexInputAttributes;
+		self
+	}
+
+	pub fn maxVertexInputBindings(mut self, maxVertexInputBindings : u32) -> Self {
+		self.maxVertexInputBindings = maxVertexInputBindings;
+		self
+	}
+
+	pub fn maxVertexInputAttributeOffset(mut self, maxVertexInputAttributeOffset : u32) -> Self {
+		self.maxVertexInputAttributeOffset = maxVertexInputAttributeOffset;
+		self
+	}
+
+	pub fn maxVertexInputBindingStride(mut self, maxVertexInputBindingStride : u32) -> Self {
+		self.maxVertexInputBindingStride = maxVertexInputBindingStride;
+		self
+	}
+
+	pub fn maxVertexOutputComponents(mut self, maxVertexOutputComponents : u32) -> Self {
+		self.maxVertexOutputComponents = maxVertexOutputComponents;
+		self
+	}
+
+	pub fn maxTessellationGenerationLevel(mut self, maxTessellationGenerationLevel : u32) -> Self {
+		self.maxTessellationGenerationLevel = maxTessellationGenerationLevel;
+		self
+	}
+
+	pub fn maxTessellationPatchSize(mut self, maxTessellationPatchSize : u32) -> Self {
+		self.maxTessellationPatchSize = maxTessellationPatchSize;
+		self
+	}
+
+	pub fn maxTessellationControlPerVertexInputComponents(mut self, maxTessellationControlPerVertexInputComponents : u32) -> Self {
+		self.maxTessellationControlPerVertexInputComponents = maxTessellationControlPerVertexInputComponents;
+		self
+	}
+
+	pub fn maxTessellationControlPerVertexOutputComponents(mut self, maxTessellationControlPerVertexOutputComponents : u32) -> Self {
+		self.maxTessellationControlPerVertexOutputComponents = maxTessellationControlPerVertexOutputComponents;
+		self
+	}
+
+	pub fn maxTessellationControlPerPatchOutputComponents(mut self, maxTessellationControlPerPatchOutputComponents : u32) -> Self {
+		self.maxTessellationControlPerPatchOutputComponents = maxTessellationControlPerPatchOutputComponents;
+		self
+	}
+
+	pub fn maxTessellationControlTotalOutputComponents(mut self, maxTessellationControlTotalOutputComponents : u32) -> Self {
+		self.maxTessellationControlTotalOutputComponents = maxTessellationControlTotalOutputComponents;
+		self
+	}
+
+	pub fn maxTessellationEvaluationInputComponents(mut self, maxTessellationEvaluationInputComponents : u32) -> Self {
+		self.maxTessellationEvaluationInputComponents = maxTessellationEvaluationInputComponents;
+		self
+	}
+
+	pub fn maxTessellationEvaluationOutputComponents(mut self, maxTessellationEvaluationOutputComponents : u32) -> Self {
+		self.maxTessellationEvaluationOutputComponents = maxTessellationEvaluationOutputComponents;
+		self
+	}
+
+	pub fn maxGeometryShaderInvocations(mut self, maxGeometryShaderInvocations : u32) -> Self {
+		self.maxGeometryShaderInvocations = maxGeometryShaderInvocations;
+		self
+	}
+
+	pub fn maxGeometryInputComponents(mut self, maxGeometryInputComponents : u32) -> Self {
+		self.maxGeometryInputComponents = maxGeometryInputComponents;
+		self
+	}
+
+	pub fn maxGeometryOutputComponents(mut self, maxGeometryOutputComponents : u32) -> Self {
+		self.maxGeometryOutputComponents = maxGeometryOutputComponents;
+		self
+	}
+
+	pub fn maxGeometryOutputVertices(mut self, maxGeometryOutputVertices : u32) -> Self {
+		self.maxGeometryOutputVertices = maxGeometryOutputVertices;
+		self
+	}
+
+	pub fn maxGeometryTotalOutputComponents(mut self, maxGeometryTotalOutputComponents : u32) -> Self {
+		self.maxGeometryTotalOutputComponents = maxGeometryTotalOutputComponents;
+		self
+	}
+
+	pub fn maxFragmentInputComponents(mut self, maxFragmentInputComponents : u32) -> Self {
+		self.maxFragmentInputComponents = maxFragmentInputComponents;
+		self
+	}
+
+	pub fn maxFragmentOutputAttachments(mut self, maxFragmentOutputAttachments : u32) -> Self {
+		self.maxFragmentOutputAttachments = maxFragmentOutputAttachments;
+		self
+	}
+
+	pub fn maxFragmentDualSrcAttachments(mut self, maxFragmentDualSrcAttachments : u32) -> Self {
+		self.maxFragmentDualSrcAttachments = maxFragmentDualSrcAttachments;
+		self
+	}
+
+	pub fn maxFragmentCombinedOutputResources(mut self, maxFragmentCombinedOutputResources : u32) -> Self {
+		self.maxFragmentCombinedOutputResources = maxFragmentCombinedOutputResources;
+		self
+	}
+
+	pub fn maxComputeSharedMemorySize(mut self, maxComputeSharedMemorySize : u32) -> Self {
+		self.maxComputeSharedMemorySize = maxComputeSharedMemorySize;
+		self
+	}
+
+	pub fn maxComputeWorkGroupCount(mut self, maxComputeWorkGroupCount : [u32;3]) -> Self {
+		self.maxComputeWorkGroupCount = maxComputeWorkGroupCount;
+		self
+	}
+
+	pub fn maxComputeWorkGroupInvocations(mut self, maxComputeWorkGroupInvocations : u32) -> Self {
+		self.maxComputeWorkGroupInvocations = maxComputeWorkGroupInvocations;
+		self
+	}
+
+	pub fn maxComputeWorkGroupSize(mut self, maxComputeWorkGroupSize : [u32;3]) -> Self {
+		self.maxComputeWorkGroupSize = maxComputeWorkGroupSize;
+		self
+	}
+
+	pub fn subPixelPrecisionBits(mut self, subPixelPrecisionBits : u32) -> Self {
+		self.subPixelPrecisionBits = subPixelPrecisionBits;
+		self
+	}
+
+	pub fn subTexelPrecisionBits(mut self, subTexelPrecisionBits : u32) -> Self {
+		self.subTexelPrecisionBits = subTexelPrecisionBits;
+		self
+	}
+
+	pub fn mipmapPrecisionBits(mut self, mipmapPrecisionBits : u32) -> Self {
+		self.mipmapPrecisionBits = mipmapPrecisionBits;
+		self
+	}
+
+	pub fn maxDrawIndexedIndexValue(mut self, maxDrawIndexedIndexValue : u32) -> Self {
+		self.maxDrawIndexedIndexValue = maxDrawIndexedIndexValue;
+		self
+	}
+
+	pub fn maxDrawIndirectCount(mut self, maxDrawIndirectCount : u32) -> Self {
+		self.maxDrawIndirectCount = maxDrawIndirectCount;
+		self
+	}
+
+	pub fn maxSamplerLodBias(mut self, maxSamplerLodBias : f32) -> Self {
+		self.maxSamplerLodBias = maxSamplerLodBias;
+		self
+	}
+
+	pub fn maxSamplerAnisotropy(mut self, maxSamplerAnisotropy : f32) -> Self {
+		self.maxSamplerAnisotropy = maxSamplerAnisotropy;
+		self
+	}
+
+	pub fn maxViewports(mut self, maxViewports : u32) -> Self {
+		self.maxViewports = maxViewports;
+		self
+	}
+
+	pub fn maxViewportDimensions(mut self, maxViewportDimensions : [u32;2]) -> Self {
+		self.maxViewportDimensions = maxViewportDimensions;
+		self
+	}
+
+	pub fn viewportBoundsRange(mut self, viewportBoundsRange : [f32;2]) -> Self {
+		self.viewportBoundsRange = viewportBoundsRange;
+		self
+	}
+
+	pub fn viewportSubPixelBits(mut self, viewportSubPixelBits : u32) -> Self {
+		self.viewportSubPixelBits = viewportSubPixelBits;
+		self
+	}
+
+	pub fn minMemoryMapAlignment(mut self, minMemoryMapAlignment : usize) -> Self {
+		self.minMemoryMapAlignment = minMemoryMapAlignment;
+		self
+	}
+
+	pub fn minTexelBufferOffsetAlignment(mut self, minTexelBufferOffsetAlignment : DeviceSize) -> Self {
+		self.minTexelBufferOffsetAlignment = minTexelBufferOffsetAlignment;
+		self
+	}
+
+	pub fn minUniformBufferOffsetAlignment(mut self, minUniformBufferOffsetAlignment : DeviceSize) -> Self {
+		self.minUniformBufferOffsetAlignment = minUniformBufferOffsetAlignment;
+		self
+	}
+
+	pub fn minStorageBufferOffsetAlignment(mut self, minStorageBufferOffsetAlignment : DeviceSize) -> Self {
+		self.minStorageBufferOffsetAlignment = minStorageBufferOffsetAlignment;
+		self
+	}
+
+	pub fn minTexelOffset(mut self, minTexelOffset : i32) -> Self {
+		self.minTexelOffset = minTexelOffset;
+		self
+	}
+
+	pub fn maxTexelOffset(mut self, maxTexelOffset : u32) -> Self {
+		self.maxTexelOffset = maxTexelOffset;
+		self
+	}
+
+	pub fn minTexelGatherOffset(mut self, minTexelGatherOffset : i32) -> Self {
+		self.minTexelGatherOffset = minTexelGatherOffset;
+		self
+	}
+
+	pub fn maxTexelGatherOffset(mut self, maxTexelGatherOffset : u32) -> Self {
+		self.maxTexelGatherOffset = maxTexelGatherOffset;
+		self
+	}
+
+	pub fn minInterpolationOffset(mut self, minInterpolationOffset : f32) -> Self {
+		self.minInterpolationOffset = minInterpolationOffset;
+		self
+	}
+
+	pub fn maxInterpolationOffset(mut self, maxInterpolationOffset : f32) -> Self {
+		self.maxInterpolationOffset = maxInterpolationOffset;
+		self
+	}
+
+	pub fn subPixelInterpolationOffsetBits(mut self, subPixelInterpolationOffsetBits : u32) -> Self {
+		self.subPixelInterpolationOffsetBits = subPixelInterpolationOffsetBits;
+		self
+	}
+
+	pub fn maxFramebufferWidth(mut self, maxFramebufferWidth : u32) -> Self {
+		self.maxFramebufferWidth = maxFramebufferWidth;
+		self
+	}
+
+	pub fn maxFramebufferHeight(mut self, maxFramebufferHeight : u32) -> Self {
+		self.maxFramebufferHeight = maxFramebufferHeight;
+		self
+	}
+
+	pub fn maxFramebufferLayers(mut self, maxFramebufferLayers : u32) -> Self {
+		self.maxFramebufferLayers = maxFramebufferLayers;
+		self
+	}
+
+	pub fn framebufferColorSampleCounts(mut self, framebufferColorSampleCounts : SampleCountFlags) -> Self {
+		self.framebufferColorSampleCounts = framebufferColorSampleCounts;
+		self
+	}
+
+	pub fn framebufferDepthSampleCounts(mut self, framebufferDepthSampleCounts : SampleCountFlags) -> Self {
+		self.framebufferDepthSampleCounts = framebufferDepthSampleCounts;
+		self
+	}
+
+	pub fn framebufferStencilSampleCounts(mut self, framebufferStencilSampleCounts : SampleCountFlags) -> Self {
+		self.framebufferStencilSampleCounts = framebufferStencilSampleCounts;
+		self
+	}
+
+	pub fn framebufferNoAttachmentsSampleCounts(mut self, framebufferNoAttachmentsSampleCounts : SampleCountFlags) -> Self {
+		self.framebufferNoAttachmentsSampleCounts = framebufferNoAttachmentsSampleCounts;
+		self
+	}
+
+	pub fn maxColorAttachments(mut self, maxColorAttachments : u32) -> Self {
+		self.maxColorAttachments = maxColorAttachments;
+		self
+	}
+
+	pub fn sampledImageColorSampleCounts(mut self, sampledImageColorSampleCounts : SampleCountFlags) -> Self {
+		self.sampledImageColorSampleCounts = sampledImageColorSampleCounts;
+		self
+	}
+
+	pub fn sampledImageIntegerSampleCounts(mut self, sampledImageIntegerSampleCounts : SampleCountFlags) -> Self {
+		self.sampledImageIntegerSampleCounts = sampledImageIntegerSampleCounts;
+		self
+	}
+
+	pub fn sampledImageDepthSampleCounts(mut self, sampledImageDepthSampleCounts : SampleCountFlags) -> Self {
+		self.sampledImageDepthSampleCounts = sampledImageDepthSampleCounts;
+		self
+	}
+
+	pub fn sampledImageStencilSampleCounts(mut self, sampledImageStencilSampleCounts : SampleCountFlags) -> Self {
+		self.sampledImageStencilSampleCounts = sampledImageStencilSampleCounts;
+		self
+	}
+
+	pub fn storageImageSampleCounts(mut self, storageImageSampleCounts : SampleCountFlags) -> Self {
+		self.storageImageSampleCounts = storageImageSampleCounts;
+		self
+	}
+
+	pub fn maxSampleMaskWords(mut self, maxSampleMaskWords : u32) -> Self {
+		self.maxSampleMaskWords = maxSampleMaskWords;
+		self
+	}
+
+	pub fn timestampComputeAndGraphics(mut self, timestampComputeAndGraphics : Bool32) -> Self {
+		self.timestampComputeAndGraphics = timestampComputeAndGraphics;
+		self
+	}
+
+	pub fn timestampPeriod(mut self, timestampPeriod : f32) -> Self {
+		self.timestampPeriod = timestampPeriod;
+		self
+	}
+
+	pub fn maxClipDistances(mut self, maxClipDistances : u32) -> Self {
+		self.maxClipDistances = maxClipDistances;
+		self
+	}
+
+	pub fn maxCullDistances(mut self, maxCullDistances : u32) -> Self {
+		self.maxCullDistances = maxCullDistances;
+		self
+	}
+
+	pub fn maxCombinedClipAndCullDistances(mut self, maxCombinedClipAndCullDistances : u32) -> Self {
+		self.maxCombinedClipAndCullDistances = maxCombinedClipAndCullDistances;
+		self
+	}
+
+	pub fn discreteQueuePriorities(mut self, discreteQueuePriorities : u32) -> Self {
+		self.discreteQueuePriorities = discreteQueuePriorities;
+		self
+	}
+
+	pub fn pointSizeRange(mut self, pointSizeRange : [f32;2]) -> Self {
+		self.pointSizeRange = pointSizeRange;
+		self
+	}
+
+	pub fn lineWidthRange(mut self, lineWidthRange : [f32;2]) -> Self {
+		self.lineWidthRange = lineWidthRange;
+		self
+	}
+
+	pub fn pointSizeGranularity(mut self, pointSizeGranularity : f32) -> Self {
+		self.pointSizeGranularity = pointSizeGranularity;
+		self
+	}
+
+	pub fn lineWidthGranularity(mut self, lineWidthGranularity : f32) -> Self {
+		self.lineWidthGranularity = lineWidthGranularity;
+		self
+	}
+
+	pub fn strictLines(mut self, strictLines : Bool32) -> Self {
+		self.strictLines = strictLines;
+		self
+	}
+
+	pub fn standardSampleLocations(mut self, standardSampleLocations : Bool32) -> Self {
+		self.standardSampleLocations = standardSampleLocations;
+		self
+	}
+
+	pub fn optimalBufferCopyOffsetAlignment(mut self, optimalBufferCopyOffsetAlignment : DeviceSize) -> Self {
+		self.optimalBufferCopyOffsetAlignment = optimalBufferCopyOffsetAlignment;
+		self
+	}
+
+	pub fn optimalBufferCopyRowPitchAlignment(mut self, optimalBufferCopyRowPitchAlignment : DeviceSize) -> Self {
+		self.optimalBufferCopyRowPitchAlignment = optimalBufferCopyRowPitchAlignment;
+		self
+	}
+
+	pub fn nonCoherentAtomSize(mut self, nonCoherentAtomSize : DeviceSize) -> Self {
+		self.nonCoherentAtomSize = nonCoherentAtomSize;
+		self
+	}
+
+}
+
+impl PhysicalDeviceSparseProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn residencyStandard2DBlockShape(mut self, residencyStandard2DBlockShape : Bool32) -> Self {
+		self.residencyStandard2DBlockShape = residencyStandard2DBlockShape;
+		self
+	}
+
+	pub fn residencyStandard2DMultisampleBlockShape(mut self, residencyStandard2DMultisampleBlockShape : Bool32) -> Self {
+		self.residencyStandard2DMultisampleBlockShape = residencyStandard2DMultisampleBlockShape;
+		self
+	}
+
+	pub fn residencyStandard3DBlockShape(mut self, residencyStandard3DBlockShape : Bool32) -> Self {
+		self.residencyStandard3DBlockShape = residencyStandard3DBlockShape;
+		self
+	}
+
+	pub fn residencyAlignedMipSize(mut self, residencyAlignedMipSize : Bool32) -> Self {
+		self.residencyAlignedMipSize = residencyAlignedMipSize;
+		self
+	}
+
+	pub fn residencyNonResidentStrict(mut self, residencyNonResidentStrict : Bool32) -> Self {
+		self.residencyNonResidentStrict = residencyNonResidentStrict;
+		self
+	}
+
+}
+
+impl PhysicalDeviceProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn apiVersion(mut self, apiVersion : u32) -> Self {
+		self.apiVersion = apiVersion;
+		self
+	}
+
+	pub fn driverVersion(mut self, driverVersion : u32) -> Self {
+		self.driverVersion = driverVersion;
+		self
+	}
+
+	pub fn vendorID(mut self, vendorID : u32) -> Self {
+		self.vendorID = vendorID;
+		self
+	}
+
+	pub fn deviceID(mut self, deviceID : u32) -> Self {
+		self.deviceID = deviceID;
+		self
+	}
+
+	pub fn deviceType(mut self, deviceType : PhysicalDeviceType) -> Self {
+		self.deviceType = deviceType;
+		self
+	}
+
+	pub fn deviceName(mut self, deviceName : [i8;MAX_PHYSICAL_DEVICE_NAME_SIZE]) -> Self {
+		self.deviceName = deviceName;
+		self
+	}
+
+	pub fn pipelineCacheUUID(mut self, pipelineCacheUUID : [u8;UUID_SIZE]) -> Self {
+		self.pipelineCacheUUID = pipelineCacheUUID;
+		self
+	}
+
+	pub fn limits(mut self, limits : PhysicalDeviceLimits) -> Self {
+		self.limits = limits;
+		self
+	}
+
+	pub fn sparseProperties(mut self, sparseProperties : PhysicalDeviceSparseProperties) -> Self {
+		self.sparseProperties = sparseProperties;
+		self
+	}
+
+}
+
+impl QueueFamilyProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn queueFlags(mut self, queueFlags : QueueFlags) -> Self {
+		self.queueFlags = queueFlags;
+		self
+	}
+
+	pub fn queueCount(mut self, queueCount : u32) -> Self {
+		self.queueCount = queueCount;
+		self
+	}
+
+	pub fn timestampValidBits(mut self, timestampValidBits : u32) -> Self {
+		self.timestampValidBits = timestampValidBits;
+		self
+	}
+
+	pub fn minImageTransferGranularity(mut self, minImageTransferGranularity : Extent3D) -> Self {
+		self.minImageTransferGranularity = minImageTransferGranularity;
+		self
+	}
+
+}
+
+impl MemoryType {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn propertyFlags(mut self, propertyFlags : MemoryPropertyFlags) -> Self {
+		self.propertyFlags = propertyFlags;
+		self
+	}
+
+	pub fn heapIndex(mut self, heapIndex : u32) -> Self {
+		self.heapIndex = heapIndex;
+		self
+	}
+
+}
+
+impl MemoryHeap {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn size(mut self, size : DeviceSize) -> Self {
+		self.size = size;
+		self
+	}
+
+	pub fn flags(mut self, flags : MemoryHeapFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+}
+
+impl PhysicalDeviceMemoryProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn memoryTypeCount(mut self, memoryTypeCount : u32) -> Self {
+		self.memoryTypeCount = memoryTypeCount;
+		self
+	}
+
+	pub fn memoryTypes(mut self, memoryTypes : [MemoryType;MAX_MEMORY_TYPES]) -> Self {
+		self.memoryTypes = memoryTypes;
+		self
+	}
+
+	pub fn memoryHeapCount(mut self, memoryHeapCount : u32) -> Self {
+		self.memoryHeapCount = memoryHeapCount;
+		self
+	}
+
+	pub fn memoryHeaps(mut self, memoryHeaps : [MemoryHeap;MAX_MEMORY_HEAPS]) -> Self {
+		self.memoryHeaps = memoryHeaps;
+		self
+	}
+
+}
+
+impl DeviceQueueCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : DeviceQueueCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn queueFamilyIndex(mut self, queueFamilyIndex : u32) -> Self {
+		self.queueFamilyIndex = queueFamilyIndex;
+		self
+	}
+
+	pub fn queueCount(mut self, queueCount : u32) -> Self {
+		self.queueCount = queueCount;
+		self
+	}
+
+	pub fn pQueuePriorities(mut self, pQueuePriorities : *const f32) -> Self {
+		self.pQueuePriorities = pQueuePriorities;
+		self
+	}
+
+}
+
+impl DeviceCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : DeviceCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn queueCreateInfoCount(mut self, queueCreateInfoCount : u32) -> Self {
+		self.queueCreateInfoCount = queueCreateInfoCount;
+		self
+	}
+
+	pub fn pQueueCreateInfos(mut self, pQueueCreateInfos : *const DeviceQueueCreateInfo) -> Self {
+		self.pQueueCreateInfos = pQueueCreateInfos;
+		self
+	}
+
+	pub fn enabledLayerCount(mut self, enabledLayerCount : u32) -> Self {
+		self.enabledLayerCount = enabledLayerCount;
+		self
+	}
+
+	pub fn ppEnabledLayerNames(mut self, ppEnabledLayerNames : *const *const i8) -> Self {
+		self.ppEnabledLayerNames = ppEnabledLayerNames;
+		self
+	}
+
+	pub fn enabledExtensionCount(mut self, enabledExtensionCount : u32) -> Self {
+		self.enabledExtensionCount = enabledExtensionCount;
+		self
+	}
+
+	pub fn ppEnabledExtensionNames(mut self, ppEnabledExtensionNames : *const *const i8) -> Self {
+		self.ppEnabledExtensionNames = ppEnabledExtensionNames;
+		self
+	}
+
+	pub fn pEnabledFeatures(mut self, pEnabledFeatures : *const PhysicalDeviceFeatures) -> Self {
+		self.pEnabledFeatures = pEnabledFeatures;
+		self
+	}
+
+}
+
+impl ExtensionProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn extensionName(mut self, extensionName : [i8;MAX_EXTENSION_NAME_SIZE]) -> Self {
+		self.extensionName = extensionName;
+		self
+	}
+
+	pub fn specVersion(mut self, specVersion : u32) -> Self {
+		self.specVersion = specVersion;
+		self
+	}
+
+}
+
+impl LayerProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn layerName(mut self, layerName : [i8;MAX_EXTENSION_NAME_SIZE]) -> Self {
+		self.layerName = layerName;
+		self
+	}
+
+	pub fn specVersion(mut self, specVersion : u32) -> Self {
+		self.specVersion = specVersion;
+		self
+	}
+
+	pub fn implementationVersion(mut self, implementationVersion : u32) -> Self {
+		self.implementationVersion = implementationVersion;
+		self
+	}
+
+	pub fn description(mut self, description : [i8;MAX_DESCRIPTION_SIZE]) -> Self {
+		self.description = description;
+		self
+	}
+
+}
+
+impl SubmitInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn waitSemaphoreCount(mut self, waitSemaphoreCount : u32) -> Self {
+		self.waitSemaphoreCount = waitSemaphoreCount;
+		self
+	}
+
+	pub fn pWaitSemaphores(mut self, pWaitSemaphores : *const Semaphore) -> Self {
+		self.pWaitSemaphores = pWaitSemaphores;
+		self
+	}
+
+	pub fn pWaitDstStageMask(mut self, pWaitDstStageMask : *const PipelineStageFlags) -> Self {
+		self.pWaitDstStageMask = pWaitDstStageMask;
+		self
+	}
+
+	pub fn commandBufferCount(mut self, commandBufferCount : u32) -> Self {
+		self.commandBufferCount = commandBufferCount;
+		self
+	}
+
+	pub fn pCommandBuffers(mut self, pCommandBuffers : *const CommandBuffer) -> Self {
+		self.pCommandBuffers = pCommandBuffers;
+		self
+	}
+
+	pub fn signalSemaphoreCount(mut self, signalSemaphoreCount : u32) -> Self {
+		self.signalSemaphoreCount = signalSemaphoreCount;
+		self
+	}
+
+	pub fn pSignalSemaphores(mut self, pSignalSemaphores : *const Semaphore) -> Self {
+		self.pSignalSemaphores = pSignalSemaphores;
+		self
+	}
+
+}
+
+impl MemoryAllocateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn allocationSize(mut self, allocationSize : DeviceSize) -> Self {
+		self.allocationSize = allocationSize;
+		self
+	}
+
+	pub fn memoryTypeIndex(mut self, memoryTypeIndex : u32) -> Self {
+		self.memoryTypeIndex = memoryTypeIndex;
+		self
+	}
+
+}
+
+impl MappedMemoryRange {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn memory(mut self, memory : DeviceMemory) -> Self {
+		self.memory = memory;
+		self
+	}
+
+	pub fn offset(mut self, offset : DeviceSize) -> Self {
+		self.offset = offset;
+		self
+	}
+
+	pub fn size(mut self, size : DeviceSize) -> Self {
+		self.size = size;
+		self
+	}
+
+}
+
+impl MemoryRequirements {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn size(mut self, size : DeviceSize) -> Self {
+		self.size = size;
+		self
+	}
+
+	pub fn alignment(mut self, alignment : DeviceSize) -> Self {
+		self.alignment = alignment;
+		self
+	}
+
+	pub fn memoryTypeBits(mut self, memoryTypeBits : u32) -> Self {
+		self.memoryTypeBits = memoryTypeBits;
+		self
+	}
+
+}
+
+impl SparseImageFormatProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn aspectMask(mut self, aspectMask : ImageAspectFlags) -> Self {
+		self.aspectMask = aspectMask;
+		self
+	}
+
+	pub fn imageGranularity(mut self, imageGranularity : Extent3D) -> Self {
+		self.imageGranularity = imageGranularity;
+		self
+	}
+
+	pub fn flags(mut self, flags : SparseImageFormatFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+}
+
+impl SparseImageMemoryRequirements {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn formatProperties(mut self, formatProperties : SparseImageFormatProperties) -> Self {
+		self.formatProperties = formatProperties;
+		self
+	}
+
+	pub fn imageMipTailFirstLod(mut self, imageMipTailFirstLod : u32) -> Self {
+		self.imageMipTailFirstLod = imageMipTailFirstLod;
+		self
+	}
+
+	pub fn imageMipTailSize(mut self, imageMipTailSize : DeviceSize) -> Self {
+		self.imageMipTailSize = imageMipTailSize;
+		self
+	}
+
+	pub fn imageMipTailOffset(mut self, imageMipTailOffset : DeviceSize) -> Self {
+		self.imageMipTailOffset = imageMipTailOffset;
+		self
+	}
+
+	pub fn imageMipTailStride(mut self, imageMipTailStride : DeviceSize) -> Self {
+		self.imageMipTailStride = imageMipTailStride;
+		self
+	}
+
+}
+
+impl SparseMemoryBind {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn resourceOffset(mut self, resourceOffset : DeviceSize) -> Self {
+		self.resourceOffset = resourceOffset;
+		self
+	}
+
+	pub fn size(mut self, size : DeviceSize) -> Self {
+		self.size = size;
+		self
+	}
+
+	pub fn memory(mut self, memory : DeviceMemory) -> Self {
+		self.memory = memory;
+		self
+	}
+
+	pub fn memoryOffset(mut self, memoryOffset : DeviceSize) -> Self {
+		self.memoryOffset = memoryOffset;
+		self
+	}
+
+	pub fn flags(mut self, flags : SparseMemoryBindFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+}
+
+impl SparseBufferMemoryBindInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn buffer(mut self, buffer : Buffer) -> Self {
+		self.buffer = buffer;
+		self
+	}
+
+	pub fn bindCount(mut self, bindCount : u32) -> Self {
+		self.bindCount = bindCount;
+		self
+	}
+
+	pub fn pBinds(mut self, pBinds : *const SparseMemoryBind) -> Self {
+		self.pBinds = pBinds;
+		self
+	}
+
+}
+
+impl SparseImageOpaqueMemoryBindInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn image(mut self, image : Image) -> Self {
+		self.image = image;
+		self
+	}
+
+	pub fn bindCount(mut self, bindCount : u32) -> Self {
+		self.bindCount = bindCount;
+		self
+	}
+
+	pub fn pBinds(mut self, pBinds : *const SparseMemoryBind) -> Self {
+		self.pBinds = pBinds;
+		self
+	}
+
+}
+
+impl ImageSubresource {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn aspectMask(mut self, aspectMask : ImageAspectFlags) -> Self {
+		self.aspectMask = aspectMask;
+		self
+	}
+
+	pub fn mipLevel(mut self, mipLevel : u32) -> Self {
+		self.mipLevel = mipLevel;
+		self
+	}
+
+	pub fn arrayLayer(mut self, arrayLayer : u32) -> Self {
+		self.arrayLayer = arrayLayer;
+		self
+	}
+
+}
+
+impl Offset3D {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn x(mut self, x : i32) -> Self {
+		self.x = x;
+		self
+	}
+
+	pub fn y(mut self, y : i32) -> Self {
+		self.y = y;
+		self
+	}
+
+	pub fn z(mut self, z : i32) -> Self {
+		self.z = z;
+		self
+	}
+
+}
+
+impl SparseImageMemoryBind {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn subresource(mut self, subresource : ImageSubresource) -> Self {
+		self.subresource = subresource;
+		self
+	}
+
+	pub fn offset(mut self, offset : Offset3D) -> Self {
+		self.offset = offset;
+		self
+	}
+
+	pub fn extent(mut self, extent : Extent3D) -> Self {
+		self.extent = extent;
+		self
+	}
+
+	pub fn memory(mut self, memory : DeviceMemory) -> Self {
+		self.memory = memory;
+		self
+	}
+
+	pub fn memoryOffset(mut self, memoryOffset : DeviceSize) -> Self {
+		self.memoryOffset = memoryOffset;
+		self
+	}
+
+	pub fn flags(mut self, flags : SparseMemoryBindFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+}
+
+impl SparseImageMemoryBindInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn image(mut self, image : Image) -> Self {
+		self.image = image;
+		self
+	}
+
+	pub fn bindCount(mut self, bindCount : u32) -> Self {
+		self.bindCount = bindCount;
+		self
+	}
+
+	pub fn pBinds(mut self, pBinds : *const SparseImageMemoryBind) -> Self {
+		self.pBinds = pBinds;
+		self
+	}
+
+}
+
+impl BindSparseInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn waitSemaphoreCount(mut self, waitSemaphoreCount : u32) -> Self {
+		self.waitSemaphoreCount = waitSemaphoreCount;
+		self
+	}
+
+	pub fn pWaitSemaphores(mut self, pWaitSemaphores : *const Semaphore) -> Self {
+		self.pWaitSemaphores = pWaitSemaphores;
+		self
+	}
+
+	pub fn bufferBindCount(mut self, bufferBindCount : u32) -> Self {
+		self.bufferBindCount = bufferBindCount;
+		self
+	}
+
+	pub fn pBufferBinds(mut self, pBufferBinds : *const SparseBufferMemoryBindInfo) -> Self {
+		self.pBufferBinds = pBufferBinds;
+		self
+	}
+
+	pub fn imageOpaqueBindCount(mut self, imageOpaqueBindCount : u32) -> Self {
+		self.imageOpaqueBindCount = imageOpaqueBindCount;
+		self
+	}
+
+	pub fn pImageOpaqueBinds(mut self, pImageOpaqueBinds : *const SparseImageOpaqueMemoryBindInfo) -> Self {
+		self.pImageOpaqueBinds = pImageOpaqueBinds;
+		self
+	}
+
+	pub fn imageBindCount(mut self, imageBindCount : u32) -> Self {
+		self.imageBindCount = imageBindCount;
+		self
+	}
+
+	pub fn pImageBinds(mut self, pImageBinds : *const SparseImageMemoryBindInfo) -> Self {
+		self.pImageBinds = pImageBinds;
+		self
+	}
+
+	pub fn signalSemaphoreCount(mut self, signalSemaphoreCount : u32) -> Self {
+		self.signalSemaphoreCount = signalSemaphoreCount;
+		self
+	}
+
+	pub fn pSignalSemaphores(mut self, pSignalSemaphores : *const Semaphore) -> Self {
+		self.pSignalSemaphores = pSignalSemaphores;
+		self
+	}
+
+}
+
+impl FenceCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : FenceCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+}
+
+impl SemaphoreCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : SemaphoreCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+}
+
+impl EventCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : EventCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+}
+
+impl QueryPoolCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : QueryPoolCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn queryType(mut self, queryType : QueryType) -> Self {
+		self.queryType = queryType;
+		self
+	}
+
+	pub fn queryCount(mut self, queryCount : u32) -> Self {
+		self.queryCount = queryCount;
+		self
+	}
+
+	pub fn pipelineStatistics(mut self, pipelineStatistics : QueryPipelineStatisticFlags) -> Self {
+		self.pipelineStatistics = pipelineStatistics;
+		self
+	}
+
+}
+
+impl BufferCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : BufferCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn size(mut self, size : DeviceSize) -> Self {
+		self.size = size;
+		self
+	}
+
+	pub fn usage(mut self, usage : BufferUsageFlags) -> Self {
+		self.usage = usage;
+		self
+	}
+
+	pub fn sharingMode(mut self, sharingMode : SharingMode) -> Self {
+		self.sharingMode = sharingMode;
+		self
+	}
+
+	pub fn queueFamilyIndexCount(mut self, queueFamilyIndexCount : u32) -> Self {
+		self.queueFamilyIndexCount = queueFamilyIndexCount;
+		self
+	}
+
+	pub fn pQueueFamilyIndices(mut self, pQueueFamilyIndices : *const u32) -> Self {
+		self.pQueueFamilyIndices = pQueueFamilyIndices;
+		self
+	}
+
+}
+
+impl BufferViewCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : BufferViewCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn buffer(mut self, buffer : Buffer) -> Self {
+		self.buffer = buffer;
+		self
+	}
+
+	pub fn format(mut self, format : Format) -> Self {
+		self.format = format;
+		self
+	}
+
+	pub fn offset(mut self, offset : DeviceSize) -> Self {
+		self.offset = offset;
+		self
+	}
+
+	pub fn range(mut self, range : DeviceSize) -> Self {
+		self.range = range;
+		self
+	}
+
+}
+
+impl ImageCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : ImageCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn imageType(mut self, imageType : ImageType) -> Self {
+		self.imageType = imageType;
+		self
+	}
+
+	pub fn format(mut self, format : Format) -> Self {
+		self.format = format;
+		self
+	}
+
+	pub fn extent(mut self, extent : Extent3D) -> Self {
+		self.extent = extent;
+		self
+	}
+
+	pub fn mipLevels(mut self, mipLevels : u32) -> Self {
+		self.mipLevels = mipLevels;
+		self
+	}
+
+	pub fn arrayLayers(mut self, arrayLayers : u32) -> Self {
+		self.arrayLayers = arrayLayers;
+		self
+	}
+
+	pub fn samples(mut self, samples : SampleCountFlagBits) -> Self {
+		self.samples = samples;
+		self
+	}
+
+	pub fn tiling(mut self, tiling : ImageTiling) -> Self {
+		self.tiling = tiling;
+		self
+	}
+
+	pub fn usage(mut self, usage : ImageUsageFlags) -> Self {
+		self.usage = usage;
+		self
+	}
+
+	pub fn sharingMode(mut self, sharingMode : SharingMode) -> Self {
+		self.sharingMode = sharingMode;
+		self
+	}
+
+	pub fn queueFamilyIndexCount(mut self, queueFamilyIndexCount : u32) -> Self {
+		self.queueFamilyIndexCount = queueFamilyIndexCount;
+		self
+	}
+
+	pub fn pQueueFamilyIndices(mut self, pQueueFamilyIndices : *const u32) -> Self {
+		self.pQueueFamilyIndices = pQueueFamilyIndices;
+		self
+	}
+
+	pub fn initialLayout(mut self, initialLayout : ImageLayout) -> Self {
+		self.initialLayout = initialLayout;
+		self
+	}
+
+}
+
+impl SubresourceLayout {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn offset(mut self, offset : DeviceSize) -> Self {
+		self.offset = offset;
+		self
+	}
+
+	pub fn size(mut self, size : DeviceSize) -> Self {
+		self.size = size;
+		self
+	}
+
+	pub fn rowPitch(mut self, rowPitch : DeviceSize) -> Self {
+		self.rowPitch = rowPitch;
+		self
+	}
+
+	pub fn arrayPitch(mut self, arrayPitch : DeviceSize) -> Self {
+		self.arrayPitch = arrayPitch;
+		self
+	}
+
+	pub fn depthPitch(mut self, depthPitch : DeviceSize) -> Self {
+		self.depthPitch = depthPitch;
+		self
+	}
+
+}
+
+impl ComponentMapping {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn r(mut self, r : ComponentSwizzle) -> Self {
+		self.r = r;
+		self
+	}
+
+	pub fn g(mut self, g : ComponentSwizzle) -> Self {
+		self.g = g;
+		self
+	}
+
+	pub fn b(mut self, b : ComponentSwizzle) -> Self {
+		self.b = b;
+		self
+	}
+
+	pub fn a(mut self, a : ComponentSwizzle) -> Self {
+		self.a = a;
+		self
+	}
+
+}
+
+impl ImageSubresourceRange {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn aspectMask(mut self, aspectMask : ImageAspectFlags) -> Self {
+		self.aspectMask = aspectMask;
+		self
+	}
+
+	pub fn baseMipLevel(mut self, baseMipLevel : u32) -> Self {
+		self.baseMipLevel = baseMipLevel;
+		self
+	}
+
+	pub fn levelCount(mut self, levelCount : u32) -> Self {
+		self.levelCount = levelCount;
+		self
+	}
+
+	pub fn baseArrayLayer(mut self, baseArrayLayer : u32) -> Self {
+		self.baseArrayLayer = baseArrayLayer;
+		self
+	}
+
+	pub fn layerCount(mut self, layerCount : u32) -> Self {
+		self.layerCount = layerCount;
+		self
+	}
+
+}
+
+impl ImageViewCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : ImageViewCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn image(mut self, image : Image) -> Self {
+		self.image = image;
+		self
+	}
+
+	pub fn viewType(mut self, viewType : ImageViewType) -> Self {
+		self.viewType = viewType;
+		self
+	}
+
+	pub fn format(mut self, format : Format) -> Self {
+		self.format = format;
+		self
+	}
+
+	pub fn components(mut self, components : ComponentMapping) -> Self {
+		self.components = components;
+		self
+	}
+
+	pub fn subresourceRange(mut self, subresourceRange : ImageSubresourceRange) -> Self {
+		self.subresourceRange = subresourceRange;
+		self
+	}
+
+}
+
+impl ShaderModuleCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : ShaderModuleCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn codeSize(mut self, codeSize : usize) -> Self {
+		self.codeSize = codeSize;
+		self
+	}
+
+	pub fn pCode(mut self, pCode : *const u32) -> Self {
+		self.pCode = pCode;
+		self
+	}
+
+}
+
+impl PipelineCacheCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineCacheCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn initialDataSize(mut self, initialDataSize : usize) -> Self {
+		self.initialDataSize = initialDataSize;
+		self
+	}
+
+	pub fn pInitialData(mut self, pInitialData : *const void) -> Self {
+		self.pInitialData = pInitialData;
+		self
+	}
+
+}
+
+impl SpecializationMapEntry {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn constantID(mut self, constantID : u32) -> Self {
+		self.constantID = constantID;
+		self
+	}
+
+	pub fn offset(mut self, offset : u32) -> Self {
+		self.offset = offset;
+		self
+	}
+
+	pub fn size(mut self, size : usize) -> Self {
+		self.size = size;
+		self
+	}
+
+}
+
+impl SpecializationInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn mapEntryCount(mut self, mapEntryCount : u32) -> Self {
+		self.mapEntryCount = mapEntryCount;
+		self
+	}
+
+	pub fn pMapEntries(mut self, pMapEntries : *const SpecializationMapEntry) -> Self {
+		self.pMapEntries = pMapEntries;
+		self
+	}
+
+	pub fn dataSize(mut self, dataSize : usize) -> Self {
+		self.dataSize = dataSize;
+		self
+	}
+
+	pub fn pData(mut self, pData : *const void) -> Self {
+		self.pData = pData;
+		self
+	}
+
+}
+
+impl PipelineShaderStageCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineShaderStageCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn stage(mut self, stage : ShaderStageFlagBits) -> Self {
+		self.stage = stage;
+		self
+	}
+
+	pub fn module(mut self, module : ShaderModule) -> Self {
+		self.module = module;
+		self
+	}
+
+	pub fn pName(mut self, pName : *const i8) -> Self {
+		self.pName = pName;
+		self
+	}
+
+	pub fn pSpecializationInfo(mut self, pSpecializationInfo : *const SpecializationInfo) -> Self {
+		self.pSpecializationInfo = pSpecializationInfo;
+		self
+	}
+
+}
+
+impl VertexInputBindingDescription {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn binding(mut self, binding : u32) -> Self {
+		self.binding = binding;
+		self
+	}
+
+	pub fn stride(mut self, stride : u32) -> Self {
+		self.stride = stride;
+		self
+	}
+
+	pub fn inputRate(mut self, inputRate : VertexInputRate) -> Self {
+		self.inputRate = inputRate;
+		self
+	}
+
+}
+
+impl VertexInputAttributeDescription {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn location(mut self, location : u32) -> Self {
+		self.location = location;
+		self
+	}
+
+	pub fn binding(mut self, binding : u32) -> Self {
+		self.binding = binding;
+		self
+	}
+
+	pub fn format(mut self, format : Format) -> Self {
+		self.format = format;
+		self
+	}
+
+	pub fn offset(mut self, offset : u32) -> Self {
+		self.offset = offset;
+		self
+	}
+
+}
+
+impl PipelineVertexInputStateCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineVertexInputStateCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn vertexBindingDescriptionCount(mut self, vertexBindingDescriptionCount : u32) -> Self {
+		self.vertexBindingDescriptionCount = vertexBindingDescriptionCount;
+		self
+	}
+
+	pub fn pVertexBindingDescriptions(mut self, pVertexBindingDescriptions : *const VertexInputBindingDescription) -> Self {
+		self.pVertexBindingDescriptions = pVertexBindingDescriptions;
+		self
+	}
+
+	pub fn vertexAttributeDescriptionCount(mut self, vertexAttributeDescriptionCount : u32) -> Self {
+		self.vertexAttributeDescriptionCount = vertexAttributeDescriptionCount;
+		self
+	}
+
+	pub fn pVertexAttributeDescriptions(mut self, pVertexAttributeDescriptions : *const VertexInputAttributeDescription) -> Self {
+		self.pVertexAttributeDescriptions = pVertexAttributeDescriptions;
+		self
+	}
+
+}
+
+impl PipelineInputAssemblyStateCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineInputAssemblyStateCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn topology(mut self, topology : PrimitiveTopology) -> Self {
+		self.topology = topology;
+		self
+	}
+
+	pub fn primitiveRestartEnable(mut self, primitiveRestartEnable : Bool32) -> Self {
+		self.primitiveRestartEnable = primitiveRestartEnable;
+		self
+	}
+
+}
+
+impl PipelineTessellationStateCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineTessellationStateCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn patchControlPoints(mut self, patchControlPoints : u32) -> Self {
+		self.patchControlPoints = patchControlPoints;
+		self
+	}
+
+}
+
+impl Viewport {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn x(mut self, x : f32) -> Self {
+		self.x = x;
+		self
+	}
+
+	pub fn y(mut self, y : f32) -> Self {
+		self.y = y;
+		self
+	}
+
+	pub fn width(mut self, width : f32) -> Self {
+		self.width = width;
+		self
+	}
+
+	pub fn height(mut self, height : f32) -> Self {
+		self.height = height;
+		self
+	}
+
+	pub fn minDepth(mut self, minDepth : f32) -> Self {
+		self.minDepth = minDepth;
+		self
+	}
+
+	pub fn maxDepth(mut self, maxDepth : f32) -> Self {
+		self.maxDepth = maxDepth;
+		self
+	}
+
+}
+
+impl Offset2D {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn x(mut self, x : i32) -> Self {
+		self.x = x;
+		self
+	}
+
+	pub fn y(mut self, y : i32) -> Self {
+		self.y = y;
+		self
+	}
+
+}
+
+impl Extent2D {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn width(mut self, width : u32) -> Self {
+		self.width = width;
+		self
+	}
+
+	pub fn height(mut self, height : u32) -> Self {
+		self.height = height;
+		self
+	}
+
+}
+
+impl Rect2D {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn offset(mut self, offset : Offset2D) -> Self {
+		self.offset = offset;
+		self
+	}
+
+	pub fn extent(mut self, extent : Extent2D) -> Self {
+		self.extent = extent;
+		self
+	}
+
+}
+
+impl PipelineViewportStateCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineViewportStateCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn viewportCount(mut self, viewportCount : u32) -> Self {
+		self.viewportCount = viewportCount;
+		self
+	}
+
+	pub fn pViewports(mut self, pViewports : *const Viewport) -> Self {
+		self.pViewports = pViewports;
+		self
+	}
+
+	pub fn scissorCount(mut self, scissorCount : u32) -> Self {
+		self.scissorCount = scissorCount;
+		self
+	}
+
+	pub fn pScissors(mut self, pScissors : *const Rect2D) -> Self {
+		self.pScissors = pScissors;
+		self
+	}
+
+}
+
+impl PipelineRasterizationStateCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineRasterizationStateCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn depthClampEnable(mut self, depthClampEnable : Bool32) -> Self {
+		self.depthClampEnable = depthClampEnable;
+		self
+	}
+
+	pub fn rasterizerDiscardEnable(mut self, rasterizerDiscardEnable : Bool32) -> Self {
+		self.rasterizerDiscardEnable = rasterizerDiscardEnable;
+		self
+	}
+
+	pub fn polygonMode(mut self, polygonMode : PolygonMode) -> Self {
+		self.polygonMode = polygonMode;
+		self
+	}
+
+	pub fn cullMode(mut self, cullMode : CullModeFlags) -> Self {
+		self.cullMode = cullMode;
+		self
+	}
+
+	pub fn frontFace(mut self, frontFace : FrontFace) -> Self {
+		self.frontFace = frontFace;
+		self
+	}
+
+	pub fn depthBiasEnable(mut self, depthBiasEnable : Bool32) -> Self {
+		self.depthBiasEnable = depthBiasEnable;
+		self
+	}
+
+	pub fn depthBiasConstantFactor(mut self, depthBiasConstantFactor : f32) -> Self {
+		self.depthBiasConstantFactor = depthBiasConstantFactor;
+		self
+	}
+
+	pub fn depthBiasClamp(mut self, depthBiasClamp : f32) -> Self {
+		self.depthBiasClamp = depthBiasClamp;
+		self
+	}
+
+	pub fn depthBiasSlopeFactor(mut self, depthBiasSlopeFactor : f32) -> Self {
+		self.depthBiasSlopeFactor = depthBiasSlopeFactor;
+		self
+	}
+
+	pub fn lineWidth(mut self, lineWidth : f32) -> Self {
+		self.lineWidth = lineWidth;
+		self
+	}
+
+}
+
+impl PipelineMultisampleStateCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineMultisampleStateCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn rasterizationSamples(mut self, rasterizationSamples : SampleCountFlagBits) -> Self {
+		self.rasterizationSamples = rasterizationSamples;
+		self
+	}
+
+	pub fn sampleShadingEnable(mut self, sampleShadingEnable : Bool32) -> Self {
+		self.sampleShadingEnable = sampleShadingEnable;
+		self
+	}
+
+	pub fn minSampleShading(mut self, minSampleShading : f32) -> Self {
+		self.minSampleShading = minSampleShading;
+		self
+	}
+
+	pub fn pSampleMask(mut self, pSampleMask : *const SampleMask) -> Self {
+		self.pSampleMask = pSampleMask;
+		self
+	}
+
+	pub fn alphaToCoverageEnable(mut self, alphaToCoverageEnable : Bool32) -> Self {
+		self.alphaToCoverageEnable = alphaToCoverageEnable;
+		self
+	}
+
+	pub fn alphaToOneEnable(mut self, alphaToOneEnable : Bool32) -> Self {
+		self.alphaToOneEnable = alphaToOneEnable;
+		self
+	}
+
+}
+
+impl StencilOpState {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn failOp(mut self, failOp : StencilOp) -> Self {
+		self.failOp = failOp;
+		self
+	}
+
+	pub fn passOp(mut self, passOp : StencilOp) -> Self {
+		self.passOp = passOp;
+		self
+	}
+
+	pub fn depthFailOp(mut self, depthFailOp : StencilOp) -> Self {
+		self.depthFailOp = depthFailOp;
+		self
+	}
+
+	pub fn compareOp(mut self, compareOp : CompareOp) -> Self {
+		self.compareOp = compareOp;
+		self
+	}
+
+	pub fn compareMask(mut self, compareMask : u32) -> Self {
+		self.compareMask = compareMask;
+		self
+	}
+
+	pub fn writeMask(mut self, writeMask : u32) -> Self {
+		self.writeMask = writeMask;
+		self
+	}
+
+	pub fn reference(mut self, reference : u32) -> Self {
+		self.reference = reference;
+		self
+	}
+
+}
+
+impl PipelineDepthStencilStateCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineDepthStencilStateCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn depthTestEnable(mut self, depthTestEnable : Bool32) -> Self {
+		self.depthTestEnable = depthTestEnable;
+		self
+	}
+
+	pub fn depthWriteEnable(mut self, depthWriteEnable : Bool32) -> Self {
+		self.depthWriteEnable = depthWriteEnable;
+		self
+	}
+
+	pub fn depthCompareOp(mut self, depthCompareOp : CompareOp) -> Self {
+		self.depthCompareOp = depthCompareOp;
+		self
+	}
+
+	pub fn depthBoundsTestEnable(mut self, depthBoundsTestEnable : Bool32) -> Self {
+		self.depthBoundsTestEnable = depthBoundsTestEnable;
+		self
+	}
+
+	pub fn stencilTestEnable(mut self, stencilTestEnable : Bool32) -> Self {
+		self.stencilTestEnable = stencilTestEnable;
+		self
+	}
+
+	pub fn front(mut self, front : StencilOpState) -> Self {
+		self.front = front;
+		self
+	}
+
+	pub fn back(mut self, back : StencilOpState) -> Self {
+		self.back = back;
+		self
+	}
+
+	pub fn minDepthBounds(mut self, minDepthBounds : f32) -> Self {
+		self.minDepthBounds = minDepthBounds;
+		self
+	}
+
+	pub fn maxDepthBounds(mut self, maxDepthBounds : f32) -> Self {
+		self.maxDepthBounds = maxDepthBounds;
+		self
+	}
+
+}
+
+impl PipelineColorBlendAttachmentState {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn blendEnable(mut self, blendEnable : Bool32) -> Self {
+		self.blendEnable = blendEnable;
+		self
+	}
+
+	pub fn srcColorBlendFactor(mut self, srcColorBlendFactor : BlendFactor) -> Self {
+		self.srcColorBlendFactor = srcColorBlendFactor;
+		self
+	}
+
+	pub fn dstColorBlendFactor(mut self, dstColorBlendFactor : BlendFactor) -> Self {
+		self.dstColorBlendFactor = dstColorBlendFactor;
+		self
+	}
+
+	pub fn colorBlendOp(mut self, colorBlendOp : BlendOp) -> Self {
+		self.colorBlendOp = colorBlendOp;
+		self
+	}
+
+	pub fn srcAlphaBlendFactor(mut self, srcAlphaBlendFactor : BlendFactor) -> Self {
+		self.srcAlphaBlendFactor = srcAlphaBlendFactor;
+		self
+	}
+
+	pub fn dstAlphaBlendFactor(mut self, dstAlphaBlendFactor : BlendFactor) -> Self {
+		self.dstAlphaBlendFactor = dstAlphaBlendFactor;
+		self
+	}
+
+	pub fn alphaBlendOp(mut self, alphaBlendOp : BlendOp) -> Self {
+		self.alphaBlendOp = alphaBlendOp;
+		self
+	}
+
+	pub fn colorWriteMask(mut self, colorWriteMask : ColorComponentFlags) -> Self {
+		self.colorWriteMask = colorWriteMask;
+		self
+	}
+
+}
+
+impl PipelineColorBlendStateCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineColorBlendStateCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn logicOpEnable(mut self, logicOpEnable : Bool32) -> Self {
+		self.logicOpEnable = logicOpEnable;
+		self
+	}
+
+	pub fn logicOp(mut self, logicOp : LogicOp) -> Self {
+		self.logicOp = logicOp;
+		self
+	}
+
+	pub fn attachmentCount(mut self, attachmentCount : u32) -> Self {
+		self.attachmentCount = attachmentCount;
+		self
+	}
+
+	pub fn pAttachments(mut self, pAttachments : *const PipelineColorBlendAttachmentState) -> Self {
+		self.pAttachments = pAttachments;
+		self
+	}
+
+	pub fn blendConstants(mut self, blendConstants : [f32;4]) -> Self {
+		self.blendConstants = blendConstants;
+		self
+	}
+
+}
+
+impl PipelineDynamicStateCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineDynamicStateCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn dynamicStateCount(mut self, dynamicStateCount : u32) -> Self {
+		self.dynamicStateCount = dynamicStateCount;
+		self
+	}
+
+	pub fn pDynamicStates(mut self, pDynamicStates : *const DynamicState) -> Self {
+		self.pDynamicStates = pDynamicStates;
+		self
+	}
+
+}
+
+impl GraphicsPipelineCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn stageCount(mut self, stageCount : u32) -> Self {
+		self.stageCount = stageCount;
+		self
+	}
+
+	pub fn pStages(mut self, pStages : *const PipelineShaderStageCreateInfo) -> Self {
+		self.pStages = pStages;
+		self
+	}
+
+	pub fn pVertexInputState(mut self, pVertexInputState : *const PipelineVertexInputStateCreateInfo) -> Self {
+		self.pVertexInputState = pVertexInputState;
+		self
+	}
+
+	pub fn pInputAssemblyState(mut self, pInputAssemblyState : *const PipelineInputAssemblyStateCreateInfo) -> Self {
+		self.pInputAssemblyState = pInputAssemblyState;
+		self
+	}
+
+	pub fn pTessellationState(mut self, pTessellationState : *const PipelineTessellationStateCreateInfo) -> Self {
+		self.pTessellationState = pTessellationState;
+		self
+	}
+
+	pub fn pViewportState(mut self, pViewportState : *const PipelineViewportStateCreateInfo) -> Self {
+		self.pViewportState = pViewportState;
+		self
+	}
+
+	pub fn pRasterizationState(mut self, pRasterizationState : *const PipelineRasterizationStateCreateInfo) -> Self {
+		self.pRasterizationState = pRasterizationState;
+		self
+	}
+
+	pub fn pMultisampleState(mut self, pMultisampleState : *const PipelineMultisampleStateCreateInfo) -> Self {
+		self.pMultisampleState = pMultisampleState;
+		self
+	}
+
+	pub fn pDepthStencilState(mut self, pDepthStencilState : *const PipelineDepthStencilStateCreateInfo) -> Self {
+		self.pDepthStencilState = pDepthStencilState;
+		self
+	}
+
+	pub fn pColorBlendState(mut self, pColorBlendState : *const PipelineColorBlendStateCreateInfo) -> Self {
+		self.pColorBlendState = pColorBlendState;
+		self
+	}
+
+	pub fn pDynamicState(mut self, pDynamicState : *const PipelineDynamicStateCreateInfo) -> Self {
+		self.pDynamicState = pDynamicState;
+		self
+	}
+
+	pub fn layout(mut self, layout : PipelineLayout) -> Self {
+		self.layout = layout;
+		self
+	}
+
+	pub fn renderPass(mut self, renderPass : RenderPass) -> Self {
+		self.renderPass = renderPass;
+		self
+	}
+
+	pub fn subpass(mut self, subpass : u32) -> Self {
+		self.subpass = subpass;
+		self
+	}
+
+	pub fn basePipelineHandle(mut self, basePipelineHandle : Pipeline) -> Self {
+		self.basePipelineHandle = basePipelineHandle;
+		self
+	}
+
+	pub fn basePipelineIndex(mut self, basePipelineIndex : i32) -> Self {
+		self.basePipelineIndex = basePipelineIndex;
+		self
+	}
+
+}
+
+impl ComputePipelineCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn stage(mut self, stage : PipelineShaderStageCreateInfo) -> Self {
+		self.stage = stage;
+		self
+	}
+
+	pub fn layout(mut self, layout : PipelineLayout) -> Self {
+		self.layout = layout;
+		self
+	}
+
+	pub fn basePipelineHandle(mut self, basePipelineHandle : Pipeline) -> Self {
+		self.basePipelineHandle = basePipelineHandle;
+		self
+	}
+
+	pub fn basePipelineIndex(mut self, basePipelineIndex : i32) -> Self {
+		self.basePipelineIndex = basePipelineIndex;
+		self
+	}
+
+}
+
+impl PushConstantRange {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn stageFlags(mut self, stageFlags : ShaderStageFlags) -> Self {
+		self.stageFlags = stageFlags;
+		self
+	}
+
+	pub fn offset(mut self, offset : u32) -> Self {
+		self.offset = offset;
+		self
+	}
+
+	pub fn size(mut self, size : u32) -> Self {
+		self.size = size;
+		self
+	}
+
+}
+
+impl PipelineLayoutCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineLayoutCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn setLayoutCount(mut self, setLayoutCount : u32) -> Self {
+		self.setLayoutCount = setLayoutCount;
+		self
+	}
+
+	pub fn pSetLayouts(mut self, pSetLayouts : *const DescriptorSetLayout) -> Self {
+		self.pSetLayouts = pSetLayouts;
+		self
+	}
+
+	pub fn pushConstantRangeCount(mut self, pushConstantRangeCount : u32) -> Self {
+		self.pushConstantRangeCount = pushConstantRangeCount;
+		self
+	}
+
+	pub fn pPushConstantRanges(mut self, pPushConstantRanges : *const PushConstantRange) -> Self {
+		self.pPushConstantRanges = pPushConstantRanges;
+		self
+	}
+
+}
+
+impl SamplerCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : SamplerCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn magFilter(mut self, magFilter : Filter) -> Self {
+		self.magFilter = magFilter;
+		self
+	}
+
+	pub fn minFilter(mut self, minFilter : Filter) -> Self {
+		self.minFilter = minFilter;
+		self
+	}
+
+	pub fn mipmapMode(mut self, mipmapMode : SamplerMipmapMode) -> Self {
+		self.mipmapMode = mipmapMode;
+		self
+	}
+
+	pub fn addressModeU(mut self, addressModeU : SamplerAddressMode) -> Self {
+		self.addressModeU = addressModeU;
+		self
+	}
+
+	pub fn addressModeV(mut self, addressModeV : SamplerAddressMode) -> Self {
+		self.addressModeV = addressModeV;
+		self
+	}
+
+	pub fn addressModeW(mut self, addressModeW : SamplerAddressMode) -> Self {
+		self.addressModeW = addressModeW;
+		self
+	}
+
+	pub fn mipLodBias(mut self, mipLodBias : f32) -> Self {
+		self.mipLodBias = mipLodBias;
+		self
+	}
+
+	pub fn anisotropyEnable(mut self, anisotropyEnable : Bool32) -> Self {
+		self.anisotropyEnable = anisotropyEnable;
+		self
+	}
+
+	pub fn maxAnisotropy(mut self, maxAnisotropy : f32) -> Self {
+		self.maxAnisotropy = maxAnisotropy;
+		self
+	}
+
+	pub fn compareEnable(mut self, compareEnable : Bool32) -> Self {
+		self.compareEnable = compareEnable;
+		self
+	}
+
+	pub fn compareOp(mut self, compareOp : CompareOp) -> Self {
+		self.compareOp = compareOp;
+		self
+	}
+
+	pub fn minLod(mut self, minLod : f32) -> Self {
+		self.minLod = minLod;
+		self
+	}
+
+	pub fn maxLod(mut self, maxLod : f32) -> Self {
+		self.maxLod = maxLod;
+		self
+	}
+
+	pub fn borderColor(mut self, borderColor : BorderColor) -> Self {
+		self.borderColor = borderColor;
+		self
+	}
+
+	pub fn unnormalizedCoordinates(mut self, unnormalizedCoordinates : Bool32) -> Self {
+		self.unnormalizedCoordinates = unnormalizedCoordinates;
+		self
+	}
+
+}
+
+impl DescriptorSetLayoutBinding {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn binding(mut self, binding : u32) -> Self {
+		self.binding = binding;
+		self
+	}
+
+	pub fn descriptorType(mut self, descriptorType : DescriptorType) -> Self {
+		self.descriptorType = descriptorType;
+		self
+	}
+
+	pub fn descriptorCount(mut self, descriptorCount : u32) -> Self {
+		self.descriptorCount = descriptorCount;
+		self
+	}
+
+	pub fn stageFlags(mut self, stageFlags : ShaderStageFlags) -> Self {
+		self.stageFlags = stageFlags;
+		self
+	}
+
+	pub fn pImmutableSamplers(mut self, pImmutableSamplers : *const Sampler) -> Self {
+		self.pImmutableSamplers = pImmutableSamplers;
+		self
+	}
+
+}
+
+impl DescriptorSetLayoutCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : DescriptorSetLayoutCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn bindingCount(mut self, bindingCount : u32) -> Self {
+		self.bindingCount = bindingCount;
+		self
+	}
+
+	pub fn pBindings(mut self, pBindings : *const DescriptorSetLayoutBinding) -> Self {
+		self.pBindings = pBindings;
+		self
+	}
+
+}
+
+impl DescriptorPoolSize {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn r#type(mut self, r#type : DescriptorType) -> Self {
+		self.r#type = r#type;
+		self
+	}
+
+	pub fn descriptorCount(mut self, descriptorCount : u32) -> Self {
+		self.descriptorCount = descriptorCount;
+		self
+	}
+
+}
+
+impl DescriptorPoolCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : DescriptorPoolCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn maxSets(mut self, maxSets : u32) -> Self {
+		self.maxSets = maxSets;
+		self
+	}
+
+	pub fn poolSizeCount(mut self, poolSizeCount : u32) -> Self {
+		self.poolSizeCount = poolSizeCount;
+		self
+	}
+
+	pub fn pPoolSizes(mut self, pPoolSizes : *const DescriptorPoolSize) -> Self {
+		self.pPoolSizes = pPoolSizes;
+		self
+	}
+
+}
+
+impl DescriptorSetAllocateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn descriptorPool(mut self, descriptorPool : DescriptorPool) -> Self {
+		self.descriptorPool = descriptorPool;
+		self
+	}
+
+	pub fn descriptorSetCount(mut self, descriptorSetCount : u32) -> Self {
+		self.descriptorSetCount = descriptorSetCount;
+		self
+	}
+
+	pub fn pSetLayouts(mut self, pSetLayouts : *const DescriptorSetLayout) -> Self {
+		self.pSetLayouts = pSetLayouts;
+		self
+	}
+
+}
+
+impl DescriptorImageInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sampler(mut self, sampler : Sampler) -> Self {
+		self.sampler = sampler;
+		self
+	}
+
+	pub fn imageView(mut self, imageView : ImageView) -> Self {
+		self.imageView = imageView;
+		self
+	}
+
+	pub fn imageLayout(mut self, imageLayout : ImageLayout) -> Self {
+		self.imageLayout = imageLayout;
+		self
+	}
+
+}
+
+impl DescriptorBufferInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn buffer(mut self, buffer : Buffer) -> Self {
+		self.buffer = buffer;
+		self
+	}
+
+	pub fn offset(mut self, offset : DeviceSize) -> Self {
+		self.offset = offset;
+		self
+	}
+
+	pub fn range(mut self, range : DeviceSize) -> Self {
+		self.range = range;
+		self
+	}
+
+}
+
+impl WriteDescriptorSet {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn dstSet(mut self, dstSet : DescriptorSet) -> Self {
+		self.dstSet = dstSet;
+		self
+	}
+
+	pub fn dstBinding(mut self, dstBinding : u32) -> Self {
+		self.dstBinding = dstBinding;
+		self
+	}
+
+	pub fn dstArrayElement(mut self, dstArrayElement : u32) -> Self {
+		self.dstArrayElement = dstArrayElement;
+		self
+	}
+
+	pub fn descriptorCount(mut self, descriptorCount : u32) -> Self {
+		self.descriptorCount = descriptorCount;
+		self
+	}
+
+	pub fn descriptorType(mut self, descriptorType : DescriptorType) -> Self {
+		self.descriptorType = descriptorType;
+		self
+	}
+
+	pub fn pImageInfo(mut self, pImageInfo : *const DescriptorImageInfo) -> Self {
+		self.pImageInfo = pImageInfo;
+		self
+	}
+
+	pub fn pBufferInfo(mut self, pBufferInfo : *const DescriptorBufferInfo) -> Self {
+		self.pBufferInfo = pBufferInfo;
+		self
+	}
+
+	pub fn pTexelBufferView(mut self, pTexelBufferView : *const BufferView) -> Self {
+		self.pTexelBufferView = pTexelBufferView;
+		self
+	}
+
+}
+
+impl CopyDescriptorSet {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn srcSet(mut self, srcSet : DescriptorSet) -> Self {
+		self.srcSet = srcSet;
+		self
+	}
+
+	pub fn srcBinding(mut self, srcBinding : u32) -> Self {
+		self.srcBinding = srcBinding;
+		self
+	}
+
+	pub fn srcArrayElement(mut self, srcArrayElement : u32) -> Self {
+		self.srcArrayElement = srcArrayElement;
+		self
+	}
+
+	pub fn dstSet(mut self, dstSet : DescriptorSet) -> Self {
+		self.dstSet = dstSet;
+		self
+	}
+
+	pub fn dstBinding(mut self, dstBinding : u32) -> Self {
+		self.dstBinding = dstBinding;
+		self
+	}
+
+	pub fn dstArrayElement(mut self, dstArrayElement : u32) -> Self {
+		self.dstArrayElement = dstArrayElement;
+		self
+	}
+
+	pub fn descriptorCount(mut self, descriptorCount : u32) -> Self {
+		self.descriptorCount = descriptorCount;
+		self
+	}
+
+}
+
+impl FramebufferCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : FramebufferCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn renderPass(mut self, renderPass : RenderPass) -> Self {
+		self.renderPass = renderPass;
+		self
+	}
+
+	pub fn attachmentCount(mut self, attachmentCount : u32) -> Self {
+		self.attachmentCount = attachmentCount;
+		self
+	}
+
+	pub fn pAttachments(mut self, pAttachments : *const ImageView) -> Self {
+		self.pAttachments = pAttachments;
+		self
+	}
+
+	pub fn width(mut self, width : u32) -> Self {
+		self.width = width;
+		self
+	}
+
+	pub fn height(mut self, height : u32) -> Self {
+		self.height = height;
+		self
+	}
+
+	pub fn layers(mut self, layers : u32) -> Self {
+		self.layers = layers;
+		self
+	}
+
+}
+
+impl AttachmentDescription {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn flags(mut self, flags : AttachmentDescriptionFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn format(mut self, format : Format) -> Self {
+		self.format = format;
+		self
+	}
+
+	pub fn samples(mut self, samples : SampleCountFlagBits) -> Self {
+		self.samples = samples;
+		self
+	}
+
+	pub fn loadOp(mut self, loadOp : AttachmentLoadOp) -> Self {
+		self.loadOp = loadOp;
+		self
+	}
+
+	pub fn storeOp(mut self, storeOp : AttachmentStoreOp) -> Self {
+		self.storeOp = storeOp;
+		self
+	}
+
+	pub fn stencilLoadOp(mut self, stencilLoadOp : AttachmentLoadOp) -> Self {
+		self.stencilLoadOp = stencilLoadOp;
+		self
+	}
+
+	pub fn stencilStoreOp(mut self, stencilStoreOp : AttachmentStoreOp) -> Self {
+		self.stencilStoreOp = stencilStoreOp;
+		self
+	}
+
+	pub fn initialLayout(mut self, initialLayout : ImageLayout) -> Self {
+		self.initialLayout = initialLayout;
+		self
+	}
+
+	pub fn finalLayout(mut self, finalLayout : ImageLayout) -> Self {
+		self.finalLayout = finalLayout;
+		self
+	}
+
+}
+
+impl AttachmentReference {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn attachment(mut self, attachment : u32) -> Self {
+		self.attachment = attachment;
+		self
+	}
+
+	pub fn layout(mut self, layout : ImageLayout) -> Self {
+		self.layout = layout;
+		self
+	}
+
+}
+
+impl SubpassDescription {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn flags(mut self, flags : SubpassDescriptionFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn pipelineBindPoint(mut self, pipelineBindPoint : PipelineBindPoint) -> Self {
+		self.pipelineBindPoint = pipelineBindPoint;
+		self
+	}
+
+	pub fn inputAttachmentCount(mut self, inputAttachmentCount : u32) -> Self {
+		self.inputAttachmentCount = inputAttachmentCount;
+		self
+	}
+
+	pub fn pInputAttachments(mut self, pInputAttachments : *const AttachmentReference) -> Self {
+		self.pInputAttachments = pInputAttachments;
+		self
+	}
+
+	pub fn colorAttachmentCount(mut self, colorAttachmentCount : u32) -> Self {
+		self.colorAttachmentCount = colorAttachmentCount;
+		self
+	}
+
+	pub fn pColorAttachments(mut self, pColorAttachments : *const AttachmentReference) -> Self {
+		self.pColorAttachments = pColorAttachments;
+		self
+	}
+
+	pub fn pResolveAttachments(mut self, pResolveAttachments : *const AttachmentReference) -> Self {
+		self.pResolveAttachments = pResolveAttachments;
+		self
+	}
+
+	pub fn pDepthStencilAttachment(mut self, pDepthStencilAttachment : *const AttachmentReference) -> Self {
+		self.pDepthStencilAttachment = pDepthStencilAttachment;
+		self
+	}
+
+	pub fn preserveAttachmentCount(mut self, preserveAttachmentCount : u32) -> Self {
+		self.preserveAttachmentCount = preserveAttachmentCount;
+		self
+	}
+
+	pub fn pPreserveAttachments(mut self, pPreserveAttachments : *const u32) -> Self {
+		self.pPreserveAttachments = pPreserveAttachments;
+		self
+	}
+
+}
+
+impl SubpassDependency {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn srcSubpass(mut self, srcSubpass : u32) -> Self {
+		self.srcSubpass = srcSubpass;
+		self
+	}
+
+	pub fn dstSubpass(mut self, dstSubpass : u32) -> Self {
+		self.dstSubpass = dstSubpass;
+		self
+	}
+
+	pub fn srcStageMask(mut self, srcStageMask : PipelineStageFlags) -> Self {
+		self.srcStageMask = srcStageMask;
+		self
+	}
+
+	pub fn dstStageMask(mut self, dstStageMask : PipelineStageFlags) -> Self {
+		self.dstStageMask = dstStageMask;
+		self
+	}
+
+	pub fn srcAccessMask(mut self, srcAccessMask : AccessFlags) -> Self {
+		self.srcAccessMask = srcAccessMask;
+		self
+	}
+
+	pub fn dstAccessMask(mut self, dstAccessMask : AccessFlags) -> Self {
+		self.dstAccessMask = dstAccessMask;
+		self
+	}
+
+	pub fn dependencyFlags(mut self, dependencyFlags : DependencyFlags) -> Self {
+		self.dependencyFlags = dependencyFlags;
+		self
+	}
+
+}
+
+impl RenderPassCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : RenderPassCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn attachmentCount(mut self, attachmentCount : u32) -> Self {
+		self.attachmentCount = attachmentCount;
+		self
+	}
+
+	pub fn pAttachments(mut self, pAttachments : *const AttachmentDescription) -> Self {
+		self.pAttachments = pAttachments;
+		self
+	}
+
+	pub fn subpassCount(mut self, subpassCount : u32) -> Self {
+		self.subpassCount = subpassCount;
+		self
+	}
+
+	pub fn pSubpasses(mut self, pSubpasses : *const SubpassDescription) -> Self {
+		self.pSubpasses = pSubpasses;
+		self
+	}
+
+	pub fn dependencyCount(mut self, dependencyCount : u32) -> Self {
+		self.dependencyCount = dependencyCount;
+		self
+	}
+
+	pub fn pDependencies(mut self, pDependencies : *const SubpassDependency) -> Self {
+		self.pDependencies = pDependencies;
+		self
+	}
+
+}
+
+impl CommandPoolCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : CommandPoolCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn queueFamilyIndex(mut self, queueFamilyIndex : u32) -> Self {
+		self.queueFamilyIndex = queueFamilyIndex;
+		self
+	}
+
+}
+
+impl CommandBufferAllocateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn commandPool(mut self, commandPool : CommandPool) -> Self {
+		self.commandPool = commandPool;
+		self
+	}
+
+	pub fn level(mut self, level : CommandBufferLevel) -> Self {
+		self.level = level;
+		self
+	}
+
+	pub fn commandBufferCount(mut self, commandBufferCount : u32) -> Self {
+		self.commandBufferCount = commandBufferCount;
+		self
+	}
+
+}
+
+impl CommandBufferInheritanceInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn renderPass(mut self, renderPass : RenderPass) -> Self {
+		self.renderPass = renderPass;
+		self
+	}
+
+	pub fn subpass(mut self, subpass : u32) -> Self {
+		self.subpass = subpass;
+		self
+	}
+
+	pub fn framebuffer(mut self, framebuffer : Framebuffer) -> Self {
+		self.framebuffer = framebuffer;
+		self
+	}
+
+	pub fn occlusionQueryEnable(mut self, occlusionQueryEnable : Bool32) -> Self {
+		self.occlusionQueryEnable = occlusionQueryEnable;
+		self
+	}
+
+	pub fn queryFlags(mut self, queryFlags : QueryControlFlags) -> Self {
+		self.queryFlags = queryFlags;
+		self
+	}
+
+	pub fn pipelineStatistics(mut self, pipelineStatistics : QueryPipelineStatisticFlags) -> Self {
+		self.pipelineStatistics = pipelineStatistics;
+		self
+	}
+
+}
+
+impl CommandBufferBeginInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : CommandBufferUsageFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn pInheritanceInfo(mut self, pInheritanceInfo : *const CommandBufferInheritanceInfo) -> Self {
+		self.pInheritanceInfo = pInheritanceInfo;
+		self
+	}
+
+}
+
+impl BufferCopy {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn srcOffset(mut self, srcOffset : DeviceSize) -> Self {
+		self.srcOffset = srcOffset;
+		self
+	}
+
+	pub fn dstOffset(mut self, dstOffset : DeviceSize) -> Self {
+		self.dstOffset = dstOffset;
+		self
+	}
+
+	pub fn size(mut self, size : DeviceSize) -> Self {
+		self.size = size;
+		self
+	}
+
+}
+
+impl ImageSubresourceLayers {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn aspectMask(mut self, aspectMask : ImageAspectFlags) -> Self {
+		self.aspectMask = aspectMask;
+		self
+	}
+
+	pub fn mipLevel(mut self, mipLevel : u32) -> Self {
+		self.mipLevel = mipLevel;
+		self
+	}
+
+	pub fn baseArrayLayer(mut self, baseArrayLayer : u32) -> Self {
+		self.baseArrayLayer = baseArrayLayer;
+		self
+	}
+
+	pub fn layerCount(mut self, layerCount : u32) -> Self {
+		self.layerCount = layerCount;
+		self
+	}
+
+}
+
+impl ImageCopy {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn srcSubresource(mut self, srcSubresource : ImageSubresourceLayers) -> Self {
+		self.srcSubresource = srcSubresource;
+		self
+	}
+
+	pub fn srcOffset(mut self, srcOffset : Offset3D) -> Self {
+		self.srcOffset = srcOffset;
+		self
+	}
+
+	pub fn dstSubresource(mut self, dstSubresource : ImageSubresourceLayers) -> Self {
+		self.dstSubresource = dstSubresource;
+		self
+	}
+
+	pub fn dstOffset(mut self, dstOffset : Offset3D) -> Self {
+		self.dstOffset = dstOffset;
+		self
+	}
+
+	pub fn extent(mut self, extent : Extent3D) -> Self {
+		self.extent = extent;
+		self
+	}
+
+}
+
+impl ImageBlit {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn srcSubresource(mut self, srcSubresource : ImageSubresourceLayers) -> Self {
+		self.srcSubresource = srcSubresource;
+		self
+	}
+
+	pub fn srcOffsets(mut self, srcOffsets : [Offset3D;2]) -> Self {
+		self.srcOffsets = srcOffsets;
+		self
+	}
+
+	pub fn dstSubresource(mut self, dstSubresource : ImageSubresourceLayers) -> Self {
+		self.dstSubresource = dstSubresource;
+		self
+	}
+
+	pub fn dstOffsets(mut self, dstOffsets : [Offset3D;2]) -> Self {
+		self.dstOffsets = dstOffsets;
+		self
+	}
+
+}
+
+impl BufferImageCopy {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn bufferOffset(mut self, bufferOffset : DeviceSize) -> Self {
+		self.bufferOffset = bufferOffset;
+		self
+	}
+
+	pub fn bufferRowLength(mut self, bufferRowLength : u32) -> Self {
+		self.bufferRowLength = bufferRowLength;
+		self
+	}
+
+	pub fn bufferImageHeight(mut self, bufferImageHeight : u32) -> Self {
+		self.bufferImageHeight = bufferImageHeight;
+		self
+	}
+
+	pub fn imageSubresource(mut self, imageSubresource : ImageSubresourceLayers) -> Self {
+		self.imageSubresource = imageSubresource;
+		self
+	}
+
+	pub fn imageOffset(mut self, imageOffset : Offset3D) -> Self {
+		self.imageOffset = imageOffset;
+		self
+	}
+
+	pub fn imageExtent(mut self, imageExtent : Extent3D) -> Self {
+		self.imageExtent = imageExtent;
+		self
+	}
+
+}
+
+impl ClearColorValue {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn float32(mut self, float32 : [f32;4]) -> Self {
+		self.float32 = float32;
+		self
+	}
+
+}
+
+impl ClearDepthStencilValue {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn depth(mut self, depth : f32) -> Self {
+		self.depth = depth;
+		self
+	}
+
+	pub fn stencil(mut self, stencil : u32) -> Self {
+		self.stencil = stencil;
+		self
+	}
+
+}
+
+impl ClearValue {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn color(mut self, color : [f32;4]) -> Self {
+		self.color = color;
+		self
+	}
+
+}
+
+impl ClearAttachment {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn aspectMask(mut self, aspectMask : ImageAspectFlags) -> Self {
+		self.aspectMask = aspectMask;
+		self
+	}
+
+	pub fn colorAttachment(mut self, colorAttachment : u32) -> Self {
+		self.colorAttachment = colorAttachment;
+		self
+	}
+
+	pub fn clearValue(mut self, clearValue : ClearValue) -> Self {
+		self.clearValue = clearValue;
+		self
+	}
+
+}
+
+impl ClearRect {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn rect(mut self, rect : Rect2D) -> Self {
+		self.rect = rect;
+		self
+	}
+
+	pub fn baseArrayLayer(mut self, baseArrayLayer : u32) -> Self {
+		self.baseArrayLayer = baseArrayLayer;
+		self
+	}
+
+	pub fn layerCount(mut self, layerCount : u32) -> Self {
+		self.layerCount = layerCount;
+		self
+	}
+
+}
+
+impl ImageResolve {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn srcSubresource(mut self, srcSubresource : ImageSubresourceLayers) -> Self {
+		self.srcSubresource = srcSubresource;
+		self
+	}
+
+	pub fn srcOffset(mut self, srcOffset : Offset3D) -> Self {
+		self.srcOffset = srcOffset;
+		self
+	}
+
+	pub fn dstSubresource(mut self, dstSubresource : ImageSubresourceLayers) -> Self {
+		self.dstSubresource = dstSubresource;
+		self
+	}
+
+	pub fn dstOffset(mut self, dstOffset : Offset3D) -> Self {
+		self.dstOffset = dstOffset;
+		self
+	}
+
+	pub fn extent(mut self, extent : Extent3D) -> Self {
+		self.extent = extent;
+		self
+	}
+
+}
+
+impl MemoryBarrier {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn srcAccessMask(mut self, srcAccessMask : AccessFlags) -> Self {
+		self.srcAccessMask = srcAccessMask;
+		self
+	}
+
+	pub fn dstAccessMask(mut self, dstAccessMask : AccessFlags) -> Self {
+		self.dstAccessMask = dstAccessMask;
+		self
+	}
+
+}
+
+impl BufferMemoryBarrier {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn srcAccessMask(mut self, srcAccessMask : AccessFlags) -> Self {
+		self.srcAccessMask = srcAccessMask;
+		self
+	}
+
+	pub fn dstAccessMask(mut self, dstAccessMask : AccessFlags) -> Self {
+		self.dstAccessMask = dstAccessMask;
+		self
+	}
+
+	pub fn srcQueueFamilyIndex(mut self, srcQueueFamilyIndex : u32) -> Self {
+		self.srcQueueFamilyIndex = srcQueueFamilyIndex;
+		self
+	}
+
+	pub fn dstQueueFamilyIndex(mut self, dstQueueFamilyIndex : u32) -> Self {
+		self.dstQueueFamilyIndex = dstQueueFamilyIndex;
+		self
+	}
+
+	pub fn buffer(mut self, buffer : Buffer) -> Self {
+		self.buffer = buffer;
+		self
+	}
+
+	pub fn offset(mut self, offset : DeviceSize) -> Self {
+		self.offset = offset;
+		self
+	}
+
+	pub fn size(mut self, size : DeviceSize) -> Self {
+		self.size = size;
+		self
+	}
+
+}
+
+impl ImageMemoryBarrier {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn srcAccessMask(mut self, srcAccessMask : AccessFlags) -> Self {
+		self.srcAccessMask = srcAccessMask;
+		self
+	}
+
+	pub fn dstAccessMask(mut self, dstAccessMask : AccessFlags) -> Self {
+		self.dstAccessMask = dstAccessMask;
+		self
+	}
+
+	pub fn oldLayout(mut self, oldLayout : ImageLayout) -> Self {
+		self.oldLayout = oldLayout;
+		self
+	}
+
+	pub fn newLayout(mut self, newLayout : ImageLayout) -> Self {
+		self.newLayout = newLayout;
+		self
+	}
+
+	pub fn srcQueueFamilyIndex(mut self, srcQueueFamilyIndex : u32) -> Self {
+		self.srcQueueFamilyIndex = srcQueueFamilyIndex;
+		self
+	}
+
+	pub fn dstQueueFamilyIndex(mut self, dstQueueFamilyIndex : u32) -> Self {
+		self.dstQueueFamilyIndex = dstQueueFamilyIndex;
+		self
+	}
+
+	pub fn image(mut self, image : Image) -> Self {
+		self.image = image;
+		self
+	}
+
+	pub fn subresourceRange(mut self, subresourceRange : ImageSubresourceRange) -> Self {
+		self.subresourceRange = subresourceRange;
+		self
+	}
+
+}
+
+impl RenderPassBeginInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn renderPass(mut self, renderPass : RenderPass) -> Self {
+		self.renderPass = renderPass;
+		self
+	}
+
+	pub fn framebuffer(mut self, framebuffer : Framebuffer) -> Self {
+		self.framebuffer = framebuffer;
+		self
+	}
+
+	pub fn renderArea(mut self, renderArea : Rect2D) -> Self {
+		self.renderArea = renderArea;
+		self
+	}
+
+	pub fn clearValueCount(mut self, clearValueCount : u32) -> Self {
+		self.clearValueCount = clearValueCount;
+		self
+	}
+
+	pub fn pClearValues(mut self, pClearValues : *const ClearValue) -> Self {
+		self.pClearValues = pClearValues;
+		self
+	}
+
+}
+
+impl DispatchIndirectCommand {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn x(mut self, x : u32) -> Self {
+		self.x = x;
+		self
+	}
+
+	pub fn y(mut self, y : u32) -> Self {
+		self.y = y;
+		self
+	}
+
+	pub fn z(mut self, z : u32) -> Self {
+		self.z = z;
+		self
+	}
+
+}
+
+impl DrawIndexedIndirectCommand {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn indexCount(mut self, indexCount : u32) -> Self {
+		self.indexCount = indexCount;
+		self
+	}
+
+	pub fn instanceCount(mut self, instanceCount : u32) -> Self {
+		self.instanceCount = instanceCount;
+		self
+	}
+
+	pub fn firstIndex(mut self, firstIndex : u32) -> Self {
+		self.firstIndex = firstIndex;
+		self
+	}
+
+	pub fn vertexOffset(mut self, vertexOffset : i32) -> Self {
+		self.vertexOffset = vertexOffset;
+		self
+	}
+
+	pub fn firstInstance(mut self, firstInstance : u32) -> Self {
+		self.firstInstance = firstInstance;
+		self
+	}
+
+}
+
+impl DrawIndirectCommand {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn vertexCount(mut self, vertexCount : u32) -> Self {
+		self.vertexCount = vertexCount;
+		self
+	}
+
+	pub fn instanceCount(mut self, instanceCount : u32) -> Self {
+		self.instanceCount = instanceCount;
+		self
+	}
+
+	pub fn firstVertex(mut self, firstVertex : u32) -> Self {
+		self.firstVertex = firstVertex;
+		self
+	}
+
+	pub fn firstInstance(mut self, firstInstance : u32) -> Self {
+		self.firstInstance = firstInstance;
+		self
+	}
+
+}
+
+impl PhysicalDeviceSubgroupProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn subgroupSize(mut self, subgroupSize : u32) -> Self {
+		self.subgroupSize = subgroupSize;
+		self
+	}
+
+	pub fn supportedStages(mut self, supportedStages : ShaderStageFlags) -> Self {
+		self.supportedStages = supportedStages;
+		self
+	}
+
+	pub fn supportedOperations(mut self, supportedOperations : SubgroupFeatureFlags) -> Self {
+		self.supportedOperations = supportedOperations;
+		self
+	}
+
+	pub fn quadOperationsInAllStages(mut self, quadOperationsInAllStages : Bool32) -> Self {
+		self.quadOperationsInAllStages = quadOperationsInAllStages;
+		self
+	}
+
+}
+
+impl BindBufferMemoryInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn buffer(mut self, buffer : Buffer) -> Self {
+		self.buffer = buffer;
+		self
+	}
+
+	pub fn memory(mut self, memory : DeviceMemory) -> Self {
+		self.memory = memory;
+		self
+	}
+
+	pub fn memoryOffset(mut self, memoryOffset : DeviceSize) -> Self {
+		self.memoryOffset = memoryOffset;
+		self
+	}
+
+}
+
+impl BindImageMemoryInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn image(mut self, image : Image) -> Self {
+		self.image = image;
+		self
+	}
+
+	pub fn memory(mut self, memory : DeviceMemory) -> Self {
+		self.memory = memory;
+		self
+	}
+
+	pub fn memoryOffset(mut self, memoryOffset : DeviceSize) -> Self {
+		self.memoryOffset = memoryOffset;
+		self
+	}
+
+}
+
+impl PhysicalDevice16BitStorageFeatures {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn storageBuffer16BitAccess(mut self, storageBuffer16BitAccess : Bool32) -> Self {
+		self.storageBuffer16BitAccess = storageBuffer16BitAccess;
+		self
+	}
+
+	pub fn uniformAndStorageBuffer16BitAccess(mut self, uniformAndStorageBuffer16BitAccess : Bool32) -> Self {
+		self.uniformAndStorageBuffer16BitAccess = uniformAndStorageBuffer16BitAccess;
+		self
+	}
+
+	pub fn storagePushConstant16(mut self, storagePushConstant16 : Bool32) -> Self {
+		self.storagePushConstant16 = storagePushConstant16;
+		self
+	}
+
+	pub fn storageInputOutput16(mut self, storageInputOutput16 : Bool32) -> Self {
+		self.storageInputOutput16 = storageInputOutput16;
+		self
+	}
+
+}
+
+impl MemoryDedicatedRequirements {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn prefersDedicatedAllocation(mut self, prefersDedicatedAllocation : Bool32) -> Self {
+		self.prefersDedicatedAllocation = prefersDedicatedAllocation;
+		self
+	}
+
+	pub fn requiresDedicatedAllocation(mut self, requiresDedicatedAllocation : Bool32) -> Self {
+		self.requiresDedicatedAllocation = requiresDedicatedAllocation;
+		self
+	}
+
+}
+
+impl MemoryDedicatedAllocateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn image(mut self, image : Image) -> Self {
+		self.image = image;
+		self
+	}
+
+	pub fn buffer(mut self, buffer : Buffer) -> Self {
+		self.buffer = buffer;
+		self
+	}
+
+}
+
+impl MemoryAllocateFlagsInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : MemoryAllocateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn deviceMask(mut self, deviceMask : u32) -> Self {
+		self.deviceMask = deviceMask;
+		self
+	}
+
+}
+
+impl DeviceGroupRenderPassBeginInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn deviceMask(mut self, deviceMask : u32) -> Self {
+		self.deviceMask = deviceMask;
+		self
+	}
+
+	pub fn deviceRenderAreaCount(mut self, deviceRenderAreaCount : u32) -> Self {
+		self.deviceRenderAreaCount = deviceRenderAreaCount;
+		self
+	}
+
+	pub fn pDeviceRenderAreas(mut self, pDeviceRenderAreas : *const Rect2D) -> Self {
+		self.pDeviceRenderAreas = pDeviceRenderAreas;
+		self
+	}
+
+}
+
+impl DeviceGroupCommandBufferBeginInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn deviceMask(mut self, deviceMask : u32) -> Self {
+		self.deviceMask = deviceMask;
+		self
+	}
+
+}
+
+impl DeviceGroupSubmitInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn waitSemaphoreCount(mut self, waitSemaphoreCount : u32) -> Self {
+		self.waitSemaphoreCount = waitSemaphoreCount;
+		self
+	}
+
+	pub fn pWaitSemaphoreDeviceIndices(mut self, pWaitSemaphoreDeviceIndices : *const u32) -> Self {
+		self.pWaitSemaphoreDeviceIndices = pWaitSemaphoreDeviceIndices;
+		self
+	}
+
+	pub fn commandBufferCount(mut self, commandBufferCount : u32) -> Self {
+		self.commandBufferCount = commandBufferCount;
+		self
+	}
+
+	pub fn pCommandBufferDeviceMasks(mut self, pCommandBufferDeviceMasks : *const u32) -> Self {
+		self.pCommandBufferDeviceMasks = pCommandBufferDeviceMasks;
+		self
+	}
+
+	pub fn signalSemaphoreCount(mut self, signalSemaphoreCount : u32) -> Self {
+		self.signalSemaphoreCount = signalSemaphoreCount;
+		self
+	}
+
+	pub fn pSignalSemaphoreDeviceIndices(mut self, pSignalSemaphoreDeviceIndices : *const u32) -> Self {
+		self.pSignalSemaphoreDeviceIndices = pSignalSemaphoreDeviceIndices;
+		self
+	}
+
+}
+
+impl DeviceGroupBindSparseInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn resourceDeviceIndex(mut self, resourceDeviceIndex : u32) -> Self {
+		self.resourceDeviceIndex = resourceDeviceIndex;
+		self
+	}
+
+	pub fn memoryDeviceIndex(mut self, memoryDeviceIndex : u32) -> Self {
+		self.memoryDeviceIndex = memoryDeviceIndex;
+		self
+	}
+
+}
+
+impl BindBufferMemoryDeviceGroupInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn deviceIndexCount(mut self, deviceIndexCount : u32) -> Self {
+		self.deviceIndexCount = deviceIndexCount;
+		self
+	}
+
+	pub fn pDeviceIndices(mut self, pDeviceIndices : *const u32) -> Self {
+		self.pDeviceIndices = pDeviceIndices;
+		self
+	}
+
+}
+
+impl BindImageMemoryDeviceGroupInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn deviceIndexCount(mut self, deviceIndexCount : u32) -> Self {
+		self.deviceIndexCount = deviceIndexCount;
+		self
+	}
+
+	pub fn pDeviceIndices(mut self, pDeviceIndices : *const u32) -> Self {
+		self.pDeviceIndices = pDeviceIndices;
+		self
+	}
+
+	pub fn splitInstanceBindRegionCount(mut self, splitInstanceBindRegionCount : u32) -> Self {
+		self.splitInstanceBindRegionCount = splitInstanceBindRegionCount;
+		self
+	}
+
+	pub fn pSplitInstanceBindRegions(mut self, pSplitInstanceBindRegions : *const Rect2D) -> Self {
+		self.pSplitInstanceBindRegions = pSplitInstanceBindRegions;
+		self
+	}
+
+}
+
+impl PhysicalDeviceGroupProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn physicalDeviceCount(mut self, physicalDeviceCount : u32) -> Self {
+		self.physicalDeviceCount = physicalDeviceCount;
+		self
+	}
+
+	pub fn physicalDevices(mut self, physicalDevices : [PhysicalDevice;MAX_DEVICE_GROUP_SIZE]) -> Self {
+		self.physicalDevices = physicalDevices;
+		self
+	}
+
+	pub fn subsetAllocation(mut self, subsetAllocation : Bool32) -> Self {
+		self.subsetAllocation = subsetAllocation;
+		self
+	}
+
+}
+
+impl DeviceGroupDeviceCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn physicalDeviceCount(mut self, physicalDeviceCount : u32) -> Self {
+		self.physicalDeviceCount = physicalDeviceCount;
+		self
+	}
+
+	pub fn pPhysicalDevices(mut self, pPhysicalDevices : *const PhysicalDevice) -> Self {
+		self.pPhysicalDevices = pPhysicalDevices;
+		self
+	}
+
+}
+
+impl BufferMemoryRequirementsInfo2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn buffer(mut self, buffer : Buffer) -> Self {
+		self.buffer = buffer;
+		self
+	}
+
+}
+
+impl ImageMemoryRequirementsInfo2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn image(mut self, image : Image) -> Self {
+		self.image = image;
+		self
+	}
+
+}
+
+impl ImageSparseMemoryRequirementsInfo2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn image(mut self, image : Image) -> Self {
+		self.image = image;
+		self
+	}
+
+}
+
+impl MemoryRequirements2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn memoryRequirements(mut self, memoryRequirements : MemoryRequirements) -> Self {
+		self.memoryRequirements = memoryRequirements;
+		self
+	}
+
+}
+
+impl SparseImageMemoryRequirements2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn memoryRequirements(mut self, memoryRequirements : SparseImageMemoryRequirements) -> Self {
+		self.memoryRequirements = memoryRequirements;
+		self
+	}
+
+}
+
+impl PhysicalDeviceFeatures2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn features(mut self, features : PhysicalDeviceFeatures) -> Self {
+		self.features = features;
+		self
+	}
+
+}
+
+impl PhysicalDeviceProperties2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn properties(mut self, properties : PhysicalDeviceProperties) -> Self {
+		self.properties = properties;
+		self
+	}
+
+}
+
+impl FormatProperties2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn formatProperties(mut self, formatProperties : FormatProperties) -> Self {
+		self.formatProperties = formatProperties;
+		self
+	}
+
+}
+
+impl ImageFormatProperties2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn imageFormatProperties(mut self, imageFormatProperties : ImageFormatProperties) -> Self {
+		self.imageFormatProperties = imageFormatProperties;
+		self
+	}
+
+}
+
+impl PhysicalDeviceImageFormatInfo2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn format(mut self, format : Format) -> Self {
+		self.format = format;
+		self
+	}
+
+	pub fn r#type(mut self, r#type : ImageType) -> Self {
+		self.r#type = r#type;
+		self
+	}
+
+	pub fn tiling(mut self, tiling : ImageTiling) -> Self {
+		self.tiling = tiling;
+		self
+	}
+
+	pub fn usage(mut self, usage : ImageUsageFlags) -> Self {
+		self.usage = usage;
+		self
+	}
+
+	pub fn flags(mut self, flags : ImageCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+}
+
+impl QueueFamilyProperties2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn queueFamilyProperties(mut self, queueFamilyProperties : QueueFamilyProperties) -> Self {
+		self.queueFamilyProperties = queueFamilyProperties;
+		self
+	}
+
+}
+
+impl PhysicalDeviceMemoryProperties2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn memoryProperties(mut self, memoryProperties : PhysicalDeviceMemoryProperties) -> Self {
+		self.memoryProperties = memoryProperties;
+		self
+	}
+
+}
+
+impl SparseImageFormatProperties2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn properties(mut self, properties : SparseImageFormatProperties) -> Self {
+		self.properties = properties;
+		self
+	}
+
+}
+
+impl PhysicalDeviceSparseImageFormatInfo2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn format(mut self, format : Format) -> Self {
+		self.format = format;
+		self
+	}
+
+	pub fn r#type(mut self, r#type : ImageType) -> Self {
+		self.r#type = r#type;
+		self
+	}
+
+	pub fn samples(mut self, samples : SampleCountFlagBits) -> Self {
+		self.samples = samples;
+		self
+	}
+
+	pub fn usage(mut self, usage : ImageUsageFlags) -> Self {
+		self.usage = usage;
+		self
+	}
+
+	pub fn tiling(mut self, tiling : ImageTiling) -> Self {
+		self.tiling = tiling;
+		self
+	}
+
+}
+
+impl PhysicalDevicePointClippingProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn pointClippingBehavior(mut self, pointClippingBehavior : PointClippingBehavior) -> Self {
+		self.pointClippingBehavior = pointClippingBehavior;
+		self
+	}
+
+}
+
+impl InputAttachmentAspectReference {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn subpass(mut self, subpass : u32) -> Self {
+		self.subpass = subpass;
+		self
+	}
+
+	pub fn inputAttachmentIndex(mut self, inputAttachmentIndex : u32) -> Self {
+		self.inputAttachmentIndex = inputAttachmentIndex;
+		self
+	}
+
+	pub fn aspectMask(mut self, aspectMask : ImageAspectFlags) -> Self {
+		self.aspectMask = aspectMask;
+		self
+	}
+
+}
+
+impl RenderPassInputAttachmentAspectCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn aspectReferenceCount(mut self, aspectReferenceCount : u32) -> Self {
+		self.aspectReferenceCount = aspectReferenceCount;
+		self
+	}
+
+	pub fn pAspectReferences(mut self, pAspectReferences : *const InputAttachmentAspectReference) -> Self {
+		self.pAspectReferences = pAspectReferences;
+		self
+	}
+
+}
+
+impl ImageViewUsageCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn usage(mut self, usage : ImageUsageFlags) -> Self {
+		self.usage = usage;
+		self
+	}
+
+}
+
+impl PipelineTessellationDomainOriginStateCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn domainOrigin(mut self, domainOrigin : TessellationDomainOrigin) -> Self {
+		self.domainOrigin = domainOrigin;
+		self
+	}
+
+}
+
+impl RenderPassMultiviewCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn subpassCount(mut self, subpassCount : u32) -> Self {
+		self.subpassCount = subpassCount;
+		self
+	}
+
+	pub fn pViewMasks(mut self, pViewMasks : *const u32) -> Self {
+		self.pViewMasks = pViewMasks;
+		self
+	}
+
+	pub fn dependencyCount(mut self, dependencyCount : u32) -> Self {
+		self.dependencyCount = dependencyCount;
+		self
+	}
+
+	pub fn pViewOffsets(mut self, pViewOffsets : *const i32) -> Self {
+		self.pViewOffsets = pViewOffsets;
+		self
+	}
+
+	pub fn correlationMaskCount(mut self, correlationMaskCount : u32) -> Self {
+		self.correlationMaskCount = correlationMaskCount;
+		self
+	}
+
+	pub fn pCorrelationMasks(mut self, pCorrelationMasks : *const u32) -> Self {
+		self.pCorrelationMasks = pCorrelationMasks;
+		self
+	}
+
+}
+
+impl PhysicalDeviceMultiviewFeatures {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn multiview(mut self, multiview : Bool32) -> Self {
+		self.multiview = multiview;
+		self
+	}
+
+	pub fn multiviewGeometryShader(mut self, multiviewGeometryShader : Bool32) -> Self {
+		self.multiviewGeometryShader = multiviewGeometryShader;
+		self
+	}
+
+	pub fn multiviewTessellationShader(mut self, multiviewTessellationShader : Bool32) -> Self {
+		self.multiviewTessellationShader = multiviewTessellationShader;
+		self
+	}
+
+}
+
+impl PhysicalDeviceMultiviewProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn maxMultiviewViewCount(mut self, maxMultiviewViewCount : u32) -> Self {
+		self.maxMultiviewViewCount = maxMultiviewViewCount;
+		self
+	}
+
+	pub fn maxMultiviewInstanceIndex(mut self, maxMultiviewInstanceIndex : u32) -> Self {
+		self.maxMultiviewInstanceIndex = maxMultiviewInstanceIndex;
+		self
+	}
+
+}
+
+impl PhysicalDeviceVariablePointersFeatures {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn variablePointersStorageBuffer(mut self, variablePointersStorageBuffer : Bool32) -> Self {
+		self.variablePointersStorageBuffer = variablePointersStorageBuffer;
+		self
+	}
+
+	pub fn variablePointers(mut self, variablePointers : Bool32) -> Self {
+		self.variablePointers = variablePointers;
+		self
+	}
+
+}
+
+impl PhysicalDeviceProtectedMemoryFeatures {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn protectedMemory(mut self, protectedMemory : Bool32) -> Self {
+		self.protectedMemory = protectedMemory;
+		self
+	}
+
+}
+
+impl PhysicalDeviceProtectedMemoryProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn protectedNoFault(mut self, protectedNoFault : Bool32) -> Self {
+		self.protectedNoFault = protectedNoFault;
+		self
+	}
+
+}
+
+impl DeviceQueueInfo2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : DeviceQueueCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn queueFamilyIndex(mut self, queueFamilyIndex : u32) -> Self {
+		self.queueFamilyIndex = queueFamilyIndex;
+		self
+	}
+
+	pub fn queueIndex(mut self, queueIndex : u32) -> Self {
+		self.queueIndex = queueIndex;
+		self
+	}
+
+}
+
+impl ProtectedSubmitInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn protectedSubmit(mut self, protectedSubmit : Bool32) -> Self {
+		self.protectedSubmit = protectedSubmit;
+		self
+	}
+
+}
+
+impl SamplerYcbcrConversionCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn format(mut self, format : Format) -> Self {
+		self.format = format;
+		self
+	}
+
+	pub fn ycbcrModel(mut self, ycbcrModel : SamplerYcbcrModelConversion) -> Self {
+		self.ycbcrModel = ycbcrModel;
+		self
+	}
+
+	pub fn ycbcrRange(mut self, ycbcrRange : SamplerYcbcrRange) -> Self {
+		self.ycbcrRange = ycbcrRange;
+		self
+	}
+
+	pub fn components(mut self, components : ComponentMapping) -> Self {
+		self.components = components;
+		self
+	}
+
+	pub fn xChromaOffset(mut self, xChromaOffset : ChromaLocation) -> Self {
+		self.xChromaOffset = xChromaOffset;
+		self
+	}
+
+	pub fn yChromaOffset(mut self, yChromaOffset : ChromaLocation) -> Self {
+		self.yChromaOffset = yChromaOffset;
+		self
+	}
+
+	pub fn chromaFilter(mut self, chromaFilter : Filter) -> Self {
+		self.chromaFilter = chromaFilter;
+		self
+	}
+
+	pub fn forceExplicitReconstruction(mut self, forceExplicitReconstruction : Bool32) -> Self {
+		self.forceExplicitReconstruction = forceExplicitReconstruction;
+		self
+	}
+
+}
+
+impl SamplerYcbcrConversionInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn conversion(mut self, conversion : SamplerYcbcrConversion) -> Self {
+		self.conversion = conversion;
+		self
+	}
+
+}
+
+impl BindImagePlaneMemoryInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn planeAspect(mut self, planeAspect : ImageAspectFlagBits) -> Self {
+		self.planeAspect = planeAspect;
+		self
+	}
+
+}
+
+impl ImagePlaneMemoryRequirementsInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn planeAspect(mut self, planeAspect : ImageAspectFlagBits) -> Self {
+		self.planeAspect = planeAspect;
+		self
+	}
+
+}
+
+impl PhysicalDeviceSamplerYcbcrConversionFeatures {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn samplerYcbcrConversion(mut self, samplerYcbcrConversion : Bool32) -> Self {
+		self.samplerYcbcrConversion = samplerYcbcrConversion;
+		self
+	}
+
+}
+
+impl SamplerYcbcrConversionImageFormatProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn combinedImageSamplerDescriptorCount(mut self, combinedImageSamplerDescriptorCount : u32) -> Self {
+		self.combinedImageSamplerDescriptorCount = combinedImageSamplerDescriptorCount;
+		self
+	}
+
+}
+
+impl DescriptorUpdateTemplateEntry {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn dstBinding(mut self, dstBinding : u32) -> Self {
+		self.dstBinding = dstBinding;
+		self
+	}
+
+	pub fn dstArrayElement(mut self, dstArrayElement : u32) -> Self {
+		self.dstArrayElement = dstArrayElement;
+		self
+	}
+
+	pub fn descriptorCount(mut self, descriptorCount : u32) -> Self {
+		self.descriptorCount = descriptorCount;
+		self
+	}
+
+	pub fn descriptorType(mut self, descriptorType : DescriptorType) -> Self {
+		self.descriptorType = descriptorType;
+		self
+	}
+
+	pub fn offset(mut self, offset : usize) -> Self {
+		self.offset = offset;
+		self
+	}
+
+	pub fn stride(mut self, stride : usize) -> Self {
+		self.stride = stride;
+		self
+	}
+
+}
+
+impl DescriptorUpdateTemplateCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : DescriptorUpdateTemplateCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn descriptorUpdateEntryCount(mut self, descriptorUpdateEntryCount : u32) -> Self {
+		self.descriptorUpdateEntryCount = descriptorUpdateEntryCount;
+		self
+	}
+
+	pub fn pDescriptorUpdateEntries(mut self, pDescriptorUpdateEntries : *const DescriptorUpdateTemplateEntry) -> Self {
+		self.pDescriptorUpdateEntries = pDescriptorUpdateEntries;
+		self
+	}
+
+	pub fn templateType(mut self, templateType : DescriptorUpdateTemplateType) -> Self {
+		self.templateType = templateType;
+		self
+	}
+
+	pub fn descriptorSetLayout(mut self, descriptorSetLayout : DescriptorSetLayout) -> Self {
+		self.descriptorSetLayout = descriptorSetLayout;
+		self
+	}
+
+	pub fn pipelineBindPoint(mut self, pipelineBindPoint : PipelineBindPoint) -> Self {
+		self.pipelineBindPoint = pipelineBindPoint;
+		self
+	}
+
+	pub fn pipelineLayout(mut self, pipelineLayout : PipelineLayout) -> Self {
+		self.pipelineLayout = pipelineLayout;
+		self
+	}
+
+	pub fn set(mut self, set : u32) -> Self {
+		self.set = set;
+		self
+	}
+
+}
+
+impl ExternalMemoryProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn externalMemoryFeatures(mut self, externalMemoryFeatures : ExternalMemoryFeatureFlags) -> Self {
+		self.externalMemoryFeatures = externalMemoryFeatures;
+		self
+	}
+
+	pub fn exportFromImportedHandleTypes(mut self, exportFromImportedHandleTypes : ExternalMemoryHandleTypeFlags) -> Self {
+		self.exportFromImportedHandleTypes = exportFromImportedHandleTypes;
+		self
+	}
+
+	pub fn compatibleHandleTypes(mut self, compatibleHandleTypes : ExternalMemoryHandleTypeFlags) -> Self {
+		self.compatibleHandleTypes = compatibleHandleTypes;
+		self
+	}
+
+}
+
+impl PhysicalDeviceExternalImageFormatInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn handleType(mut self, handleType : ExternalMemoryHandleTypeFlagBits) -> Self {
+		self.handleType = handleType;
+		self
+	}
+
+}
+
+impl ExternalImageFormatProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn externalMemoryProperties(mut self, externalMemoryProperties : ExternalMemoryProperties) -> Self {
+		self.externalMemoryProperties = externalMemoryProperties;
+		self
+	}
+
+}
+
+impl PhysicalDeviceExternalBufferInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : BufferCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn usage(mut self, usage : BufferUsageFlags) -> Self {
+		self.usage = usage;
+		self
+	}
+
+	pub fn handleType(mut self, handleType : ExternalMemoryHandleTypeFlagBits) -> Self {
+		self.handleType = handleType;
+		self
+	}
+
+}
+
+impl ExternalBufferProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn externalMemoryProperties(mut self, externalMemoryProperties : ExternalMemoryProperties) -> Self {
+		self.externalMemoryProperties = externalMemoryProperties;
+		self
+	}
+
+}
+
+impl PhysicalDeviceIDProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn deviceUUID(mut self, deviceUUID : [u8;UUID_SIZE]) -> Self {
+		self.deviceUUID = deviceUUID;
+		self
+	}
+
+	pub fn driverUUID(mut self, driverUUID : [u8;UUID_SIZE]) -> Self {
+		self.driverUUID = driverUUID;
+		self
+	}
+
+	pub fn deviceLUID(mut self, deviceLUID : [u8;LUID_SIZE]) -> Self {
+		self.deviceLUID = deviceLUID;
+		self
+	}
+
+	pub fn deviceNodeMask(mut self, deviceNodeMask : u32) -> Self {
+		self.deviceNodeMask = deviceNodeMask;
+		self
+	}
+
+	pub fn deviceLUIDValid(mut self, deviceLUIDValid : Bool32) -> Self {
+		self.deviceLUIDValid = deviceLUIDValid;
+		self
+	}
+
+}
+
+impl ExternalMemoryImageCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn handleTypes(mut self, handleTypes : ExternalMemoryHandleTypeFlags) -> Self {
+		self.handleTypes = handleTypes;
+		self
+	}
+
+}
+
+impl ExternalMemoryBufferCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn handleTypes(mut self, handleTypes : ExternalMemoryHandleTypeFlags) -> Self {
+		self.handleTypes = handleTypes;
+		self
+	}
+
+}
+
+impl ExportMemoryAllocateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn handleTypes(mut self, handleTypes : ExternalMemoryHandleTypeFlags) -> Self {
+		self.handleTypes = handleTypes;
+		self
+	}
+
+}
+
+impl PhysicalDeviceExternalFenceInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn handleType(mut self, handleType : ExternalFenceHandleTypeFlagBits) -> Self {
+		self.handleType = handleType;
+		self
+	}
+
+}
+
+impl ExternalFenceProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn exportFromImportedHandleTypes(mut self, exportFromImportedHandleTypes : ExternalFenceHandleTypeFlags) -> Self {
+		self.exportFromImportedHandleTypes = exportFromImportedHandleTypes;
+		self
+	}
+
+	pub fn compatibleHandleTypes(mut self, compatibleHandleTypes : ExternalFenceHandleTypeFlags) -> Self {
+		self.compatibleHandleTypes = compatibleHandleTypes;
+		self
+	}
+
+	pub fn externalFenceFeatures(mut self, externalFenceFeatures : ExternalFenceFeatureFlags) -> Self {
+		self.externalFenceFeatures = externalFenceFeatures;
+		self
+	}
+
+}
+
+impl ExportFenceCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn handleTypes(mut self, handleTypes : ExternalFenceHandleTypeFlags) -> Self {
+		self.handleTypes = handleTypes;
+		self
+	}
+
+}
+
+impl ExportSemaphoreCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn handleTypes(mut self, handleTypes : ExternalSemaphoreHandleTypeFlags) -> Self {
+		self.handleTypes = handleTypes;
+		self
+	}
+
+}
+
+impl PhysicalDeviceExternalSemaphoreInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn handleType(mut self, handleType : ExternalSemaphoreHandleTypeFlagBits) -> Self {
+		self.handleType = handleType;
+		self
+	}
+
+}
+
+impl ExternalSemaphoreProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn exportFromImportedHandleTypes(mut self, exportFromImportedHandleTypes : ExternalSemaphoreHandleTypeFlags) -> Self {
+		self.exportFromImportedHandleTypes = exportFromImportedHandleTypes;
+		self
+	}
+
+	pub fn compatibleHandleTypes(mut self, compatibleHandleTypes : ExternalSemaphoreHandleTypeFlags) -> Self {
+		self.compatibleHandleTypes = compatibleHandleTypes;
+		self
+	}
+
+	pub fn externalSemaphoreFeatures(mut self, externalSemaphoreFeatures : ExternalSemaphoreFeatureFlags) -> Self {
+		self.externalSemaphoreFeatures = externalSemaphoreFeatures;
+		self
+	}
+
+}
+
+impl PhysicalDeviceMaintenance3Properties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn maxPerSetDescriptors(mut self, maxPerSetDescriptors : u32) -> Self {
+		self.maxPerSetDescriptors = maxPerSetDescriptors;
+		self
+	}
+
+	pub fn maxMemoryAllocationSize(mut self, maxMemoryAllocationSize : DeviceSize) -> Self {
+		self.maxMemoryAllocationSize = maxMemoryAllocationSize;
+		self
+	}
+
+}
+
+impl DescriptorSetLayoutSupport {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn supported(mut self, supported : Bool32) -> Self {
+		self.supported = supported;
+		self
+	}
+
+}
+
+impl PhysicalDeviceShaderDrawParametersFeatures {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn shaderDrawParameters(mut self, shaderDrawParameters : Bool32) -> Self {
+		self.shaderDrawParameters = shaderDrawParameters;
+		self
+	}
+
+}
+
+impl PhysicalDeviceVulkan11Features {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn storageBuffer16BitAccess(mut self, storageBuffer16BitAccess : Bool32) -> Self {
+		self.storageBuffer16BitAccess = storageBuffer16BitAccess;
+		self
+	}
+
+	pub fn uniformAndStorageBuffer16BitAccess(mut self, uniformAndStorageBuffer16BitAccess : Bool32) -> Self {
+		self.uniformAndStorageBuffer16BitAccess = uniformAndStorageBuffer16BitAccess;
+		self
+	}
+
+	pub fn storagePushConstant16(mut self, storagePushConstant16 : Bool32) -> Self {
+		self.storagePushConstant16 = storagePushConstant16;
+		self
+	}
+
+	pub fn storageInputOutput16(mut self, storageInputOutput16 : Bool32) -> Self {
+		self.storageInputOutput16 = storageInputOutput16;
+		self
+	}
+
+	pub fn multiview(mut self, multiview : Bool32) -> Self {
+		self.multiview = multiview;
+		self
+	}
+
+	pub fn multiviewGeometryShader(mut self, multiviewGeometryShader : Bool32) -> Self {
+		self.multiviewGeometryShader = multiviewGeometryShader;
+		self
+	}
+
+	pub fn multiviewTessellationShader(mut self, multiviewTessellationShader : Bool32) -> Self {
+		self.multiviewTessellationShader = multiviewTessellationShader;
+		self
+	}
+
+	pub fn variablePointersStorageBuffer(mut self, variablePointersStorageBuffer : Bool32) -> Self {
+		self.variablePointersStorageBuffer = variablePointersStorageBuffer;
+		self
+	}
+
+	pub fn variablePointers(mut self, variablePointers : Bool32) -> Self {
+		self.variablePointers = variablePointers;
+		self
+	}
+
+	pub fn protectedMemory(mut self, protectedMemory : Bool32) -> Self {
+		self.protectedMemory = protectedMemory;
+		self
+	}
+
+	pub fn samplerYcbcrConversion(mut self, samplerYcbcrConversion : Bool32) -> Self {
+		self.samplerYcbcrConversion = samplerYcbcrConversion;
+		self
+	}
+
+	pub fn shaderDrawParameters(mut self, shaderDrawParameters : Bool32) -> Self {
+		self.shaderDrawParameters = shaderDrawParameters;
+		self
+	}
+
+}
+
+impl PhysicalDeviceVulkan11Properties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn deviceUUID(mut self, deviceUUID : [u8;UUID_SIZE]) -> Self {
+		self.deviceUUID = deviceUUID;
+		self
+	}
+
+	pub fn driverUUID(mut self, driverUUID : [u8;UUID_SIZE]) -> Self {
+		self.driverUUID = driverUUID;
+		self
+	}
+
+	pub fn deviceLUID(mut self, deviceLUID : [u8;LUID_SIZE]) -> Self {
+		self.deviceLUID = deviceLUID;
+		self
+	}
+
+	pub fn deviceNodeMask(mut self, deviceNodeMask : u32) -> Self {
+		self.deviceNodeMask = deviceNodeMask;
+		self
+	}
+
+	pub fn deviceLUIDValid(mut self, deviceLUIDValid : Bool32) -> Self {
+		self.deviceLUIDValid = deviceLUIDValid;
+		self
+	}
+
+	pub fn subgroupSize(mut self, subgroupSize : u32) -> Self {
+		self.subgroupSize = subgroupSize;
+		self
+	}
+
+	pub fn subgroupSupportedStages(mut self, subgroupSupportedStages : ShaderStageFlags) -> Self {
+		self.subgroupSupportedStages = subgroupSupportedStages;
+		self
+	}
+
+	pub fn subgroupSupportedOperations(mut self, subgroupSupportedOperations : SubgroupFeatureFlags) -> Self {
+		self.subgroupSupportedOperations = subgroupSupportedOperations;
+		self
+	}
+
+	pub fn subgroupQuadOperationsInAllStages(mut self, subgroupQuadOperationsInAllStages : Bool32) -> Self {
+		self.subgroupQuadOperationsInAllStages = subgroupQuadOperationsInAllStages;
+		self
+	}
+
+	pub fn pointClippingBehavior(mut self, pointClippingBehavior : PointClippingBehavior) -> Self {
+		self.pointClippingBehavior = pointClippingBehavior;
+		self
+	}
+
+	pub fn maxMultiviewViewCount(mut self, maxMultiviewViewCount : u32) -> Self {
+		self.maxMultiviewViewCount = maxMultiviewViewCount;
+		self
+	}
+
+	pub fn maxMultiviewInstanceIndex(mut self, maxMultiviewInstanceIndex : u32) -> Self {
+		self.maxMultiviewInstanceIndex = maxMultiviewInstanceIndex;
+		self
+	}
+
+	pub fn protectedNoFault(mut self, protectedNoFault : Bool32) -> Self {
+		self.protectedNoFault = protectedNoFault;
+		self
+	}
+
+	pub fn maxPerSetDescriptors(mut self, maxPerSetDescriptors : u32) -> Self {
+		self.maxPerSetDescriptors = maxPerSetDescriptors;
+		self
+	}
+
+	pub fn maxMemoryAllocationSize(mut self, maxMemoryAllocationSize : DeviceSize) -> Self {
+		self.maxMemoryAllocationSize = maxMemoryAllocationSize;
+		self
+	}
+
+}
+
+impl PhysicalDeviceVulkan12Features {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn samplerMirrorClampToEdge(mut self, samplerMirrorClampToEdge : Bool32) -> Self {
+		self.samplerMirrorClampToEdge = samplerMirrorClampToEdge;
+		self
+	}
+
+	pub fn drawIndirectCount(mut self, drawIndirectCount : Bool32) -> Self {
+		self.drawIndirectCount = drawIndirectCount;
+		self
+	}
+
+	pub fn storageBuffer8BitAccess(mut self, storageBuffer8BitAccess : Bool32) -> Self {
+		self.storageBuffer8BitAccess = storageBuffer8BitAccess;
+		self
+	}
+
+	pub fn uniformAndStorageBuffer8BitAccess(mut self, uniformAndStorageBuffer8BitAccess : Bool32) -> Self {
+		self.uniformAndStorageBuffer8BitAccess = uniformAndStorageBuffer8BitAccess;
+		self
+	}
+
+	pub fn storagePushConstant8(mut self, storagePushConstant8 : Bool32) -> Self {
+		self.storagePushConstant8 = storagePushConstant8;
+		self
+	}
+
+	pub fn shaderBufferInt64Atomics(mut self, shaderBufferInt64Atomics : Bool32) -> Self {
+		self.shaderBufferInt64Atomics = shaderBufferInt64Atomics;
+		self
+	}
+
+	pub fn shaderSharedInt64Atomics(mut self, shaderSharedInt64Atomics : Bool32) -> Self {
+		self.shaderSharedInt64Atomics = shaderSharedInt64Atomics;
+		self
+	}
+
+	pub fn shaderFloat16(mut self, shaderFloat16 : Bool32) -> Self {
+		self.shaderFloat16 = shaderFloat16;
+		self
+	}
+
+	pub fn shaderInt8(mut self, shaderInt8 : Bool32) -> Self {
+		self.shaderInt8 = shaderInt8;
+		self
+	}
+
+	pub fn descriptorIndexing(mut self, descriptorIndexing : Bool32) -> Self {
+		self.descriptorIndexing = descriptorIndexing;
+		self
+	}
+
+	pub fn shaderInputAttachmentArrayDynamicIndexing(mut self, shaderInputAttachmentArrayDynamicIndexing : Bool32) -> Self {
+		self.shaderInputAttachmentArrayDynamicIndexing = shaderInputAttachmentArrayDynamicIndexing;
+		self
+	}
+
+	pub fn shaderUniformTexelBufferArrayDynamicIndexing(mut self, shaderUniformTexelBufferArrayDynamicIndexing : Bool32) -> Self {
+		self.shaderUniformTexelBufferArrayDynamicIndexing = shaderUniformTexelBufferArrayDynamicIndexing;
+		self
+	}
+
+	pub fn shaderStorageTexelBufferArrayDynamicIndexing(mut self, shaderStorageTexelBufferArrayDynamicIndexing : Bool32) -> Self {
+		self.shaderStorageTexelBufferArrayDynamicIndexing = shaderStorageTexelBufferArrayDynamicIndexing;
+		self
+	}
+
+	pub fn shaderUniformBufferArrayNonUniformIndexing(mut self, shaderUniformBufferArrayNonUniformIndexing : Bool32) -> Self {
+		self.shaderUniformBufferArrayNonUniformIndexing = shaderUniformBufferArrayNonUniformIndexing;
+		self
+	}
+
+	pub fn shaderSampledImageArrayNonUniformIndexing(mut self, shaderSampledImageArrayNonUniformIndexing : Bool32) -> Self {
+		self.shaderSampledImageArrayNonUniformIndexing = shaderSampledImageArrayNonUniformIndexing;
+		self
+	}
+
+	pub fn shaderStorageBufferArrayNonUniformIndexing(mut self, shaderStorageBufferArrayNonUniformIndexing : Bool32) -> Self {
+		self.shaderStorageBufferArrayNonUniformIndexing = shaderStorageBufferArrayNonUniformIndexing;
+		self
+	}
+
+	pub fn shaderStorageImageArrayNonUniformIndexing(mut self, shaderStorageImageArrayNonUniformIndexing : Bool32) -> Self {
+		self.shaderStorageImageArrayNonUniformIndexing = shaderStorageImageArrayNonUniformIndexing;
+		self
+	}
+
+	pub fn shaderInputAttachmentArrayNonUniformIndexing(mut self, shaderInputAttachmentArrayNonUniformIndexing : Bool32) -> Self {
+		self.shaderInputAttachmentArrayNonUniformIndexing = shaderInputAttachmentArrayNonUniformIndexing;
+		self
+	}
+
+	pub fn shaderUniformTexelBufferArrayNonUniformIndexing(mut self, shaderUniformTexelBufferArrayNonUniformIndexing : Bool32) -> Self {
+		self.shaderUniformTexelBufferArrayNonUniformIndexing = shaderUniformTexelBufferArrayNonUniformIndexing;
+		self
+	}
+
+	pub fn shaderStorageTexelBufferArrayNonUniformIndexing(mut self, shaderStorageTexelBufferArrayNonUniformIndexing : Bool32) -> Self {
+		self.shaderStorageTexelBufferArrayNonUniformIndexing = shaderStorageTexelBufferArrayNonUniformIndexing;
+		self
+	}
+
+	pub fn descriptorBindingUniformBufferUpdateAfterBind(mut self, descriptorBindingUniformBufferUpdateAfterBind : Bool32) -> Self {
+		self.descriptorBindingUniformBufferUpdateAfterBind = descriptorBindingUniformBufferUpdateAfterBind;
+		self
+	}
+
+	pub fn descriptorBindingSampledImageUpdateAfterBind(mut self, descriptorBindingSampledImageUpdateAfterBind : Bool32) -> Self {
+		self.descriptorBindingSampledImageUpdateAfterBind = descriptorBindingSampledImageUpdateAfterBind;
+		self
+	}
+
+	pub fn descriptorBindingStorageImageUpdateAfterBind(mut self, descriptorBindingStorageImageUpdateAfterBind : Bool32) -> Self {
+		self.descriptorBindingStorageImageUpdateAfterBind = descriptorBindingStorageImageUpdateAfterBind;
+		self
+	}
+
+	pub fn descriptorBindingStorageBufferUpdateAfterBind(mut self, descriptorBindingStorageBufferUpdateAfterBind : Bool32) -> Self {
+		self.descriptorBindingStorageBufferUpdateAfterBind = descriptorBindingStorageBufferUpdateAfterBind;
+		self
+	}
+
+	pub fn descriptorBindingUniformTexelBufferUpdateAfterBind(mut self, descriptorBindingUniformTexelBufferUpdateAfterBind : Bool32) -> Self {
+		self.descriptorBindingUniformTexelBufferUpdateAfterBind = descriptorBindingUniformTexelBufferUpdateAfterBind;
+		self
+	}
+
+	pub fn descriptorBindingStorageTexelBufferUpdateAfterBind(mut self, descriptorBindingStorageTexelBufferUpdateAfterBind : Bool32) -> Self {
+		self.descriptorBindingStorageTexelBufferUpdateAfterBind = descriptorBindingStorageTexelBufferUpdateAfterBind;
+		self
+	}
+
+	pub fn descriptorBindingUpdateUnusedWhilePending(mut self, descriptorBindingUpdateUnusedWhilePending : Bool32) -> Self {
+		self.descriptorBindingUpdateUnusedWhilePending = descriptorBindingUpdateUnusedWhilePending;
+		self
+	}
+
+	pub fn descriptorBindingPartiallyBound(mut self, descriptorBindingPartiallyBound : Bool32) -> Self {
+		self.descriptorBindingPartiallyBound = descriptorBindingPartiallyBound;
+		self
+	}
+
+	pub fn descriptorBindingVariableDescriptorCount(mut self, descriptorBindingVariableDescriptorCount : Bool32) -> Self {
+		self.descriptorBindingVariableDescriptorCount = descriptorBindingVariableDescriptorCount;
+		self
+	}
+
+	pub fn runtimeDescriptorArray(mut self, runtimeDescriptorArray : Bool32) -> Self {
+		self.runtimeDescriptorArray = runtimeDescriptorArray;
+		self
+	}
+
+	pub fn samplerFilterMinmax(mut self, samplerFilterMinmax : Bool32) -> Self {
+		self.samplerFilterMinmax = samplerFilterMinmax;
+		self
+	}
+
+	pub fn scalarBlockLayout(mut self, scalarBlockLayout : Bool32) -> Self {
+		self.scalarBlockLayout = scalarBlockLayout;
+		self
+	}
+
+	pub fn imagelessFramebuffer(mut self, imagelessFramebuffer : Bool32) -> Self {
+		self.imagelessFramebuffer = imagelessFramebuffer;
+		self
+	}
+
+	pub fn uniformBufferStandardLayout(mut self, uniformBufferStandardLayout : Bool32) -> Self {
+		self.uniformBufferStandardLayout = uniformBufferStandardLayout;
+		self
+	}
+
+	pub fn shaderSubgroupExtendedTypes(mut self, shaderSubgroupExtendedTypes : Bool32) -> Self {
+		self.shaderSubgroupExtendedTypes = shaderSubgroupExtendedTypes;
+		self
+	}
+
+	pub fn separateDepthStencilLayouts(mut self, separateDepthStencilLayouts : Bool32) -> Self {
+		self.separateDepthStencilLayouts = separateDepthStencilLayouts;
+		self
+	}
+
+	pub fn hostQueryReset(mut self, hostQueryReset : Bool32) -> Self {
+		self.hostQueryReset = hostQueryReset;
+		self
+	}
+
+	pub fn timelineSemaphore(mut self, timelineSemaphore : Bool32) -> Self {
+		self.timelineSemaphore = timelineSemaphore;
+		self
+	}
+
+	pub fn bufferDeviceAddress(mut self, bufferDeviceAddress : Bool32) -> Self {
+		self.bufferDeviceAddress = bufferDeviceAddress;
+		self
+	}
+
+	pub fn bufferDeviceAddressCaptureReplay(mut self, bufferDeviceAddressCaptureReplay : Bool32) -> Self {
+		self.bufferDeviceAddressCaptureReplay = bufferDeviceAddressCaptureReplay;
+		self
+	}
+
+	pub fn bufferDeviceAddressMultiDevice(mut self, bufferDeviceAddressMultiDevice : Bool32) -> Self {
+		self.bufferDeviceAddressMultiDevice = bufferDeviceAddressMultiDevice;
+		self
+	}
+
+	pub fn vulkanMemoryModel(mut self, vulkanMemoryModel : Bool32) -> Self {
+		self.vulkanMemoryModel = vulkanMemoryModel;
+		self
+	}
+
+	pub fn vulkanMemoryModelDeviceScope(mut self, vulkanMemoryModelDeviceScope : Bool32) -> Self {
+		self.vulkanMemoryModelDeviceScope = vulkanMemoryModelDeviceScope;
+		self
+	}
+
+	pub fn vulkanMemoryModelAvailabilityVisibilityChains(mut self, vulkanMemoryModelAvailabilityVisibilityChains : Bool32) -> Self {
+		self.vulkanMemoryModelAvailabilityVisibilityChains = vulkanMemoryModelAvailabilityVisibilityChains;
+		self
+	}
+
+	pub fn shaderOutputViewportIndex(mut self, shaderOutputViewportIndex : Bool32) -> Self {
+		self.shaderOutputViewportIndex = shaderOutputViewportIndex;
+		self
+	}
+
+	pub fn shaderOutputLayer(mut self, shaderOutputLayer : Bool32) -> Self {
+		self.shaderOutputLayer = shaderOutputLayer;
+		self
+	}
+
+	pub fn subgroupBroadcastDynamicId(mut self, subgroupBroadcastDynamicId : Bool32) -> Self {
+		self.subgroupBroadcastDynamicId = subgroupBroadcastDynamicId;
+		self
+	}
+
+}
+
+impl ConformanceVersion {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn major(mut self, major : u8) -> Self {
+		self.major = major;
+		self
+	}
+
+	pub fn minor(mut self, minor : u8) -> Self {
+		self.minor = minor;
+		self
+	}
+
+	pub fn subminor(mut self, subminor : u8) -> Self {
+		self.subminor = subminor;
+		self
+	}
+
+	pub fn patch(mut self, patch : u8) -> Self {
+		self.patch = patch;
+		self
+	}
+
+}
+
+impl PhysicalDeviceVulkan12Properties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn driverID(mut self, driverID : DriverId) -> Self {
+		self.driverID = driverID;
+		self
+	}
+
+	pub fn driverName(mut self, driverName : [i8;MAX_DRIVER_NAME_SIZE]) -> Self {
+		self.driverName = driverName;
+		self
+	}
+
+	pub fn driverInfo(mut self, driverInfo : [i8;MAX_DRIVER_INFO_SIZE]) -> Self {
+		self.driverInfo = driverInfo;
+		self
+	}
+
+	pub fn conformanceVersion(mut self, conformanceVersion : ConformanceVersion) -> Self {
+		self.conformanceVersion = conformanceVersion;
+		self
+	}
+
+	pub fn denormBehaviorIndependence(mut self, denormBehaviorIndependence : ShaderFloatControlsIndependence) -> Self {
+		self.denormBehaviorIndependence = denormBehaviorIndependence;
+		self
+	}
+
+	pub fn roundingModeIndependence(mut self, roundingModeIndependence : ShaderFloatControlsIndependence) -> Self {
+		self.roundingModeIndependence = roundingModeIndependence;
+		self
+	}
+
+	pub fn shaderSignedZeroInfNanPreserveFloat16(mut self, shaderSignedZeroInfNanPreserveFloat16 : Bool32) -> Self {
+		self.shaderSignedZeroInfNanPreserveFloat16 = shaderSignedZeroInfNanPreserveFloat16;
+		self
+	}
+
+	pub fn shaderSignedZeroInfNanPreserveFloat32(mut self, shaderSignedZeroInfNanPreserveFloat32 : Bool32) -> Self {
+		self.shaderSignedZeroInfNanPreserveFloat32 = shaderSignedZeroInfNanPreserveFloat32;
+		self
+	}
+
+	pub fn shaderSignedZeroInfNanPreserveFloat64(mut self, shaderSignedZeroInfNanPreserveFloat64 : Bool32) -> Self {
+		self.shaderSignedZeroInfNanPreserveFloat64 = shaderSignedZeroInfNanPreserveFloat64;
+		self
+	}
+
+	pub fn shaderDenormPreserveFloat16(mut self, shaderDenormPreserveFloat16 : Bool32) -> Self {
+		self.shaderDenormPreserveFloat16 = shaderDenormPreserveFloat16;
+		self
+	}
+
+	pub fn shaderDenormPreserveFloat32(mut self, shaderDenormPreserveFloat32 : Bool32) -> Self {
+		self.shaderDenormPreserveFloat32 = shaderDenormPreserveFloat32;
+		self
+	}
+
+	pub fn shaderDenormPreserveFloat64(mut self, shaderDenormPreserveFloat64 : Bool32) -> Self {
+		self.shaderDenormPreserveFloat64 = shaderDenormPreserveFloat64;
+		self
+	}
+
+	pub fn shaderDenormFlushToZeroFloat16(mut self, shaderDenormFlushToZeroFloat16 : Bool32) -> Self {
+		self.shaderDenormFlushToZeroFloat16 = shaderDenormFlushToZeroFloat16;
+		self
+	}
+
+	pub fn shaderDenormFlushToZeroFloat32(mut self, shaderDenormFlushToZeroFloat32 : Bool32) -> Self {
+		self.shaderDenormFlushToZeroFloat32 = shaderDenormFlushToZeroFloat32;
+		self
+	}
+
+	pub fn shaderDenormFlushToZeroFloat64(mut self, shaderDenormFlushToZeroFloat64 : Bool32) -> Self {
+		self.shaderDenormFlushToZeroFloat64 = shaderDenormFlushToZeroFloat64;
+		self
+	}
+
+	pub fn shaderRoundingModeRTEFloat16(mut self, shaderRoundingModeRTEFloat16 : Bool32) -> Self {
+		self.shaderRoundingModeRTEFloat16 = shaderRoundingModeRTEFloat16;
+		self
+	}
+
+	pub fn shaderRoundingModeRTEFloat32(mut self, shaderRoundingModeRTEFloat32 : Bool32) -> Self {
+		self.shaderRoundingModeRTEFloat32 = shaderRoundingModeRTEFloat32;
+		self
+	}
+
+	pub fn shaderRoundingModeRTEFloat64(mut self, shaderRoundingModeRTEFloat64 : Bool32) -> Self {
+		self.shaderRoundingModeRTEFloat64 = shaderRoundingModeRTEFloat64;
+		self
+	}
+
+	pub fn shaderRoundingModeRTZFloat16(mut self, shaderRoundingModeRTZFloat16 : Bool32) -> Self {
+		self.shaderRoundingModeRTZFloat16 = shaderRoundingModeRTZFloat16;
+		self
+	}
+
+	pub fn shaderRoundingModeRTZFloat32(mut self, shaderRoundingModeRTZFloat32 : Bool32) -> Self {
+		self.shaderRoundingModeRTZFloat32 = shaderRoundingModeRTZFloat32;
+		self
+	}
+
+	pub fn shaderRoundingModeRTZFloat64(mut self, shaderRoundingModeRTZFloat64 : Bool32) -> Self {
+		self.shaderRoundingModeRTZFloat64 = shaderRoundingModeRTZFloat64;
+		self
+	}
+
+	pub fn maxUpdateAfterBindDescriptorsInAllPools(mut self, maxUpdateAfterBindDescriptorsInAllPools : u32) -> Self {
+		self.maxUpdateAfterBindDescriptorsInAllPools = maxUpdateAfterBindDescriptorsInAllPools;
+		self
+	}
+
+	pub fn shaderUniformBufferArrayNonUniformIndexingNative(mut self, shaderUniformBufferArrayNonUniformIndexingNative : Bool32) -> Self {
+		self.shaderUniformBufferArrayNonUniformIndexingNative = shaderUniformBufferArrayNonUniformIndexingNative;
+		self
+	}
+
+	pub fn shaderSampledImageArrayNonUniformIndexingNative(mut self, shaderSampledImageArrayNonUniformIndexingNative : Bool32) -> Self {
+		self.shaderSampledImageArrayNonUniformIndexingNative = shaderSampledImageArrayNonUniformIndexingNative;
+		self
+	}
+
+	pub fn shaderStorageBufferArrayNonUniformIndexingNative(mut self, shaderStorageBufferArrayNonUniformIndexingNative : Bool32) -> Self {
+		self.shaderStorageBufferArrayNonUniformIndexingNative = shaderStorageBufferArrayNonUniformIndexingNative;
+		self
+	}
+
+	pub fn shaderStorageImageArrayNonUniformIndexingNative(mut self, shaderStorageImageArrayNonUniformIndexingNative : Bool32) -> Self {
+		self.shaderStorageImageArrayNonUniformIndexingNative = shaderStorageImageArrayNonUniformIndexingNative;
+		self
+	}
+
+	pub fn shaderInputAttachmentArrayNonUniformIndexingNative(mut self, shaderInputAttachmentArrayNonUniformIndexingNative : Bool32) -> Self {
+		self.shaderInputAttachmentArrayNonUniformIndexingNative = shaderInputAttachmentArrayNonUniformIndexingNative;
+		self
+	}
+
+	pub fn robustBufferAccessUpdateAfterBind(mut self, robustBufferAccessUpdateAfterBind : Bool32) -> Self {
+		self.robustBufferAccessUpdateAfterBind = robustBufferAccessUpdateAfterBind;
+		self
+	}
+
+	pub fn quadDivergentImplicitLod(mut self, quadDivergentImplicitLod : Bool32) -> Self {
+		self.quadDivergentImplicitLod = quadDivergentImplicitLod;
+		self
+	}
+
+	pub fn maxPerStageDescriptorUpdateAfterBindSamplers(mut self, maxPerStageDescriptorUpdateAfterBindSamplers : u32) -> Self {
+		self.maxPerStageDescriptorUpdateAfterBindSamplers = maxPerStageDescriptorUpdateAfterBindSamplers;
+		self
+	}
+
+	pub fn maxPerStageDescriptorUpdateAfterBindUniformBuffers(mut self, maxPerStageDescriptorUpdateAfterBindUniformBuffers : u32) -> Self {
+		self.maxPerStageDescriptorUpdateAfterBindUniformBuffers = maxPerStageDescriptorUpdateAfterBindUniformBuffers;
+		self
+	}
+
+	pub fn maxPerStageDescriptorUpdateAfterBindStorageBuffers(mut self, maxPerStageDescriptorUpdateAfterBindStorageBuffers : u32) -> Self {
+		self.maxPerStageDescriptorUpdateAfterBindStorageBuffers = maxPerStageDescriptorUpdateAfterBindStorageBuffers;
+		self
+	}
+
+	pub fn maxPerStageDescriptorUpdateAfterBindSampledImages(mut self, maxPerStageDescriptorUpdateAfterBindSampledImages : u32) -> Self {
+		self.maxPerStageDescriptorUpdateAfterBindSampledImages = maxPerStageDescriptorUpdateAfterBindSampledImages;
+		self
+	}
+
+	pub fn maxPerStageDescriptorUpdateAfterBindStorageImages(mut self, maxPerStageDescriptorUpdateAfterBindStorageImages : u32) -> Self {
+		self.maxPerStageDescriptorUpdateAfterBindStorageImages = maxPerStageDescriptorUpdateAfterBindStorageImages;
+		self
+	}
+
+	pub fn maxPerStageDescriptorUpdateAfterBindInputAttachments(mut self, maxPerStageDescriptorUpdateAfterBindInputAttachments : u32) -> Self {
+		self.maxPerStageDescriptorUpdateAfterBindInputAttachments = maxPerStageDescriptorUpdateAfterBindInputAttachments;
+		self
+	}
+
+	pub fn maxPerStageUpdateAfterBindResources(mut self, maxPerStageUpdateAfterBindResources : u32) -> Self {
+		self.maxPerStageUpdateAfterBindResources = maxPerStageUpdateAfterBindResources;
+		self
+	}
+
+	pub fn maxDescriptorSetUpdateAfterBindSamplers(mut self, maxDescriptorSetUpdateAfterBindSamplers : u32) -> Self {
+		self.maxDescriptorSetUpdateAfterBindSamplers = maxDescriptorSetUpdateAfterBindSamplers;
+		self
+	}
+
+	pub fn maxDescriptorSetUpdateAfterBindUniformBuffers(mut self, maxDescriptorSetUpdateAfterBindUniformBuffers : u32) -> Self {
+		self.maxDescriptorSetUpdateAfterBindUniformBuffers = maxDescriptorSetUpdateAfterBindUniformBuffers;
+		self
+	}
+
+	pub fn maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(mut self, maxDescriptorSetUpdateAfterBindUniformBuffersDynamic : u32) -> Self {
+		self.maxDescriptorSetUpdateAfterBindUniformBuffersDynamic = maxDescriptorSetUpdateAfterBindUniformBuffersDynamic;
+		self
+	}
+
+	pub fn maxDescriptorSetUpdateAfterBindStorageBuffers(mut self, maxDescriptorSetUpdateAfterBindStorageBuffers : u32) -> Self {
+		self.maxDescriptorSetUpdateAfterBindStorageBuffers = maxDescriptorSetUpdateAfterBindStorageBuffers;
+		self
+	}
+
+	pub fn maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(mut self, maxDescriptorSetUpdateAfterBindStorageBuffersDynamic : u32) -> Self {
+		self.maxDescriptorSetUpdateAfterBindStorageBuffersDynamic = maxDescriptorSetUpdateAfterBindStorageBuffersDynamic;
+		self
+	}
+
+	pub fn maxDescriptorSetUpdateAfterBindSampledImages(mut self, maxDescriptorSetUpdateAfterBindSampledImages : u32) -> Self {
+		self.maxDescriptorSetUpdateAfterBindSampledImages = maxDescriptorSetUpdateAfterBindSampledImages;
+		self
+	}
+
+	pub fn maxDescriptorSetUpdateAfterBindStorageImages(mut self, maxDescriptorSetUpdateAfterBindStorageImages : u32) -> Self {
+		self.maxDescriptorSetUpdateAfterBindStorageImages = maxDescriptorSetUpdateAfterBindStorageImages;
+		self
+	}
+
+	pub fn maxDescriptorSetUpdateAfterBindInputAttachments(mut self, maxDescriptorSetUpdateAfterBindInputAttachments : u32) -> Self {
+		self.maxDescriptorSetUpdateAfterBindInputAttachments = maxDescriptorSetUpdateAfterBindInputAttachments;
+		self
+	}
+
+	pub fn supportedDepthResolveModes(mut self, supportedDepthResolveModes : ResolveModeFlags) -> Self {
+		self.supportedDepthResolveModes = supportedDepthResolveModes;
+		self
+	}
+
+	pub fn supportedStencilResolveModes(mut self, supportedStencilResolveModes : ResolveModeFlags) -> Self {
+		self.supportedStencilResolveModes = supportedStencilResolveModes;
+		self
+	}
+
+	pub fn independentResolveNone(mut self, independentResolveNone : Bool32) -> Self {
+		self.independentResolveNone = independentResolveNone;
+		self
+	}
+
+	pub fn independentResolve(mut self, independentResolve : Bool32) -> Self {
+		self.independentResolve = independentResolve;
+		self
+	}
+
+	pub fn filterMinmaxSingleComponentFormats(mut self, filterMinmaxSingleComponentFormats : Bool32) -> Self {
+		self.filterMinmaxSingleComponentFormats = filterMinmaxSingleComponentFormats;
+		self
+	}
+
+	pub fn filterMinmaxImageComponentMapping(mut self, filterMinmaxImageComponentMapping : Bool32) -> Self {
+		self.filterMinmaxImageComponentMapping = filterMinmaxImageComponentMapping;
+		self
+	}
+
+	pub fn maxTimelineSemaphoreValueDifference(mut self, maxTimelineSemaphoreValueDifference : u64) -> Self {
+		self.maxTimelineSemaphoreValueDifference = maxTimelineSemaphoreValueDifference;
+		self
+	}
+
+	pub fn framebufferIntegerColorSampleCounts(mut self, framebufferIntegerColorSampleCounts : SampleCountFlags) -> Self {
+		self.framebufferIntegerColorSampleCounts = framebufferIntegerColorSampleCounts;
+		self
+	}
+
+}
+
+impl ImageFormatListCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn viewFormatCount(mut self, viewFormatCount : u32) -> Self {
+		self.viewFormatCount = viewFormatCount;
+		self
+	}
+
+	pub fn pViewFormats(mut self, pViewFormats : *const Format) -> Self {
+		self.pViewFormats = pViewFormats;
+		self
+	}
+
+}
+
+impl AttachmentDescription2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : AttachmentDescriptionFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn format(mut self, format : Format) -> Self {
+		self.format = format;
+		self
+	}
+
+	pub fn samples(mut self, samples : SampleCountFlagBits) -> Self {
+		self.samples = samples;
+		self
+	}
+
+	pub fn loadOp(mut self, loadOp : AttachmentLoadOp) -> Self {
+		self.loadOp = loadOp;
+		self
+	}
+
+	pub fn storeOp(mut self, storeOp : AttachmentStoreOp) -> Self {
+		self.storeOp = storeOp;
+		self
+	}
+
+	pub fn stencilLoadOp(mut self, stencilLoadOp : AttachmentLoadOp) -> Self {
+		self.stencilLoadOp = stencilLoadOp;
+		self
+	}
+
+	pub fn stencilStoreOp(mut self, stencilStoreOp : AttachmentStoreOp) -> Self {
+		self.stencilStoreOp = stencilStoreOp;
+		self
+	}
+
+	pub fn initialLayout(mut self, initialLayout : ImageLayout) -> Self {
+		self.initialLayout = initialLayout;
+		self
+	}
+
+	pub fn finalLayout(mut self, finalLayout : ImageLayout) -> Self {
+		self.finalLayout = finalLayout;
+		self
+	}
+
+}
+
+impl AttachmentReference2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn attachment(mut self, attachment : u32) -> Self {
+		self.attachment = attachment;
+		self
+	}
+
+	pub fn layout(mut self, layout : ImageLayout) -> Self {
+		self.layout = layout;
+		self
+	}
+
+	pub fn aspectMask(mut self, aspectMask : ImageAspectFlags) -> Self {
+		self.aspectMask = aspectMask;
+		self
+	}
+
+}
+
+impl SubpassDescription2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : SubpassDescriptionFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn pipelineBindPoint(mut self, pipelineBindPoint : PipelineBindPoint) -> Self {
+		self.pipelineBindPoint = pipelineBindPoint;
+		self
+	}
+
+	pub fn viewMask(mut self, viewMask : u32) -> Self {
+		self.viewMask = viewMask;
+		self
+	}
+
+	pub fn inputAttachmentCount(mut self, inputAttachmentCount : u32) -> Self {
+		self.inputAttachmentCount = inputAttachmentCount;
+		self
+	}
+
+	pub fn pInputAttachments(mut self, pInputAttachments : *const AttachmentReference2) -> Self {
+		self.pInputAttachments = pInputAttachments;
+		self
+	}
+
+	pub fn colorAttachmentCount(mut self, colorAttachmentCount : u32) -> Self {
+		self.colorAttachmentCount = colorAttachmentCount;
+		self
+	}
+
+	pub fn pColorAttachments(mut self, pColorAttachments : *const AttachmentReference2) -> Self {
+		self.pColorAttachments = pColorAttachments;
+		self
+	}
+
+	pub fn pResolveAttachments(mut self, pResolveAttachments : *const AttachmentReference2) -> Self {
+		self.pResolveAttachments = pResolveAttachments;
+		self
+	}
+
+	pub fn pDepthStencilAttachment(mut self, pDepthStencilAttachment : *const AttachmentReference2) -> Self {
+		self.pDepthStencilAttachment = pDepthStencilAttachment;
+		self
+	}
+
+	pub fn preserveAttachmentCount(mut self, preserveAttachmentCount : u32) -> Self {
+		self.preserveAttachmentCount = preserveAttachmentCount;
+		self
+	}
+
+	pub fn pPreserveAttachments(mut self, pPreserveAttachments : *const u32) -> Self {
+		self.pPreserveAttachments = pPreserveAttachments;
+		self
+	}
+
+}
+
+impl SubpassDependency2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn srcSubpass(mut self, srcSubpass : u32) -> Self {
+		self.srcSubpass = srcSubpass;
+		self
+	}
+
+	pub fn dstSubpass(mut self, dstSubpass : u32) -> Self {
+		self.dstSubpass = dstSubpass;
+		self
+	}
+
+	pub fn srcStageMask(mut self, srcStageMask : PipelineStageFlags) -> Self {
+		self.srcStageMask = srcStageMask;
+		self
+	}
+
+	pub fn dstStageMask(mut self, dstStageMask : PipelineStageFlags) -> Self {
+		self.dstStageMask = dstStageMask;
+		self
+	}
+
+	pub fn srcAccessMask(mut self, srcAccessMask : AccessFlags) -> Self {
+		self.srcAccessMask = srcAccessMask;
+		self
+	}
+
+	pub fn dstAccessMask(mut self, dstAccessMask : AccessFlags) -> Self {
+		self.dstAccessMask = dstAccessMask;
+		self
+	}
+
+	pub fn dependencyFlags(mut self, dependencyFlags : DependencyFlags) -> Self {
+		self.dependencyFlags = dependencyFlags;
+		self
+	}
+
+	pub fn viewOffset(mut self, viewOffset : i32) -> Self {
+		self.viewOffset = viewOffset;
+		self
+	}
+
+}
+
+impl RenderPassCreateInfo2 {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : RenderPassCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn attachmentCount(mut self, attachmentCount : u32) -> Self {
+		self.attachmentCount = attachmentCount;
+		self
+	}
+
+	pub fn pAttachments(mut self, pAttachments : *const AttachmentDescription2) -> Self {
+		self.pAttachments = pAttachments;
+		self
+	}
+
+	pub fn subpassCount(mut self, subpassCount : u32) -> Self {
+		self.subpassCount = subpassCount;
+		self
+	}
+
+	pub fn pSubpasses(mut self, pSubpasses : *const SubpassDescription2) -> Self {
+		self.pSubpasses = pSubpasses;
+		self
+	}
+
+	pub fn dependencyCount(mut self, dependencyCount : u32) -> Self {
+		self.dependencyCount = dependencyCount;
+		self
+	}
+
+	pub fn pDependencies(mut self, pDependencies : *const SubpassDependency2) -> Self {
+		self.pDependencies = pDependencies;
+		self
+	}
+
+	pub fn correlatedViewMaskCount(mut self, correlatedViewMaskCount : u32) -> Self {
+		self.correlatedViewMaskCount = correlatedViewMaskCount;
+		self
+	}
+
+	pub fn pCorrelatedViewMasks(mut self, pCorrelatedViewMasks : *const u32) -> Self {
+		self.pCorrelatedViewMasks = pCorrelatedViewMasks;
+		self
+	}
+
+}
+
+impl SubpassBeginInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn contents(mut self, contents : SubpassContents) -> Self {
+		self.contents = contents;
+		self
+	}
+
+}
+
+impl SubpassEndInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+}
+
+impl PhysicalDevice8BitStorageFeatures {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn storageBuffer8BitAccess(mut self, storageBuffer8BitAccess : Bool32) -> Self {
+		self.storageBuffer8BitAccess = storageBuffer8BitAccess;
+		self
+	}
+
+	pub fn uniformAndStorageBuffer8BitAccess(mut self, uniformAndStorageBuffer8BitAccess : Bool32) -> Self {
+		self.uniformAndStorageBuffer8BitAccess = uniformAndStorageBuffer8BitAccess;
+		self
+	}
+
+	pub fn storagePushConstant8(mut self, storagePushConstant8 : Bool32) -> Self {
+		self.storagePushConstant8 = storagePushConstant8;
+		self
+	}
+
+}
+
+impl PhysicalDeviceDriverProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn driverID(mut self, driverID : DriverId) -> Self {
+		self.driverID = driverID;
+		self
+	}
+
+	pub fn driverName(mut self, driverName : [i8;MAX_DRIVER_NAME_SIZE]) -> Self {
+		self.driverName = driverName;
+		self
+	}
+
+	pub fn driverInfo(mut self, driverInfo : [i8;MAX_DRIVER_INFO_SIZE]) -> Self {
+		self.driverInfo = driverInfo;
+		self
+	}
+
+	pub fn conformanceVersion(mut self, conformanceVersion : ConformanceVersion) -> Self {
+		self.conformanceVersion = conformanceVersion;
+		self
+	}
+
+}
+
+impl PhysicalDeviceShaderAtomicInt64Features {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn shaderBufferInt64Atomics(mut self, shaderBufferInt64Atomics : Bool32) -> Self {
+		self.shaderBufferInt64Atomics = shaderBufferInt64Atomics;
+		self
+	}
+
+	pub fn shaderSharedInt64Atomics(mut self, shaderSharedInt64Atomics : Bool32) -> Self {
+		self.shaderSharedInt64Atomics = shaderSharedInt64Atomics;
+		self
+	}
+
+}
+
+impl PhysicalDeviceShaderFloat16Int8Features {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn shaderFloat16(mut self, shaderFloat16 : Bool32) -> Self {
+		self.shaderFloat16 = shaderFloat16;
+		self
+	}
+
+	pub fn shaderInt8(mut self, shaderInt8 : Bool32) -> Self {
+		self.shaderInt8 = shaderInt8;
+		self
+	}
+
+}
+
+impl PhysicalDeviceFloatControlsProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn denormBehaviorIndependence(mut self, denormBehaviorIndependence : ShaderFloatControlsIndependence) -> Self {
+		self.denormBehaviorIndependence = denormBehaviorIndependence;
+		self
+	}
+
+	pub fn roundingModeIndependence(mut self, roundingModeIndependence : ShaderFloatControlsIndependence) -> Self {
+		self.roundingModeIndependence = roundingModeIndependence;
+		self
+	}
+
+	pub fn shaderSignedZeroInfNanPreserveFloat16(mut self, shaderSignedZeroInfNanPreserveFloat16 : Bool32) -> Self {
+		self.shaderSignedZeroInfNanPreserveFloat16 = shaderSignedZeroInfNanPreserveFloat16;
+		self
+	}
+
+	pub fn shaderSignedZeroInfNanPreserveFloat32(mut self, shaderSignedZeroInfNanPreserveFloat32 : Bool32) -> Self {
+		self.shaderSignedZeroInfNanPreserveFloat32 = shaderSignedZeroInfNanPreserveFloat32;
+		self
+	}
+
+	pub fn shaderSignedZeroInfNanPreserveFloat64(mut self, shaderSignedZeroInfNanPreserveFloat64 : Bool32) -> Self {
+		self.shaderSignedZeroInfNanPreserveFloat64 = shaderSignedZeroInfNanPreserveFloat64;
+		self
+	}
+
+	pub fn shaderDenormPreserveFloat16(mut self, shaderDenormPreserveFloat16 : Bool32) -> Self {
+		self.shaderDenormPreserveFloat16 = shaderDenormPreserveFloat16;
+		self
+	}
+
+	pub fn shaderDenormPreserveFloat32(mut self, shaderDenormPreserveFloat32 : Bool32) -> Self {
+		self.shaderDenormPreserveFloat32 = shaderDenormPreserveFloat32;
+		self
+	}
+
+	pub fn shaderDenormPreserveFloat64(mut self, shaderDenormPreserveFloat64 : Bool32) -> Self {
+		self.shaderDenormPreserveFloat64 = shaderDenormPreserveFloat64;
+		self
+	}
+
+	pub fn shaderDenormFlushToZeroFloat16(mut self, shaderDenormFlushToZeroFloat16 : Bool32) -> Self {
+		self.shaderDenormFlushToZeroFloat16 = shaderDenormFlushToZeroFloat16;
+		self
+	}
+
+	pub fn shaderDenormFlushToZeroFloat32(mut self, shaderDenormFlushToZeroFloat32 : Bool32) -> Self {
+		self.shaderDenormFlushToZeroFloat32 = shaderDenormFlushToZeroFloat32;
+		self
+	}
+
+	pub fn shaderDenormFlushToZeroFloat64(mut self, shaderDenormFlushToZeroFloat64 : Bool32) -> Self {
+		self.shaderDenormFlushToZeroFloat64 = shaderDenormFlushToZeroFloat64;
+		self
+	}
+
+	pub fn shaderRoundingModeRTEFloat16(mut self, shaderRoundingModeRTEFloat16 : Bool32) -> Self {
+		self.shaderRoundingModeRTEFloat16 = shaderRoundingModeRTEFloat16;
+		self
+	}
+
+	pub fn shaderRoundingModeRTEFloat32(mut self, shaderRoundingModeRTEFloat32 : Bool32) -> Self {
+		self.shaderRoundingModeRTEFloat32 = shaderRoundingModeRTEFloat32;
+		self
+	}
+
+	pub fn shaderRoundingModeRTEFloat64(mut self, shaderRoundingModeRTEFloat64 : Bool32) -> Self {
+		self.shaderRoundingModeRTEFloat64 = shaderRoundingModeRTEFloat64;
+		self
+	}
+
+	pub fn shaderRoundingModeRTZFloat16(mut self, shaderRoundingModeRTZFloat16 : Bool32) -> Self {
+		self.shaderRoundingModeRTZFloat16 = shaderRoundingModeRTZFloat16;
+		self
+	}
+
+	pub fn shaderRoundingModeRTZFloat32(mut self, shaderRoundingModeRTZFloat32 : Bool32) -> Self {
+		self.shaderRoundingModeRTZFloat32 = shaderRoundingModeRTZFloat32;
+		self
+	}
+
+	pub fn shaderRoundingModeRTZFloat64(mut self, shaderRoundingModeRTZFloat64 : Bool32) -> Self {
+		self.shaderRoundingModeRTZFloat64 = shaderRoundingModeRTZFloat64;
+		self
+	}
+
+}
+
+impl DescriptorSetLayoutBindingFlagsCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn bindingCount(mut self, bindingCount : u32) -> Self {
+		self.bindingCount = bindingCount;
+		self
+	}
+
+	pub fn pBindingFlags(mut self, pBindingFlags : *const DescriptorBindingFlags) -> Self {
+		self.pBindingFlags = pBindingFlags;
+		self
+	}
+
+}
+
+impl PhysicalDeviceDescriptorIndexingFeatures {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn shaderInputAttachmentArrayDynamicIndexing(mut self, shaderInputAttachmentArrayDynamicIndexing : Bool32) -> Self {
+		self.shaderInputAttachmentArrayDynamicIndexing = shaderInputAttachmentArrayDynamicIndexing;
+		self
+	}
+
+	pub fn shaderUniformTexelBufferArrayDynamicIndexing(mut self, shaderUniformTexelBufferArrayDynamicIndexing : Bool32) -> Self {
+		self.shaderUniformTexelBufferArrayDynamicIndexing = shaderUniformTexelBufferArrayDynamicIndexing;
+		self
+	}
+
+	pub fn shaderStorageTexelBufferArrayDynamicIndexing(mut self, shaderStorageTexelBufferArrayDynamicIndexing : Bool32) -> Self {
+		self.shaderStorageTexelBufferArrayDynamicIndexing = shaderStorageTexelBufferArrayDynamicIndexing;
+		self
+	}
+
+	pub fn shaderUniformBufferArrayNonUniformIndexing(mut self, shaderUniformBufferArrayNonUniformIndexing : Bool32) -> Self {
+		self.shaderUniformBufferArrayNonUniformIndexing = shaderUniformBufferArrayNonUniformIndexing;
+		self
+	}
+
+	pub fn shaderSampledImageArrayNonUniformIndexing(mut self, shaderSampledImageArrayNonUniformIndexing : Bool32) -> Self {
+		self.shaderSampledImageArrayNonUniformIndexing = shaderSampledImageArrayNonUniformIndexing;
+		self
+	}
+
+	pub fn shaderStorageBufferArrayNonUniformIndexing(mut self, shaderStorageBufferArrayNonUniformIndexing : Bool32) -> Self {
+		self.shaderStorageBufferArrayNonUniformIndexing = shaderStorageBufferArrayNonUniformIndexing;
+		self
+	}
+
+	pub fn shaderStorageImageArrayNonUniformIndexing(mut self, shaderStorageImageArrayNonUniformIndexing : Bool32) -> Self {
+		self.shaderStorageImageArrayNonUniformIndexing = shaderStorageImageArrayNonUniformIndexing;
+		self
+	}
+
+	pub fn shaderInputAttachmentArrayNonUniformIndexing(mut self, shaderInputAttachmentArrayNonUniformIndexing : Bool32) -> Self {
+		self.shaderInputAttachmentArrayNonUniformIndexing = shaderInputAttachmentArrayNonUniformIndexing;
+		self
+	}
+
+	pub fn shaderUniformTexelBufferArrayNonUniformIndexing(mut self, shaderUniformTexelBufferArrayNonUniformIndexing : Bool32) -> Self {
+		self.shaderUniformTexelBufferArrayNonUniformIndexing = shaderUniformTexelBufferArrayNonUniformIndexing;
+		self
+	}
+
+	pub fn shaderStorageTexelBufferArrayNonUniformIndexing(mut self, shaderStorageTexelBufferArrayNonUniformIndexing : Bool32) -> Self {
+		self.shaderStorageTexelBufferArrayNonUniformIndexing = shaderStorageTexelBufferArrayNonUniformIndexing;
+		self
+	}
+
+	pub fn descriptorBindingUniformBufferUpdateAfterBind(mut self, descriptorBindingUniformBufferUpdateAfterBind : Bool32) -> Self {
+		self.descriptorBindingUniformBufferUpdateAfterBind = descriptorBindingUniformBufferUpdateAfterBind;
+		self
+	}
+
+	pub fn descriptorBindingSampledImageUpdateAfterBind(mut self, descriptorBindingSampledImageUpdateAfterBind : Bool32) -> Self {
+		self.descriptorBindingSampledImageUpdateAfterBind = descriptorBindingSampledImageUpdateAfterBind;
+		self
+	}
+
+	pub fn descriptorBindingStorageImageUpdateAfterBind(mut self, descriptorBindingStorageImageUpdateAfterBind : Bool32) -> Self {
+		self.descriptorBindingStorageImageUpdateAfterBind = descriptorBindingStorageImageUpdateAfterBind;
+		self
+	}
+
+	pub fn descriptorBindingStorageBufferUpdateAfterBind(mut self, descriptorBindingStorageBufferUpdateAfterBind : Bool32) -> Self {
+		self.descriptorBindingStorageBufferUpdateAfterBind = descriptorBindingStorageBufferUpdateAfterBind;
+		self
+	}
+
+	pub fn descriptorBindingUniformTexelBufferUpdateAfterBind(mut self, descriptorBindingUniformTexelBufferUpdateAfterBind : Bool32) -> Self {
+		self.descriptorBindingUniformTexelBufferUpdateAfterBind = descriptorBindingUniformTexelBufferUpdateAfterBind;
+		self
+	}
+
+	pub fn descriptorBindingStorageTexelBufferUpdateAfterBind(mut self, descriptorBindingStorageTexelBufferUpdateAfterBind : Bool32) -> Self {
+		self.descriptorBindingStorageTexelBufferUpdateAfterBind = descriptorBindingStorageTexelBufferUpdateAfterBind;
+		self
+	}
+
+	pub fn descriptorBindingUpdateUnusedWhilePending(mut self, descriptorBindingUpdateUnusedWhilePending : Bool32) -> Self {
+		self.descriptorBindingUpdateUnusedWhilePending = descriptorBindingUpdateUnusedWhilePending;
+		self
+	}
+
+	pub fn descriptorBindingPartiallyBound(mut self, descriptorBindingPartiallyBound : Bool32) -> Self {
+		self.descriptorBindingPartiallyBound = descriptorBindingPartiallyBound;
+		self
+	}
+
+	pub fn descriptorBindingVariableDescriptorCount(mut self, descriptorBindingVariableDescriptorCount : Bool32) -> Self {
+		self.descriptorBindingVariableDescriptorCount = descriptorBindingVariableDescriptorCount;
+		self
+	}
+
+	pub fn runtimeDescriptorArray(mut self, runtimeDescriptorArray : Bool32) -> Self {
+		self.runtimeDescriptorArray = runtimeDescriptorArray;
+		self
+	}
+
+}
+
+impl PhysicalDeviceDescriptorIndexingProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn maxUpdateAfterBindDescriptorsInAllPools(mut self, maxUpdateAfterBindDescriptorsInAllPools : u32) -> Self {
+		self.maxUpdateAfterBindDescriptorsInAllPools = maxUpdateAfterBindDescriptorsInAllPools;
+		self
+	}
+
+	pub fn shaderUniformBufferArrayNonUniformIndexingNative(mut self, shaderUniformBufferArrayNonUniformIndexingNative : Bool32) -> Self {
+		self.shaderUniformBufferArrayNonUniformIndexingNative = shaderUniformBufferArrayNonUniformIndexingNative;
+		self
+	}
+
+	pub fn shaderSampledImageArrayNonUniformIndexingNative(mut self, shaderSampledImageArrayNonUniformIndexingNative : Bool32) -> Self {
+		self.shaderSampledImageArrayNonUniformIndexingNative = shaderSampledImageArrayNonUniformIndexingNative;
+		self
+	}
+
+	pub fn shaderStorageBufferArrayNonUniformIndexingNative(mut self, shaderStorageBufferArrayNonUniformIndexingNative : Bool32) -> Self {
+		self.shaderStorageBufferArrayNonUniformIndexingNative = shaderStorageBufferArrayNonUniformIndexingNative;
+		self
+	}
+
+	pub fn shaderStorageImageArrayNonUniformIndexingNative(mut self, shaderStorageImageArrayNonUniformIndexingNative : Bool32) -> Self {
+		self.shaderStorageImageArrayNonUniformIndexingNative = shaderStorageImageArrayNonUniformIndexingNative;
+		self
+	}
+
+	pub fn shaderInputAttachmentArrayNonUniformIndexingNative(mut self, shaderInputAttachmentArrayNonUniformIndexingNative : Bool32) -> Self {
+		self.shaderInputAttachmentArrayNonUniformIndexingNative = shaderInputAttachmentArrayNonUniformIndexingNative;
+		self
+	}
+
+	pub fn robustBufferAccessUpdateAfterBind(mut self, robustBufferAccessUpdateAfterBind : Bool32) -> Self {
+		self.robustBufferAccessUpdateAfterBind = robustBufferAccessUpdateAfterBind;
+		self
+	}
+
+	pub fn quadDivergentImplicitLod(mut self, quadDivergentImplicitLod : Bool32) -> Self {
+		self.quadDivergentImplicitLod = quadDivergentImplicitLod;
+		self
+	}
+
+	pub fn maxPerStageDescriptorUpdateAfterBindSamplers(mut self, maxPerStageDescriptorUpdateAfterBindSamplers : u32) -> Self {
+		self.maxPerStageDescriptorUpdateAfterBindSamplers = maxPerStageDescriptorUpdateAfterBindSamplers;
+		self
+	}
+
+	pub fn maxPerStageDescriptorUpdateAfterBindUniformBuffers(mut self, maxPerStageDescriptorUpdateAfterBindUniformBuffers : u32) -> Self {
+		self.maxPerStageDescriptorUpdateAfterBindUniformBuffers = maxPerStageDescriptorUpdateAfterBindUniformBuffers;
+		self
+	}
+
+	pub fn maxPerStageDescriptorUpdateAfterBindStorageBuffers(mut self, maxPerStageDescriptorUpdateAfterBindStorageBuffers : u32) -> Self {
+		self.maxPerStageDescriptorUpdateAfterBindStorageBuffers = maxPerStageDescriptorUpdateAfterBindStorageBuffers;
+		self
+	}
+
+	pub fn maxPerStageDescriptorUpdateAfterBindSampledImages(mut self, maxPerStageDescriptorUpdateAfterBindSampledImages : u32) -> Self {
+		self.maxPerStageDescriptorUpdateAfterBindSampledImages = maxPerStageDescriptorUpdateAfterBindSampledImages;
+		self
+	}
+
+	pub fn maxPerStageDescriptorUpdateAfterBindStorageImages(mut self, maxPerStageDescriptorUpdateAfterBindStorageImages : u32) -> Self {
+		self.maxPerStageDescriptorUpdateAfterBindStorageImages = maxPerStageDescriptorUpdateAfterBindStorageImages;
+		self
+	}
+
+	pub fn maxPerStageDescriptorUpdateAfterBindInputAttachments(mut self, maxPerStageDescriptorUpdateAfterBindInputAttachments : u32) -> Self {
+		self.maxPerStageDescriptorUpdateAfterBindInputAttachments = maxPerStageDescriptorUpdateAfterBindInputAttachments;
+		self
+	}
+
+	pub fn maxPerStageUpdateAfterBindResources(mut self, maxPerStageUpdateAfterBindResources : u32) -> Self {
+		self.maxPerStageUpdateAfterBindResources = maxPerStageUpdateAfterBindResources;
+		self
+	}
+
+	pub fn maxDescriptorSetUpdateAfterBindSamplers(mut self, maxDescriptorSetUpdateAfterBindSamplers : u32) -> Self {
+		self.maxDescriptorSetUpdateAfterBindSamplers = maxDescriptorSetUpdateAfterBindSamplers;
+		self
+	}
+
+	pub fn maxDescriptorSetUpdateAfterBindUniformBuffers(mut self, maxDescriptorSetUpdateAfterBindUniformBuffers : u32) -> Self {
+		self.maxDescriptorSetUpdateAfterBindUniformBuffers = maxDescriptorSetUpdateAfterBindUniformBuffers;
+		self
+	}
+
+	pub fn maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(mut self, maxDescriptorSetUpdateAfterBindUniformBuffersDynamic : u32) -> Self {
+		self.maxDescriptorSetUpdateAfterBindUniformBuffersDynamic = maxDescriptorSetUpdateAfterBindUniformBuffersDynamic;
+		self
+	}
+
+	pub fn maxDescriptorSetUpdateAfterBindStorageBuffers(mut self, maxDescriptorSetUpdateAfterBindStorageBuffers : u32) -> Self {
+		self.maxDescriptorSetUpdateAfterBindStorageBuffers = maxDescriptorSetUpdateAfterBindStorageBuffers;
+		self
+	}
+
+	pub fn maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(mut self, maxDescriptorSetUpdateAfterBindStorageBuffersDynamic : u32) -> Self {
+		self.maxDescriptorSetUpdateAfterBindStorageBuffersDynamic = maxDescriptorSetUpdateAfterBindStorageBuffersDynamic;
+		self
+	}
+
+	pub fn maxDescriptorSetUpdateAfterBindSampledImages(mut self, maxDescriptorSetUpdateAfterBindSampledImages : u32) -> Self {
+		self.maxDescriptorSetUpdateAfterBindSampledImages = maxDescriptorSetUpdateAfterBindSampledImages;
+		self
+	}
+
+	pub fn maxDescriptorSetUpdateAfterBindStorageImages(mut self, maxDescriptorSetUpdateAfterBindStorageImages : u32) -> Self {
+		self.maxDescriptorSetUpdateAfterBindStorageImages = maxDescriptorSetUpdateAfterBindStorageImages;
+		self
+	}
+
+	pub fn maxDescriptorSetUpdateAfterBindInputAttachments(mut self, maxDescriptorSetUpdateAfterBindInputAttachments : u32) -> Self {
+		self.maxDescriptorSetUpdateAfterBindInputAttachments = maxDescriptorSetUpdateAfterBindInputAttachments;
+		self
+	}
+
+}
+
+impl DescriptorSetVariableDescriptorCountAllocateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn descriptorSetCount(mut self, descriptorSetCount : u32) -> Self {
+		self.descriptorSetCount = descriptorSetCount;
+		self
+	}
+
+	pub fn pDescriptorCounts(mut self, pDescriptorCounts : *const u32) -> Self {
+		self.pDescriptorCounts = pDescriptorCounts;
+		self
+	}
+
+}
+
+impl DescriptorSetVariableDescriptorCountLayoutSupport {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn maxVariableDescriptorCount(mut self, maxVariableDescriptorCount : u32) -> Self {
+		self.maxVariableDescriptorCount = maxVariableDescriptorCount;
+		self
+	}
+
+}
+
+impl SubpassDescriptionDepthStencilResolve {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn depthResolveMode(mut self, depthResolveMode : ResolveModeFlagBits) -> Self {
+		self.depthResolveMode = depthResolveMode;
+		self
+	}
+
+	pub fn stencilResolveMode(mut self, stencilResolveMode : ResolveModeFlagBits) -> Self {
+		self.stencilResolveMode = stencilResolveMode;
+		self
+	}
+
+	pub fn pDepthStencilResolveAttachment(mut self, pDepthStencilResolveAttachment : *const AttachmentReference2) -> Self {
+		self.pDepthStencilResolveAttachment = pDepthStencilResolveAttachment;
+		self
+	}
+
+}
+
+impl PhysicalDeviceDepthStencilResolveProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn supportedDepthResolveModes(mut self, supportedDepthResolveModes : ResolveModeFlags) -> Self {
+		self.supportedDepthResolveModes = supportedDepthResolveModes;
+		self
+	}
+
+	pub fn supportedStencilResolveModes(mut self, supportedStencilResolveModes : ResolveModeFlags) -> Self {
+		self.supportedStencilResolveModes = supportedStencilResolveModes;
+		self
+	}
+
+	pub fn independentResolveNone(mut self, independentResolveNone : Bool32) -> Self {
+		self.independentResolveNone = independentResolveNone;
+		self
+	}
+
+	pub fn independentResolve(mut self, independentResolve : Bool32) -> Self {
+		self.independentResolve = independentResolve;
+		self
+	}
+
+}
+
+impl PhysicalDeviceScalarBlockLayoutFeatures {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn scalarBlockLayout(mut self, scalarBlockLayout : Bool32) -> Self {
+		self.scalarBlockLayout = scalarBlockLayout;
+		self
+	}
+
+}
+
+impl ImageStencilUsageCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn stencilUsage(mut self, stencilUsage : ImageUsageFlags) -> Self {
+		self.stencilUsage = stencilUsage;
+		self
+	}
+
+}
+
+impl SamplerReductionModeCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn reductionMode(mut self, reductionMode : SamplerReductionMode) -> Self {
+		self.reductionMode = reductionMode;
+		self
+	}
+
+}
+
+impl PhysicalDeviceSamplerFilterMinmaxProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn filterMinmaxSingleComponentFormats(mut self, filterMinmaxSingleComponentFormats : Bool32) -> Self {
+		self.filterMinmaxSingleComponentFormats = filterMinmaxSingleComponentFormats;
+		self
+	}
+
+	pub fn filterMinmaxImageComponentMapping(mut self, filterMinmaxImageComponentMapping : Bool32) -> Self {
+		self.filterMinmaxImageComponentMapping = filterMinmaxImageComponentMapping;
+		self
+	}
+
+}
+
+impl PhysicalDeviceVulkanMemoryModelFeatures {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn vulkanMemoryModel(mut self, vulkanMemoryModel : Bool32) -> Self {
+		self.vulkanMemoryModel = vulkanMemoryModel;
+		self
+	}
+
+	pub fn vulkanMemoryModelDeviceScope(mut self, vulkanMemoryModelDeviceScope : Bool32) -> Self {
+		self.vulkanMemoryModelDeviceScope = vulkanMemoryModelDeviceScope;
+		self
+	}
+
+	pub fn vulkanMemoryModelAvailabilityVisibilityChains(mut self, vulkanMemoryModelAvailabilityVisibilityChains : Bool32) -> Self {
+		self.vulkanMemoryModelAvailabilityVisibilityChains = vulkanMemoryModelAvailabilityVisibilityChains;
+		self
+	}
+
+}
+
+impl PhysicalDeviceImagelessFramebufferFeatures {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn imagelessFramebuffer(mut self, imagelessFramebuffer : Bool32) -> Self {
+		self.imagelessFramebuffer = imagelessFramebuffer;
+		self
+	}
+
+}
+
+impl FramebufferAttachmentImageInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : ImageCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn usage(mut self, usage : ImageUsageFlags) -> Self {
+		self.usage = usage;
+		self
+	}
+
+	pub fn width(mut self, width : u32) -> Self {
+		self.width = width;
+		self
+	}
+
+	pub fn height(mut self, height : u32) -> Self {
+		self.height = height;
+		self
+	}
+
+	pub fn layerCount(mut self, layerCount : u32) -> Self {
+		self.layerCount = layerCount;
+		self
+	}
+
+	pub fn viewFormatCount(mut self, viewFormatCount : u32) -> Self {
+		self.viewFormatCount = viewFormatCount;
+		self
+	}
+
+	pub fn pViewFormats(mut self, pViewFormats : *const Format) -> Self {
+		self.pViewFormats = pViewFormats;
+		self
+	}
+
+}
+
+impl FramebufferAttachmentsCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn attachmentImageInfoCount(mut self, attachmentImageInfoCount : u32) -> Self {
+		self.attachmentImageInfoCount = attachmentImageInfoCount;
+		self
+	}
+
+	pub fn pAttachmentImageInfos(mut self, pAttachmentImageInfos : *const FramebufferAttachmentImageInfo) -> Self {
+		self.pAttachmentImageInfos = pAttachmentImageInfos;
+		self
+	}
+
+}
+
+impl RenderPassAttachmentBeginInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn attachmentCount(mut self, attachmentCount : u32) -> Self {
+		self.attachmentCount = attachmentCount;
+		self
+	}
+
+	pub fn pAttachments(mut self, pAttachments : *const ImageView) -> Self {
+		self.pAttachments = pAttachments;
+		self
+	}
+
+}
+
+impl PhysicalDeviceUniformBufferStandardLayoutFeatures {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn uniformBufferStandardLayout(mut self, uniformBufferStandardLayout : Bool32) -> Self {
+		self.uniformBufferStandardLayout = uniformBufferStandardLayout;
+		self
+	}
+
+}
+
+impl PhysicalDeviceShaderSubgroupExtendedTypesFeatures {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn shaderSubgroupExtendedTypes(mut self, shaderSubgroupExtendedTypes : Bool32) -> Self {
+		self.shaderSubgroupExtendedTypes = shaderSubgroupExtendedTypes;
+		self
+	}
+
+}
+
+impl PhysicalDeviceSeparateDepthStencilLayoutsFeatures {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn separateDepthStencilLayouts(mut self, separateDepthStencilLayouts : Bool32) -> Self {
+		self.separateDepthStencilLayouts = separateDepthStencilLayouts;
+		self
+	}
+
+}
+
+impl AttachmentReferenceStencilLayout {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn stencilLayout(mut self, stencilLayout : ImageLayout) -> Self {
+		self.stencilLayout = stencilLayout;
+		self
+	}
+
+}
+
+impl AttachmentDescriptionStencilLayout {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn stencilInitialLayout(mut self, stencilInitialLayout : ImageLayout) -> Self {
+		self.stencilInitialLayout = stencilInitialLayout;
+		self
+	}
+
+	pub fn stencilFinalLayout(mut self, stencilFinalLayout : ImageLayout) -> Self {
+		self.stencilFinalLayout = stencilFinalLayout;
+		self
+	}
+
+}
+
+impl PhysicalDeviceHostQueryResetFeatures {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn hostQueryReset(mut self, hostQueryReset : Bool32) -> Self {
+		self.hostQueryReset = hostQueryReset;
+		self
+	}
+
+}
+
+impl PhysicalDeviceTimelineSemaphoreFeatures {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn timelineSemaphore(mut self, timelineSemaphore : Bool32) -> Self {
+		self.timelineSemaphore = timelineSemaphore;
+		self
+	}
+
+}
+
+impl PhysicalDeviceTimelineSemaphoreProperties {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn maxTimelineSemaphoreValueDifference(mut self, maxTimelineSemaphoreValueDifference : u64) -> Self {
+		self.maxTimelineSemaphoreValueDifference = maxTimelineSemaphoreValueDifference;
+		self
+	}
+
+}
+
+impl SemaphoreTypeCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn semaphoreType(mut self, semaphoreType : SemaphoreType) -> Self {
+		self.semaphoreType = semaphoreType;
+		self
+	}
+
+	pub fn initialValue(mut self, initialValue : u64) -> Self {
+		self.initialValue = initialValue;
+		self
+	}
+
+}
+
+impl TimelineSemaphoreSubmitInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn waitSemaphoreValueCount(mut self, waitSemaphoreValueCount : u32) -> Self {
+		self.waitSemaphoreValueCount = waitSemaphoreValueCount;
+		self
+	}
+
+	pub fn pWaitSemaphoreValues(mut self, pWaitSemaphoreValues : *const u64) -> Self {
+		self.pWaitSemaphoreValues = pWaitSemaphoreValues;
+		self
+	}
+
+	pub fn signalSemaphoreValueCount(mut self, signalSemaphoreValueCount : u32) -> Self {
+		self.signalSemaphoreValueCount = signalSemaphoreValueCount;
+		self
+	}
+
+	pub fn pSignalSemaphoreValues(mut self, pSignalSemaphoreValues : *const u64) -> Self {
+		self.pSignalSemaphoreValues = pSignalSemaphoreValues;
+		self
+	}
+
+}
+
+impl SemaphoreWaitInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : SemaphoreWaitFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn semaphoreCount(mut self, semaphoreCount : u32) -> Self {
+		self.semaphoreCount = semaphoreCount;
+		self
+	}
+
+	pub fn pSemaphores(mut self, pSemaphores : *const Semaphore) -> Self {
+		self.pSemaphores = pSemaphores;
+		self
+	}
+
+	pub fn pValues(mut self, pValues : *const u64) -> Self {
+		self.pValues = pValues;
+		self
+	}
+
+}
+
+impl SemaphoreSignalInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn semaphore(mut self, semaphore : Semaphore) -> Self {
+		self.semaphore = semaphore;
+		self
+	}
+
+	pub fn value(mut self, value : u64) -> Self {
+		self.value = value;
+		self
+	}
+
+}
+
+impl PhysicalDeviceBufferDeviceAddressFeatures {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn bufferDeviceAddress(mut self, bufferDeviceAddress : Bool32) -> Self {
+		self.bufferDeviceAddress = bufferDeviceAddress;
+		self
+	}
+
+	pub fn bufferDeviceAddressCaptureReplay(mut self, bufferDeviceAddressCaptureReplay : Bool32) -> Self {
+		self.bufferDeviceAddressCaptureReplay = bufferDeviceAddressCaptureReplay;
+		self
+	}
+
+	pub fn bufferDeviceAddressMultiDevice(mut self, bufferDeviceAddressMultiDevice : Bool32) -> Self {
+		self.bufferDeviceAddressMultiDevice = bufferDeviceAddressMultiDevice;
+		self
+	}
+
+}
+
+impl BufferDeviceAddressInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn buffer(mut self, buffer : Buffer) -> Self {
+		self.buffer = buffer;
+		self
+	}
+
+}
+
+impl BufferOpaqueCaptureAddressCreateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn opaqueCaptureAddress(mut self, opaqueCaptureAddress : u64) -> Self {
+		self.opaqueCaptureAddress = opaqueCaptureAddress;
+		self
+	}
+
+}
+
+impl MemoryOpaqueCaptureAddressAllocateInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn opaqueCaptureAddress(mut self, opaqueCaptureAddress : u64) -> Self {
+		self.opaqueCaptureAddress = opaqueCaptureAddress;
+		self
+	}
+
+}
+
+impl DeviceMemoryOpaqueCaptureAddressInfo {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn memory(mut self, memory : DeviceMemory) -> Self {
+		self.memory = memory;
+		self
+	}
+
+}
+
+impl SurfaceCapabilitiesKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn minImageCount(mut self, minImageCount : u32) -> Self {
+		self.minImageCount = minImageCount;
+		self
+	}
+
+	pub fn maxImageCount(mut self, maxImageCount : u32) -> Self {
+		self.maxImageCount = maxImageCount;
+		self
+	}
+
+	pub fn currentExtent(mut self, currentExtent : Extent2D) -> Self {
+		self.currentExtent = currentExtent;
+		self
+	}
+
+	pub fn minImageExtent(mut self, minImageExtent : Extent2D) -> Self {
+		self.minImageExtent = minImageExtent;
+		self
+	}
+
+	pub fn maxImageExtent(mut self, maxImageExtent : Extent2D) -> Self {
+		self.maxImageExtent = maxImageExtent;
+		self
+	}
+
+	pub fn maxImageArrayLayers(mut self, maxImageArrayLayers : u32) -> Self {
+		self.maxImageArrayLayers = maxImageArrayLayers;
+		self
+	}
+
+	pub fn supportedTransforms(mut self, supportedTransforms : SurfaceTransformFlagsKHR) -> Self {
+		self.supportedTransforms = supportedTransforms;
+		self
+	}
+
+	pub fn currentTransform(mut self, currentTransform : SurfaceTransformFlagBitsKHR) -> Self {
+		self.currentTransform = currentTransform;
+		self
+	}
+
+	pub fn supportedCompositeAlpha(mut self, supportedCompositeAlpha : CompositeAlphaFlagsKHR) -> Self {
+		self.supportedCompositeAlpha = supportedCompositeAlpha;
+		self
+	}
+
+	pub fn supportedUsageFlags(mut self, supportedUsageFlags : ImageUsageFlags) -> Self {
+		self.supportedUsageFlags = supportedUsageFlags;
+		self
+	}
+
+}
+
+impl SurfaceFormatKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn format(mut self, format : Format) -> Self {
+		self.format = format;
+		self
+	}
+
+	pub fn colorSpace(mut self, colorSpace : ColorSpaceKHR) -> Self {
+		self.colorSpace = colorSpace;
+		self
+	}
+
+}
+
+impl SwapchainCreateInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : SwapchainCreateFlagsKHR) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn surface(mut self, surface : SurfaceKHR) -> Self {
+		self.surface = surface;
+		self
+	}
+
+	pub fn minImageCount(mut self, minImageCount : u32) -> Self {
+		self.minImageCount = minImageCount;
+		self
+	}
+
+	pub fn imageFormat(mut self, imageFormat : Format) -> Self {
+		self.imageFormat = imageFormat;
+		self
+	}
+
+	pub fn imageColorSpace(mut self, imageColorSpace : ColorSpaceKHR) -> Self {
+		self.imageColorSpace = imageColorSpace;
+		self
+	}
+
+	pub fn imageExtent(mut self, imageExtent : Extent2D) -> Self {
+		self.imageExtent = imageExtent;
+		self
+	}
+
+	pub fn imageArrayLayers(mut self, imageArrayLayers : u32) -> Self {
+		self.imageArrayLayers = imageArrayLayers;
+		self
+	}
+
+	pub fn imageUsage(mut self, imageUsage : ImageUsageFlags) -> Self {
+		self.imageUsage = imageUsage;
+		self
+	}
+
+	pub fn imageSharingMode(mut self, imageSharingMode : SharingMode) -> Self {
+		self.imageSharingMode = imageSharingMode;
+		self
+	}
+
+	pub fn queueFamilyIndexCount(mut self, queueFamilyIndexCount : u32) -> Self {
+		self.queueFamilyIndexCount = queueFamilyIndexCount;
+		self
+	}
+
+	pub fn pQueueFamilyIndices(mut self, pQueueFamilyIndices : *const u32) -> Self {
+		self.pQueueFamilyIndices = pQueueFamilyIndices;
+		self
+	}
+
+	pub fn preTransform(mut self, preTransform : SurfaceTransformFlagBitsKHR) -> Self {
+		self.preTransform = preTransform;
+		self
+	}
+
+	pub fn compositeAlpha(mut self, compositeAlpha : CompositeAlphaFlagBitsKHR) -> Self {
+		self.compositeAlpha = compositeAlpha;
+		self
+	}
+
+	pub fn presentMode(mut self, presentMode : PresentModeKHR) -> Self {
+		self.presentMode = presentMode;
+		self
+	}
+
+	pub fn clipped(mut self, clipped : Bool32) -> Self {
+		self.clipped = clipped;
+		self
+	}
+
+	pub fn oldSwapchain(mut self, oldSwapchain : SwapchainKHR) -> Self {
+		self.oldSwapchain = oldSwapchain;
+		self
+	}
+
+}
+
+impl PresentInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn waitSemaphoreCount(mut self, waitSemaphoreCount : u32) -> Self {
+		self.waitSemaphoreCount = waitSemaphoreCount;
+		self
+	}
+
+	pub fn pWaitSemaphores(mut self, pWaitSemaphores : *const Semaphore) -> Self {
+		self.pWaitSemaphores = pWaitSemaphores;
+		self
+	}
+
+	pub fn swapchainCount(mut self, swapchainCount : u32) -> Self {
+		self.swapchainCount = swapchainCount;
+		self
+	}
+
+	pub fn pSwapchains(mut self, pSwapchains : *const SwapchainKHR) -> Self {
+		self.pSwapchains = pSwapchains;
+		self
+	}
+
+	pub fn pImageIndices(mut self, pImageIndices : *const i32) -> Self {
+		self.pImageIndices = pImageIndices;
+		self
+	}
+
+	pub fn pResults(mut self, pResults : *mut VkResult) -> Self {
+		self.pResults = pResults;
+		self
+	}
+
+}
+
+impl ImageSwapchainCreateInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn swapchain(mut self, swapchain : SwapchainKHR) -> Self {
+		self.swapchain = swapchain;
+		self
+	}
+
+}
+
+impl BindImageMemorySwapchainInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn swapchain(mut self, swapchain : SwapchainKHR) -> Self {
+		self.swapchain = swapchain;
+		self
+	}
+
+	pub fn imageIndex(mut self, imageIndex : u32) -> Self {
+		self.imageIndex = imageIndex;
+		self
+	}
+
+}
+
+impl AcquireNextImageInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn swapchain(mut self, swapchain : SwapchainKHR) -> Self {
+		self.swapchain = swapchain;
+		self
+	}
+
+	pub fn timeout(mut self, timeout : u64) -> Self {
+		self.timeout = timeout;
+		self
+	}
+
+	pub fn semaphore(mut self, semaphore : Semaphore) -> Self {
+		self.semaphore = semaphore;
+		self
+	}
+
+	pub fn fence(mut self, fence : Fence) -> Self {
+		self.fence = fence;
+		self
+	}
+
+	pub fn deviceMask(mut self, deviceMask : u32) -> Self {
+		self.deviceMask = deviceMask;
+		self
+	}
+
+}
+
+impl DeviceGroupPresentCapabilitiesKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn presentMask(mut self, presentMask : [u32;MAX_DEVICE_GROUP_SIZE]) -> Self {
+		self.presentMask = presentMask;
+		self
+	}
+
+	pub fn modes(mut self, modes : DeviceGroupPresentModeFlagsKHR) -> Self {
+		self.modes = modes;
+		self
+	}
+
+}
+
+impl DeviceGroupPresentInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn swapchainCount(mut self, swapchainCount : u32) -> Self {
+		self.swapchainCount = swapchainCount;
+		self
+	}
+
+	pub fn pDeviceMasks(mut self, pDeviceMasks : *const u32) -> Self {
+		self.pDeviceMasks = pDeviceMasks;
+		self
+	}
+
+	pub fn mode(mut self, mode : DeviceGroupPresentModeFlagBitsKHR) -> Self {
+		self.mode = mode;
+		self
+	}
+
+}
+
+impl DeviceGroupSwapchainCreateInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn modes(mut self, modes : DeviceGroupPresentModeFlagsKHR) -> Self {
+		self.modes = modes;
+		self
+	}
+
+}
+
+impl DisplayPropertiesKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn display(mut self, display : DisplayKHR) -> Self {
+		self.display = display;
+		self
+	}
+
+	pub fn displayName(mut self, displayName : *const i8) -> Self {
+		self.displayName = displayName;
+		self
+	}
+
+	pub fn physicalDimensions(mut self, physicalDimensions : Extent2D) -> Self {
+		self.physicalDimensions = physicalDimensions;
+		self
+	}
+
+	pub fn physicalResolution(mut self, physicalResolution : Extent2D) -> Self {
+		self.physicalResolution = physicalResolution;
+		self
+	}
+
+	pub fn supportedTransforms(mut self, supportedTransforms : SurfaceTransformFlagsKHR) -> Self {
+		self.supportedTransforms = supportedTransforms;
+		self
+	}
+
+	pub fn planeReorderPossible(mut self, planeReorderPossible : Bool32) -> Self {
+		self.planeReorderPossible = planeReorderPossible;
+		self
+	}
+
+	pub fn persistentContent(mut self, persistentContent : Bool32) -> Self {
+		self.persistentContent = persistentContent;
+		self
+	}
+
+}
+
+impl DisplayModeParametersKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn visibleRegion(mut self, visibleRegion : Extent2D) -> Self {
+		self.visibleRegion = visibleRegion;
+		self
+	}
+
+	pub fn refreshRate(mut self, refreshRate : u32) -> Self {
+		self.refreshRate = refreshRate;
+		self
+	}
+
+}
+
+impl DisplayModePropertiesKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn displayMode(mut self, displayMode : DisplayModeKHR) -> Self {
+		self.displayMode = displayMode;
+		self
+	}
+
+	pub fn parameters(mut self, parameters : DisplayModeParametersKHR) -> Self {
+		self.parameters = parameters;
+		self
+	}
+
+}
+
+impl DisplayModeCreateInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : DisplayModeCreateFlagsKHR) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn parameters(mut self, parameters : DisplayModeParametersKHR) -> Self {
+		self.parameters = parameters;
+		self
+	}
+
+}
+
+impl DisplayPlaneCapabilitiesKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn supportedAlpha(mut self, supportedAlpha : DisplayPlaneAlphaFlagsKHR) -> Self {
+		self.supportedAlpha = supportedAlpha;
+		self
+	}
+
+	pub fn minSrcPosition(mut self, minSrcPosition : Offset2D) -> Self {
+		self.minSrcPosition = minSrcPosition;
+		self
+	}
+
+	pub fn maxSrcPosition(mut self, maxSrcPosition : Offset2D) -> Self {
+		self.maxSrcPosition = maxSrcPosition;
+		self
+	}
+
+	pub fn minSrcExtent(mut self, minSrcExtent : Extent2D) -> Self {
+		self.minSrcExtent = minSrcExtent;
+		self
+	}
+
+	pub fn maxSrcExtent(mut self, maxSrcExtent : Extent2D) -> Self {
+		self.maxSrcExtent = maxSrcExtent;
+		self
+	}
+
+	pub fn minDstPosition(mut self, minDstPosition : Offset2D) -> Self {
+		self.minDstPosition = minDstPosition;
+		self
+	}
+
+	pub fn maxDstPosition(mut self, maxDstPosition : Offset2D) -> Self {
+		self.maxDstPosition = maxDstPosition;
+		self
+	}
+
+	pub fn minDstExtent(mut self, minDstExtent : Extent2D) -> Self {
+		self.minDstExtent = minDstExtent;
+		self
+	}
+
+	pub fn maxDstExtent(mut self, maxDstExtent : Extent2D) -> Self {
+		self.maxDstExtent = maxDstExtent;
+		self
+	}
+
+}
+
+impl DisplayPlanePropertiesKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn currentDisplay(mut self, currentDisplay : DisplayKHR) -> Self {
+		self.currentDisplay = currentDisplay;
+		self
+	}
+
+	pub fn currentStackIndex(mut self, currentStackIndex : u32) -> Self {
+		self.currentStackIndex = currentStackIndex;
+		self
+	}
+
+}
+
+impl DisplaySurfaceCreateInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : DisplaySurfaceCreateFlagsKHR) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn displayMode(mut self, displayMode : DisplayModeKHR) -> Self {
+		self.displayMode = displayMode;
+		self
+	}
+
+	pub fn planeIndex(mut self, planeIndex : u32) -> Self {
+		self.planeIndex = planeIndex;
+		self
+	}
+
+	pub fn planeStackIndex(mut self, planeStackIndex : u32) -> Self {
+		self.planeStackIndex = planeStackIndex;
+		self
+	}
+
+	pub fn transform(mut self, transform : SurfaceTransformFlagBitsKHR) -> Self {
+		self.transform = transform;
+		self
+	}
+
+	pub fn globalAlpha(mut self, globalAlpha : f32) -> Self {
+		self.globalAlpha = globalAlpha;
+		self
+	}
+
+	pub fn alphaMode(mut self, alphaMode : DisplayPlaneAlphaFlagBitsKHR) -> Self {
+		self.alphaMode = alphaMode;
+		self
+	}
+
+	pub fn imageExtent(mut self, imageExtent : Extent2D) -> Self {
+		self.imageExtent = imageExtent;
+		self
+	}
+
+}
+
+impl DisplayPresentInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn srcRect(mut self, srcRect : Rect2D) -> Self {
+		self.srcRect = srcRect;
+		self
+	}
+
+	pub fn dstRect(mut self, dstRect : Rect2D) -> Self {
+		self.dstRect = dstRect;
+		self
+	}
+
+	pub fn persistent(mut self, persistent : Bool32) -> Self {
+		self.persistent = persistent;
+		self
+	}
+
+}
+
+impl ImportMemoryFdInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn handleType(mut self, handleType : ExternalMemoryHandleTypeFlagBits) -> Self {
+		self.handleType = handleType;
+		self
+	}
+
+	pub fn fd(mut self, fd : i32) -> Self {
+		self.fd = fd;
+		self
+	}
+
+}
+
+impl MemoryFdPropertiesKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn memoryTypeBits(mut self, memoryTypeBits : u32) -> Self {
+		self.memoryTypeBits = memoryTypeBits;
+		self
+	}
+
+}
+
+impl MemoryGetFdInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn memory(mut self, memory : DeviceMemory) -> Self {
+		self.memory = memory;
+		self
+	}
+
+	pub fn handleType(mut self, handleType : ExternalMemoryHandleTypeFlagBits) -> Self {
+		self.handleType = handleType;
+		self
+	}
+
+}
+
+impl ImportSemaphoreFdInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn semaphore(mut self, semaphore : Semaphore) -> Self {
+		self.semaphore = semaphore;
+		self
+	}
+
+	pub fn flags(mut self, flags : SemaphoreImportFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn handleType(mut self, handleType : ExternalSemaphoreHandleTypeFlagBits) -> Self {
+		self.handleType = handleType;
+		self
+	}
+
+	pub fn fd(mut self, fd : i32) -> Self {
+		self.fd = fd;
+		self
+	}
+
+}
+
+impl SemaphoreGetFdInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn semaphore(mut self, semaphore : Semaphore) -> Self {
+		self.semaphore = semaphore;
+		self
+	}
+
+	pub fn handleType(mut self, handleType : ExternalSemaphoreHandleTypeFlagBits) -> Self {
+		self.handleType = handleType;
+		self
+	}
+
+}
+
+impl PhysicalDevicePushDescriptorPropertiesKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn maxPushDescriptors(mut self, maxPushDescriptors : u32) -> Self {
+		self.maxPushDescriptors = maxPushDescriptors;
+		self
+	}
+
+}
+
+impl RectLayerKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn offset(mut self, offset : Offset2D) -> Self {
+		self.offset = offset;
+		self
+	}
+
+	pub fn extent(mut self, extent : Extent2D) -> Self {
+		self.extent = extent;
+		self
+	}
+
+	pub fn layer(mut self, layer : u32) -> Self {
+		self.layer = layer;
+		self
+	}
+
+}
+
+impl PresentRegionKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn rectangleCount(mut self, rectangleCount : u32) -> Self {
+		self.rectangleCount = rectangleCount;
+		self
+	}
+
+	pub fn pRectangles(mut self, pRectangles : *const RectLayerKHR) -> Self {
+		self.pRectangles = pRectangles;
+		self
+	}
+
+}
+
+impl PresentRegionsKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn swapchainCount(mut self, swapchainCount : u32) -> Self {
+		self.swapchainCount = swapchainCount;
+		self
+	}
+
+	pub fn pRegions(mut self, pRegions : *const PresentRegionKHR) -> Self {
+		self.pRegions = pRegions;
+		self
+	}
+
+}
+
+impl SharedPresentSurfaceCapabilitiesKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn sharedPresentSupportedUsageFlags(mut self, sharedPresentSupportedUsageFlags : ImageUsageFlags) -> Self {
+		self.sharedPresentSupportedUsageFlags = sharedPresentSupportedUsageFlags;
+		self
+	}
+
+}
+
+impl ImportFenceFdInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn fence(mut self, fence : Fence) -> Self {
+		self.fence = fence;
+		self
+	}
+
+	pub fn flags(mut self, flags : FenceImportFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn handleType(mut self, handleType : ExternalFenceHandleTypeFlagBits) -> Self {
+		self.handleType = handleType;
+		self
+	}
+
+	pub fn fd(mut self, fd : i32) -> Self {
+		self.fd = fd;
+		self
+	}
+
+}
+
+impl FenceGetFdInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn fence(mut self, fence : Fence) -> Self {
+		self.fence = fence;
+		self
+	}
+
+	pub fn handleType(mut self, handleType : ExternalFenceHandleTypeFlagBits) -> Self {
+		self.handleType = handleType;
+		self
+	}
+
+}
+
+impl PhysicalDevicePerformanceQueryFeaturesKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn performanceCounterQueryPools(mut self, performanceCounterQueryPools : Bool32) -> Self {
+		self.performanceCounterQueryPools = performanceCounterQueryPools;
+		self
+	}
+
+	pub fn performanceCounterMultipleQueryPools(mut self, performanceCounterMultipleQueryPools : Bool32) -> Self {
+		self.performanceCounterMultipleQueryPools = performanceCounterMultipleQueryPools;
+		self
+	}
+
+}
+
+impl PhysicalDevicePerformanceQueryPropertiesKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn allowCommandBufferQueryCopies(mut self, allowCommandBufferQueryCopies : Bool32) -> Self {
+		self.allowCommandBufferQueryCopies = allowCommandBufferQueryCopies;
+		self
+	}
+
+}
+
+impl PerformanceCounterKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn unit(mut self, unit : PerformanceCounterUnitKHR) -> Self {
+		self.unit = unit;
+		self
+	}
+
+	pub fn scope(mut self, scope : PerformanceCounterScopeKHR) -> Self {
+		self.scope = scope;
+		self
+	}
+
+	pub fn storage(mut self, storage : PerformanceCounterStorageKHR) -> Self {
+		self.storage = storage;
+		self
+	}
+
+	pub fn uuid(mut self, uuid : [u8;UUID_SIZE]) -> Self {
+		self.uuid = uuid;
+		self
+	}
+
+}
+
+impl PerformanceCounterDescriptionKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PerformanceCounterDescriptionFlagsKHR) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn name(mut self, name : [i8;MAX_DESCRIPTION_SIZE]) -> Self {
+		self.name = name;
+		self
+	}
+
+	pub fn category(mut self, category : [i8;MAX_DESCRIPTION_SIZE]) -> Self {
+		self.category = category;
+		self
+	}
+
+	pub fn description(mut self, description : [i8;MAX_DESCRIPTION_SIZE]) -> Self {
+		self.description = description;
+		self
+	}
+
+}
+
+impl QueryPoolPerformanceCreateInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn queueFamilyIndex(mut self, queueFamilyIndex : u32) -> Self {
+		self.queueFamilyIndex = queueFamilyIndex;
+		self
+	}
+
+	pub fn counterIndexCount(mut self, counterIndexCount : u32) -> Self {
+		self.counterIndexCount = counterIndexCount;
+		self
+	}
+
+	pub fn pCounterIndices(mut self, pCounterIndices : *const u32) -> Self {
+		self.pCounterIndices = pCounterIndices;
+		self
+	}
+
+}
+
+impl AcquireProfilingLockInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : AcquireProfilingLockFlagsKHR) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn timeout(mut self, timeout : u64) -> Self {
+		self.timeout = timeout;
+		self
+	}
+
+}
+
+impl PerformanceQuerySubmitInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn counterPassIndex(mut self, counterPassIndex : u32) -> Self {
+		self.counterPassIndex = counterPassIndex;
+		self
+	}
+
+}
+
+impl PhysicalDeviceSurfaceInfo2KHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn surface(mut self, surface : SurfaceKHR) -> Self {
+		self.surface = surface;
+		self
+	}
+
+}
+
+impl SurfaceCapabilities2KHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn surfaceCapabilities(mut self, surfaceCapabilities : SurfaceCapabilitiesKHR) -> Self {
+		self.surfaceCapabilities = surfaceCapabilities;
+		self
+	}
+
+}
+
+impl SurfaceFormat2KHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn surfaceFormat(mut self, surfaceFormat : SurfaceFormatKHR) -> Self {
+		self.surfaceFormat = surfaceFormat;
+		self
+	}
+
+}
+
+impl DisplayProperties2KHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn displayProperties(mut self, displayProperties : DisplayPropertiesKHR) -> Self {
+		self.displayProperties = displayProperties;
+		self
+	}
+
+}
+
+impl DisplayPlaneProperties2KHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn displayPlaneProperties(mut self, displayPlaneProperties : DisplayPlanePropertiesKHR) -> Self {
+		self.displayPlaneProperties = displayPlaneProperties;
+		self
+	}
+
+}
+
+impl DisplayModeProperties2KHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn displayModeProperties(mut self, displayModeProperties : DisplayModePropertiesKHR) -> Self {
+		self.displayModeProperties = displayModeProperties;
+		self
+	}
+
+}
+
+impl DisplayPlaneInfo2KHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn mode(mut self, mode : DisplayModeKHR) -> Self {
+		self.mode = mode;
+		self
+	}
+
+	pub fn planeIndex(mut self, planeIndex : u32) -> Self {
+		self.planeIndex = planeIndex;
+		self
+	}
+
+}
+
+impl DisplayPlaneCapabilities2KHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn capabilities(mut self, capabilities : DisplayPlaneCapabilitiesKHR) -> Self {
+		self.capabilities = capabilities;
+		self
+	}
+
+}
+
+impl PhysicalDeviceShaderClockFeaturesKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn shaderSubgroupClock(mut self, shaderSubgroupClock : Bool32) -> Self {
+		self.shaderSubgroupClock = shaderSubgroupClock;
+		self
+	}
+
+	pub fn shaderDeviceClock(mut self, shaderDeviceClock : Bool32) -> Self {
+		self.shaderDeviceClock = shaderDeviceClock;
+		self
+	}
+
+}
+
+impl SurfaceProtectedCapabilitiesKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn supportsProtected(mut self, supportsProtected : Bool32) -> Self {
+		self.supportsProtected = supportsProtected;
+		self
+	}
+
+}
+
+impl PhysicalDevicePipelineExecutablePropertiesFeaturesKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn pipelineExecutableInfo(mut self, pipelineExecutableInfo : Bool32) -> Self {
+		self.pipelineExecutableInfo = pipelineExecutableInfo;
+		self
+	}
+
+}
+
+impl PipelineInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn pipeline(mut self, pipeline : Pipeline) -> Self {
+		self.pipeline = pipeline;
+		self
+	}
+
+}
+
+impl PipelineExecutablePropertiesKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn stages(mut self, stages : ShaderStageFlags) -> Self {
+		self.stages = stages;
+		self
+	}
+
+	pub fn name(mut self, name : [i8;MAX_DESCRIPTION_SIZE]) -> Self {
+		self.name = name;
+		self
+	}
+
+	pub fn description(mut self, description : [i8;MAX_DESCRIPTION_SIZE]) -> Self {
+		self.description = description;
+		self
+	}
+
+	pub fn subgroupSize(mut self, subgroupSize : u32) -> Self {
+		self.subgroupSize = subgroupSize;
+		self
+	}
+
+}
+
+impl PipelineExecutableInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn pipeline(mut self, pipeline : Pipeline) -> Self {
+		self.pipeline = pipeline;
+		self
+	}
+
+	pub fn executableIndex(mut self, executableIndex : u32) -> Self {
+		self.executableIndex = executableIndex;
+		self
+	}
+
+}
+
+impl PipelineExecutableInternalRepresentationKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn name(mut self, name : [i8;MAX_DESCRIPTION_SIZE]) -> Self {
+		self.name = name;
+		self
+	}
+
+	pub fn description(mut self, description : [i8;MAX_DESCRIPTION_SIZE]) -> Self {
+		self.description = description;
+		self
+	}
+
+	pub fn isText(mut self, isText : Bool32) -> Self {
+		self.isText = isText;
+		self
+	}
+
+	pub fn dataSize(mut self, dataSize : usize) -> Self {
+		self.dataSize = dataSize;
+		self
+	}
+
+	pub fn pData(mut self, pData : *mut void) -> Self {
+		self.pData = pData;
+		self
+	}
+
+}
+
+impl DebugReportCallbackCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : DebugReportFlagsEXT) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn pfnCallback(mut self, pfnCallback : u64) -> Self {
+		self.pfnCallback = pfnCallback;
+		self
+	}
+
+	pub fn pUserData(mut self, pUserData : *mut void) -> Self {
+		self.pUserData = pUserData;
+		self
+	}
+
+}
+
+impl PipelineRasterizationStateRasterizationOrderAMD {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn rasterizationOrder(mut self, rasterizationOrder : RasterizationOrderAMD) -> Self {
+		self.rasterizationOrder = rasterizationOrder;
+		self
+	}
+
+}
+
+impl DebugMarkerObjectNameInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn objectType(mut self, objectType : DebugReportObjectTypeEXT) -> Self {
+		self.objectType = objectType;
+		self
+	}
+
+	pub fn object(mut self, object : u64) -> Self {
+		self.object = object;
+		self
+	}
+
+	pub fn pObjectName(mut self, pObjectName : *const i8) -> Self {
+		self.pObjectName = pObjectName;
+		self
+	}
+
+}
+
+impl DebugMarkerObjectTagInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn objectType(mut self, objectType : DebugReportObjectTypeEXT) -> Self {
+		self.objectType = objectType;
+		self
+	}
+
+	pub fn object(mut self, object : u64) -> Self {
+		self.object = object;
+		self
+	}
+
+	pub fn tagName(mut self, tagName : u64) -> Self {
+		self.tagName = tagName;
+		self
+	}
+
+	pub fn tagSize(mut self, tagSize : usize) -> Self {
+		self.tagSize = tagSize;
+		self
+	}
+
+	pub fn pTag(mut self, pTag : *const void) -> Self {
+		self.pTag = pTag;
+		self
+	}
+
+}
+
+impl DebugMarkerMarkerInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn pMarkerName(mut self, pMarkerName : *const i8) -> Self {
+		self.pMarkerName = pMarkerName;
+		self
+	}
+
+	pub fn color(mut self, color : [f32;4]) -> Self {
+		self.color = color;
+		self
+	}
+
+}
+
+impl DedicatedAllocationImageCreateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn dedicatedAllocation(mut self, dedicatedAllocation : Bool32) -> Self {
+		self.dedicatedAllocation = dedicatedAllocation;
+		self
+	}
+
+}
+
+impl DedicatedAllocationBufferCreateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn dedicatedAllocation(mut self, dedicatedAllocation : Bool32) -> Self {
+		self.dedicatedAllocation = dedicatedAllocation;
+		self
+	}
+
+}
+
+impl DedicatedAllocationMemoryAllocateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn image(mut self, image : Image) -> Self {
+		self.image = image;
+		self
+	}
+
+	pub fn buffer(mut self, buffer : Buffer) -> Self {
+		self.buffer = buffer;
+		self
+	}
+
+}
+
+impl PhysicalDeviceTransformFeedbackFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn transformFeedback(mut self, transformFeedback : Bool32) -> Self {
+		self.transformFeedback = transformFeedback;
+		self
+	}
+
+	pub fn geometryStreams(mut self, geometryStreams : Bool32) -> Self {
+		self.geometryStreams = geometryStreams;
+		self
+	}
+
+}
+
+impl PhysicalDeviceTransformFeedbackPropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn maxTransformFeedbackStreams(mut self, maxTransformFeedbackStreams : u32) -> Self {
+		self.maxTransformFeedbackStreams = maxTransformFeedbackStreams;
+		self
+	}
+
+	pub fn maxTransformFeedbackBuffers(mut self, maxTransformFeedbackBuffers : u32) -> Self {
+		self.maxTransformFeedbackBuffers = maxTransformFeedbackBuffers;
+		self
+	}
+
+	pub fn maxTransformFeedbackBufferSize(mut self, maxTransformFeedbackBufferSize : DeviceSize) -> Self {
+		self.maxTransformFeedbackBufferSize = maxTransformFeedbackBufferSize;
+		self
+	}
+
+	pub fn maxTransformFeedbackStreamDataSize(mut self, maxTransformFeedbackStreamDataSize : u32) -> Self {
+		self.maxTransformFeedbackStreamDataSize = maxTransformFeedbackStreamDataSize;
+		self
+	}
+
+	pub fn maxTransformFeedbackBufferDataSize(mut self, maxTransformFeedbackBufferDataSize : u32) -> Self {
+		self.maxTransformFeedbackBufferDataSize = maxTransformFeedbackBufferDataSize;
+		self
+	}
+
+	pub fn maxTransformFeedbackBufferDataStride(mut self, maxTransformFeedbackBufferDataStride : u32) -> Self {
+		self.maxTransformFeedbackBufferDataStride = maxTransformFeedbackBufferDataStride;
+		self
+	}
+
+	pub fn transformFeedbackQueries(mut self, transformFeedbackQueries : Bool32) -> Self {
+		self.transformFeedbackQueries = transformFeedbackQueries;
+		self
+	}
+
+	pub fn transformFeedbackStreamsLinesTriangles(mut self, transformFeedbackStreamsLinesTriangles : Bool32) -> Self {
+		self.transformFeedbackStreamsLinesTriangles = transformFeedbackStreamsLinesTriangles;
+		self
+	}
+
+	pub fn transformFeedbackRasterizationStreamSelect(mut self, transformFeedbackRasterizationStreamSelect : Bool32) -> Self {
+		self.transformFeedbackRasterizationStreamSelect = transformFeedbackRasterizationStreamSelect;
+		self
+	}
+
+	pub fn transformFeedbackDraw(mut self, transformFeedbackDraw : Bool32) -> Self {
+		self.transformFeedbackDraw = transformFeedbackDraw;
+		self
+	}
+
+}
+
+impl PipelineRasterizationStateStreamCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineRasterizationStateStreamCreateFlagsEXT) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn rasterizationStream(mut self, rasterizationStream : u32) -> Self {
+		self.rasterizationStream = rasterizationStream;
+		self
+	}
+
+}
+
+impl ImageViewHandleInfoNVX {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn imageView(mut self, imageView : ImageView) -> Self {
+		self.imageView = imageView;
+		self
+	}
+
+	pub fn descriptorType(mut self, descriptorType : DescriptorType) -> Self {
+		self.descriptorType = descriptorType;
+		self
+	}
+
+	pub fn sampler(mut self, sampler : Sampler) -> Self {
+		self.sampler = sampler;
+		self
+	}
+
+}
+
+impl ImageViewAddressPropertiesNVX {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn deviceAddress(mut self, deviceAddress : DeviceAddress) -> Self {
+		self.deviceAddress = deviceAddress;
+		self
+	}
+
+	pub fn size(mut self, size : DeviceSize) -> Self {
+		self.size = size;
+		self
+	}
+
+}
+
+impl TextureLODGatherFormatPropertiesAMD {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn supportsTextureGatherLODBiasAMD(mut self, supportsTextureGatherLODBiasAMD : Bool32) -> Self {
+		self.supportsTextureGatherLODBiasAMD = supportsTextureGatherLODBiasAMD;
+		self
+	}
+
+}
+
+impl ShaderResourceUsageAMD {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn numUsedVgprs(mut self, numUsedVgprs : u32) -> Self {
+		self.numUsedVgprs = numUsedVgprs;
+		self
+	}
+
+	pub fn numUsedSgprs(mut self, numUsedSgprs : u32) -> Self {
+		self.numUsedSgprs = numUsedSgprs;
+		self
+	}
+
+	pub fn ldsSizePerLocalWorkGroup(mut self, ldsSizePerLocalWorkGroup : u32) -> Self {
+		self.ldsSizePerLocalWorkGroup = ldsSizePerLocalWorkGroup;
+		self
+	}
+
+	pub fn ldsUsageSizeInBytes(mut self, ldsUsageSizeInBytes : usize) -> Self {
+		self.ldsUsageSizeInBytes = ldsUsageSizeInBytes;
+		self
+	}
+
+	pub fn scratchMemUsageInBytes(mut self, scratchMemUsageInBytes : usize) -> Self {
+		self.scratchMemUsageInBytes = scratchMemUsageInBytes;
+		self
+	}
+
+}
+
+impl ShaderStatisticsInfoAMD {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn shaderStageMask(mut self, shaderStageMask : ShaderStageFlags) -> Self {
+		self.shaderStageMask = shaderStageMask;
+		self
+	}
+
+	pub fn resourceUsage(mut self, resourceUsage : ShaderResourceUsageAMD) -> Self {
+		self.resourceUsage = resourceUsage;
+		self
+	}
+
+	pub fn numPhysicalVgprs(mut self, numPhysicalVgprs : u32) -> Self {
+		self.numPhysicalVgprs = numPhysicalVgprs;
+		self
+	}
+
+	pub fn numPhysicalSgprs(mut self, numPhysicalSgprs : u32) -> Self {
+		self.numPhysicalSgprs = numPhysicalSgprs;
+		self
+	}
+
+	pub fn numAvailableVgprs(mut self, numAvailableVgprs : u32) -> Self {
+		self.numAvailableVgprs = numAvailableVgprs;
+		self
+	}
+
+	pub fn numAvailableSgprs(mut self, numAvailableSgprs : u32) -> Self {
+		self.numAvailableSgprs = numAvailableSgprs;
+		self
+	}
+
+	pub fn computeWorkGroupSize(mut self, computeWorkGroupSize : [u32;3]) -> Self {
+		self.computeWorkGroupSize = computeWorkGroupSize;
+		self
+	}
+
+}
+
+impl PhysicalDeviceCornerSampledImageFeaturesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn cornerSampledImage(mut self, cornerSampledImage : Bool32) -> Self {
+		self.cornerSampledImage = cornerSampledImage;
+		self
+	}
+
+}
+
+impl ExternalImageFormatPropertiesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn imageFormatProperties(mut self, imageFormatProperties : ImageFormatProperties) -> Self {
+		self.imageFormatProperties = imageFormatProperties;
+		self
+	}
+
+	pub fn externalMemoryFeatures(mut self, externalMemoryFeatures : ExternalMemoryFeatureFlagsNV) -> Self {
+		self.externalMemoryFeatures = externalMemoryFeatures;
+		self
+	}
+
+	pub fn exportFromImportedHandleTypes(mut self, exportFromImportedHandleTypes : ExternalMemoryHandleTypeFlagsNV) -> Self {
+		self.exportFromImportedHandleTypes = exportFromImportedHandleTypes;
+		self
+	}
+
+	pub fn compatibleHandleTypes(mut self, compatibleHandleTypes : ExternalMemoryHandleTypeFlagsNV) -> Self {
+		self.compatibleHandleTypes = compatibleHandleTypes;
+		self
+	}
+
+}
+
+impl ExternalMemoryImageCreateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn handleTypes(mut self, handleTypes : ExternalMemoryHandleTypeFlagsNV) -> Self {
+		self.handleTypes = handleTypes;
+		self
+	}
+
+}
+
+impl ExportMemoryAllocateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn handleTypes(mut self, handleTypes : ExternalMemoryHandleTypeFlagsNV) -> Self {
+		self.handleTypes = handleTypes;
+		self
+	}
+
+}
+
+impl ValidationFlagsEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn disabledValidationCheckCount(mut self, disabledValidationCheckCount : u32) -> Self {
+		self.disabledValidationCheckCount = disabledValidationCheckCount;
+		self
+	}
+
+	pub fn pDisabledValidationChecks(mut self, pDisabledValidationChecks : *const ValidationCheckEXT) -> Self {
+		self.pDisabledValidationChecks = pDisabledValidationChecks;
+		self
+	}
+
+}
+
+impl PhysicalDeviceTextureCompressionASTCHDRFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn textureCompressionASTC_HDR(mut self, textureCompressionASTC_HDR : Bool32) -> Self {
+		self.textureCompressionASTC_HDR = textureCompressionASTC_HDR;
+		self
+	}
+
+}
+
+impl ImageViewASTCDecodeModeEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn decodeMode(mut self, decodeMode : Format) -> Self {
+		self.decodeMode = decodeMode;
+		self
+	}
+
+}
+
+impl PhysicalDeviceASTCDecodeFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn decodeModeSharedExponent(mut self, decodeModeSharedExponent : Bool32) -> Self {
+		self.decodeModeSharedExponent = decodeModeSharedExponent;
+		self
+	}
+
+}
+
+impl ConditionalRenderingBeginInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn buffer(mut self, buffer : Buffer) -> Self {
+		self.buffer = buffer;
+		self
+	}
+
+	pub fn offset(mut self, offset : DeviceSize) -> Self {
+		self.offset = offset;
+		self
+	}
+
+	pub fn flags(mut self, flags : ConditionalRenderingFlagsEXT) -> Self {
+		self.flags = flags;
+		self
+	}
+
+}
+
+impl PhysicalDeviceConditionalRenderingFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn conditionalRendering(mut self, conditionalRendering : Bool32) -> Self {
+		self.conditionalRendering = conditionalRendering;
+		self
+	}
+
+	pub fn inheritedConditionalRendering(mut self, inheritedConditionalRendering : Bool32) -> Self {
+		self.inheritedConditionalRendering = inheritedConditionalRendering;
+		self
+	}
+
+}
+
+impl CommandBufferInheritanceConditionalRenderingInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn conditionalRenderingEnable(mut self, conditionalRenderingEnable : Bool32) -> Self {
+		self.conditionalRenderingEnable = conditionalRenderingEnable;
+		self
+	}
+
+}
+
+impl ViewportWScalingNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn xcoeff(mut self, xcoeff : f32) -> Self {
+		self.xcoeff = xcoeff;
+		self
+	}
+
+	pub fn ycoeff(mut self, ycoeff : f32) -> Self {
+		self.ycoeff = ycoeff;
+		self
+	}
+
+}
+
+impl PipelineViewportWScalingStateCreateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn viewportWScalingEnable(mut self, viewportWScalingEnable : Bool32) -> Self {
+		self.viewportWScalingEnable = viewportWScalingEnable;
+		self
+	}
+
+	pub fn viewportCount(mut self, viewportCount : u32) -> Self {
+		self.viewportCount = viewportCount;
+		self
+	}
+
+	pub fn pViewportWScalings(mut self, pViewportWScalings : *const ViewportWScalingNV) -> Self {
+		self.pViewportWScalings = pViewportWScalings;
+		self
+	}
+
+}
+
+impl SurfaceCapabilities2EXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn minImageCount(mut self, minImageCount : u32) -> Self {
+		self.minImageCount = minImageCount;
+		self
+	}
+
+	pub fn maxImageCount(mut self, maxImageCount : u32) -> Self {
+		self.maxImageCount = maxImageCount;
+		self
+	}
+
+	pub fn currentExtent(mut self, currentExtent : Extent2D) -> Self {
+		self.currentExtent = currentExtent;
+		self
+	}
+
+	pub fn minImageExtent(mut self, minImageExtent : Extent2D) -> Self {
+		self.minImageExtent = minImageExtent;
+		self
+	}
+
+	pub fn maxImageExtent(mut self, maxImageExtent : Extent2D) -> Self {
+		self.maxImageExtent = maxImageExtent;
+		self
+	}
+
+	pub fn maxImageArrayLayers(mut self, maxImageArrayLayers : u32) -> Self {
+		self.maxImageArrayLayers = maxImageArrayLayers;
+		self
+	}
+
+	pub fn supportedTransforms(mut self, supportedTransforms : SurfaceTransformFlagsKHR) -> Self {
+		self.supportedTransforms = supportedTransforms;
+		self
+	}
+
+	pub fn currentTransform(mut self, currentTransform : SurfaceTransformFlagBitsKHR) -> Self {
+		self.currentTransform = currentTransform;
+		self
+	}
+
+	pub fn supportedCompositeAlpha(mut self, supportedCompositeAlpha : CompositeAlphaFlagsKHR) -> Self {
+		self.supportedCompositeAlpha = supportedCompositeAlpha;
+		self
+	}
+
+	pub fn supportedUsageFlags(mut self, supportedUsageFlags : ImageUsageFlags) -> Self {
+		self.supportedUsageFlags = supportedUsageFlags;
+		self
+	}
+
+	pub fn supportedSurfaceCounters(mut self, supportedSurfaceCounters : SurfaceCounterFlagsEXT) -> Self {
+		self.supportedSurfaceCounters = supportedSurfaceCounters;
+		self
+	}
+
+}
+
+impl DisplayPowerInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn powerState(mut self, powerState : DisplayPowerStateEXT) -> Self {
+		self.powerState = powerState;
+		self
+	}
+
+}
+
+impl DeviceEventInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn deviceEvent(mut self, deviceEvent : DeviceEventTypeEXT) -> Self {
+		self.deviceEvent = deviceEvent;
+		self
+	}
+
+}
+
+impl DisplayEventInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn displayEvent(mut self, displayEvent : DisplayEventTypeEXT) -> Self {
+		self.displayEvent = displayEvent;
+		self
+	}
+
+}
+
+impl SwapchainCounterCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn surfaceCounters(mut self, surfaceCounters : SurfaceCounterFlagsEXT) -> Self {
+		self.surfaceCounters = surfaceCounters;
+		self
+	}
+
+}
+
+impl RefreshCycleDurationGOOGLE {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn refreshDuration(mut self, refreshDuration : u64) -> Self {
+		self.refreshDuration = refreshDuration;
+		self
+	}
+
+}
+
+impl PastPresentationTimingGOOGLE {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn presentID(mut self, presentID : u32) -> Self {
+		self.presentID = presentID;
+		self
+	}
+
+	pub fn desiredPresentTime(mut self, desiredPresentTime : u64) -> Self {
+		self.desiredPresentTime = desiredPresentTime;
+		self
+	}
+
+	pub fn actualPresentTime(mut self, actualPresentTime : u64) -> Self {
+		self.actualPresentTime = actualPresentTime;
+		self
+	}
+
+	pub fn earliestPresentTime(mut self, earliestPresentTime : u64) -> Self {
+		self.earliestPresentTime = earliestPresentTime;
+		self
+	}
+
+	pub fn presentMargin(mut self, presentMargin : u64) -> Self {
+		self.presentMargin = presentMargin;
+		self
+	}
+
+}
+
+impl PresentTimeGOOGLE {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn presentID(mut self, presentID : u32) -> Self {
+		self.presentID = presentID;
+		self
+	}
+
+	pub fn desiredPresentTime(mut self, desiredPresentTime : u64) -> Self {
+		self.desiredPresentTime = desiredPresentTime;
+		self
+	}
+
+}
+
+impl PresentTimesInfoGOOGLE {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn swapchainCount(mut self, swapchainCount : u32) -> Self {
+		self.swapchainCount = swapchainCount;
+		self
+	}
+
+	pub fn pTimes(mut self, pTimes : *const PresentTimeGOOGLE) -> Self {
+		self.pTimes = pTimes;
+		self
+	}
+
+}
+
+impl PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn perViewPositionAllComponents(mut self, perViewPositionAllComponents : Bool32) -> Self {
+		self.perViewPositionAllComponents = perViewPositionAllComponents;
+		self
+	}
+
+}
+
+impl ViewportSwizzleNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn x(mut self, x : ViewportCoordinateSwizzleNV) -> Self {
+		self.x = x;
+		self
+	}
+
+	pub fn y(mut self, y : ViewportCoordinateSwizzleNV) -> Self {
+		self.y = y;
+		self
+	}
+
+	pub fn z(mut self, z : ViewportCoordinateSwizzleNV) -> Self {
+		self.z = z;
+		self
+	}
+
+	pub fn w(mut self, w : ViewportCoordinateSwizzleNV) -> Self {
+		self.w = w;
+		self
+	}
+
+}
+
+impl PipelineViewportSwizzleStateCreateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineViewportSwizzleStateCreateFlagsNV) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn viewportCount(mut self, viewportCount : u32) -> Self {
+		self.viewportCount = viewportCount;
+		self
+	}
+
+	pub fn pViewportSwizzles(mut self, pViewportSwizzles : *const ViewportSwizzleNV) -> Self {
+		self.pViewportSwizzles = pViewportSwizzles;
+		self
+	}
+
+}
+
+impl PhysicalDeviceDiscardRectanglePropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn maxDiscardRectangles(mut self, maxDiscardRectangles : u32) -> Self {
+		self.maxDiscardRectangles = maxDiscardRectangles;
+		self
+	}
+
+}
+
+impl PipelineDiscardRectangleStateCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineDiscardRectangleStateCreateFlagsEXT) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn discardRectangleMode(mut self, discardRectangleMode : DiscardRectangleModeEXT) -> Self {
+		self.discardRectangleMode = discardRectangleMode;
+		self
+	}
+
+	pub fn discardRectangleCount(mut self, discardRectangleCount : u32) -> Self {
+		self.discardRectangleCount = discardRectangleCount;
+		self
+	}
+
+	pub fn pDiscardRectangles(mut self, pDiscardRectangles : *const Rect2D) -> Self {
+		self.pDiscardRectangles = pDiscardRectangles;
+		self
+	}
+
+}
+
+impl PhysicalDeviceConservativeRasterizationPropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn primitiveOverestimationSize(mut self, primitiveOverestimationSize : f32) -> Self {
+		self.primitiveOverestimationSize = primitiveOverestimationSize;
+		self
+	}
+
+	pub fn maxExtraPrimitiveOverestimationSize(mut self, maxExtraPrimitiveOverestimationSize : f32) -> Self {
+		self.maxExtraPrimitiveOverestimationSize = maxExtraPrimitiveOverestimationSize;
+		self
+	}
+
+	pub fn extraPrimitiveOverestimationSizeGranularity(mut self, extraPrimitiveOverestimationSizeGranularity : f32) -> Self {
+		self.extraPrimitiveOverestimationSizeGranularity = extraPrimitiveOverestimationSizeGranularity;
+		self
+	}
+
+	pub fn primitiveUnderestimation(mut self, primitiveUnderestimation : Bool32) -> Self {
+		self.primitiveUnderestimation = primitiveUnderestimation;
+		self
+	}
+
+	pub fn conservativePointAndLineRasterization(mut self, conservativePointAndLineRasterization : Bool32) -> Self {
+		self.conservativePointAndLineRasterization = conservativePointAndLineRasterization;
+		self
+	}
+
+	pub fn degenerateTrianglesRasterized(mut self, degenerateTrianglesRasterized : Bool32) -> Self {
+		self.degenerateTrianglesRasterized = degenerateTrianglesRasterized;
+		self
+	}
+
+	pub fn degenerateLinesRasterized(mut self, degenerateLinesRasterized : Bool32) -> Self {
+		self.degenerateLinesRasterized = degenerateLinesRasterized;
+		self
+	}
+
+	pub fn fullyCoveredFragmentShaderInputVariable(mut self, fullyCoveredFragmentShaderInputVariable : Bool32) -> Self {
+		self.fullyCoveredFragmentShaderInputVariable = fullyCoveredFragmentShaderInputVariable;
+		self
+	}
+
+	pub fn conservativeRasterizationPostDepthCoverage(mut self, conservativeRasterizationPostDepthCoverage : Bool32) -> Self {
+		self.conservativeRasterizationPostDepthCoverage = conservativeRasterizationPostDepthCoverage;
+		self
+	}
+
+}
+
+impl PipelineRasterizationConservativeStateCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineRasterizationConservativeStateCreateFlagsEXT) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn conservativeRasterizationMode(mut self, conservativeRasterizationMode : ConservativeRasterizationModeEXT) -> Self {
+		self.conservativeRasterizationMode = conservativeRasterizationMode;
+		self
+	}
+
+	pub fn extraPrimitiveOverestimationSize(mut self, extraPrimitiveOverestimationSize : f32) -> Self {
+		self.extraPrimitiveOverestimationSize = extraPrimitiveOverestimationSize;
+		self
+	}
+
+}
+
+impl PhysicalDeviceDepthClipEnableFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn depthClipEnable(mut self, depthClipEnable : Bool32) -> Self {
+		self.depthClipEnable = depthClipEnable;
+		self
+	}
+
+}
+
+impl PipelineRasterizationDepthClipStateCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineRasterizationDepthClipStateCreateFlagsEXT) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn depthClipEnable(mut self, depthClipEnable : Bool32) -> Self {
+		self.depthClipEnable = depthClipEnable;
+		self
+	}
+
+}
+
+impl XYColorEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn x(mut self, x : f32) -> Self {
+		self.x = x;
+		self
+	}
+
+	pub fn y(mut self, y : f32) -> Self {
+		self.y = y;
+		self
+	}
+
+}
+
+impl HdrMetadataEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn displayPrimaryRed(mut self, displayPrimaryRed : XYColorEXT) -> Self {
+		self.displayPrimaryRed = displayPrimaryRed;
+		self
+	}
+
+	pub fn displayPrimaryGreen(mut self, displayPrimaryGreen : XYColorEXT) -> Self {
+		self.displayPrimaryGreen = displayPrimaryGreen;
+		self
+	}
+
+	pub fn displayPrimaryBlue(mut self, displayPrimaryBlue : XYColorEXT) -> Self {
+		self.displayPrimaryBlue = displayPrimaryBlue;
+		self
+	}
+
+	pub fn whitePoint(mut self, whitePoint : XYColorEXT) -> Self {
+		self.whitePoint = whitePoint;
+		self
+	}
+
+	pub fn maxLuminance(mut self, maxLuminance : f32) -> Self {
+		self.maxLuminance = maxLuminance;
+		self
+	}
+
+	pub fn minLuminance(mut self, minLuminance : f32) -> Self {
+		self.minLuminance = minLuminance;
+		self
+	}
+
+	pub fn maxContentLightLevel(mut self, maxContentLightLevel : f32) -> Self {
+		self.maxContentLightLevel = maxContentLightLevel;
+		self
+	}
+
+	pub fn maxFrameAverageLightLevel(mut self, maxFrameAverageLightLevel : f32) -> Self {
+		self.maxFrameAverageLightLevel = maxFrameAverageLightLevel;
+		self
+	}
+
+}
+
+impl DebugUtilsLabelEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn pLabelName(mut self, pLabelName : *const i8) -> Self {
+		self.pLabelName = pLabelName;
+		self
+	}
+
+	pub fn color(mut self, color : [f32;4]) -> Self {
+		self.color = color;
+		self
+	}
+
+}
+
+impl DebugUtilsObjectNameInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn objectType(mut self, objectType : ObjectType) -> Self {
+		self.objectType = objectType;
+		self
+	}
+
+	pub fn objectHandle(mut self, objectHandle : u64) -> Self {
+		self.objectHandle = objectHandle;
+		self
+	}
+
+	pub fn pObjectName(mut self, pObjectName : *const i8) -> Self {
+		self.pObjectName = pObjectName;
+		self
+	}
+
+}
+
+impl DebugUtilsMessengerCallbackDataEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : DebugUtilsMessengerCallbackDataFlagsEXT) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn pMessageIdName(mut self, pMessageIdName : *const i8) -> Self {
+		self.pMessageIdName = pMessageIdName;
+		self
+	}
+
+	pub fn messageIdNumber(mut self, messageIdNumber : i32) -> Self {
+		self.messageIdNumber = messageIdNumber;
+		self
+	}
+
+	pub fn pMessage(mut self, pMessage : *const i8) -> Self {
+		self.pMessage = pMessage;
+		self
+	}
+
+	pub fn queueLabelCount(mut self, queueLabelCount : u32) -> Self {
+		self.queueLabelCount = queueLabelCount;
+		self
+	}
+
+	pub fn pQueueLabels(mut self, pQueueLabels : *const DebugUtilsLabelEXT) -> Self {
+		self.pQueueLabels = pQueueLabels;
+		self
+	}
+
+	pub fn cmdBufLabelCount(mut self, cmdBufLabelCount : u32) -> Self {
+		self.cmdBufLabelCount = cmdBufLabelCount;
+		self
+	}
+
+	pub fn pCmdBufLabels(mut self, pCmdBufLabels : *const DebugUtilsLabelEXT) -> Self {
+		self.pCmdBufLabels = pCmdBufLabels;
+		self
+	}
+
+	pub fn objectCount(mut self, objectCount : u32) -> Self {
+		self.objectCount = objectCount;
+		self
+	}
+
+	pub fn pObjects(mut self, pObjects : *const DebugUtilsObjectNameInfoEXT) -> Self {
+		self.pObjects = pObjects;
+		self
+	}
+
+}
+
+impl DebugUtilsObjectTagInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn objectType(mut self, objectType : ObjectType) -> Self {
+		self.objectType = objectType;
+		self
+	}
+
+	pub fn objectHandle(mut self, objectHandle : u64) -> Self {
+		self.objectHandle = objectHandle;
+		self
+	}
+
+	pub fn tagName(mut self, tagName : u64) -> Self {
+		self.tagName = tagName;
+		self
+	}
+
+	pub fn tagSize(mut self, tagSize : usize) -> Self {
+		self.tagSize = tagSize;
+		self
+	}
+
+	pub fn pTag(mut self, pTag : *const void) -> Self {
+		self.pTag = pTag;
+		self
+	}
+
+}
+
+impl DebugUtilsMessengerCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : DebugUtilsMessengerCreateFlagsEXT) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn messageSeverity(mut self, messageSeverity : DebugUtilsMessageSeverityFlagsEXT) -> Self {
+		self.messageSeverity = messageSeverity;
+		self
+	}
+
+	pub fn messageType(mut self, messageType : DebugUtilsMessageTypeFlagsEXT) -> Self {
+		self.messageType = messageType;
+		self
+	}
+
+	pub fn pfnUserCallback(mut self, pfnUserCallback : u64) -> Self {
+		self.pfnUserCallback = pfnUserCallback;
+		self
+	}
+
+	pub fn pUserData(mut self, pUserData : *mut void) -> Self {
+		self.pUserData = pUserData;
+		self
+	}
+
+}
+
+impl PhysicalDeviceInlineUniformBlockFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn inlineUniformBlock(mut self, inlineUniformBlock : Bool32) -> Self {
+		self.inlineUniformBlock = inlineUniformBlock;
+		self
+	}
+
+	pub fn descriptorBindingInlineUniformBlockUpdateAfterBind(mut self, descriptorBindingInlineUniformBlockUpdateAfterBind : Bool32) -> Self {
+		self.descriptorBindingInlineUniformBlockUpdateAfterBind = descriptorBindingInlineUniformBlockUpdateAfterBind;
+		self
+	}
+
+}
+
+impl PhysicalDeviceInlineUniformBlockPropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn maxInlineUniformBlockSize(mut self, maxInlineUniformBlockSize : u32) -> Self {
+		self.maxInlineUniformBlockSize = maxInlineUniformBlockSize;
+		self
+	}
+
+	pub fn maxPerStageDescriptorInlineUniformBlocks(mut self, maxPerStageDescriptorInlineUniformBlocks : u32) -> Self {
+		self.maxPerStageDescriptorInlineUniformBlocks = maxPerStageDescriptorInlineUniformBlocks;
+		self
+	}
+
+	pub fn maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(mut self, maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks : u32) -> Self {
+		self.maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks = maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks;
+		self
+	}
+
+	pub fn maxDescriptorSetInlineUniformBlocks(mut self, maxDescriptorSetInlineUniformBlocks : u32) -> Self {
+		self.maxDescriptorSetInlineUniformBlocks = maxDescriptorSetInlineUniformBlocks;
+		self
+	}
+
+	pub fn maxDescriptorSetUpdateAfterBindInlineUniformBlocks(mut self, maxDescriptorSetUpdateAfterBindInlineUniformBlocks : u32) -> Self {
+		self.maxDescriptorSetUpdateAfterBindInlineUniformBlocks = maxDescriptorSetUpdateAfterBindInlineUniformBlocks;
+		self
+	}
+
+}
+
+impl WriteDescriptorSetInlineUniformBlockEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn dataSize(mut self, dataSize : u32) -> Self {
+		self.dataSize = dataSize;
+		self
+	}
+
+	pub fn pData(mut self, pData : *const void) -> Self {
+		self.pData = pData;
+		self
+	}
+
+}
+
+impl DescriptorPoolInlineUniformBlockCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn maxInlineUniformBlockBindings(mut self, maxInlineUniformBlockBindings : u32) -> Self {
+		self.maxInlineUniformBlockBindings = maxInlineUniformBlockBindings;
+		self
+	}
+
+}
+
+impl SampleLocationEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn x(mut self, x : f32) -> Self {
+		self.x = x;
+		self
+	}
+
+	pub fn y(mut self, y : f32) -> Self {
+		self.y = y;
+		self
+	}
+
+}
+
+impl SampleLocationsInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn sampleLocationsPerPixel(mut self, sampleLocationsPerPixel : SampleCountFlagBits) -> Self {
+		self.sampleLocationsPerPixel = sampleLocationsPerPixel;
+		self
+	}
+
+	pub fn sampleLocationGridSize(mut self, sampleLocationGridSize : Extent2D) -> Self {
+		self.sampleLocationGridSize = sampleLocationGridSize;
+		self
+	}
+
+	pub fn sampleLocationsCount(mut self, sampleLocationsCount : u32) -> Self {
+		self.sampleLocationsCount = sampleLocationsCount;
+		self
+	}
+
+	pub fn pSampleLocations(mut self, pSampleLocations : *const SampleLocationEXT) -> Self {
+		self.pSampleLocations = pSampleLocations;
+		self
+	}
+
+}
+
+impl AttachmentSampleLocationsEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn attachmentIndex(mut self, attachmentIndex : u32) -> Self {
+		self.attachmentIndex = attachmentIndex;
+		self
+	}
+
+	pub fn sampleLocationsInfo(mut self, sampleLocationsInfo : SampleLocationsInfoEXT) -> Self {
+		self.sampleLocationsInfo = sampleLocationsInfo;
+		self
+	}
+
+}
+
+impl SubpassSampleLocationsEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn subpassIndex(mut self, subpassIndex : u32) -> Self {
+		self.subpassIndex = subpassIndex;
+		self
+	}
+
+	pub fn sampleLocationsInfo(mut self, sampleLocationsInfo : SampleLocationsInfoEXT) -> Self {
+		self.sampleLocationsInfo = sampleLocationsInfo;
+		self
+	}
+
+}
+
+impl RenderPassSampleLocationsBeginInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn attachmentInitialSampleLocationsCount(mut self, attachmentInitialSampleLocationsCount : u32) -> Self {
+		self.attachmentInitialSampleLocationsCount = attachmentInitialSampleLocationsCount;
+		self
+	}
+
+	pub fn pAttachmentInitialSampleLocations(mut self, pAttachmentInitialSampleLocations : *const AttachmentSampleLocationsEXT) -> Self {
+		self.pAttachmentInitialSampleLocations = pAttachmentInitialSampleLocations;
+		self
+	}
+
+	pub fn postSubpassSampleLocationsCount(mut self, postSubpassSampleLocationsCount : u32) -> Self {
+		self.postSubpassSampleLocationsCount = postSubpassSampleLocationsCount;
+		self
+	}
+
+	pub fn pPostSubpassSampleLocations(mut self, pPostSubpassSampleLocations : *const SubpassSampleLocationsEXT) -> Self {
+		self.pPostSubpassSampleLocations = pPostSubpassSampleLocations;
+		self
+	}
+
+}
+
+impl PipelineSampleLocationsStateCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn sampleLocationsEnable(mut self, sampleLocationsEnable : Bool32) -> Self {
+		self.sampleLocationsEnable = sampleLocationsEnable;
+		self
+	}
+
+	pub fn sampleLocationsInfo(mut self, sampleLocationsInfo : SampleLocationsInfoEXT) -> Self {
+		self.sampleLocationsInfo = sampleLocationsInfo;
+		self
+	}
+
+}
+
+impl PhysicalDeviceSampleLocationsPropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn sampleLocationSampleCounts(mut self, sampleLocationSampleCounts : SampleCountFlags) -> Self {
+		self.sampleLocationSampleCounts = sampleLocationSampleCounts;
+		self
+	}
+
+	pub fn maxSampleLocationGridSize(mut self, maxSampleLocationGridSize : Extent2D) -> Self {
+		self.maxSampleLocationGridSize = maxSampleLocationGridSize;
+		self
+	}
+
+	pub fn sampleLocationCoordinateRange(mut self, sampleLocationCoordinateRange : [f32;2]) -> Self {
+		self.sampleLocationCoordinateRange = sampleLocationCoordinateRange;
+		self
+	}
+
+	pub fn sampleLocationSubPixelBits(mut self, sampleLocationSubPixelBits : u32) -> Self {
+		self.sampleLocationSubPixelBits = sampleLocationSubPixelBits;
+		self
+	}
+
+	pub fn variableSampleLocations(mut self, variableSampleLocations : Bool32) -> Self {
+		self.variableSampleLocations = variableSampleLocations;
+		self
+	}
+
+}
+
+impl MultisamplePropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn maxSampleLocationGridSize(mut self, maxSampleLocationGridSize : Extent2D) -> Self {
+		self.maxSampleLocationGridSize = maxSampleLocationGridSize;
+		self
+	}
+
+}
+
+impl PhysicalDeviceBlendOperationAdvancedFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn advancedBlendCoherentOperations(mut self, advancedBlendCoherentOperations : Bool32) -> Self {
+		self.advancedBlendCoherentOperations = advancedBlendCoherentOperations;
+		self
+	}
+
+}
+
+impl PhysicalDeviceBlendOperationAdvancedPropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn advancedBlendMaxColorAttachments(mut self, advancedBlendMaxColorAttachments : u32) -> Self {
+		self.advancedBlendMaxColorAttachments = advancedBlendMaxColorAttachments;
+		self
+	}
+
+	pub fn advancedBlendIndependentBlend(mut self, advancedBlendIndependentBlend : Bool32) -> Self {
+		self.advancedBlendIndependentBlend = advancedBlendIndependentBlend;
+		self
+	}
+
+	pub fn advancedBlendNonPremultipliedSrcColor(mut self, advancedBlendNonPremultipliedSrcColor : Bool32) -> Self {
+		self.advancedBlendNonPremultipliedSrcColor = advancedBlendNonPremultipliedSrcColor;
+		self
+	}
+
+	pub fn advancedBlendNonPremultipliedDstColor(mut self, advancedBlendNonPremultipliedDstColor : Bool32) -> Self {
+		self.advancedBlendNonPremultipliedDstColor = advancedBlendNonPremultipliedDstColor;
+		self
+	}
+
+	pub fn advancedBlendCorrelatedOverlap(mut self, advancedBlendCorrelatedOverlap : Bool32) -> Self {
+		self.advancedBlendCorrelatedOverlap = advancedBlendCorrelatedOverlap;
+		self
+	}
+
+	pub fn advancedBlendAllOperations(mut self, advancedBlendAllOperations : Bool32) -> Self {
+		self.advancedBlendAllOperations = advancedBlendAllOperations;
+		self
+	}
+
+}
+
+impl PipelineColorBlendAdvancedStateCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn srcPremultiplied(mut self, srcPremultiplied : Bool32) -> Self {
+		self.srcPremultiplied = srcPremultiplied;
+		self
+	}
+
+	pub fn dstPremultiplied(mut self, dstPremultiplied : Bool32) -> Self {
+		self.dstPremultiplied = dstPremultiplied;
+		self
+	}
+
+	pub fn blendOverlap(mut self, blendOverlap : BlendOverlapEXT) -> Self {
+		self.blendOverlap = blendOverlap;
+		self
+	}
+
+}
+
+impl PipelineCoverageToColorStateCreateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineCoverageToColorStateCreateFlagsNV) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn coverageToColorEnable(mut self, coverageToColorEnable : Bool32) -> Self {
+		self.coverageToColorEnable = coverageToColorEnable;
+		self
+	}
+
+	pub fn coverageToColorLocation(mut self, coverageToColorLocation : u32) -> Self {
+		self.coverageToColorLocation = coverageToColorLocation;
+		self
+	}
+
+}
+
+impl PipelineCoverageModulationStateCreateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineCoverageModulationStateCreateFlagsNV) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn coverageModulationMode(mut self, coverageModulationMode : CoverageModulationModeNV) -> Self {
+		self.coverageModulationMode = coverageModulationMode;
+		self
+	}
+
+	pub fn coverageModulationTableEnable(mut self, coverageModulationTableEnable : Bool32) -> Self {
+		self.coverageModulationTableEnable = coverageModulationTableEnable;
+		self
+	}
+
+	pub fn coverageModulationTableCount(mut self, coverageModulationTableCount : u32) -> Self {
+		self.coverageModulationTableCount = coverageModulationTableCount;
+		self
+	}
+
+	pub fn pCoverageModulationTable(mut self, pCoverageModulationTable : *const f32) -> Self {
+		self.pCoverageModulationTable = pCoverageModulationTable;
+		self
+	}
+
+}
+
+impl PhysicalDeviceShaderSMBuiltinsPropertiesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn shaderSMCount(mut self, shaderSMCount : u32) -> Self {
+		self.shaderSMCount = shaderSMCount;
+		self
+	}
+
+	pub fn shaderWarpsPerSM(mut self, shaderWarpsPerSM : u32) -> Self {
+		self.shaderWarpsPerSM = shaderWarpsPerSM;
+		self
+	}
+
+}
+
+impl PhysicalDeviceShaderSMBuiltinsFeaturesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn shaderSMBuiltins(mut self, shaderSMBuiltins : Bool32) -> Self {
+		self.shaderSMBuiltins = shaderSMBuiltins;
+		self
+	}
+
+}
+
+impl DrmFormatModifierPropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn drmFormatModifier(mut self, drmFormatModifier : u64) -> Self {
+		self.drmFormatModifier = drmFormatModifier;
+		self
+	}
+
+	pub fn drmFormatModifierPlaneCount(mut self, drmFormatModifierPlaneCount : u32) -> Self {
+		self.drmFormatModifierPlaneCount = drmFormatModifierPlaneCount;
+		self
+	}
+
+	pub fn drmFormatModifierTilingFeatures(mut self, drmFormatModifierTilingFeatures : FormatFeatureFlags) -> Self {
+		self.drmFormatModifierTilingFeatures = drmFormatModifierTilingFeatures;
+		self
+	}
+
+}
+
+impl DrmFormatModifierPropertiesListEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn drmFormatModifierCount(mut self, drmFormatModifierCount : u32) -> Self {
+		self.drmFormatModifierCount = drmFormatModifierCount;
+		self
+	}
+
+	pub fn pDrmFormatModifierProperties(mut self, pDrmFormatModifierProperties : *mut DrmFormatModifierPropertiesEXT) -> Self {
+		self.pDrmFormatModifierProperties = pDrmFormatModifierProperties;
+		self
+	}
+
+}
+
+impl PhysicalDeviceImageDrmFormatModifierInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn drmFormatModifier(mut self, drmFormatModifier : u64) -> Self {
+		self.drmFormatModifier = drmFormatModifier;
+		self
+	}
+
+	pub fn sharingMode(mut self, sharingMode : SharingMode) -> Self {
+		self.sharingMode = sharingMode;
+		self
+	}
+
+	pub fn queueFamilyIndexCount(mut self, queueFamilyIndexCount : u32) -> Self {
+		self.queueFamilyIndexCount = queueFamilyIndexCount;
+		self
+	}
+
+	pub fn pQueueFamilyIndices(mut self, pQueueFamilyIndices : *const u32) -> Self {
+		self.pQueueFamilyIndices = pQueueFamilyIndices;
+		self
+	}
+
+}
+
+impl ImageDrmFormatModifierListCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn drmFormatModifierCount(mut self, drmFormatModifierCount : u32) -> Self {
+		self.drmFormatModifierCount = drmFormatModifierCount;
+		self
+	}
+
+	pub fn pDrmFormatModifiers(mut self, pDrmFormatModifiers : *const u64) -> Self {
+		self.pDrmFormatModifiers = pDrmFormatModifiers;
+		self
+	}
+
+}
+
+impl ImageDrmFormatModifierExplicitCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn drmFormatModifier(mut self, drmFormatModifier : u64) -> Self {
+		self.drmFormatModifier = drmFormatModifier;
+		self
+	}
+
+	pub fn drmFormatModifierPlaneCount(mut self, drmFormatModifierPlaneCount : u32) -> Self {
+		self.drmFormatModifierPlaneCount = drmFormatModifierPlaneCount;
+		self
+	}
+
+	pub fn pPlaneLayouts(mut self, pPlaneLayouts : *const SubresourceLayout) -> Self {
+		self.pPlaneLayouts = pPlaneLayouts;
+		self
+	}
+
+}
+
+impl ImageDrmFormatModifierPropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn drmFormatModifier(mut self, drmFormatModifier : u64) -> Self {
+		self.drmFormatModifier = drmFormatModifier;
+		self
+	}
+
+}
+
+impl ValidationCacheCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : ValidationCacheCreateFlagsEXT) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn initialDataSize(mut self, initialDataSize : usize) -> Self {
+		self.initialDataSize = initialDataSize;
+		self
+	}
+
+	pub fn pInitialData(mut self, pInitialData : *const void) -> Self {
+		self.pInitialData = pInitialData;
+		self
+	}
+
+}
+
+impl ShaderModuleValidationCacheCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn validationCache(mut self, validationCache : ValidationCacheEXT) -> Self {
+		self.validationCache = validationCache;
+		self
+	}
+
+}
+
+impl ShadingRatePaletteNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn shadingRatePaletteEntryCount(mut self, shadingRatePaletteEntryCount : u32) -> Self {
+		self.shadingRatePaletteEntryCount = shadingRatePaletteEntryCount;
+		self
+	}
+
+	pub fn pShadingRatePaletteEntries(mut self, pShadingRatePaletteEntries : *const ShadingRatePaletteEntryNV) -> Self {
+		self.pShadingRatePaletteEntries = pShadingRatePaletteEntries;
+		self
+	}
+
+}
+
+impl PipelineViewportShadingRateImageStateCreateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn shadingRateImageEnable(mut self, shadingRateImageEnable : Bool32) -> Self {
+		self.shadingRateImageEnable = shadingRateImageEnable;
+		self
+	}
+
+	pub fn viewportCount(mut self, viewportCount : u32) -> Self {
+		self.viewportCount = viewportCount;
+		self
+	}
+
+	pub fn pShadingRatePalettes(mut self, pShadingRatePalettes : *const ShadingRatePaletteNV) -> Self {
+		self.pShadingRatePalettes = pShadingRatePalettes;
+		self
+	}
+
+}
+
+impl PhysicalDeviceShadingRateImageFeaturesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn shadingRateImage(mut self, shadingRateImage : Bool32) -> Self {
+		self.shadingRateImage = shadingRateImage;
+		self
+	}
+
+	pub fn shadingRateCoarseSampleOrder(mut self, shadingRateCoarseSampleOrder : Bool32) -> Self {
+		self.shadingRateCoarseSampleOrder = shadingRateCoarseSampleOrder;
+		self
+	}
+
+}
+
+impl PhysicalDeviceShadingRateImagePropertiesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn shadingRateTexelSize(mut self, shadingRateTexelSize : Extent2D) -> Self {
+		self.shadingRateTexelSize = shadingRateTexelSize;
+		self
+	}
+
+	pub fn shadingRatePaletteSize(mut self, shadingRatePaletteSize : u32) -> Self {
+		self.shadingRatePaletteSize = shadingRatePaletteSize;
+		self
+	}
+
+	pub fn shadingRateMaxCoarseSamples(mut self, shadingRateMaxCoarseSamples : u32) -> Self {
+		self.shadingRateMaxCoarseSamples = shadingRateMaxCoarseSamples;
+		self
+	}
+
+}
+
+impl CoarseSampleLocationNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn pixelX(mut self, pixelX : u32) -> Self {
+		self.pixelX = pixelX;
+		self
+	}
+
+	pub fn pixelY(mut self, pixelY : u32) -> Self {
+		self.pixelY = pixelY;
+		self
+	}
+
+	pub fn sample(mut self, sample : u32) -> Self {
+		self.sample = sample;
+		self
+	}
+
+}
+
+impl CoarseSampleOrderCustomNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn shadingRate(mut self, shadingRate : ShadingRatePaletteEntryNV) -> Self {
+		self.shadingRate = shadingRate;
+		self
+	}
+
+	pub fn sampleCount(mut self, sampleCount : u32) -> Self {
+		self.sampleCount = sampleCount;
+		self
+	}
+
+	pub fn sampleLocationCount(mut self, sampleLocationCount : u32) -> Self {
+		self.sampleLocationCount = sampleLocationCount;
+		self
+	}
+
+	pub fn pSampleLocations(mut self, pSampleLocations : *const CoarseSampleLocationNV) -> Self {
+		self.pSampleLocations = pSampleLocations;
+		self
+	}
+
+}
+
+impl PipelineViewportCoarseSampleOrderStateCreateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn sampleOrderType(mut self, sampleOrderType : CoarseSampleOrderTypeNV) -> Self {
+		self.sampleOrderType = sampleOrderType;
+		self
+	}
+
+	pub fn customSampleOrderCount(mut self, customSampleOrderCount : u32) -> Self {
+		self.customSampleOrderCount = customSampleOrderCount;
+		self
+	}
+
+	pub fn pCustomSampleOrders(mut self, pCustomSampleOrders : *const CoarseSampleOrderCustomNV) -> Self {
+		self.pCustomSampleOrders = pCustomSampleOrders;
+		self
+	}
+
+}
+
+impl RayTracingShaderGroupCreateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn r#type(mut self, r#type : RayTracingShaderGroupTypeKHR) -> Self {
+		self.r#type = r#type;
+		self
+	}
+
+	pub fn generalShader(mut self, generalShader : u32) -> Self {
+		self.generalShader = generalShader;
+		self
+	}
+
+	pub fn closestHitShader(mut self, closestHitShader : u32) -> Self {
+		self.closestHitShader = closestHitShader;
+		self
+	}
+
+	pub fn anyHitShader(mut self, anyHitShader : u32) -> Self {
+		self.anyHitShader = anyHitShader;
+		self
+	}
+
+	pub fn intersectionShader(mut self, intersectionShader : u32) -> Self {
+		self.intersectionShader = intersectionShader;
+		self
+	}
+
+}
+
+impl RayTracingPipelineCreateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineCreateFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn stageCount(mut self, stageCount : u32) -> Self {
+		self.stageCount = stageCount;
+		self
+	}
+
+	pub fn pStages(mut self, pStages : *const PipelineShaderStageCreateInfo) -> Self {
+		self.pStages = pStages;
+		self
+	}
+
+	pub fn groupCount(mut self, groupCount : u32) -> Self {
+		self.groupCount = groupCount;
+		self
+	}
+
+	pub fn pGroups(mut self, pGroups : *const RayTracingShaderGroupCreateInfoNV) -> Self {
+		self.pGroups = pGroups;
+		self
+	}
+
+	pub fn maxRecursionDepth(mut self, maxRecursionDepth : u32) -> Self {
+		self.maxRecursionDepth = maxRecursionDepth;
+		self
+	}
+
+	pub fn layout(mut self, layout : PipelineLayout) -> Self {
+		self.layout = layout;
+		self
+	}
+
+	pub fn basePipelineHandle(mut self, basePipelineHandle : Pipeline) -> Self {
+		self.basePipelineHandle = basePipelineHandle;
+		self
+	}
+
+	pub fn basePipelineIndex(mut self, basePipelineIndex : i32) -> Self {
+		self.basePipelineIndex = basePipelineIndex;
+		self
+	}
+
+}
+
+impl GeometryTrianglesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn vertexData(mut self, vertexData : Buffer) -> Self {
+		self.vertexData = vertexData;
+		self
+	}
+
+	pub fn vertexOffset(mut self, vertexOffset : DeviceSize) -> Self {
+		self.vertexOffset = vertexOffset;
+		self
+	}
+
+	pub fn vertexCount(mut self, vertexCount : u32) -> Self {
+		self.vertexCount = vertexCount;
+		self
+	}
+
+	pub fn vertexStride(mut self, vertexStride : DeviceSize) -> Self {
+		self.vertexStride = vertexStride;
+		self
+	}
+
+	pub fn vertexFormat(mut self, vertexFormat : Format) -> Self {
+		self.vertexFormat = vertexFormat;
+		self
+	}
+
+	pub fn indexData(mut self, indexData : Buffer) -> Self {
+		self.indexData = indexData;
+		self
+	}
+
+	pub fn indexOffset(mut self, indexOffset : DeviceSize) -> Self {
+		self.indexOffset = indexOffset;
+		self
+	}
+
+	pub fn indexCount(mut self, indexCount : u32) -> Self {
+		self.indexCount = indexCount;
+		self
+	}
+
+	pub fn indexType(mut self, indexType : IndexType) -> Self {
+		self.indexType = indexType;
+		self
+	}
+
+	pub fn transformData(mut self, transformData : Buffer) -> Self {
+		self.transformData = transformData;
+		self
+	}
+
+	pub fn transformOffset(mut self, transformOffset : DeviceSize) -> Self {
+		self.transformOffset = transformOffset;
+		self
+	}
+
+}
+
+impl GeometryAABBNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn aabbData(mut self, aabbData : Buffer) -> Self {
+		self.aabbData = aabbData;
+		self
+	}
+
+	pub fn numAABBs(mut self, numAABBs : u32) -> Self {
+		self.numAABBs = numAABBs;
+		self
+	}
+
+	pub fn stride(mut self, stride : u32) -> Self {
+		self.stride = stride;
+		self
+	}
+
+	pub fn offset(mut self, offset : DeviceSize) -> Self {
+		self.offset = offset;
+		self
+	}
+
+}
+
+impl GeometryDataNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn triangles(mut self, triangles : GeometryTrianglesNV) -> Self {
+		self.triangles = triangles;
+		self
+	}
+
+	pub fn aabbs(mut self, aabbs : GeometryAABBNV) -> Self {
+		self.aabbs = aabbs;
+		self
+	}
+
+}
+
+impl GeometryNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn geometryType(mut self, geometryType : GeometryTypeKHR) -> Self {
+		self.geometryType = geometryType;
+		self
+	}
+
+	pub fn geometry(mut self, geometry : GeometryDataNV) -> Self {
+		self.geometry = geometry;
+		self
+	}
+
+	pub fn flags(mut self, flags : GeometryFlagsKHR) -> Self {
+		self.flags = flags;
+		self
+	}
+
+}
+
+impl AccelerationStructureInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn r#type(mut self, r#type : AccelerationStructureTypeNV) -> Self {
+		self.r#type = r#type;
+		self
+	}
+
+	pub fn flags(mut self, flags : BuildAccelerationStructureFlagsNV) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn instanceCount(mut self, instanceCount : u32) -> Self {
+		self.instanceCount = instanceCount;
+		self
+	}
+
+	pub fn geometryCount(mut self, geometryCount : u32) -> Self {
+		self.geometryCount = geometryCount;
+		self
+	}
+
+	pub fn pGeometries(mut self, pGeometries : *const GeometryNV) -> Self {
+		self.pGeometries = pGeometries;
+		self
+	}
+
+}
+
+impl AccelerationStructureCreateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn compactedSize(mut self, compactedSize : DeviceSize) -> Self {
+		self.compactedSize = compactedSize;
+		self
+	}
+
+	pub fn info(mut self, info : AccelerationStructureInfoNV) -> Self {
+		self.info = info;
+		self
+	}
+
+}
+
+impl BindAccelerationStructureMemoryInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn accelerationStructure(mut self, accelerationStructure : AccelerationStructureKHR) -> Self {
+		self.accelerationStructure = accelerationStructure;
+		self
+	}
+
+	pub fn memory(mut self, memory : DeviceMemory) -> Self {
+		self.memory = memory;
+		self
+	}
+
+	pub fn memoryOffset(mut self, memoryOffset : DeviceSize) -> Self {
+		self.memoryOffset = memoryOffset;
+		self
+	}
+
+	pub fn deviceIndexCount(mut self, deviceIndexCount : u32) -> Self {
+		self.deviceIndexCount = deviceIndexCount;
+		self
+	}
+
+	pub fn pDeviceIndices(mut self, pDeviceIndices : *const u32) -> Self {
+		self.pDeviceIndices = pDeviceIndices;
+		self
+	}
+
+}
+
+impl WriteDescriptorSetAccelerationStructureKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn accelerationStructureCount(mut self, accelerationStructureCount : u32) -> Self {
+		self.accelerationStructureCount = accelerationStructureCount;
+		self
+	}
+
+	pub fn pAccelerationStructures(mut self, pAccelerationStructures : *const AccelerationStructureKHR) -> Self {
+		self.pAccelerationStructures = pAccelerationStructures;
+		self
+	}
+
+}
+
+impl AccelerationStructureMemoryRequirementsInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn r#type(mut self, r#type : AccelerationStructureMemoryRequirementsTypeNV) -> Self {
+		self.r#type = r#type;
+		self
+	}
+
+	pub fn accelerationStructure(mut self, accelerationStructure : AccelerationStructureNV) -> Self {
+		self.accelerationStructure = accelerationStructure;
+		self
+	}
+
+}
+
+impl PhysicalDeviceRayTracingPropertiesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn shaderGroupHandleSize(mut self, shaderGroupHandleSize : u32) -> Self {
+		self.shaderGroupHandleSize = shaderGroupHandleSize;
+		self
+	}
+
+	pub fn maxRecursionDepth(mut self, maxRecursionDepth : u32) -> Self {
+		self.maxRecursionDepth = maxRecursionDepth;
+		self
+	}
+
+	pub fn maxShaderGroupStride(mut self, maxShaderGroupStride : u32) -> Self {
+		self.maxShaderGroupStride = maxShaderGroupStride;
+		self
+	}
+
+	pub fn shaderGroupBaseAlignment(mut self, shaderGroupBaseAlignment : u32) -> Self {
+		self.shaderGroupBaseAlignment = shaderGroupBaseAlignment;
+		self
+	}
+
+	pub fn maxGeometryCount(mut self, maxGeometryCount : u64) -> Self {
+		self.maxGeometryCount = maxGeometryCount;
+		self
+	}
+
+	pub fn maxInstanceCount(mut self, maxInstanceCount : u64) -> Self {
+		self.maxInstanceCount = maxInstanceCount;
+		self
+	}
+
+	pub fn maxTriangleCount(mut self, maxTriangleCount : u64) -> Self {
+		self.maxTriangleCount = maxTriangleCount;
+		self
+	}
+
+	pub fn maxDescriptorSetAccelerationStructures(mut self, maxDescriptorSetAccelerationStructures : u32) -> Self {
+		self.maxDescriptorSetAccelerationStructures = maxDescriptorSetAccelerationStructures;
+		self
+	}
+
+}
+
+impl TransformMatrixKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn matrix(mut self, matrix : [f32;12]) -> Self {
+		self.matrix = matrix;
+		self
+	}
+
+}
+
+impl AabbPositionsKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn minX(mut self, minX : f32) -> Self {
+		self.minX = minX;
+		self
+	}
+
+	pub fn minY(mut self, minY : f32) -> Self {
+		self.minY = minY;
+		self
+	}
+
+	pub fn minZ(mut self, minZ : f32) -> Self {
+		self.minZ = minZ;
+		self
+	}
+
+	pub fn maxX(mut self, maxX : f32) -> Self {
+		self.maxX = maxX;
+		self
+	}
+
+	pub fn maxY(mut self, maxY : f32) -> Self {
+		self.maxY = maxY;
+		self
+	}
+
+	pub fn maxZ(mut self, maxZ : f32) -> Self {
+		self.maxZ = maxZ;
+		self
+	}
+
+}
+
+impl PhysicalDeviceRepresentativeFragmentTestFeaturesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn representativeFragmentTest(mut self, representativeFragmentTest : Bool32) -> Self {
+		self.representativeFragmentTest = representativeFragmentTest;
+		self
+	}
+
+}
+
+impl PipelineRepresentativeFragmentTestStateCreateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn representativeFragmentTestEnable(mut self, representativeFragmentTestEnable : Bool32) -> Self {
+		self.representativeFragmentTestEnable = representativeFragmentTestEnable;
+		self
+	}
+
+}
+
+impl PhysicalDeviceImageViewImageFormatInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn imageViewType(mut self, imageViewType : ImageViewType) -> Self {
+		self.imageViewType = imageViewType;
+		self
+	}
+
+}
+
+impl FilterCubicImageViewImageFormatPropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn filterCubic(mut self, filterCubic : Bool32) -> Self {
+		self.filterCubic = filterCubic;
+		self
+	}
+
+	pub fn filterCubicMinmax(mut self, filterCubicMinmax : Bool32) -> Self {
+		self.filterCubicMinmax = filterCubicMinmax;
+		self
+	}
+
+}
+
+impl DeviceQueueGlobalPriorityCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn globalPriority(mut self, globalPriority : QueueGlobalPriorityEXT) -> Self {
+		self.globalPriority = globalPriority;
+		self
+	}
+
+}
+
+impl ImportMemoryHostPointerInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn handleType(mut self, handleType : ExternalMemoryHandleTypeFlagBits) -> Self {
+		self.handleType = handleType;
+		self
+	}
+
+	pub fn pHostPointer(mut self, pHostPointer : *mut void) -> Self {
+		self.pHostPointer = pHostPointer;
+		self
+	}
+
+}
+
+impl MemoryHostPointerPropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn memoryTypeBits(mut self, memoryTypeBits : u32) -> Self {
+		self.memoryTypeBits = memoryTypeBits;
+		self
+	}
+
+}
+
+impl PhysicalDeviceExternalMemoryHostPropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn minImportedHostPointerAlignment(mut self, minImportedHostPointerAlignment : DeviceSize) -> Self {
+		self.minImportedHostPointerAlignment = minImportedHostPointerAlignment;
+		self
+	}
+
+}
+
+impl PipelineCompilerControlCreateInfoAMD {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn compilerControlFlags(mut self, compilerControlFlags : PipelineCompilerControlFlagsAMD) -> Self {
+		self.compilerControlFlags = compilerControlFlags;
+		self
+	}
+
+}
+
+impl CalibratedTimestampInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn timeDomain(mut self, timeDomain : TimeDomainEXT) -> Self {
+		self.timeDomain = timeDomain;
+		self
+	}
+
+}
+
+impl PhysicalDeviceShaderCorePropertiesAMD {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn shaderEngineCount(mut self, shaderEngineCount : u32) -> Self {
+		self.shaderEngineCount = shaderEngineCount;
+		self
+	}
+
+	pub fn shaderArraysPerEngineCount(mut self, shaderArraysPerEngineCount : u32) -> Self {
+		self.shaderArraysPerEngineCount = shaderArraysPerEngineCount;
+		self
+	}
+
+	pub fn computeUnitsPerShaderArray(mut self, computeUnitsPerShaderArray : u32) -> Self {
+		self.computeUnitsPerShaderArray = computeUnitsPerShaderArray;
+		self
+	}
+
+	pub fn simdPerComputeUnit(mut self, simdPerComputeUnit : u32) -> Self {
+		self.simdPerComputeUnit = simdPerComputeUnit;
+		self
+	}
+
+	pub fn wavefrontsPerSimd(mut self, wavefrontsPerSimd : u32) -> Self {
+		self.wavefrontsPerSimd = wavefrontsPerSimd;
+		self
+	}
+
+	pub fn wavefrontSize(mut self, wavefrontSize : u32) -> Self {
+		self.wavefrontSize = wavefrontSize;
+		self
+	}
+
+	pub fn sgprsPerSimd(mut self, sgprsPerSimd : u32) -> Self {
+		self.sgprsPerSimd = sgprsPerSimd;
+		self
+	}
+
+	pub fn minSgprAllocation(mut self, minSgprAllocation : u32) -> Self {
+		self.minSgprAllocation = minSgprAllocation;
+		self
+	}
+
+	pub fn maxSgprAllocation(mut self, maxSgprAllocation : u32) -> Self {
+		self.maxSgprAllocation = maxSgprAllocation;
+		self
+	}
+
+	pub fn sgprAllocationGranularity(mut self, sgprAllocationGranularity : u32) -> Self {
+		self.sgprAllocationGranularity = sgprAllocationGranularity;
+		self
+	}
+
+	pub fn vgprsPerSimd(mut self, vgprsPerSimd : u32) -> Self {
+		self.vgprsPerSimd = vgprsPerSimd;
+		self
+	}
+
+	pub fn minVgprAllocation(mut self, minVgprAllocation : u32) -> Self {
+		self.minVgprAllocation = minVgprAllocation;
+		self
+	}
+
+	pub fn maxVgprAllocation(mut self, maxVgprAllocation : u32) -> Self {
+		self.maxVgprAllocation = maxVgprAllocation;
+		self
+	}
+
+	pub fn vgprAllocationGranularity(mut self, vgprAllocationGranularity : u32) -> Self {
+		self.vgprAllocationGranularity = vgprAllocationGranularity;
+		self
+	}
+
+}
+
+impl DeviceMemoryOverallocationCreateInfoAMD {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn overallocationBehavior(mut self, overallocationBehavior : MemoryOverallocationBehaviorAMD) -> Self {
+		self.overallocationBehavior = overallocationBehavior;
+		self
+	}
+
+}
+
+impl PhysicalDeviceVertexAttributeDivisorPropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn maxVertexAttribDivisor(mut self, maxVertexAttribDivisor : u32) -> Self {
+		self.maxVertexAttribDivisor = maxVertexAttribDivisor;
+		self
+	}
+
+}
+
+impl VertexInputBindingDivisorDescriptionEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn binding(mut self, binding : u32) -> Self {
+		self.binding = binding;
+		self
+	}
+
+	pub fn divisor(mut self, divisor : u32) -> Self {
+		self.divisor = divisor;
+		self
+	}
+
+}
+
+impl PipelineVertexInputDivisorStateCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn vertexBindingDivisorCount(mut self, vertexBindingDivisorCount : u32) -> Self {
+		self.vertexBindingDivisorCount = vertexBindingDivisorCount;
+		self
+	}
+
+	pub fn pVertexBindingDivisors(mut self, pVertexBindingDivisors : *const VertexInputBindingDivisorDescriptionEXT) -> Self {
+		self.pVertexBindingDivisors = pVertexBindingDivisors;
+		self
+	}
+
+}
+
+impl PhysicalDeviceVertexAttributeDivisorFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn vertexAttributeInstanceRateDivisor(mut self, vertexAttributeInstanceRateDivisor : Bool32) -> Self {
+		self.vertexAttributeInstanceRateDivisor = vertexAttributeInstanceRateDivisor;
+		self
+	}
+
+	pub fn vertexAttributeInstanceRateZeroDivisor(mut self, vertexAttributeInstanceRateZeroDivisor : Bool32) -> Self {
+		self.vertexAttributeInstanceRateZeroDivisor = vertexAttributeInstanceRateZeroDivisor;
+		self
+	}
+
+}
+
+impl PipelineCreationFeedbackEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn flags(mut self, flags : PipelineCreationFeedbackFlagsEXT) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn duration(mut self, duration : u64) -> Self {
+		self.duration = duration;
+		self
+	}
+
+}
+
+impl PipelineCreationFeedbackCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn pPipelineCreationFeedback(mut self, pPipelineCreationFeedback : *mut PipelineCreationFeedbackEXT) -> Self {
+		self.pPipelineCreationFeedback = pPipelineCreationFeedback;
+		self
+	}
+
+	pub fn pipelineStageCreationFeedbackCount(mut self, pipelineStageCreationFeedbackCount : u32) -> Self {
+		self.pipelineStageCreationFeedbackCount = pipelineStageCreationFeedbackCount;
+		self
+	}
+
+	pub fn pPipelineStageCreationFeedbacks(mut self, pPipelineStageCreationFeedbacks : *mut PipelineCreationFeedbackEXT) -> Self {
+		self.pPipelineStageCreationFeedbacks = pPipelineStageCreationFeedbacks;
+		self
+	}
+
+}
+
+impl PhysicalDeviceComputeShaderDerivativesFeaturesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn computeDerivativeGroupQuads(mut self, computeDerivativeGroupQuads : Bool32) -> Self {
+		self.computeDerivativeGroupQuads = computeDerivativeGroupQuads;
+		self
+	}
+
+	pub fn computeDerivativeGroupLinear(mut self, computeDerivativeGroupLinear : Bool32) -> Self {
+		self.computeDerivativeGroupLinear = computeDerivativeGroupLinear;
+		self
+	}
+
+}
+
+impl PhysicalDeviceMeshShaderFeaturesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn taskShader(mut self, taskShader : Bool32) -> Self {
+		self.taskShader = taskShader;
+		self
+	}
+
+	pub fn meshShader(mut self, meshShader : Bool32) -> Self {
+		self.meshShader = meshShader;
+		self
+	}
+
+}
+
+impl PhysicalDeviceMeshShaderPropertiesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn maxDrawMeshTasksCount(mut self, maxDrawMeshTasksCount : u32) -> Self {
+		self.maxDrawMeshTasksCount = maxDrawMeshTasksCount;
+		self
+	}
+
+	pub fn maxTaskWorkGroupInvocations(mut self, maxTaskWorkGroupInvocations : u32) -> Self {
+		self.maxTaskWorkGroupInvocations = maxTaskWorkGroupInvocations;
+		self
+	}
+
+	pub fn maxTaskWorkGroupSize(mut self, maxTaskWorkGroupSize : [u32;3]) -> Self {
+		self.maxTaskWorkGroupSize = maxTaskWorkGroupSize;
+		self
+	}
+
+	pub fn maxTaskTotalMemorySize(mut self, maxTaskTotalMemorySize : u32) -> Self {
+		self.maxTaskTotalMemorySize = maxTaskTotalMemorySize;
+		self
+	}
+
+	pub fn maxTaskOutputCount(mut self, maxTaskOutputCount : u32) -> Self {
+		self.maxTaskOutputCount = maxTaskOutputCount;
+		self
+	}
+
+	pub fn maxMeshWorkGroupInvocations(mut self, maxMeshWorkGroupInvocations : u32) -> Self {
+		self.maxMeshWorkGroupInvocations = maxMeshWorkGroupInvocations;
+		self
+	}
+
+	pub fn maxMeshWorkGroupSize(mut self, maxMeshWorkGroupSize : [u32;3]) -> Self {
+		self.maxMeshWorkGroupSize = maxMeshWorkGroupSize;
+		self
+	}
+
+	pub fn maxMeshTotalMemorySize(mut self, maxMeshTotalMemorySize : u32) -> Self {
+		self.maxMeshTotalMemorySize = maxMeshTotalMemorySize;
+		self
+	}
+
+	pub fn maxMeshOutputVertices(mut self, maxMeshOutputVertices : u32) -> Self {
+		self.maxMeshOutputVertices = maxMeshOutputVertices;
+		self
+	}
+
+	pub fn maxMeshOutputPrimitives(mut self, maxMeshOutputPrimitives : u32) -> Self {
+		self.maxMeshOutputPrimitives = maxMeshOutputPrimitives;
+		self
+	}
+
+	pub fn maxMeshMultiviewViewCount(mut self, maxMeshMultiviewViewCount : u32) -> Self {
+		self.maxMeshMultiviewViewCount = maxMeshMultiviewViewCount;
+		self
+	}
+
+	pub fn meshOutputPerVertexGranularity(mut self, meshOutputPerVertexGranularity : u32) -> Self {
+		self.meshOutputPerVertexGranularity = meshOutputPerVertexGranularity;
+		self
+	}
+
+	pub fn meshOutputPerPrimitiveGranularity(mut self, meshOutputPerPrimitiveGranularity : u32) -> Self {
+		self.meshOutputPerPrimitiveGranularity = meshOutputPerPrimitiveGranularity;
+		self
+	}
+
+}
+
+impl DrawMeshTasksIndirectCommandNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn taskCount(mut self, taskCount : u32) -> Self {
+		self.taskCount = taskCount;
+		self
+	}
+
+	pub fn firstTask(mut self, firstTask : u32) -> Self {
+		self.firstTask = firstTask;
+		self
+	}
+
+}
+
+impl PhysicalDeviceFragmentShaderBarycentricFeaturesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn fragmentShaderBarycentric(mut self, fragmentShaderBarycentric : Bool32) -> Self {
+		self.fragmentShaderBarycentric = fragmentShaderBarycentric;
+		self
+	}
+
+}
+
+impl PhysicalDeviceShaderImageFootprintFeaturesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn imageFootprint(mut self, imageFootprint : Bool32) -> Self {
+		self.imageFootprint = imageFootprint;
+		self
+	}
+
+}
+
+impl PipelineViewportExclusiveScissorStateCreateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn exclusiveScissorCount(mut self, exclusiveScissorCount : u32) -> Self {
+		self.exclusiveScissorCount = exclusiveScissorCount;
+		self
+	}
+
+	pub fn pExclusiveScissors(mut self, pExclusiveScissors : *const Rect2D) -> Self {
+		self.pExclusiveScissors = pExclusiveScissors;
+		self
+	}
+
+}
+
+impl PhysicalDeviceExclusiveScissorFeaturesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn exclusiveScissor(mut self, exclusiveScissor : Bool32) -> Self {
+		self.exclusiveScissor = exclusiveScissor;
+		self
+	}
+
+}
+
+impl QueueFamilyCheckpointPropertiesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn checkpointExecutionStageMask(mut self, checkpointExecutionStageMask : PipelineStageFlags) -> Self {
+		self.checkpointExecutionStageMask = checkpointExecutionStageMask;
+		self
+	}
+
+}
+
+impl CheckpointDataNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn stage(mut self, stage : PipelineStageFlagBits) -> Self {
+		self.stage = stage;
+		self
+	}
+
+	pub fn pCheckpointMarker(mut self, pCheckpointMarker : *mut void) -> Self {
+		self.pCheckpointMarker = pCheckpointMarker;
+		self
+	}
+
+}
+
+impl PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn shaderIntegerFunctions2(mut self, shaderIntegerFunctions2 : Bool32) -> Self {
+		self.shaderIntegerFunctions2 = shaderIntegerFunctions2;
+		self
+	}
+
+}
+
+impl InitializePerformanceApiInfoINTEL {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn pUserData(mut self, pUserData : *mut void) -> Self {
+		self.pUserData = pUserData;
+		self
+	}
+
+}
+
+impl QueryPoolPerformanceQueryCreateInfoINTEL {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn performanceCountersSampling(mut self, performanceCountersSampling : QueryPoolSamplingModeINTEL) -> Self {
+		self.performanceCountersSampling = performanceCountersSampling;
+		self
+	}
+
+}
+
+impl PerformanceMarkerInfoINTEL {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn marker(mut self, marker : u64) -> Self {
+		self.marker = marker;
+		self
+	}
+
+}
+
+impl PerformanceStreamMarkerInfoINTEL {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn marker(mut self, marker : u32) -> Self {
+		self.marker = marker;
+		self
+	}
+
+}
+
+impl PerformanceOverrideInfoINTEL {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn r#type(mut self, r#type : PerformanceOverrideTypeINTEL) -> Self {
+		self.r#type = r#type;
+		self
+	}
+
+	pub fn enable(mut self, enable : Bool32) -> Self {
+		self.enable = enable;
+		self
+	}
+
+	pub fn parameter(mut self, parameter : u64) -> Self {
+		self.parameter = parameter;
+		self
+	}
+
+}
+
+impl PerformanceConfigurationAcquireInfoINTEL {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn r#type(mut self, r#type : PerformanceConfigurationTypeINTEL) -> Self {
+		self.r#type = r#type;
+		self
+	}
+
+}
+
+impl PhysicalDevicePCIBusInfoPropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn pciDomain(mut self, pciDomain : u32) -> Self {
+		self.pciDomain = pciDomain;
+		self
+	}
+
+	pub fn pciBus(mut self, pciBus : u32) -> Self {
+		self.pciBus = pciBus;
+		self
+	}
+
+	pub fn pciDevice(mut self, pciDevice : u32) -> Self {
+		self.pciDevice = pciDevice;
+		self
+	}
+
+	pub fn pciFunction(mut self, pciFunction : u32) -> Self {
+		self.pciFunction = pciFunction;
+		self
+	}
+
+}
+
+impl DisplayNativeHdrSurfaceCapabilitiesAMD {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn localDimmingSupport(mut self, localDimmingSupport : Bool32) -> Self {
+		self.localDimmingSupport = localDimmingSupport;
+		self
+	}
+
+}
+
+impl SwapchainDisplayNativeHdrCreateInfoAMD {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn localDimmingEnable(mut self, localDimmingEnable : Bool32) -> Self {
+		self.localDimmingEnable = localDimmingEnable;
+		self
+	}
+
+}
+
+impl PhysicalDeviceFragmentDensityMapFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn fragmentDensityMap(mut self, fragmentDensityMap : Bool32) -> Self {
+		self.fragmentDensityMap = fragmentDensityMap;
+		self
+	}
+
+	pub fn fragmentDensityMapDynamic(mut self, fragmentDensityMapDynamic : Bool32) -> Self {
+		self.fragmentDensityMapDynamic = fragmentDensityMapDynamic;
+		self
+	}
+
+	pub fn fragmentDensityMapNonSubsampledImages(mut self, fragmentDensityMapNonSubsampledImages : Bool32) -> Self {
+		self.fragmentDensityMapNonSubsampledImages = fragmentDensityMapNonSubsampledImages;
+		self
+	}
+
+}
+
+impl PhysicalDeviceFragmentDensityMapPropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn minFragmentDensityTexelSize(mut self, minFragmentDensityTexelSize : Extent2D) -> Self {
+		self.minFragmentDensityTexelSize = minFragmentDensityTexelSize;
+		self
+	}
+
+	pub fn maxFragmentDensityTexelSize(mut self, maxFragmentDensityTexelSize : Extent2D) -> Self {
+		self.maxFragmentDensityTexelSize = maxFragmentDensityTexelSize;
+		self
+	}
+
+	pub fn fragmentDensityInvocations(mut self, fragmentDensityInvocations : Bool32) -> Self {
+		self.fragmentDensityInvocations = fragmentDensityInvocations;
+		self
+	}
+
+}
+
+impl RenderPassFragmentDensityMapCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn fragmentDensityMapAttachment(mut self, fragmentDensityMapAttachment : AttachmentReference) -> Self {
+		self.fragmentDensityMapAttachment = fragmentDensityMapAttachment;
+		self
+	}
+
+}
+
+impl PhysicalDeviceSubgroupSizeControlFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn subgroupSizeControl(mut self, subgroupSizeControl : Bool32) -> Self {
+		self.subgroupSizeControl = subgroupSizeControl;
+		self
+	}
+
+	pub fn computeFullSubgroups(mut self, computeFullSubgroups : Bool32) -> Self {
+		self.computeFullSubgroups = computeFullSubgroups;
+		self
+	}
+
+}
+
+impl PhysicalDeviceSubgroupSizeControlPropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn minSubgroupSize(mut self, minSubgroupSize : u32) -> Self {
+		self.minSubgroupSize = minSubgroupSize;
+		self
+	}
+
+	pub fn maxSubgroupSize(mut self, maxSubgroupSize : u32) -> Self {
+		self.maxSubgroupSize = maxSubgroupSize;
+		self
+	}
+
+	pub fn maxComputeWorkgroupSubgroups(mut self, maxComputeWorkgroupSubgroups : u32) -> Self {
+		self.maxComputeWorkgroupSubgroups = maxComputeWorkgroupSubgroups;
+		self
+	}
+
+	pub fn requiredSubgroupSizeStages(mut self, requiredSubgroupSizeStages : ShaderStageFlags) -> Self {
+		self.requiredSubgroupSizeStages = requiredSubgroupSizeStages;
+		self
+	}
+
+}
+
+impl PipelineShaderStageRequiredSubgroupSizeCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn requiredSubgroupSize(mut self, requiredSubgroupSize : u32) -> Self {
+		self.requiredSubgroupSize = requiredSubgroupSize;
+		self
+	}
+
+}
+
+impl PhysicalDeviceShaderCoreProperties2AMD {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn shaderCoreFeatures(mut self, shaderCoreFeatures : ShaderCorePropertiesFlagsAMD) -> Self {
+		self.shaderCoreFeatures = shaderCoreFeatures;
+		self
+	}
+
+	pub fn activeComputeUnitCount(mut self, activeComputeUnitCount : u32) -> Self {
+		self.activeComputeUnitCount = activeComputeUnitCount;
+		self
+	}
+
+}
+
+impl PhysicalDeviceCoherentMemoryFeaturesAMD {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn deviceCoherentMemory(mut self, deviceCoherentMemory : Bool32) -> Self {
+		self.deviceCoherentMemory = deviceCoherentMemory;
+		self
+	}
+
+}
+
+impl PhysicalDeviceMemoryBudgetPropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn heapBudget(mut self, heapBudget : [DeviceSize;MAX_MEMORY_HEAPS]) -> Self {
+		self.heapBudget = heapBudget;
+		self
+	}
+
+	pub fn heapUsage(mut self, heapUsage : [DeviceSize;MAX_MEMORY_HEAPS]) -> Self {
+		self.heapUsage = heapUsage;
+		self
+	}
+
+}
+
+impl PhysicalDeviceMemoryPriorityFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn memoryPriority(mut self, memoryPriority : Bool32) -> Self {
+		self.memoryPriority = memoryPriority;
+		self
+	}
+
+}
+
+impl MemoryPriorityAllocateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn priority(mut self, priority : f32) -> Self {
+		self.priority = priority;
+		self
+	}
+
+}
+
+impl PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn dedicatedAllocationImageAliasing(mut self, dedicatedAllocationImageAliasing : Bool32) -> Self {
+		self.dedicatedAllocationImageAliasing = dedicatedAllocationImageAliasing;
+		self
+	}
+
+}
+
+impl PhysicalDeviceBufferDeviceAddressFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn bufferDeviceAddress(mut self, bufferDeviceAddress : Bool32) -> Self {
+		self.bufferDeviceAddress = bufferDeviceAddress;
+		self
+	}
+
+	pub fn bufferDeviceAddressCaptureReplay(mut self, bufferDeviceAddressCaptureReplay : Bool32) -> Self {
+		self.bufferDeviceAddressCaptureReplay = bufferDeviceAddressCaptureReplay;
+		self
+	}
+
+	pub fn bufferDeviceAddressMultiDevice(mut self, bufferDeviceAddressMultiDevice : Bool32) -> Self {
+		self.bufferDeviceAddressMultiDevice = bufferDeviceAddressMultiDevice;
+		self
+	}
+
+}
+
+impl BufferDeviceAddressCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn deviceAddress(mut self, deviceAddress : DeviceAddress) -> Self {
+		self.deviceAddress = deviceAddress;
+		self
+	}
+
+}
+
+impl PhysicalDeviceToolPropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn name(mut self, name : [i8;MAX_EXTENSION_NAME_SIZE]) -> Self {
+		self.name = name;
+		self
+	}
+
+	pub fn version(mut self, version : [i8;MAX_EXTENSION_NAME_SIZE]) -> Self {
+		self.version = version;
+		self
+	}
+
+	pub fn purposes(mut self, purposes : ToolPurposeFlagsEXT) -> Self {
+		self.purposes = purposes;
+		self
+	}
+
+	pub fn description(mut self, description : [i8;MAX_DESCRIPTION_SIZE]) -> Self {
+		self.description = description;
+		self
+	}
+
+	pub fn layer(mut self, layer : [i8;MAX_EXTENSION_NAME_SIZE]) -> Self {
+		self.layer = layer;
+		self
+	}
+
+}
+
+impl ValidationFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn enabledValidationFeatureCount(mut self, enabledValidationFeatureCount : u32) -> Self {
+		self.enabledValidationFeatureCount = enabledValidationFeatureCount;
+		self
+	}
+
+	pub fn pEnabledValidationFeatures(mut self, pEnabledValidationFeatures : *const ValidationFeatureEnableEXT) -> Self {
+		self.pEnabledValidationFeatures = pEnabledValidationFeatures;
+		self
+	}
+
+	pub fn disabledValidationFeatureCount(mut self, disabledValidationFeatureCount : u32) -> Self {
+		self.disabledValidationFeatureCount = disabledValidationFeatureCount;
+		self
+	}
+
+	pub fn pDisabledValidationFeatures(mut self, pDisabledValidationFeatures : *const ValidationFeatureDisableEXT) -> Self {
+		self.pDisabledValidationFeatures = pDisabledValidationFeatures;
+		self
+	}
+
+}
+
+impl CooperativeMatrixPropertiesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn MSize(mut self, MSize : u32) -> Self {
+		self.MSize = MSize;
+		self
+	}
+
+	pub fn NSize(mut self, NSize : u32) -> Self {
+		self.NSize = NSize;
+		self
+	}
+
+	pub fn KSize(mut self, KSize : u32) -> Self {
+		self.KSize = KSize;
+		self
+	}
+
+	pub fn AType(mut self, AType : ComponentTypeNV) -> Self {
+		self.AType = AType;
+		self
+	}
+
+	pub fn BType(mut self, BType : ComponentTypeNV) -> Self {
+		self.BType = BType;
+		self
+	}
+
+	pub fn CType(mut self, CType : ComponentTypeNV) -> Self {
+		self.CType = CType;
+		self
+	}
+
+	pub fn DType(mut self, DType : ComponentTypeNV) -> Self {
+		self.DType = DType;
+		self
+	}
+
+	pub fn scope(mut self, scope : ScopeNV) -> Self {
+		self.scope = scope;
+		self
+	}
+
+}
+
+impl PhysicalDeviceCooperativeMatrixFeaturesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn cooperativeMatrix(mut self, cooperativeMatrix : Bool32) -> Self {
+		self.cooperativeMatrix = cooperativeMatrix;
+		self
+	}
+
+	pub fn cooperativeMatrixRobustBufferAccess(mut self, cooperativeMatrixRobustBufferAccess : Bool32) -> Self {
+		self.cooperativeMatrixRobustBufferAccess = cooperativeMatrixRobustBufferAccess;
+		self
+	}
+
+}
+
+impl PhysicalDeviceCooperativeMatrixPropertiesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn cooperativeMatrixSupportedStages(mut self, cooperativeMatrixSupportedStages : ShaderStageFlags) -> Self {
+		self.cooperativeMatrixSupportedStages = cooperativeMatrixSupportedStages;
+		self
+	}
+
+}
+
+impl PhysicalDeviceCoverageReductionModeFeaturesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn coverageReductionMode(mut self, coverageReductionMode : Bool32) -> Self {
+		self.coverageReductionMode = coverageReductionMode;
+		self
+	}
+
+}
+
+impl PipelineCoverageReductionStateCreateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PipelineCoverageReductionStateCreateFlagsNV) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn coverageReductionMode(mut self, coverageReductionMode : CoverageReductionModeNV) -> Self {
+		self.coverageReductionMode = coverageReductionMode;
+		self
+	}
+
+}
+
+impl FramebufferMixedSamplesCombinationNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn coverageReductionMode(mut self, coverageReductionMode : CoverageReductionModeNV) -> Self {
+		self.coverageReductionMode = coverageReductionMode;
+		self
+	}
+
+	pub fn rasterizationSamples(mut self, rasterizationSamples : SampleCountFlagBits) -> Self {
+		self.rasterizationSamples = rasterizationSamples;
+		self
+	}
+
+	pub fn depthStencilSamples(mut self, depthStencilSamples : SampleCountFlags) -> Self {
+		self.depthStencilSamples = depthStencilSamples;
+		self
+	}
+
+	pub fn colorSamples(mut self, colorSamples : SampleCountFlags) -> Self {
+		self.colorSamples = colorSamples;
+		self
+	}
+
+}
+
+impl PhysicalDeviceFragmentShaderInterlockFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn fragmentShaderSampleInterlock(mut self, fragmentShaderSampleInterlock : Bool32) -> Self {
+		self.fragmentShaderSampleInterlock = fragmentShaderSampleInterlock;
+		self
+	}
+
+	pub fn fragmentShaderPixelInterlock(mut self, fragmentShaderPixelInterlock : Bool32) -> Self {
+		self.fragmentShaderPixelInterlock = fragmentShaderPixelInterlock;
+		self
+	}
+
+	pub fn fragmentShaderShadingRateInterlock(mut self, fragmentShaderShadingRateInterlock : Bool32) -> Self {
+		self.fragmentShaderShadingRateInterlock = fragmentShaderShadingRateInterlock;
+		self
+	}
+
+}
+
+impl PhysicalDeviceYcbcrImageArraysFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn ycbcrImageArrays(mut self, ycbcrImageArrays : Bool32) -> Self {
+		self.ycbcrImageArrays = ycbcrImageArrays;
+		self
+	}
+
+}
+
+impl HeadlessSurfaceCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : HeadlessSurfaceCreateFlagsEXT) -> Self {
+		self.flags = flags;
+		self
+	}
+
+}
+
+impl PhysicalDeviceLineRasterizationFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn rectangularLines(mut self, rectangularLines : Bool32) -> Self {
+		self.rectangularLines = rectangularLines;
+		self
+	}
+
+	pub fn bresenhamLines(mut self, bresenhamLines : Bool32) -> Self {
+		self.bresenhamLines = bresenhamLines;
+		self
+	}
+
+	pub fn smoothLines(mut self, smoothLines : Bool32) -> Self {
+		self.smoothLines = smoothLines;
+		self
+	}
+
+	pub fn stippledRectangularLines(mut self, stippledRectangularLines : Bool32) -> Self {
+		self.stippledRectangularLines = stippledRectangularLines;
+		self
+	}
+
+	pub fn stippledBresenhamLines(mut self, stippledBresenhamLines : Bool32) -> Self {
+		self.stippledBresenhamLines = stippledBresenhamLines;
+		self
+	}
+
+	pub fn stippledSmoothLines(mut self, stippledSmoothLines : Bool32) -> Self {
+		self.stippledSmoothLines = stippledSmoothLines;
+		self
+	}
+
+}
+
+impl PhysicalDeviceLineRasterizationPropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn lineSubPixelPrecisionBits(mut self, lineSubPixelPrecisionBits : u32) -> Self {
+		self.lineSubPixelPrecisionBits = lineSubPixelPrecisionBits;
+		self
+	}
+
+}
+
+impl PipelineRasterizationLineStateCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn lineRasterizationMode(mut self, lineRasterizationMode : LineRasterizationModeEXT) -> Self {
+		self.lineRasterizationMode = lineRasterizationMode;
+		self
+	}
+
+	pub fn stippledLineEnable(mut self, stippledLineEnable : Bool32) -> Self {
+		self.stippledLineEnable = stippledLineEnable;
+		self
+	}
+
+	pub fn lineStippleFactor(mut self, lineStippleFactor : u32) -> Self {
+		self.lineStippleFactor = lineStippleFactor;
+		self
+	}
+
+	pub fn lineStipplePattern(mut self, lineStipplePattern : u16) -> Self {
+		self.lineStipplePattern = lineStipplePattern;
+		self
+	}
+
+}
+
+impl PhysicalDeviceIndexTypeUint8FeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn indexTypeUint8(mut self, indexTypeUint8 : Bool32) -> Self {
+		self.indexTypeUint8 = indexTypeUint8;
+		self
+	}
+
+}
+
+impl PhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn shaderDemoteToHelperInvocation(mut self, shaderDemoteToHelperInvocation : Bool32) -> Self {
+		self.shaderDemoteToHelperInvocation = shaderDemoteToHelperInvocation;
+		self
+	}
+
+}
+
+impl PhysicalDeviceDeviceGeneratedCommandsPropertiesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn maxGraphicsShaderGroupCount(mut self, maxGraphicsShaderGroupCount : u32) -> Self {
+		self.maxGraphicsShaderGroupCount = maxGraphicsShaderGroupCount;
+		self
+	}
+
+	pub fn maxIndirectSequenceCount(mut self, maxIndirectSequenceCount : u32) -> Self {
+		self.maxIndirectSequenceCount = maxIndirectSequenceCount;
+		self
+	}
+
+	pub fn maxIndirectCommandsTokenCount(mut self, maxIndirectCommandsTokenCount : u32) -> Self {
+		self.maxIndirectCommandsTokenCount = maxIndirectCommandsTokenCount;
+		self
+	}
+
+	pub fn maxIndirectCommandsStreamCount(mut self, maxIndirectCommandsStreamCount : u32) -> Self {
+		self.maxIndirectCommandsStreamCount = maxIndirectCommandsStreamCount;
+		self
+	}
+
+	pub fn maxIndirectCommandsTokenOffset(mut self, maxIndirectCommandsTokenOffset : u32) -> Self {
+		self.maxIndirectCommandsTokenOffset = maxIndirectCommandsTokenOffset;
+		self
+	}
+
+	pub fn maxIndirectCommandsStreamStride(mut self, maxIndirectCommandsStreamStride : u32) -> Self {
+		self.maxIndirectCommandsStreamStride = maxIndirectCommandsStreamStride;
+		self
+	}
+
+	pub fn minSequencesCountBufferOffsetAlignment(mut self, minSequencesCountBufferOffsetAlignment : u32) -> Self {
+		self.minSequencesCountBufferOffsetAlignment = minSequencesCountBufferOffsetAlignment;
+		self
+	}
+
+	pub fn minSequencesIndexBufferOffsetAlignment(mut self, minSequencesIndexBufferOffsetAlignment : u32) -> Self {
+		self.minSequencesIndexBufferOffsetAlignment = minSequencesIndexBufferOffsetAlignment;
+		self
+	}
+
+	pub fn minIndirectCommandsBufferOffsetAlignment(mut self, minIndirectCommandsBufferOffsetAlignment : u32) -> Self {
+		self.minIndirectCommandsBufferOffsetAlignment = minIndirectCommandsBufferOffsetAlignment;
+		self
+	}
+
+}
+
+impl PhysicalDeviceDeviceGeneratedCommandsFeaturesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn deviceGeneratedCommands(mut self, deviceGeneratedCommands : Bool32) -> Self {
+		self.deviceGeneratedCommands = deviceGeneratedCommands;
+		self
+	}
+
+}
+
+impl GraphicsShaderGroupCreateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn stageCount(mut self, stageCount : u32) -> Self {
+		self.stageCount = stageCount;
+		self
+	}
+
+	pub fn pStages(mut self, pStages : *const PipelineShaderStageCreateInfo) -> Self {
+		self.pStages = pStages;
+		self
+	}
+
+	pub fn pVertexInputState(mut self, pVertexInputState : *const PipelineVertexInputStateCreateInfo) -> Self {
+		self.pVertexInputState = pVertexInputState;
+		self
+	}
+
+	pub fn pTessellationState(mut self, pTessellationState : *const PipelineTessellationStateCreateInfo) -> Self {
+		self.pTessellationState = pTessellationState;
+		self
+	}
+
+}
+
+impl GraphicsPipelineShaderGroupsCreateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn groupCount(mut self, groupCount : u32) -> Self {
+		self.groupCount = groupCount;
+		self
+	}
+
+	pub fn pGroups(mut self, pGroups : *const GraphicsShaderGroupCreateInfoNV) -> Self {
+		self.pGroups = pGroups;
+		self
+	}
+
+	pub fn pipelineCount(mut self, pipelineCount : u32) -> Self {
+		self.pipelineCount = pipelineCount;
+		self
+	}
+
+	pub fn pPipelines(mut self, pPipelines : *const Pipeline) -> Self {
+		self.pPipelines = pPipelines;
+		self
+	}
+
+}
+
+impl BindShaderGroupIndirectCommandNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn groupIndex(mut self, groupIndex : u32) -> Self {
+		self.groupIndex = groupIndex;
+		self
+	}
+
+}
+
+impl BindIndexBufferIndirectCommandNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn bufferAddress(mut self, bufferAddress : DeviceAddress) -> Self {
+		self.bufferAddress = bufferAddress;
+		self
+	}
+
+	pub fn size(mut self, size : u32) -> Self {
+		self.size = size;
+		self
+	}
+
+	pub fn indexType(mut self, indexType : IndexType) -> Self {
+		self.indexType = indexType;
+		self
+	}
+
+}
+
+impl BindVertexBufferIndirectCommandNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn bufferAddress(mut self, bufferAddress : DeviceAddress) -> Self {
+		self.bufferAddress = bufferAddress;
+		self
+	}
+
+	pub fn size(mut self, size : u32) -> Self {
+		self.size = size;
+		self
+	}
+
+	pub fn stride(mut self, stride : u32) -> Self {
+		self.stride = stride;
+		self
+	}
+
+}
+
+impl SetStateFlagsIndirectCommandNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn data(mut self, data : u32) -> Self {
+		self.data = data;
+		self
+	}
+
+}
+
+impl IndirectCommandsStreamNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn buffer(mut self, buffer : Buffer) -> Self {
+		self.buffer = buffer;
+		self
+	}
+
+	pub fn offset(mut self, offset : DeviceSize) -> Self {
+		self.offset = offset;
+		self
+	}
+
+}
+
+impl IndirectCommandsLayoutTokenNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn tokenType(mut self, tokenType : IndirectCommandsTokenTypeNV) -> Self {
+		self.tokenType = tokenType;
+		self
+	}
+
+	pub fn stream(mut self, stream : u32) -> Self {
+		self.stream = stream;
+		self
+	}
+
+	pub fn offset(mut self, offset : u32) -> Self {
+		self.offset = offset;
+		self
+	}
+
+	pub fn vertexBindingUnit(mut self, vertexBindingUnit : u32) -> Self {
+		self.vertexBindingUnit = vertexBindingUnit;
+		self
+	}
+
+	pub fn vertexDynamicStride(mut self, vertexDynamicStride : Bool32) -> Self {
+		self.vertexDynamicStride = vertexDynamicStride;
+		self
+	}
+
+	pub fn pushconstantPipelineLayout(mut self, pushconstantPipelineLayout : PipelineLayout) -> Self {
+		self.pushconstantPipelineLayout = pushconstantPipelineLayout;
+		self
+	}
+
+	pub fn pushconstantShaderStageFlags(mut self, pushconstantShaderStageFlags : ShaderStageFlags) -> Self {
+		self.pushconstantShaderStageFlags = pushconstantShaderStageFlags;
+		self
+	}
+
+	pub fn pushconstantOffset(mut self, pushconstantOffset : u32) -> Self {
+		self.pushconstantOffset = pushconstantOffset;
+		self
+	}
+
+	pub fn pushconstantSize(mut self, pushconstantSize : u32) -> Self {
+		self.pushconstantSize = pushconstantSize;
+		self
+	}
+
+	pub fn indirectStateFlags(mut self, indirectStateFlags : IndirectStateFlagsNV) -> Self {
+		self.indirectStateFlags = indirectStateFlags;
+		self
+	}
+
+	pub fn indexTypeCount(mut self, indexTypeCount : u32) -> Self {
+		self.indexTypeCount = indexTypeCount;
+		self
+	}
+
+	pub fn pIndexTypes(mut self, pIndexTypes : *const IndexType) -> Self {
+		self.pIndexTypes = pIndexTypes;
+		self
+	}
+
+	pub fn pIndexTypeValues(mut self, pIndexTypeValues : *const u32) -> Self {
+		self.pIndexTypeValues = pIndexTypeValues;
+		self
+	}
+
+}
+
+impl IndirectCommandsLayoutCreateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : IndirectCommandsLayoutUsageFlagsNV) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn pipelineBindPoint(mut self, pipelineBindPoint : PipelineBindPoint) -> Self {
+		self.pipelineBindPoint = pipelineBindPoint;
+		self
+	}
+
+	pub fn tokenCount(mut self, tokenCount : u32) -> Self {
+		self.tokenCount = tokenCount;
+		self
+	}
+
+	pub fn pTokens(mut self, pTokens : *const IndirectCommandsLayoutTokenNV) -> Self {
+		self.pTokens = pTokens;
+		self
+	}
+
+	pub fn streamCount(mut self, streamCount : u32) -> Self {
+		self.streamCount = streamCount;
+		self
+	}
+
+	pub fn pStreamStrides(mut self, pStreamStrides : *const u32) -> Self {
+		self.pStreamStrides = pStreamStrides;
+		self
+	}
+
+}
+
+impl GeneratedCommandsInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn pipelineBindPoint(mut self, pipelineBindPoint : PipelineBindPoint) -> Self {
+		self.pipelineBindPoint = pipelineBindPoint;
+		self
+	}
+
+	pub fn pipeline(mut self, pipeline : Pipeline) -> Self {
+		self.pipeline = pipeline;
+		self
+	}
+
+	pub fn indirectCommandsLayout(mut self, indirectCommandsLayout : IndirectCommandsLayoutNV) -> Self {
+		self.indirectCommandsLayout = indirectCommandsLayout;
+		self
+	}
+
+	pub fn streamCount(mut self, streamCount : u32) -> Self {
+		self.streamCount = streamCount;
+		self
+	}
+
+	pub fn pStreams(mut self, pStreams : *const IndirectCommandsStreamNV) -> Self {
+		self.pStreams = pStreams;
+		self
+	}
+
+	pub fn sequencesCount(mut self, sequencesCount : u32) -> Self {
+		self.sequencesCount = sequencesCount;
+		self
+	}
+
+	pub fn preprocessBuffer(mut self, preprocessBuffer : Buffer) -> Self {
+		self.preprocessBuffer = preprocessBuffer;
+		self
+	}
+
+	pub fn preprocessOffset(mut self, preprocessOffset : DeviceSize) -> Self {
+		self.preprocessOffset = preprocessOffset;
+		self
+	}
+
+	pub fn preprocessSize(mut self, preprocessSize : DeviceSize) -> Self {
+		self.preprocessSize = preprocessSize;
+		self
+	}
+
+	pub fn sequencesCountBuffer(mut self, sequencesCountBuffer : Buffer) -> Self {
+		self.sequencesCountBuffer = sequencesCountBuffer;
+		self
+	}
+
+	pub fn sequencesCountOffset(mut self, sequencesCountOffset : DeviceSize) -> Self {
+		self.sequencesCountOffset = sequencesCountOffset;
+		self
+	}
+
+	pub fn sequencesIndexBuffer(mut self, sequencesIndexBuffer : Buffer) -> Self {
+		self.sequencesIndexBuffer = sequencesIndexBuffer;
+		self
+	}
+
+	pub fn sequencesIndexOffset(mut self, sequencesIndexOffset : DeviceSize) -> Self {
+		self.sequencesIndexOffset = sequencesIndexOffset;
+		self
+	}
+
+}
+
+impl GeneratedCommandsMemoryRequirementsInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn pipelineBindPoint(mut self, pipelineBindPoint : PipelineBindPoint) -> Self {
+		self.pipelineBindPoint = pipelineBindPoint;
+		self
+	}
+
+	pub fn pipeline(mut self, pipeline : Pipeline) -> Self {
+		self.pipeline = pipeline;
+		self
+	}
+
+	pub fn indirectCommandsLayout(mut self, indirectCommandsLayout : IndirectCommandsLayoutNV) -> Self {
+		self.indirectCommandsLayout = indirectCommandsLayout;
+		self
+	}
+
+	pub fn maxSequencesCount(mut self, maxSequencesCount : u32) -> Self {
+		self.maxSequencesCount = maxSequencesCount;
+		self
+	}
+
+}
+
+impl PhysicalDeviceTexelBufferAlignmentFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn texelBufferAlignment(mut self, texelBufferAlignment : Bool32) -> Self {
+		self.texelBufferAlignment = texelBufferAlignment;
+		self
+	}
+
+}
+
+impl PhysicalDeviceTexelBufferAlignmentPropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn storageTexelBufferOffsetAlignmentBytes(mut self, storageTexelBufferOffsetAlignmentBytes : DeviceSize) -> Self {
+		self.storageTexelBufferOffsetAlignmentBytes = storageTexelBufferOffsetAlignmentBytes;
+		self
+	}
+
+	pub fn storageTexelBufferOffsetSingleTexelAlignment(mut self, storageTexelBufferOffsetSingleTexelAlignment : Bool32) -> Self {
+		self.storageTexelBufferOffsetSingleTexelAlignment = storageTexelBufferOffsetSingleTexelAlignment;
+		self
+	}
+
+	pub fn uniformTexelBufferOffsetAlignmentBytes(mut self, uniformTexelBufferOffsetAlignmentBytes : DeviceSize) -> Self {
+		self.uniformTexelBufferOffsetAlignmentBytes = uniformTexelBufferOffsetAlignmentBytes;
+		self
+	}
+
+	pub fn uniformTexelBufferOffsetSingleTexelAlignment(mut self, uniformTexelBufferOffsetSingleTexelAlignment : Bool32) -> Self {
+		self.uniformTexelBufferOffsetSingleTexelAlignment = uniformTexelBufferOffsetSingleTexelAlignment;
+		self
+	}
+
+}
+
+impl RenderPassTransformBeginInfoQCOM {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn transform(mut self, transform : SurfaceTransformFlagBitsKHR) -> Self {
+		self.transform = transform;
+		self
+	}
+
+}
+
+impl CommandBufferInheritanceRenderPassTransformInfoQCOM {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn transform(mut self, transform : SurfaceTransformFlagBitsKHR) -> Self {
+		self.transform = transform;
+		self
+	}
+
+	pub fn renderArea(mut self, renderArea : Rect2D) -> Self {
+		self.renderArea = renderArea;
+		self
+	}
+
+}
+
+impl PhysicalDeviceRobustness2FeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn robustBufferAccess2(mut self, robustBufferAccess2 : Bool32) -> Self {
+		self.robustBufferAccess2 = robustBufferAccess2;
+		self
+	}
+
+	pub fn robustImageAccess2(mut self, robustImageAccess2 : Bool32) -> Self {
+		self.robustImageAccess2 = robustImageAccess2;
+		self
+	}
+
+	pub fn nullDescriptor(mut self, nullDescriptor : Bool32) -> Self {
+		self.nullDescriptor = nullDescriptor;
+		self
+	}
+
+}
+
+impl PhysicalDeviceRobustness2PropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn robustStorageBufferAccessSizeAlignment(mut self, robustStorageBufferAccessSizeAlignment : DeviceSize) -> Self {
+		self.robustStorageBufferAccessSizeAlignment = robustStorageBufferAccessSizeAlignment;
+		self
+	}
+
+	pub fn robustUniformBufferAccessSizeAlignment(mut self, robustUniformBufferAccessSizeAlignment : DeviceSize) -> Self {
+		self.robustUniformBufferAccessSizeAlignment = robustUniformBufferAccessSizeAlignment;
+		self
+	}
+
+}
+
+impl SamplerCustomBorderColorCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn customBorderColor(mut self, customBorderColor : ClearColorValue) -> Self {
+		self.customBorderColor = customBorderColor;
+		self
+	}
+
+	pub fn format(mut self, format : Format) -> Self {
+		self.format = format;
+		self
+	}
+
+}
+
+impl PhysicalDeviceCustomBorderColorPropertiesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn maxCustomBorderColorSamplers(mut self, maxCustomBorderColorSamplers : u32) -> Self {
+		self.maxCustomBorderColorSamplers = maxCustomBorderColorSamplers;
+		self
+	}
+
+}
+
+impl PhysicalDeviceCustomBorderColorFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn customBorderColors(mut self, customBorderColors : Bool32) -> Self {
+		self.customBorderColors = customBorderColors;
+		self
+	}
+
+	pub fn customBorderColorWithoutFormat(mut self, customBorderColorWithoutFormat : Bool32) -> Self {
+		self.customBorderColorWithoutFormat = customBorderColorWithoutFormat;
+		self
+	}
+
+}
+
+impl PhysicalDevicePrivateDataFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn privateData(mut self, privateData : Bool32) -> Self {
+		self.privateData = privateData;
+		self
+	}
+
+}
+
+impl DevicePrivateDataCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn privateDataSlotRequestCount(mut self, privateDataSlotRequestCount : u32) -> Self {
+		self.privateDataSlotRequestCount = privateDataSlotRequestCount;
+		self
+	}
+
+}
+
+impl PrivateDataSlotCreateInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : PrivateDataSlotCreateFlagsEXT) -> Self {
+		self.flags = flags;
+		self
+	}
+
+}
+
+impl PhysicalDevicePipelineCreationCacheControlFeaturesEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn pipelineCreationCacheControl(mut self, pipelineCreationCacheControl : Bool32) -> Self {
+		self.pipelineCreationCacheControl = pipelineCreationCacheControl;
+		self
+	}
+
+}
+
+impl PhysicalDeviceDiagnosticsConfigFeaturesNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn diagnosticsConfig(mut self, diagnosticsConfig : Bool32) -> Self {
+		self.diagnosticsConfig = diagnosticsConfig;
+		self
+	}
+
+}
+
+impl DeviceDiagnosticsConfigCreateInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : DeviceDiagnosticsConfigFlagsNV) -> Self {
+		self.flags = flags;
+		self
+	}
+
+}
+
+impl Win32SurfaceCreateInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : Win32SurfaceCreateFlagsKHR) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn hinstance(mut self, hinstance : HINSTANCE) -> Self {
+		self.hinstance = hinstance;
+		self
+	}
+
+	pub fn hwnd(mut self, hwnd : HWND) -> Self {
+		self.hwnd = hwnd;
+		self
+	}
+
+}
+
+impl ImportMemoryWin32HandleInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn handleType(mut self, handleType : ExternalMemoryHandleTypeFlagBits) -> Self {
+		self.handleType = handleType;
+		self
+	}
+
+	pub fn handle(mut self, handle : HANDLE) -> Self {
+		self.handle = handle;
+		self
+	}
+
+	pub fn name(mut self, name : LPCWSTR) -> Self {
+		self.name = name;
+		self
+	}
+
+}
+
+impl ExportMemoryWin32HandleInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn pAttributes(mut self, pAttributes : LPSECURITY_ATTRIBUTES) -> Self {
+		self.pAttributes = pAttributes;
+		self
+	}
+
+	pub fn dwAccess(mut self, dwAccess : DWORD) -> Self {
+		self.dwAccess = dwAccess;
+		self
+	}
+
+	pub fn name(mut self, name : LPCWSTR) -> Self {
+		self.name = name;
+		self
+	}
+
+}
+
+impl MemoryWin32HandlePropertiesKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn memoryTypeBits(mut self, memoryTypeBits : u32) -> Self {
+		self.memoryTypeBits = memoryTypeBits;
+		self
+	}
+
+}
+
+impl MemoryGetWin32HandleInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn memory(mut self, memory : DeviceMemory) -> Self {
+		self.memory = memory;
+		self
+	}
+
+	pub fn handleType(mut self, handleType : ExternalMemoryHandleTypeFlagBits) -> Self {
+		self.handleType = handleType;
+		self
+	}
+
+}
+
+impl Win32KeyedMutexAcquireReleaseInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn acquireCount(mut self, acquireCount : u32) -> Self {
+		self.acquireCount = acquireCount;
+		self
+	}
+
+	pub fn pAcquireSyncs(mut self, pAcquireSyncs : *const DeviceMemory) -> Self {
+		self.pAcquireSyncs = pAcquireSyncs;
+		self
+	}
+
+	pub fn pAcquireKeys(mut self, pAcquireKeys : *const u64) -> Self {
+		self.pAcquireKeys = pAcquireKeys;
+		self
+	}
+
+	pub fn pAcquireTimeouts(mut self, pAcquireTimeouts : *const u32) -> Self {
+		self.pAcquireTimeouts = pAcquireTimeouts;
+		self
+	}
+
+	pub fn releaseCount(mut self, releaseCount : u32) -> Self {
+		self.releaseCount = releaseCount;
+		self
+	}
+
+	pub fn pReleaseSyncs(mut self, pReleaseSyncs : *const DeviceMemory) -> Self {
+		self.pReleaseSyncs = pReleaseSyncs;
+		self
+	}
+
+	pub fn pReleaseKeys(mut self, pReleaseKeys : *const u64) -> Self {
+		self.pReleaseKeys = pReleaseKeys;
+		self
+	}
+
+}
+
+impl ImportSemaphoreWin32HandleInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn semaphore(mut self, semaphore : Semaphore) -> Self {
+		self.semaphore = semaphore;
+		self
+	}
+
+	pub fn flags(mut self, flags : SemaphoreImportFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn handleType(mut self, handleType : ExternalSemaphoreHandleTypeFlagBits) -> Self {
+		self.handleType = handleType;
+		self
+	}
+
+	pub fn handle(mut self, handle : HANDLE) -> Self {
+		self.handle = handle;
+		self
+	}
+
+	pub fn name(mut self, name : LPCWSTR) -> Self {
+		self.name = name;
+		self
+	}
+
+}
+
+impl ExportSemaphoreWin32HandleInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn pAttributes(mut self, pAttributes : LPSECURITY_ATTRIBUTES) -> Self {
+		self.pAttributes = pAttributes;
+		self
+	}
+
+	pub fn dwAccess(mut self, dwAccess : DWORD) -> Self {
+		self.dwAccess = dwAccess;
+		self
+	}
+
+	pub fn name(mut self, name : LPCWSTR) -> Self {
+		self.name = name;
+		self
+	}
+
+}
+
+impl D3D12FenceSubmitInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn waitSemaphoreValuesCount(mut self, waitSemaphoreValuesCount : u32) -> Self {
+		self.waitSemaphoreValuesCount = waitSemaphoreValuesCount;
+		self
+	}
+
+	pub fn pWaitSemaphoreValues(mut self, pWaitSemaphoreValues : *const u64) -> Self {
+		self.pWaitSemaphoreValues = pWaitSemaphoreValues;
+		self
+	}
+
+	pub fn signalSemaphoreValuesCount(mut self, signalSemaphoreValuesCount : u32) -> Self {
+		self.signalSemaphoreValuesCount = signalSemaphoreValuesCount;
+		self
+	}
+
+	pub fn pSignalSemaphoreValues(mut self, pSignalSemaphoreValues : *const u64) -> Self {
+		self.pSignalSemaphoreValues = pSignalSemaphoreValues;
+		self
+	}
+
+}
+
+impl SemaphoreGetWin32HandleInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn semaphore(mut self, semaphore : Semaphore) -> Self {
+		self.semaphore = semaphore;
+		self
+	}
+
+	pub fn handleType(mut self, handleType : ExternalSemaphoreHandleTypeFlagBits) -> Self {
+		self.handleType = handleType;
+		self
+	}
+
+}
+
+impl ImportFenceWin32HandleInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn fence(mut self, fence : Fence) -> Self {
+		self.fence = fence;
+		self
+	}
+
+	pub fn flags(mut self, flags : FenceImportFlags) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn handleType(mut self, handleType : ExternalFenceHandleTypeFlagBits) -> Self {
+		self.handleType = handleType;
+		self
+	}
+
+	pub fn handle(mut self, handle : HANDLE) -> Self {
+		self.handle = handle;
+		self
+	}
+
+	pub fn name(mut self, name : LPCWSTR) -> Self {
+		self.name = name;
+		self
+	}
+
+}
+
+impl ExportFenceWin32HandleInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn pAttributes(mut self, pAttributes : LPSECURITY_ATTRIBUTES) -> Self {
+		self.pAttributes = pAttributes;
+		self
+	}
+
+	pub fn dwAccess(mut self, dwAccess : DWORD) -> Self {
+		self.dwAccess = dwAccess;
+		self
+	}
+
+	pub fn name(mut self, name : LPCWSTR) -> Self {
+		self.name = name;
+		self
+	}
+
+}
+
+impl FenceGetWin32HandleInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn fence(mut self, fence : Fence) -> Self {
+		self.fence = fence;
+		self
+	}
+
+	pub fn handleType(mut self, handleType : ExternalFenceHandleTypeFlagBits) -> Self {
+		self.handleType = handleType;
+		self
+	}
+
+}
+
+impl ImportMemoryWin32HandleInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn handleType(mut self, handleType : ExternalMemoryHandleTypeFlagsNV) -> Self {
+		self.handleType = handleType;
+		self
+	}
+
+	pub fn handle(mut self, handle : HANDLE) -> Self {
+		self.handle = handle;
+		self
+	}
+
+}
+
+impl ExportMemoryWin32HandleInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn pAttributes(mut self, pAttributes : LPSECURITY_ATTRIBUTES) -> Self {
+		self.pAttributes = pAttributes;
+		self
+	}
+
+	pub fn dwAccess(mut self, dwAccess : DWORD) -> Self {
+		self.dwAccess = dwAccess;
+		self
+	}
+
+}
+
+impl Win32KeyedMutexAcquireReleaseInfoNV {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn acquireCount(mut self, acquireCount : u32) -> Self {
+		self.acquireCount = acquireCount;
+		self
+	}
+
+	pub fn pAcquireSyncs(mut self, pAcquireSyncs : *const DeviceMemory) -> Self {
+		self.pAcquireSyncs = pAcquireSyncs;
+		self
+	}
+
+	pub fn pAcquireKeys(mut self, pAcquireKeys : *const u64) -> Self {
+		self.pAcquireKeys = pAcquireKeys;
+		self
+	}
+
+	pub fn pAcquireTimeoutMilliseconds(mut self, pAcquireTimeoutMilliseconds : *const u32) -> Self {
+		self.pAcquireTimeoutMilliseconds = pAcquireTimeoutMilliseconds;
+		self
+	}
+
+	pub fn releaseCount(mut self, releaseCount : u32) -> Self {
+		self.releaseCount = releaseCount;
+		self
+	}
+
+	pub fn pReleaseSyncs(mut self, pReleaseSyncs : *const DeviceMemory) -> Self {
+		self.pReleaseSyncs = pReleaseSyncs;
+		self
+	}
+
+	pub fn pReleaseKeys(mut self, pReleaseKeys : *const u64) -> Self {
+		self.pReleaseKeys = pReleaseKeys;
+		self
+	}
+
+}
+
+impl SurfaceFullScreenExclusiveInfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn fullScreenExclusive(mut self, fullScreenExclusive : FullScreenExclusiveEXT) -> Self {
+		self.fullScreenExclusive = fullScreenExclusive;
+		self
+	}
+
+}
+
+impl SurfaceCapabilitiesFullScreenExclusiveEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn fullScreenExclusiveSupported(mut self, fullScreenExclusiveSupported : Bool32) -> Self {
+		self.fullScreenExclusiveSupported = fullScreenExclusiveSupported;
+		self
+	}
+
+}
+
+impl SurfaceFullScreenExclusiveWin32InfoEXT {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn hmonitor(mut self, hmonitor : HMONITOR) -> Self {
+		self.hmonitor = hmonitor;
+		self
+	}
+
+}
+
+impl XlibSurfaceCreateInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : XlibSurfaceCreateFlagsKHR) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn dpy(mut self, dpy : u64) -> Self {
+		self.dpy = dpy;
+		self
+	}
+
+	pub fn window(mut self, window : u64) -> Self {
+		self.window = window;
+		self
+	}
+
+}
+
+impl XcbSurfaceCreateInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : XcbSurfaceCreateFlagsKHR) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn connection(mut self, connection : u64) -> Self {
+		self.connection = connection;
+		self
+	}
+
+	pub fn window(mut self, window : u64) -> Self {
+		self.window = window;
+		self
+	}
+
+}
+
+impl WaylandSurfaceCreateInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : WaylandSurfaceCreateFlagsKHR) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn display(mut self, display : u64) -> Self {
+		self.display = display;
+		self
+	}
+
+	pub fn surface(mut self, surface : u64) -> Self {
+		self.surface = surface;
+		self
+	}
+
+}
+
+impl AndroidSurfaceCreateInfoKHR {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn flags(mut self, flags : AndroidSurfaceCreateFlagsKHR) -> Self {
+		self.flags = flags;
+		self
+	}
+
+	pub fn window(mut self, window : u64) -> Self {
+		self.window = window;
+		self
+	}
+
+}
+
+impl AndroidHardwareBufferUsageANDROID {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn androidHardwareBufferUsage(mut self, androidHardwareBufferUsage : u64) -> Self {
+		self.androidHardwareBufferUsage = androidHardwareBufferUsage;
+		self
+	}
+
+}
+
+impl AndroidHardwareBufferPropertiesANDROID {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn allocationSize(mut self, allocationSize : DeviceSize) -> Self {
+		self.allocationSize = allocationSize;
+		self
+	}
+
+	pub fn memoryTypeBits(mut self, memoryTypeBits : u32) -> Self {
+		self.memoryTypeBits = memoryTypeBits;
+		self
+	}
+
+}
+
+impl AndroidHardwareBufferFormatPropertiesANDROID {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn format(mut self, format : Format) -> Self {
+		self.format = format;
+		self
+	}
+
+	pub fn externalFormat(mut self, externalFormat : u64) -> Self {
+		self.externalFormat = externalFormat;
+		self
+	}
+
+	pub fn formatFeatures(mut self, formatFeatures : FormatFeatureFlags) -> Self {
+		self.formatFeatures = formatFeatures;
+		self
+	}
+
+	pub fn samplerYcbcrConversionComponents(mut self, samplerYcbcrConversionComponents : ComponentMapping) -> Self {
+		self.samplerYcbcrConversionComponents = samplerYcbcrConversionComponents;
+		self
+	}
+
+	pub fn suggestedYcbcrModel(mut self, suggestedYcbcrModel : SamplerYcbcrModelConversion) -> Self {
+		self.suggestedYcbcrModel = suggestedYcbcrModel;
+		self
+	}
+
+	pub fn suggestedYcbcrRange(mut self, suggestedYcbcrRange : SamplerYcbcrRange) -> Self {
+		self.suggestedYcbcrRange = suggestedYcbcrRange;
+		self
+	}
+
+	pub fn suggestedXChromaOffset(mut self, suggestedXChromaOffset : ChromaLocation) -> Self {
+		self.suggestedXChromaOffset = suggestedXChromaOffset;
+		self
+	}
+
+	pub fn suggestedYChromaOffset(mut self, suggestedYChromaOffset : ChromaLocation) -> Self {
+		self.suggestedYChromaOffset = suggestedYChromaOffset;
+		self
+	}
+
+}
+
+impl ImportAndroidHardwareBufferInfoANDROID {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn buffer(mut self, buffer : u64) -> Self {
+		self.buffer = buffer;
+		self
+	}
+
+}
+
+impl MemoryGetAndroidHardwareBufferInfoANDROID {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *const void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn memory(mut self, memory : DeviceMemory) -> Self {
+		self.memory = memory;
+		self
+	}
+
+}
+
+impl ExternalFormatANDROID {
+
+	pub fn new() -> Self {
+		 Self::default()
+	}
+
+	pub fn sType(mut self, sType : StructureType) -> Self {
+		self.sType = sType;
+		self
+	}
+
+	pub fn pNext(mut self, pNext : *mut void) -> Self {
+		self.pNext = pNext;
+		self
+	}
+
+	pub fn externalFormat(mut self, externalFormat : u64) -> Self {
+		self.externalFormat = externalFormat;
+		self
+	}
+
+}
+
