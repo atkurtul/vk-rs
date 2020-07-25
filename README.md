@@ -1,6 +1,6 @@
 # vk-rs
 
-To run the example on linux libx11 is required
+To run the triangle example on linux libx11 is required
 
 >git clone https://github.com/atkurtul/vk-rs.git \
 >cd vk-rs\
