@@ -1,15 +1,11 @@
 extern crate cc;
 
 fn main() {   
-    let mut files = vec![
+    let files = vec![
         "loader/loader.c",
         "loader/impl.c",
-        "loader/impl_linux.c",
+        "loader/impl_platform.c",
     ];
-
-    #[cfg(feature = "win32")]
-    files.push("loader/impl_win32.c");
-
 
     cc::Build::new()
         .files(files.iter())
