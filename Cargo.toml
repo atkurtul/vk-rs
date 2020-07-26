@@ -12,9 +12,7 @@ repository = "https://github.com/atkurtul/vk-rs"
 [features]
 win32 = ["winapi"]
 xlib = ["x11"]
-xcb = []
-wayland = []
-android = []
+
 
 [lib]
 name = "vk_rs"
