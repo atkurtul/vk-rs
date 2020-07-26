@@ -1188,7 +1188,7 @@ void ResetQueryPool(
     VkQueryPool                                 queryPool,
     uint32_t                                    firstQuery,
     uint32_t                                    queryCount) {
-        return vkResetQueryPool(device, queryPool, firstQuery, queryCount);
+        vkResetQueryPool(device, queryPool, firstQuery, queryCount);
 }
 
 VkResult GetSemaphoreCounterValue(
@@ -1225,7 +1225,7 @@ uint64_t GetDeviceMemoryOpaqueCaptureAddress(
 
 void DestroySurfaceKHR(
     VkSurfaceKHR                                surface) {
-        return vkDestroySurfaceKHR(instance, surface, 0);
+        vkDestroySurfaceKHR(instance, surface, 0);
 }
 
 VkResult GetPhysicalDeviceSurfaceSupportKHR(
@@ -1263,7 +1263,7 @@ VkResult CreateSwapchainKHR(
 
 void DestroySwapchainKHR(
     VkSwapchainKHR                              swapchain) {
-        return vkDestroySwapchainKHR(device, swapchain, 0);
+        vkDestroySwapchainKHR(device, swapchain, 0);
 }
 
 VkResult GetSwapchainImagesKHR(
@@ -1366,18 +1366,18 @@ VkResult CreateSharedSwapchainsKHR(
 
 void GetPhysicalDeviceFeatures2KHR(
     VkPhysicalDeviceFeatures2*                  pFeatures) {
-        return vkGetPhysicalDeviceFeatures2KHR(physicalDevice, pFeatures);
+        vkGetPhysicalDeviceFeatures2KHR(physicalDevice, pFeatures);
 }
 
 void GetPhysicalDeviceProperties2KHR(
     VkPhysicalDeviceProperties2*                pProperties) {
-        return vkGetPhysicalDeviceProperties2KHR(physicalDevice, pProperties);
+        vkGetPhysicalDeviceProperties2KHR(physicalDevice, pProperties);
 }
 
 void GetPhysicalDeviceFormatProperties2KHR(
     VkFormat                                    format,
     VkFormatProperties2*                        pFormatProperties) {
-        return vkGetPhysicalDeviceFormatProperties2KHR(physicalDevice, format, pFormatProperties);
+        vkGetPhysicalDeviceFormatProperties2KHR(physicalDevice, format, pFormatProperties);
 }
 
 VkResult GetPhysicalDeviceImageFormatProperties2KHR(
@@ -1389,19 +1389,19 @@ VkResult GetPhysicalDeviceImageFormatProperties2KHR(
 void GetPhysicalDeviceQueueFamilyProperties2KHR(
     uint32_t*                                   pQueueFamilyPropertyCount,
     VkQueueFamilyProperties2*                   pQueueFamilyProperties) {
-        return vkGetPhysicalDeviceQueueFamilyProperties2KHR(physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties);
+        vkGetPhysicalDeviceQueueFamilyProperties2KHR(physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties);
 }
 
 void GetPhysicalDeviceMemoryProperties2KHR(
     VkPhysicalDeviceMemoryProperties2*          pMemoryProperties) {
-        return vkGetPhysicalDeviceMemoryProperties2KHR(physicalDevice, pMemoryProperties);
+        vkGetPhysicalDeviceMemoryProperties2KHR(physicalDevice, pMemoryProperties);
 }
 
 void GetPhysicalDeviceSparseImageFormatProperties2KHR(
     const VkPhysicalDeviceSparseImageFormatInfo2* pFormatInfo,
     uint32_t*                                   pPropertyCount,
     VkSparseImageFormatProperties2*             pProperties) {
-        return vkGetPhysicalDeviceSparseImageFormatProperties2KHR(physicalDevice, pFormatInfo, pPropertyCount, pProperties);
+        vkGetPhysicalDeviceSparseImageFormatProperties2KHR(physicalDevice, pFormatInfo, pPropertyCount, pProperties);
 }
 
 void GetDeviceGroupPeerMemoryFeaturesKHR(
@@ -1409,13 +1409,13 @@ void GetDeviceGroupPeerMemoryFeaturesKHR(
     uint32_t                                    localDeviceIndex,
     uint32_t                                    remoteDeviceIndex,
     VkPeerMemoryFeatureFlags*                   pPeerMemoryFeatures) {
-        return vkGetDeviceGroupPeerMemoryFeaturesKHR(device, heapIndex, localDeviceIndex, remoteDeviceIndex, pPeerMemoryFeatures);
+        vkGetDeviceGroupPeerMemoryFeaturesKHR(device, heapIndex, localDeviceIndex, remoteDeviceIndex, pPeerMemoryFeatures);
 }
 
 void CmdSetDeviceMaskKHR(
     VkCommandBuffer                             commandBuffer,
     uint32_t                                    deviceMask) {
-        return vkCmdSetDeviceMaskKHR(commandBuffer, deviceMask);
+        vkCmdSetDeviceMaskKHR(commandBuffer, deviceMask);
 }
 
 void CmdDispatchBaseKHR(
@@ -1426,13 +1426,13 @@ void CmdDispatchBaseKHR(
     uint32_t                                    groupCountX,
     uint32_t                                    groupCountY,
     uint32_t                                    groupCountZ) {
-        return vkCmdDispatchBaseKHR(commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ);
+        vkCmdDispatchBaseKHR(commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ);
 }
 
 void TrimCommandPoolKHR(
     VkCommandPool                               commandPool,
     VkCommandPoolTrimFlags                      flags) {
-        return vkTrimCommandPoolKHR(device, commandPool, flags);
+        vkTrimCommandPoolKHR(device, commandPool, flags);
 }
 
 VkResult EnumeratePhysicalDeviceGroupsKHR(
@@ -1444,7 +1444,7 @@ VkResult EnumeratePhysicalDeviceGroupsKHR(
 void GetPhysicalDeviceExternalBufferPropertiesKHR(
     const VkPhysicalDeviceExternalBufferInfo*   pExternalBufferInfo,
     VkExternalBufferProperties*                 pExternalBufferProperties) {
-        return vkGetPhysicalDeviceExternalBufferPropertiesKHR(physicalDevice, pExternalBufferInfo, pExternalBufferProperties);
+        vkGetPhysicalDeviceExternalBufferPropertiesKHR(physicalDevice, pExternalBufferInfo, pExternalBufferProperties);
 }
 
 VkResult GetMemoryFdKHR(
@@ -1463,7 +1463,7 @@ VkResult GetMemoryFdPropertiesKHR(
 void GetPhysicalDeviceExternalSemaphorePropertiesKHR(
     const VkPhysicalDeviceExternalSemaphoreInfo* pExternalSemaphoreInfo,
     VkExternalSemaphoreProperties*              pExternalSemaphoreProperties) {
-        return vkGetPhysicalDeviceExternalSemaphorePropertiesKHR(physicalDevice, pExternalSemaphoreInfo, pExternalSemaphoreProperties);
+        vkGetPhysicalDeviceExternalSemaphorePropertiesKHR(physicalDevice, pExternalSemaphoreInfo, pExternalSemaphoreProperties);
 }
 
 VkResult ImportSemaphoreFdKHR(
@@ -1484,7 +1484,7 @@ void CmdPushDescriptorSetKHR(
     uint32_t                                    set,
     uint32_t                                    descriptorWriteCount,
     const VkWriteDescriptorSet*                 pDescriptorWrites) {
-        return vkCmdPushDescriptorSetKHR(commandBuffer, pipelineBindPoint, layout, set, descriptorWriteCount, pDescriptorWrites);
+        vkCmdPushDescriptorSetKHR(commandBuffer, pipelineBindPoint, layout, set, descriptorWriteCount, pDescriptorWrites);
 }
 
 void CmdPushDescriptorSetWithTemplateKHR(
@@ -1493,7 +1493,7 @@ void CmdPushDescriptorSetWithTemplateKHR(
     VkPipelineLayout                            layout,
     uint32_t                                    set,
     const void*                                 pData) {
-        return vkCmdPushDescriptorSetWithTemplateKHR(commandBuffer, descriptorUpdateTemplate, layout, set, pData);
+        vkCmdPushDescriptorSetWithTemplateKHR(commandBuffer, descriptorUpdateTemplate, layout, set, pData);
 }
 
 VkResult CreateDescriptorUpdateTemplateKHR(
@@ -1504,14 +1504,14 @@ VkResult CreateDescriptorUpdateTemplateKHR(
 
 void DestroyDescriptorUpdateTemplateKHR(
     VkDescriptorUpdateTemplate                  descriptorUpdateTemplate) {
-        return vkDestroyDescriptorUpdateTemplateKHR(device, descriptorUpdateTemplate, 0);
+        vkDestroyDescriptorUpdateTemplateKHR(device, descriptorUpdateTemplate, 0);
 }
 
 void UpdateDescriptorSetWithTemplateKHR(
     VkDescriptorSet                             descriptorSet,
     VkDescriptorUpdateTemplate                  descriptorUpdateTemplate,
     const void*                                 pData) {
-        return vkUpdateDescriptorSetWithTemplateKHR(device, descriptorSet, descriptorUpdateTemplate, pData);
+        vkUpdateDescriptorSetWithTemplateKHR(device, descriptorSet, descriptorUpdateTemplate, pData);
 }
 
 VkResult CreateRenderPass2KHR(
@@ -1524,20 +1524,20 @@ void CmdBeginRenderPass2KHR(
     VkCommandBuffer                             commandBuffer,
     const VkRenderPassBeginInfo*                pRenderPassBegin,
     const VkSubpassBeginInfo*                   pSubpassBeginInfo) {
-        return vkCmdBeginRenderPass2KHR(commandBuffer, pRenderPassBegin, pSubpassBeginInfo);
+        vkCmdBeginRenderPass2KHR(commandBuffer, pRenderPassBegin, pSubpassBeginInfo);
 }
 
 void CmdNextSubpass2KHR(
     VkCommandBuffer                             commandBuffer,
     const VkSubpassBeginInfo*                   pSubpassBeginInfo,
     const VkSubpassEndInfo*                     pSubpassEndInfo) {
-        return vkCmdNextSubpass2KHR(commandBuffer, pSubpassBeginInfo, pSubpassEndInfo);
+        vkCmdNextSubpass2KHR(commandBuffer, pSubpassBeginInfo, pSubpassEndInfo);
 }
 
 void CmdEndRenderPass2KHR(
     VkCommandBuffer                             commandBuffer,
     const VkSubpassEndInfo*                     pSubpassEndInfo) {
-        return vkCmdEndRenderPass2KHR(commandBuffer, pSubpassEndInfo);
+        vkCmdEndRenderPass2KHR(commandBuffer, pSubpassEndInfo);
 }
 
 VkResult GetSwapchainStatusKHR(
@@ -1548,7 +1548,7 @@ VkResult GetSwapchainStatusKHR(
 void GetPhysicalDeviceExternalFencePropertiesKHR(
     const VkPhysicalDeviceExternalFenceInfo*    pExternalFenceInfo,
     VkExternalFenceProperties*                  pExternalFenceProperties) {
-        return vkGetPhysicalDeviceExternalFencePropertiesKHR(physicalDevice, pExternalFenceInfo, pExternalFenceProperties);
+        vkGetPhysicalDeviceExternalFencePropertiesKHR(physicalDevice, pExternalFenceInfo, pExternalFenceProperties);
 }
 
 VkResult ImportFenceFdKHR(
@@ -1573,7 +1573,7 @@ VkResult EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(
 void GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(
     const VkQueryPoolPerformanceCreateInfoKHR*  pPerformanceQueryCreateInfo,
     uint32_t*                                   pNumPasses) {
-        return vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(physicalDevice, pPerformanceQueryCreateInfo, pNumPasses);
+        vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(physicalDevice, pPerformanceQueryCreateInfo, pNumPasses);
 }
 
 VkResult AcquireProfilingLockKHR(
@@ -1582,7 +1582,7 @@ VkResult AcquireProfilingLockKHR(
 }
 
 void ReleaseProfilingLockKHR() {
-        return vkReleaseProfilingLockKHR(device);
+        vkReleaseProfilingLockKHR(device);
 }
 
 VkResult GetPhysicalDeviceSurfaceCapabilities2KHR(
@@ -1626,20 +1626,20 @@ VkResult GetDisplayPlaneCapabilities2KHR(
 void GetImageMemoryRequirements2KHR(
     const VkImageMemoryRequirementsInfo2*       pInfo,
     VkMemoryRequirements2*                      pMemoryRequirements) {
-        return vkGetImageMemoryRequirements2KHR(device, pInfo, pMemoryRequirements);
+        vkGetImageMemoryRequirements2KHR(device, pInfo, pMemoryRequirements);
 }
 
 void GetBufferMemoryRequirements2KHR(
     const VkBufferMemoryRequirementsInfo2*      pInfo,
     VkMemoryRequirements2*                      pMemoryRequirements) {
-        return vkGetBufferMemoryRequirements2KHR(device, pInfo, pMemoryRequirements);
+        vkGetBufferMemoryRequirements2KHR(device, pInfo, pMemoryRequirements);
 }
 
 void GetImageSparseMemoryRequirements2KHR(
     const VkImageSparseMemoryRequirementsInfo2* pInfo,
     uint32_t*                                   pSparseMemoryRequirementCount,
     VkSparseImageMemoryRequirements2*           pSparseMemoryRequirements) {
-        return vkGetImageSparseMemoryRequirements2KHR(device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements);
+        vkGetImageSparseMemoryRequirements2KHR(device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements);
 }
 
 VkResult CreateSamplerYcbcrConversionKHR(
@@ -1650,7 +1650,7 @@ VkResult CreateSamplerYcbcrConversionKHR(
 
 void DestroySamplerYcbcrConversionKHR(
     VkSamplerYcbcrConversion                    ycbcrConversion) {
-        return vkDestroySamplerYcbcrConversionKHR(device, ycbcrConversion, 0);
+        vkDestroySamplerYcbcrConversionKHR(device, ycbcrConversion, 0);
 }
 
 VkResult BindBufferMemory2KHR(
@@ -1668,7 +1668,7 @@ VkResult BindImageMemory2KHR(
 void GetDescriptorSetLayoutSupportKHR(
     const VkDescriptorSetLayoutCreateInfo*      pCreateInfo,
     VkDescriptorSetLayoutSupport*               pSupport) {
-        return vkGetDescriptorSetLayoutSupportKHR(device, pCreateInfo, pSupport);
+        vkGetDescriptorSetLayoutSupportKHR(device, pCreateInfo, pSupport);
 }
 
 void CmdDrawIndirectCountKHR(
@@ -1679,7 +1679,7 @@ void CmdDrawIndirectCountKHR(
     VkDeviceSize                                countBufferOffset,
     uint32_t                                    maxDrawCount,
     uint32_t                                    stride) {
-        return vkCmdDrawIndirectCountKHR(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
+        vkCmdDrawIndirectCountKHR(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 }
 
 void CmdDrawIndexedIndirectCountKHR(
@@ -1690,7 +1690,7 @@ void CmdDrawIndexedIndirectCountKHR(
     VkDeviceSize                                countBufferOffset,
     uint32_t                                    maxDrawCount,
     uint32_t                                    stride) {
-        return vkCmdDrawIndexedIndirectCountKHR(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
+        vkCmdDrawIndexedIndirectCountKHR(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 }
 
 VkResult GetSemaphoreCounterValueKHR(
@@ -1754,7 +1754,7 @@ VkResult CreateDebugReportCallbackEXT(
 
 void DestroyDebugReportCallbackEXT(
     VkDebugReportCallbackEXT                    callback) {
-        return vkDestroyDebugReportCallbackEXT(instance, callback, 0);
+        vkDestroyDebugReportCallbackEXT(instance, callback, 0);
 }
 
 void DebugReportMessageEXT(
@@ -1765,7 +1765,7 @@ void DebugReportMessageEXT(
     int32_t                                     messageCode,
     const char*                                 pLayerPrefix,
     const char*                                 pMessage) {
-        return vkDebugReportMessageEXT(instance, flags, objectType, object, location, messageCode, pLayerPrefix, pMessage);
+        vkDebugReportMessageEXT(instance, flags, objectType, object, location, messageCode, pLayerPrefix, pMessage);
 }
 
 VkResult DebugMarkerSetObjectTagEXT(
@@ -1781,18 +1781,18 @@ VkResult DebugMarkerSetObjectNameEXT(
 void CmdDebugMarkerBeginEXT(
     VkCommandBuffer                             commandBuffer,
     const VkDebugMarkerMarkerInfoEXT*           pMarkerInfo) {
-        return vkCmdDebugMarkerBeginEXT(commandBuffer, pMarkerInfo);
+        vkCmdDebugMarkerBeginEXT(commandBuffer, pMarkerInfo);
 }
 
 void CmdDebugMarkerEndEXT(
     VkCommandBuffer                             commandBuffer) {
-        return vkCmdDebugMarkerEndEXT(commandBuffer);
+        vkCmdDebugMarkerEndEXT(commandBuffer);
 }
 
 void CmdDebugMarkerInsertEXT(
     VkCommandBuffer                             commandBuffer,
     const VkDebugMarkerMarkerInfoEXT*           pMarkerInfo) {
-        return vkCmdDebugMarkerInsertEXT(commandBuffer, pMarkerInfo);
+        vkCmdDebugMarkerInsertEXT(commandBuffer, pMarkerInfo);
 }
 
 void CmdBindTransformFeedbackBuffersEXT(
@@ -1802,7 +1802,7 @@ void CmdBindTransformFeedbackBuffersEXT(
     const VkBuffer*                             pBuffers,
     const VkDeviceSize*                         pOffsets,
     const VkDeviceSize*                         pSizes) {
-        return vkCmdBindTransformFeedbackBuffersEXT(commandBuffer, firstBinding, bindingCount, pBuffers, pOffsets, pSizes);
+        vkCmdBindTransformFeedbackBuffersEXT(commandBuffer, firstBinding, bindingCount, pBuffers, pOffsets, pSizes);
 }
 
 void CmdBeginTransformFeedbackEXT(
@@ -1811,7 +1811,7 @@ void CmdBeginTransformFeedbackEXT(
     uint32_t                                    counterBufferCount,
     const VkBuffer*                             pCounterBuffers,
     const VkDeviceSize*                         pCounterBufferOffsets) {
-        return vkCmdBeginTransformFeedbackEXT(commandBuffer, firstCounterBuffer, counterBufferCount, pCounterBuffers, pCounterBufferOffsets);
+        vkCmdBeginTransformFeedbackEXT(commandBuffer, firstCounterBuffer, counterBufferCount, pCounterBuffers, pCounterBufferOffsets);
 }
 
 void CmdEndTransformFeedbackEXT(
@@ -1820,7 +1820,7 @@ void CmdEndTransformFeedbackEXT(
     uint32_t                                    counterBufferCount,
     const VkBuffer*                             pCounterBuffers,
     const VkDeviceSize*                         pCounterBufferOffsets) {
-        return vkCmdEndTransformFeedbackEXT(commandBuffer, firstCounterBuffer, counterBufferCount, pCounterBuffers, pCounterBufferOffsets);
+        vkCmdEndTransformFeedbackEXT(commandBuffer, firstCounterBuffer, counterBufferCount, pCounterBuffers, pCounterBufferOffsets);
 }
 
 void CmdBeginQueryIndexedEXT(
@@ -1829,7 +1829,7 @@ void CmdBeginQueryIndexedEXT(
     uint32_t                                    query,
     VkQueryControlFlags                         flags,
     uint32_t                                    index) {
-        return vkCmdBeginQueryIndexedEXT(commandBuffer, queryPool, query, flags, index);
+        vkCmdBeginQueryIndexedEXT(commandBuffer, queryPool, query, flags, index);
 }
 
 void CmdEndQueryIndexedEXT(
@@ -1837,7 +1837,7 @@ void CmdEndQueryIndexedEXT(
     VkQueryPool                                 queryPool,
     uint32_t                                    query,
     uint32_t                                    index) {
-        return vkCmdEndQueryIndexedEXT(commandBuffer, queryPool, query, index);
+        vkCmdEndQueryIndexedEXT(commandBuffer, queryPool, query, index);
 }
 
 void CmdDrawIndirectByteCountEXT(
@@ -1848,7 +1848,7 @@ void CmdDrawIndirectByteCountEXT(
     VkDeviceSize                                counterBufferOffset,
     uint32_t                                    counterOffset,
     uint32_t                                    vertexStride) {
-        return vkCmdDrawIndirectByteCountEXT(commandBuffer, instanceCount, firstInstance, counterBuffer, counterBufferOffset, counterOffset, vertexStride);
+        vkCmdDrawIndirectByteCountEXT(commandBuffer, instanceCount, firstInstance, counterBuffer, counterBufferOffset, counterOffset, vertexStride);
 }
 
 uint32_t GetImageViewHandleNVX(
@@ -1870,7 +1870,7 @@ void CmdDrawIndirectCountAMD(
     VkDeviceSize                                countBufferOffset,
     uint32_t                                    maxDrawCount,
     uint32_t                                    stride) {
-        return vkCmdDrawIndirectCountAMD(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
+        vkCmdDrawIndirectCountAMD(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 }
 
 void CmdDrawIndexedIndirectCountAMD(
@@ -1881,7 +1881,7 @@ void CmdDrawIndexedIndirectCountAMD(
     VkDeviceSize                                countBufferOffset,
     uint32_t                                    maxDrawCount,
     uint32_t                                    stride) {
-        return vkCmdDrawIndexedIndirectCountAMD(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
+        vkCmdDrawIndexedIndirectCountAMD(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 }
 
 VkResult GetShaderInfoAMD(
@@ -1907,12 +1907,12 @@ VkResult GetPhysicalDeviceExternalImageFormatPropertiesNV(
 void CmdBeginConditionalRenderingEXT(
     VkCommandBuffer                             commandBuffer,
     const VkConditionalRenderingBeginInfoEXT*   pConditionalRenderingBegin) {
-        return vkCmdBeginConditionalRenderingEXT(commandBuffer, pConditionalRenderingBegin);
+        vkCmdBeginConditionalRenderingEXT(commandBuffer, pConditionalRenderingBegin);
 }
 
 void CmdEndConditionalRenderingEXT(
     VkCommandBuffer                             commandBuffer) {
-        return vkCmdEndConditionalRenderingEXT(commandBuffer);
+        vkCmdEndConditionalRenderingEXT(commandBuffer);
 }
 
 void CmdSetViewportWScalingNV(
@@ -1920,7 +1920,7 @@ void CmdSetViewportWScalingNV(
     uint32_t                                    firstViewport,
     uint32_t                                    viewportCount,
     const VkViewportWScalingNV*                 pViewportWScalings) {
-        return vkCmdSetViewportWScalingNV(commandBuffer, firstViewport, viewportCount, pViewportWScalings);
+        vkCmdSetViewportWScalingNV(commandBuffer, firstViewport, viewportCount, pViewportWScalings);
 }
 
 VkResult ReleaseDisplayEXT(
@@ -1978,14 +1978,14 @@ void CmdSetDiscardRectangleEXT(
     uint32_t                                    firstDiscardRectangle,
     uint32_t                                    discardRectangleCount,
     const VkRect2D*                             pDiscardRectangles) {
-        return vkCmdSetDiscardRectangleEXT(commandBuffer, firstDiscardRectangle, discardRectangleCount, pDiscardRectangles);
+        vkCmdSetDiscardRectangleEXT(commandBuffer, firstDiscardRectangle, discardRectangleCount, pDiscardRectangles);
 }
 
 void SetHdrMetadataEXT(
     uint32_t                                    swapchainCount,
     const VkSwapchainKHR*                       pSwapchains,
     const VkHdrMetadataEXT*                     pMetadata) {
-        return vkSetHdrMetadataEXT(device, swapchainCount, pSwapchains, pMetadata);
+        vkSetHdrMetadataEXT(device, swapchainCount, pSwapchains, pMetadata);
 }
 
 VkResult SetDebugUtilsObjectNameEXT(
@@ -2001,35 +2001,35 @@ VkResult SetDebugUtilsObjectTagEXT(
 void QueueBeginDebugUtilsLabelEXT(
     VkQueue                                     queue,
     const VkDebugUtilsLabelEXT*                 pLabelInfo) {
-        return vkQueueBeginDebugUtilsLabelEXT(queue, pLabelInfo);
+        vkQueueBeginDebugUtilsLabelEXT(queue, pLabelInfo);
 }
 
 void QueueEndDebugUtilsLabelEXT(
     VkQueue                                     queue) {
-        return vkQueueEndDebugUtilsLabelEXT(queue);
+        vkQueueEndDebugUtilsLabelEXT(queue);
 }
 
 void QueueInsertDebugUtilsLabelEXT(
     VkQueue                                     queue,
     const VkDebugUtilsLabelEXT*                 pLabelInfo) {
-        return vkQueueInsertDebugUtilsLabelEXT(queue, pLabelInfo);
+        vkQueueInsertDebugUtilsLabelEXT(queue, pLabelInfo);
 }
 
 void CmdBeginDebugUtilsLabelEXT(
     VkCommandBuffer                             commandBuffer,
     const VkDebugUtilsLabelEXT*                 pLabelInfo) {
-        return vkCmdBeginDebugUtilsLabelEXT(commandBuffer, pLabelInfo);
+        vkCmdBeginDebugUtilsLabelEXT(commandBuffer, pLabelInfo);
 }
 
 void CmdEndDebugUtilsLabelEXT(
     VkCommandBuffer                             commandBuffer) {
-        return vkCmdEndDebugUtilsLabelEXT(commandBuffer);
+        vkCmdEndDebugUtilsLabelEXT(commandBuffer);
 }
 
 void CmdInsertDebugUtilsLabelEXT(
     VkCommandBuffer                             commandBuffer,
     const VkDebugUtilsLabelEXT*                 pLabelInfo) {
-        return vkCmdInsertDebugUtilsLabelEXT(commandBuffer, pLabelInfo);
+        vkCmdInsertDebugUtilsLabelEXT(commandBuffer, pLabelInfo);
 }
 
 VkResult CreateDebugUtilsMessengerEXT(
@@ -2040,26 +2040,26 @@ VkResult CreateDebugUtilsMessengerEXT(
 
 void DestroyDebugUtilsMessengerEXT(
     VkDebugUtilsMessengerEXT                    messenger) {
-        return vkDestroyDebugUtilsMessengerEXT(instance, messenger, 0);
+        vkDestroyDebugUtilsMessengerEXT(instance, messenger, 0);
 }
 
 void SubmitDebugUtilsMessageEXT(
     VkDebugUtilsMessageSeverityFlagBitsEXT      messageSeverity,
     VkDebugUtilsMessageTypeFlagsEXT             messageTypes,
     const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData) {
-        return vkSubmitDebugUtilsMessageEXT(instance, messageSeverity, messageTypes, pCallbackData);
+        vkSubmitDebugUtilsMessageEXT(instance, messageSeverity, messageTypes, pCallbackData);
 }
 
 void CmdSetSampleLocationsEXT(
     VkCommandBuffer                             commandBuffer,
     const VkSampleLocationsInfoEXT*             pSampleLocationsInfo) {
-        return vkCmdSetSampleLocationsEXT(commandBuffer, pSampleLocationsInfo);
+        vkCmdSetSampleLocationsEXT(commandBuffer, pSampleLocationsInfo);
 }
 
 void GetPhysicalDeviceMultisamplePropertiesEXT(
     VkSampleCountFlagBits                       samples,
     VkMultisamplePropertiesEXT*                 pMultisampleProperties) {
-        return vkGetPhysicalDeviceMultisamplePropertiesEXT(physicalDevice, samples, pMultisampleProperties);
+        vkGetPhysicalDeviceMultisamplePropertiesEXT(physicalDevice, samples, pMultisampleProperties);
 }
 
 VkResult GetImageDrmFormatModifierPropertiesEXT(
@@ -2076,7 +2076,7 @@ VkResult CreateValidationCacheEXT(
 
 void DestroyValidationCacheEXT(
     VkValidationCacheEXT                        validationCache) {
-        return vkDestroyValidationCacheEXT(device, validationCache, 0);
+        vkDestroyValidationCacheEXT(device, validationCache, 0);
 }
 
 VkResult MergeValidationCachesEXT(
@@ -2097,7 +2097,7 @@ void CmdBindShadingRateImageNV(
     VkCommandBuffer                             commandBuffer,
     VkImageView                                 imageView,
     VkImageLayout                               imageLayout) {
-        return vkCmdBindShadingRateImageNV(commandBuffer, imageView, imageLayout);
+        vkCmdBindShadingRateImageNV(commandBuffer, imageView, imageLayout);
 }
 
 void CmdSetViewportShadingRatePaletteNV(
@@ -2105,7 +2105,7 @@ void CmdSetViewportShadingRatePaletteNV(
     uint32_t                                    firstViewport,
     uint32_t                                    viewportCount,
     const VkShadingRatePaletteNV*               pShadingRatePalettes) {
-        return vkCmdSetViewportShadingRatePaletteNV(commandBuffer, firstViewport, viewportCount, pShadingRatePalettes);
+        vkCmdSetViewportShadingRatePaletteNV(commandBuffer, firstViewport, viewportCount, pShadingRatePalettes);
 }
 
 void CmdSetCoarseSampleOrderNV(
@@ -2113,7 +2113,7 @@ void CmdSetCoarseSampleOrderNV(
     VkCoarseSampleOrderTypeNV                   sampleOrderType,
     uint32_t                                    customSampleOrderCount,
     const VkCoarseSampleOrderCustomNV*          pCustomSampleOrders) {
-        return vkCmdSetCoarseSampleOrderNV(commandBuffer, sampleOrderType, customSampleOrderCount, pCustomSampleOrders);
+        vkCmdSetCoarseSampleOrderNV(commandBuffer, sampleOrderType, customSampleOrderCount, pCustomSampleOrders);
 }
 
 VkResult CreateAccelerationStructureNV(
@@ -2124,18 +2124,18 @@ VkResult CreateAccelerationStructureNV(
 
 void DestroyAccelerationStructureKHR(
     VkAccelerationStructureKHR                  accelerationStructure) {
-        return vkDestroyAccelerationStructureKHR(device, accelerationStructure, 0);
+        vkDestroyAccelerationStructureKHR(device, accelerationStructure, 0);
 }
 
 void DestroyAccelerationStructureNV(
     VkAccelerationStructureKHR                  accelerationStructure) {
-        return vkDestroyAccelerationStructureNV(device, accelerationStructure, 0);
+        vkDestroyAccelerationStructureNV(device, accelerationStructure, 0);
 }
 
 void GetAccelerationStructureMemoryRequirementsNV(
     const VkAccelerationStructureMemoryRequirementsInfoNV* pInfo,
     VkMemoryRequirements2KHR*                   pMemoryRequirements) {
-        return vkGetAccelerationStructureMemoryRequirementsNV(device, pInfo, pMemoryRequirements);
+        vkGetAccelerationStructureMemoryRequirementsNV(device, pInfo, pMemoryRequirements);
 }
 
 VkResult BindAccelerationStructureMemoryKHR(
@@ -2160,7 +2160,7 @@ void CmdBuildAccelerationStructureNV(
     VkAccelerationStructureKHR                  src,
     VkBuffer                                    scratch,
     VkDeviceSize                                scratchOffset) {
-        return vkCmdBuildAccelerationStructureNV(commandBuffer, pInfo, instanceData, instanceOffset, update, dst, src, scratch, scratchOffset);
+        vkCmdBuildAccelerationStructureNV(commandBuffer, pInfo, instanceData, instanceOffset, update, dst, src, scratch, scratchOffset);
 }
 
 void CmdCopyAccelerationStructureNV(
@@ -2168,7 +2168,7 @@ void CmdCopyAccelerationStructureNV(
     VkAccelerationStructureKHR                  dst,
     VkAccelerationStructureKHR                  src,
     VkCopyAccelerationStructureModeKHR          mode) {
-        return vkCmdCopyAccelerationStructureNV(commandBuffer, dst, src, mode);
+        vkCmdCopyAccelerationStructureNV(commandBuffer, dst, src, mode);
 }
 
 void CmdTraceRaysNV(
@@ -2187,7 +2187,7 @@ void CmdTraceRaysNV(
     uint32_t                                    width,
     uint32_t                                    height,
     uint32_t                                    depth) {
-        return vkCmdTraceRaysNV(commandBuffer, raygenShaderBindingTableBuffer, raygenShaderBindingOffset, missShaderBindingTableBuffer, missShaderBindingOffset, missShaderBindingStride, hitShaderBindingTableBuffer, hitShaderBindingOffset, hitShaderBindingStride, callableShaderBindingTableBuffer, callableShaderBindingOffset, callableShaderBindingStride, width, height, depth);
+        vkCmdTraceRaysNV(commandBuffer, raygenShaderBindingTableBuffer, raygenShaderBindingOffset, missShaderBindingTableBuffer, missShaderBindingOffset, missShaderBindingStride, hitShaderBindingTableBuffer, hitShaderBindingOffset, hitShaderBindingStride, callableShaderBindingTableBuffer, callableShaderBindingOffset, callableShaderBindingStride, width, height, depth);
 }
 
 VkResult CreateRayTracingPipelinesNV(
@@ -2230,7 +2230,7 @@ void CmdWriteAccelerationStructuresPropertiesKHR(
     VkQueryType                                 queryType,
     VkQueryPool                                 queryPool,
     uint32_t                                    firstQuery) {
-        return vkCmdWriteAccelerationStructuresPropertiesKHR(commandBuffer, accelerationStructureCount, pAccelerationStructures, queryType, queryPool, firstQuery);
+        vkCmdWriteAccelerationStructuresPropertiesKHR(commandBuffer, accelerationStructureCount, pAccelerationStructures, queryType, queryPool, firstQuery);
 }
 
 void CmdWriteAccelerationStructuresPropertiesNV(
@@ -2240,7 +2240,7 @@ void CmdWriteAccelerationStructuresPropertiesNV(
     VkQueryType                                 queryType,
     VkQueryPool                                 queryPool,
     uint32_t                                    firstQuery) {
-        return vkCmdWriteAccelerationStructuresPropertiesNV(commandBuffer, accelerationStructureCount, pAccelerationStructures, queryType, queryPool, firstQuery);
+        vkCmdWriteAccelerationStructuresPropertiesNV(commandBuffer, accelerationStructureCount, pAccelerationStructures, queryType, queryPool, firstQuery);
 }
 
 VkResult CompileDeferredNV(
@@ -2262,7 +2262,7 @@ void CmdWriteBufferMarkerAMD(
     VkBuffer                                    dstBuffer,
     VkDeviceSize                                dstOffset,
     uint32_t                                    marker) {
-        return vkCmdWriteBufferMarkerAMD(commandBuffer, pipelineStage, dstBuffer, dstOffset, marker);
+        vkCmdWriteBufferMarkerAMD(commandBuffer, pipelineStage, dstBuffer, dstOffset, marker);
 }
 
 VkResult GetPhysicalDeviceCalibrateableTimeDomainsEXT(
@@ -2283,7 +2283,7 @@ void CmdDrawMeshTasksNV(
     VkCommandBuffer                             commandBuffer,
     uint32_t                                    taskCount,
     uint32_t                                    firstTask) {
-        return vkCmdDrawMeshTasksNV(commandBuffer, taskCount, firstTask);
+        vkCmdDrawMeshTasksNV(commandBuffer, taskCount, firstTask);
 }
 
 void CmdDrawMeshTasksIndirectNV(
@@ -2292,7 +2292,7 @@ void CmdDrawMeshTasksIndirectNV(
     VkDeviceSize                                offset,
     uint32_t                                    drawCount,
     uint32_t                                    stride) {
-        return vkCmdDrawMeshTasksIndirectNV(commandBuffer, buffer, offset, drawCount, stride);
+        vkCmdDrawMeshTasksIndirectNV(commandBuffer, buffer, offset, drawCount, stride);
 }
 
 void CmdDrawMeshTasksIndirectCountNV(
@@ -2303,7 +2303,7 @@ void CmdDrawMeshTasksIndirectCountNV(
     VkDeviceSize                                countBufferOffset,
     uint32_t                                    maxDrawCount,
     uint32_t                                    stride) {
-        return vkCmdDrawMeshTasksIndirectCountNV(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
+        vkCmdDrawMeshTasksIndirectCountNV(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 }
 
 void CmdSetExclusiveScissorNV(
@@ -2311,20 +2311,20 @@ void CmdSetExclusiveScissorNV(
     uint32_t                                    firstExclusiveScissor,
     uint32_t                                    exclusiveScissorCount,
     const VkRect2D*                             pExclusiveScissors) {
-        return vkCmdSetExclusiveScissorNV(commandBuffer, firstExclusiveScissor, exclusiveScissorCount, pExclusiveScissors);
+        vkCmdSetExclusiveScissorNV(commandBuffer, firstExclusiveScissor, exclusiveScissorCount, pExclusiveScissors);
 }
 
 void CmdSetCheckpointNV(
     VkCommandBuffer                             commandBuffer,
     const void*                                 pCheckpointMarker) {
-        return vkCmdSetCheckpointNV(commandBuffer, pCheckpointMarker);
+        vkCmdSetCheckpointNV(commandBuffer, pCheckpointMarker);
 }
 
 void GetQueueCheckpointDataNV(
     VkQueue                                     queue,
     uint32_t*                                   pCheckpointDataCount,
     VkCheckpointDataNV*                         pCheckpointData) {
-        return vkGetQueueCheckpointDataNV(queue, pCheckpointDataCount, pCheckpointData);
+        vkGetQueueCheckpointDataNV(queue, pCheckpointDataCount, pCheckpointData);
 }
 
 VkResult InitializePerformanceApiINTEL(
@@ -2333,7 +2333,7 @@ VkResult InitializePerformanceApiINTEL(
 }
 
 void UninitializePerformanceApiINTEL() {
-        return vkUninitializePerformanceApiINTEL(device);
+        vkUninitializePerformanceApiINTEL(device);
 }
 
 VkResult CmdSetPerformanceMarkerINTEL(
@@ -2380,7 +2380,7 @@ VkResult GetPerformanceParameterINTEL(
 void SetLocalDimmingAMD(
     VkSwapchainKHR                              swapChain,
     VkBool32                                    localDimmingEnable) {
-        return vkSetLocalDimmingAMD(device, swapChain, localDimmingEnable);
+        vkSetLocalDimmingAMD(device, swapChain, localDimmingEnable);
 }
 
 VkDeviceAddress GetBufferDeviceAddressEXT(
@@ -2416,33 +2416,33 @@ void CmdSetLineStippleEXT(
     VkCommandBuffer                             commandBuffer,
     uint32_t                                    lineStippleFactor,
     uint16_t                                    lineStipplePattern) {
-        return vkCmdSetLineStippleEXT(commandBuffer, lineStippleFactor, lineStipplePattern);
+        vkCmdSetLineStippleEXT(commandBuffer, lineStippleFactor, lineStipplePattern);
 }
 
 void ResetQueryPoolEXT(
     VkQueryPool                                 queryPool,
     uint32_t                                    firstQuery,
     uint32_t                                    queryCount) {
-        return vkResetQueryPoolEXT(device, queryPool, firstQuery, queryCount);
+        vkResetQueryPoolEXT(device, queryPool, firstQuery, queryCount);
 }
 
 void GetGeneratedCommandsMemoryRequirementsNV(
     const VkGeneratedCommandsMemoryRequirementsInfoNV* pInfo,
     VkMemoryRequirements2*                      pMemoryRequirements) {
-        return vkGetGeneratedCommandsMemoryRequirementsNV(device, pInfo, pMemoryRequirements);
+        vkGetGeneratedCommandsMemoryRequirementsNV(device, pInfo, pMemoryRequirements);
 }
 
 void CmdPreprocessGeneratedCommandsNV(
     VkCommandBuffer                             commandBuffer,
     const VkGeneratedCommandsInfoNV*            pGeneratedCommandsInfo) {
-        return vkCmdPreprocessGeneratedCommandsNV(commandBuffer, pGeneratedCommandsInfo);
+        vkCmdPreprocessGeneratedCommandsNV(commandBuffer, pGeneratedCommandsInfo);
 }
 
 void CmdExecuteGeneratedCommandsNV(
     VkCommandBuffer                             commandBuffer,
     VkBool32                                    isPreprocessed,
     const VkGeneratedCommandsInfoNV*            pGeneratedCommandsInfo) {
-        return vkCmdExecuteGeneratedCommandsNV(commandBuffer, isPreprocessed, pGeneratedCommandsInfo);
+        vkCmdExecuteGeneratedCommandsNV(commandBuffer, isPreprocessed, pGeneratedCommandsInfo);
 }
 
 void CmdBindPipelineShaderGroupNV(
@@ -2450,7 +2450,7 @@ void CmdBindPipelineShaderGroupNV(
     VkPipelineBindPoint                         pipelineBindPoint,
     VkPipeline                                  pipeline,
     uint32_t                                    groupIndex) {
-        return vkCmdBindPipelineShaderGroupNV(commandBuffer, pipelineBindPoint, pipeline, groupIndex);
+        vkCmdBindPipelineShaderGroupNV(commandBuffer, pipelineBindPoint, pipeline, groupIndex);
 }
 
 VkResult CreateIndirectCommandsLayoutNV(
@@ -2461,7 +2461,7 @@ VkResult CreateIndirectCommandsLayoutNV(
 
 void DestroyIndirectCommandsLayoutNV(
     VkIndirectCommandsLayoutNV                  indirectCommandsLayout) {
-        return vkDestroyIndirectCommandsLayoutNV(device, indirectCommandsLayout, 0);
+        vkDestroyIndirectCommandsLayoutNV(device, indirectCommandsLayout, 0);
 }
 
 VkResult CreatePrivateDataSlotEXT(
@@ -2472,7 +2472,7 @@ VkResult CreatePrivateDataSlotEXT(
 
 void DestroyPrivateDataSlotEXT(
     VkPrivateDataSlotEXT                        privateDataSlot) {
-        return vkDestroyPrivateDataSlotEXT(device, privateDataSlot, 0);
+        vkDestroyPrivateDataSlotEXT(device, privateDataSlot, 0);
 }
 
 VkResult SetPrivateDataEXT(
@@ -2488,7 +2488,7 @@ void GetPrivateDataEXT(
     uint64_t                                    objectHandle,
     VkPrivateDataSlotEXT                        privateDataSlot,
     uint64_t*                                   pData) {
-        return vkGetPrivateDataEXT(device, objectType, objectHandle, privateDataSlot, pData);
+        vkGetPrivateDataEXT(device, objectType, objectHandle, privateDataSlot, pData);
 }
 
 #include "stdio.h"
