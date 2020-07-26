@@ -112,7 +112,7 @@ typedef void *HWND;
 typedef const wchar_t *LPCWSTR;
 typedef unsigned long DWORD;
 typedef void *HMONITOR;
-#include "vulkan/vulkan_win32.h";
+#include "vulkan/vulkan_win32.h"
 
 VkResult CreateWin32SurfaceKHR(
     const struct VkWin32SurfaceCreateInfoKHR*          pCreateInfo,
