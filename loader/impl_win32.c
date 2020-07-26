@@ -7,16 +7,16 @@ extern VkDevice			    device;
 extern VkPhysicalDevice	    physicalDevice;
 
 VkResult CreateWin32SurfaceKHR(
-    const VkWin32SurfaceCreateInfoKHR*          pCreateInfo,
-    VkSurfaceKHR*                               pSurface) {
+    const struct VkWin32SurfaceCreateInfoKHR*          pCreateInfo,
+    VkSurfaceKHR*                                      pSurface) {
         return ((PFN_vkCreateWin32SurfaceKHR)vkCreateWin32SurfaceKHR)(instance, pCreateInfo, 0, pSurface);
 }
 VkBool32 GetPhysicalDeviceWin32PresentationSupportKHR() {
         return ((PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR)vkGetPhysicalDeviceWin32PresentationSupportKHR)(physicalDevice, 0);
 }
 VkResult GetMemoryWin32HandleKHR(
-    const VkMemoryGetWin32HandleInfoKHR*        pGetWin32HandleInfo,
-    HANDLE*                                     pHandle) {
+    const struct VkMemoryGetWin32HandleInfoKHR*        pGetWin32HandleInfo,
+    HANDLE*                                            pHandle) {
         return ((PFN_vkGetMemoryWin32HandleKHR)vkGetMemoryWin32HandleKHR)(device, pGetWin32HandleInfo, pHandle);
 }
 VkResult GetMemoryWin32HandlePropertiesKHR(
